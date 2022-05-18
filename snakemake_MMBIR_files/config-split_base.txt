@@ -1,0 +1,159 @@
+# The configuration file for MMBIRFinder
+
+# sLogDirName = Directory where log files should be kept
+sLogDirName=Log
+
+# projectDirectory - the directory to store and retrieve all created files
+# Leave empty for current working directory
+projectDirectory=trial2/BASE/
+
+# referenceFile - the FASTA reference file
+# The reference without merging chromosoms
+preReferenceFile=hg38_chr/hg38_chr.fa
+# The reference with merged chromosomes
+referenceFile=hg38_chr/hg38_chr.fa
+
+# chromosome - limit the bir search to a single chromosome
+# enter 0 to search them all
+chromosome=0
+#chromosome=2
+
+# readsFile - the FASTA or FASTQ reads file
+readsFile=SRR
+
+# alignedFile - the SAME and FASTA file name for the aligned reads
+alignedFile=bwa
+
+# unalignedFile - the SAM and FASTA file name for the unaligned reads
+unalignedFile=unaligned
+
+# finalAlignedFile - the SAM file name for the final aligned reads
+finalAlignedFile=bwaAligned
+
+# outputFile - the name of the SAM file for the BWA alignment output
+outputFile=bwaOutput
+
+# locationsFile - the name of the temporary file for the possible BIR locations
+locationsFile=possible_bir_locations.txt
+
+# clusterFile - the name of the file to output the cluster information
+clusterFile=half_read_clusters.txt
+
+# pairedEnd - is the dataset paired-end?
+pairedEnd=false
+
+############################################################################################
+######### The following options govern whether the various alignment steps are     #########
+######### performed.                                                               #########
+
+# runAlignment - a testing method to save time
+runAlignment=false
+
+# onlyAlign - only run the alignment, not the birFinder
+# WARNING: IF TRUE, runAlignment MUST ALSO BE TRUE
+onlyAlign=false
+
+# index - index the genome
+indexGenome=false
+
+# fullAlign - run the full alignment on the full-read dataset
+# Useful for TCGA data when you already have an aligned bam file
+fullAlign=false
+
+# bamFile
+bamFile=false
+
+# extractUnalignedReads
+extractUnalignedReads=false
+
+# halfAlign
+halfAlign=false
+
+# extractHalfReads
+extractHalfReads=false
+
+# filterOut
+filterOut=false
+
+############################################################################################
+######### The following options describe details of the clustering algorithm       #########
+
+
+secondPhase=false
+
+
+# performClustering - the program will cluster the reads and export them to a file. Another MySQL script
+# is required to continue with the program
+performClustering=false
+
+# minConsolidate - the minimum number of reads (evidence) to consolidate (IMPORTANT)
+minConsolidate=15
+
+# maxConsolidate - the max number of reads to consolidate
+maxConsolidate=100
+
+# mysql - Should the pipeline use MySQL to find reads?
+mysql=false
+
+#mysqlFile - the mysql_results.txt file
+mysqlFile=scripts/mysql_results2.txt
+
+
+############################################################################################
+######### The following options describe details of the birSearch algorithm        #########
+
+# searchLength - the length in b.p. to search for a possible template strand
+searchLength=100
+
+# minSeqLength - the minimum length of the split-read DNA sequence
+minSeqLength=16
+
+# minBriLength - the minimum length of a BIR region (IMPORTANT)
+minBirLength=10
+
+# minAlignedLength - the minimum length of the aligned region to be considered a successful possible BIR
+minAlignedLength=10
+
+# missCount - for the FSM, the number of CONSECUTIVE misses to change states to the possible BIR regions
+missCount=2
+
+# hitCount - for the FSM, the number of CONSECUTIVE hits to change states from the BIR region to the right aligned region
+hitCount=5
+
+# tolerance 
+tolerance=15
+
+
+
+############################################################################################
+######### parallel programming with MPI ##################################################
+
+# if parallel MPI execution on a cluster of computing nodes is required: true/false
+parMPI=false
+
+# number of nodes in the cluster--a cluster has a set of computers (nodes), and possibly a set of cores on each node;
+# ------for better utilization: 1) provide the number of nodes in the cluster, and provide the number of threads
+# --------- to execute on the (cores) on each node; 2) or, just provide the total number of cores on all the nodes in the cluster
+# -------------and choose not to use multi-threading. (First option is recommended) 
+numNodes=3
+
+# if multi-threading is required: true/false
+# If we do not have a cluster, and have only one computer with 8 cores, then, choose
+# ------- "parTHRADING=true" and "numTHREADS=8", but "parMPI=false" 
+parTHREAD=false
+
+# number of threads per node -- ex: if each node has 8 cores, then 8 threads are required; 
+# ----- if heterogeneous (some have 8 and others have 16), then choose the largest.
+
+numThreads=56
+
+
+#################################################################################
+################################   SECOND PHASE MPI ######################
+
+parMPISec=true
+
+numNodesSec=25
+
+
+

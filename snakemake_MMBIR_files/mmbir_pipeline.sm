@@ -1,0 +1,179 @@
+rule removeDups:
+    threads: 56
+    input:
+        "{bamin}.bam"
+    output:
+        "{bamin}.deduped.bam",
+        "{bamin}.dedup_metrics.txt"
+    shell:
+        "/Users/twarowski/workspace/nfsscratchTools_shared/markdups.sh {input}"
+
+
+
+rule getUnaligned:
+    threads: 56
+    input:
+        "{bamin}.deduped.bam"
+    output:
+        "{bamin}.UM_bam",
+        "{bamin}.UM_fq"
+    shell:
+        "/Users/twarowski/workspace/nfsscratchTools_shared/getUnaligned.sh {input} {output}"
+
+rule getIndels:
+    threads: 56
+    input:
+        "{bamin}.deduped.bam"
+    output:
+        "{bamin}.idsc_bam",
+        "{bamin}.idsc_fq"
+    shell:
+        "/Users/twarowski/workspace/nfsscratchTools_shared/getInDels.sh {input} {output}"
+
+
+
+
+rule realignUnaligned:
+    threads: 56
+    input:
+        "{bamin}.UM_fq"
+    output:
+        "{bamin}.real_bam"
+    shell:
+        "/Users/twarowski/workspace/nfsscratchTools_shared/realign_UM.sh {input} {output}"
+
+rule getRealignedUM:
+    threads: 56
+    input:
+        "{bamin}.real_bam"
+    output:
+        "{bamin}.real_UM_fq",
+        "{bamin}.real_UM_bam"
+    shell:
+        "/Users/twarowski/workspace/nfsscratchTools_shared/getUnaligned.sh {input} {output}"
+
+rule getRealignedIndels:
+    threads: 56
+    input:
+        "{bamin}.real_bam"
+    output:
+        "{bamin}.real_idsc_bam",
+        "{bamin}.real_idsc_fq"
+    shell:
+        "/Users/twarowski/workspace/nfsscratchTools_shared/getInDels.sh {input} {output}"
+
+
+
+
+
+rule create_UM_idsc_fq:
+    threads: 56
+    input:
+        "{bamin}.UM_fq",
+        "{bamin}.idsc_fq",
+        "{bamin}.real_UM_fq",
+        "{bamin}.real_idsc_fq"
+    output:
+        "{bamin}.fq"
+    shell:
+        "cat {input} > {output}"
+
+
+rule filter_reads_trim:
+    threads: 56
+    input:
+        "{bamin}.fq"
+    output:
+        "{bamin}.fq.pp"
+    shell:
+        "module unload jdk\nmodule load openjdk/11.0.2\njava -jar ~/bin/trimmomatic-0.39.jar SE -threads 32 -phred33 {input} {output} ILLUMINACLIP:/Users/twarowski/workspace/nfsscratchTools_shared/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36"
+
+rule filter_reads_prinseq:
+    threads: 56
+    input:
+        "{bamin}.fq.pp"
+    output:
+        "{bamin}.PP_fq"
+    shell:
+        "prinseq++ -threads 32 -fastq {input} -lc_dust=0.07 -out_good {output} -out_bad /dev/null"
+
+rule changeFastqHeader:
+    input:
+        "{bamin}.PP_fq"
+    output:
+        "{bamin}.PPh.fq"
+    shell:
+        "/Users/twarowski/workspace/nfsscratchTools_shared/changeFastqHeader.sh {input} {output}"
+
+rule count_reads:
+    input:
+        "{bamin}.bam",
+        "{bamin}.UM_fq",
+        "{bamin}.idsc_fq"
+    output:
+        "{bamin}.counts.txt"
+    shell:
+        "echo {bamin}.bam >> counts.txt\nsamtools view -c -@ 32 {bamin}.bam >> counts.txt\necho {bamin}.UM.fq >> counts.txt\nsamtools view -c -@ 32 {bamin}.UM.fq >> counts.txt\necho {bamin}.idsc.fq >> counts.txt\nsamtools view -c -@ 32 {bamin}.idsc.fq >> counts.txt"
+
+
+rule CreateDir:
+    input:
+        "{bamin}.PPh.fq"
+    output:
+        "/Users/twarowski/exp_shared/trial2/{bamin}/{bamin}.PPh.fq"
+    shell:
+        "mkdir -p /Users/twarowski/exp_shared/trial2/{wildcards.bamin}/\nmv {input} /Users/twarowski/exp_shared/trial2/{wildcards.bamin}/"
+
+
+rule createConfig2:
+    input:
+        "/Users/twarowski/exp_shared/trial2/{bamin}/{bamin}.PPh.fq"
+    output:
+        "/Users/twarowski/exp_shared/config2.{bamin}.txt"
+    shell:
+        "sed 's/BASE/{wildcards.bamin}/g' /Users/twarowski/exp_shared/config2_base.txt > {output}"
+
+rule mmbirAln:
+    threads: 56
+    input:
+        "/Users/twarowski/exp_shared/config2.{bamin}.txt",
+        "/Users/twarowski/exp_shared/trial2/{bamin}/{bamin}.PPh.fq"
+    output:
+        "/Users/twarowski/exp_shared/trial2/{bamin}/bwaAligned.sam"
+    shell:
+        "cd /Users/twarowski/exp_shared/\n/Users/twarowski/exp_shared/run_mmbir_aln.sh /Users/twarowski/exp_shared/config2.{wildcards.bamin}.txt\n"
+
+rule createConfig_split:
+    input:
+        "/Users/twarowski/exp_shared/trial2/{bamin}/bwaAligned.sam"
+    output:
+        "/Users/twarowski/exp_shared/config-split_{bamin}.txt"
+    shell:
+        "sed 's/BASE/{wildcards.bamin}/g' /Users/twarowski/exp_shared/config-split_base.txt > {output}"
+
+rule splitByChr:
+    input:
+        "/Users/twarowski/exp_shared/config-split_{bamin}.txt",
+        "/Users/twarowski/exp_shared/trial2/{bamin}/{bamin}.PPh.fq",
+        "/Users/twarowski/exp_shared/trial2/{bamin}/bwaAligned.sam"
+    output:
+        "/Users/twarowski/exp_shared/trial2/{bamin}/bwaAligned0000.sam"
+    shell:
+        "/Users/twarowski/exp_shared/run_config-split.sh /Users/twarowski/exp_shared/config-split_{wildcards.bamin}.txt"
+
+rule createChrDir:
+    input:
+        "/Users/twarowski/exp_shared/trial2/{bamin}/bwaAligned0000.sam"
+    output:
+        "/Users/twarowski/exp_shared/trial2/{bamin}/chr1/bwaAligned0000.sam"
+    shell:
+        "cd /Users/twarowski/exp_shared/trial2/\n./makeChrDir_v2.sh {wildcards.bamin}"
+
+
+rule createclusterArrs:
+    input:
+        "/Users/twarowski/exp_shared/trial2/{bamin}/chr1/bwaAligned0000.sam"
+    output:
+        "/Users/twarowski/exp_shared/trial2/clusterArrayT.{bamin}.sh"
+    shell:
+        "sed 's/BASE/{wildcards.bamin}/g' /Users/twarowski/exp_shared/clusterArrayT_base.sh > {output}\n exit\n qsub {output}"

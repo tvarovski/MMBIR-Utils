@@ -1,0 +1,18 @@
+#$ -q BIOLOGY,TELOMER,UI-HM
+#$ -pe smp 56
+#$ -cwd
+#$ -r y
+# -j y
+# -o /dev/null
+#$ -l datacenter=LC
+
+#Change if your sample directory is located somewhere elese.
+
+sd="BO14_UIBB_1654_Normal"
+r1="BO14_UIBB_1654_Normal_R1.fastq.gz"
+r2="BO14_UIBB_1654_Normal_R2.fastq.gz"
+ref="hg38_chr/hg38_chr.fa"
+
+
+#bwa mem -t 56 $ref $sd/$r1 $sd/$r2 > $sd/${sd}.sam
+samtools sort -@56 -m 2G -O bam -T BO14.sort -o ${sd}.sorted.bam ${sd}.sam
