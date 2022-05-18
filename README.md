@@ -1,2 +1,5 @@
-# MMBIR-Complexity-Filter
-For filtering MMBIR outputs by using Complexity Scores
+# MMBIR-Utils
+For running the MMBIR pipeline using TCGA data and snakemake
+
+
+
