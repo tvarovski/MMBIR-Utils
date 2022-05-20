@@ -61,3 +61,7 @@ cd ~/workspace/dna/tools
 wget https://github.com/broadinstitute/gatk/releases/download/4.2.5.0/gatk-4.2.5.0.zip
 unzip gatk-4.2.5.0.zip
 ```
+### Get GDC-client
+
+section in progress
+
