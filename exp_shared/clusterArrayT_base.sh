@@ -6,7 +6,7 @@
 #$ -r y
 #$ -ckpt user
 #$ -j y
-# -o /dev/null
+# -o /Users/twarowski/exp_shared/trial2/ChrClusterArrs
 
 bash
 module load openmpi
@@ -19,7 +19,7 @@ export PATH
 
 current_sample='trial2\/BASE'
 minCluster='minConsolidate=5'
-maxCluster='maxConsolidate=200'
+maxCluster='maxConsolidate=800'
 minInsLen='minBirLength=10'
 TemMatch='tempToBirPercentage=0.8'
 Reference='hg38_chr\/hg38_chr.fa'
@@ -35,20 +35,20 @@ commonMatch='tempToBirPercentage=0.8'
 commonRef='hg38_chr\/hg38_chr.fa'
 
 cd $HOME/exp_shared/config_Tchr/
-cp config1404-chr${SGE_TASK_ID}.txt configTemp-chr${SGE_TASK_ID}.txt
+cp config1404-chr${SGE_TASK_ID}.txt configTemp-chr${SGE_TASK_ID}-${1}.txt
 
-sed -i -e "s/$common_dir/$current_sample/g" configTemp-chr${SGE_TASK_ID}.txt
-sed -i -e "s/$commonCluster/$minCluster/g" configTemp-chr${SGE_TASK_ID}.txt
-sed -i -e "s/$commonMxCluster/$maxCluster/g" configTemp-chr${SGE_TASK_ID}.txt
-sed -i -e "s/$commonMatch/$TemMatch/g" configTemp-chr${SGE_TASK_ID}.txt
-sed -i -e "s/$commonRef/$Reference/g" configTemp-chr${SGE_TASK_ID}.txt
-sed -i -e "s/$commonInsLen/$minInsLen/g" configTemp-chr${SGE_TASK_ID}.txt
+sed -i -e "s/$common_dir/$current_sample/g" configTemp-chr${SGE_TASK_ID}-${1}.txt
+sed -i -e "s/$commonCluster/$minCluster/g" configTemp-chr${SGE_TASK_ID}-${1}.txt
+sed -i -e "s/$commonMxCluster/$maxCluster/g" configTemp-chr${SGE_TASK_ID}-${1}.txt
+sed -i -e "s/$commonMatch/$TemMatch/g" configTemp-chr${SGE_TASK_ID}-${1}.txt
+sed -i -e "s/$commonRef/$Reference/g" configTemp-chr${SGE_TASK_ID}-${1}.txt
+sed -i -e "s/$commonInsLen/$minInsLen/g" configTemp-chr${SGE_TASK_ID}-${1}.txt
 
 cd $HOME/exp_shared
 
-./mmbirfinder0918 config_Tchr/configTemp-chr${SGE_TASK_ID}.txt > Log2/runTMerged${SGE_TASK_ID}.txt
+./mmbirfinder0918 config_Tchr/configTemp-chr${SGE_TASK_ID}-${1}.txt > Log2/runTMerged${SGE_TASK_ID}-${1}.txt
 
 
 cd $HOME/exp_shared/config_Tchr/
-rm configTemp-chr${SGE_TASK_ID}.txt
+rm configTemp-chr${SGE_TASK_ID}-${1}.txt
 
