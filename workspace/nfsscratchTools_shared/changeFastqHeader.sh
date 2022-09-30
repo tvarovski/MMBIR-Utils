@@ -1,4 +1,4 @@
-#!/bin/bash
+#####!/bin/bash
 
 if [ $# != "2" ] || [ $1 = "-h" ] || [ $1 = "--help" ]; then
 	echo "$0 fqin fqout"

@@ -1,5 +1,5 @@
 
-ref="/Users/twarowski/exp_shared/GRCh38.p14/GRCh38.p14.fa"
+ref="/Users/$USER/exp_shared/GRCh38.p14/GRCh38.p14.fa"
 reads=$1
 OUT=${reads%.UM_fq}
 

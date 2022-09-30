@@ -1,0 +1,26 @@
+username: twarowski
+user_home: /Users/twarowski
+outputs_home: /Users/twarowski/exp_shared/trial2
+MMBSearch_home: /Users/twarowski/exp_shared
+threads: 56
+paths:
+  trimmomatic_home: ~/bin/trimmomatic-0.39.jar
+  adapters_fasta: /Users/twarowski/workspace/nfsscratchTools_shared/TruSeq3-PE-2.fa
+  scripts:
+    markdups: /Users/twarowski/workspace/nfsscratchTools_shared/markdups.sh
+    getUnaligned: /Users/twarowski/workspace/nfsscratchTools_shared/getUnaligned.sh
+    getInDels: /Users/twarowski/workspace/nfsscratchTools_shared/getInDels.sh
+    realign_UM: /Users/twarowski/workspace/nfsscratchTools_shared/realign_UM.sh
+    getUnaligned: /Users/twarowski/workspace/nfsscratchTools_shared/getUnaligned.sh
+    getInDels: /Users/twarowski/workspace/nfsscratchTools_shared/getInDels.sh
+    changeFastqHeader: /Users/twarowski/workspace/nfsscratchTools_shared/changeFastqHeader.sh
+    MMBSearch_Aln: /Users/twarowski/exp_shared/run_mmbir_aln.sh
+    run_config-split: /Users/twarowski/exp_shared/run_config-split.sh
+  base_scripts:
+    config2: /Users/twarowski/exp_shared/config2_base.txt
+    config_split: /Users/twarowski/exp_shared/config-split_base.txt
+    cluster_arr: /Users/twarowski/exp_shared/clusterArrayT_base.sh
+
+
+
+

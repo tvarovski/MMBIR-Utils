@@ -1,15 +1,17 @@
 #!/bin/bash
 ##
 #$ -pe smp 56
-#$ -q TELOMER,UI
+##$ -q all.q
+#$ -q TELOMER,UI,BIOLOGY
+##$ -dc LC
+##$ -dc ITF
 #$ -j y
 #$ -cwd
-#$ -N BRCA-slice-0
-#$ -o $JOB_NAME.$JOB_ID.log 
-#$ -ckpt user
-#$ -M twarowski
-###$ -m ea
-###TMPDIR=/nfsscratch/twarowski
+#$ -N COAD-slice-4
+#$ -o COAD-slice-4-log/$JOB_NAME.$JOB_ID.log 
+##$ -ckpt user
+##$ -M
+
 
 
 conda activate snakemake-tutorial
@@ -20,14 +22,14 @@ log_date() {
 
 echo "$( log_date INFO )        begin"
 
-f_smk="/Users/twarowski/workspace/nfsscratchTools_shared/mmbir_pipeline.sm"
+f_smk="/Users/$USER/workspace/nfsscratchTools_shared/mmbir_pipeline_new.smk"
 
 
-cmd="snakemake --use-conda  /Users/twarowski/exp_shared/trial2/clusterArrayT.${2}.sh -s $f_smk --cores all"
+cmd="snakemake --use-conda  /Users/$USER/exp_shared/trial2/clusterArrayT.${2}.sh -s $f_smk --cores all --ri"
 
 echo "$( log_date INFO )        $cmd"
 
-cd /nfsscratch/twarowski/TCGA-BRCA/$1
+cd $1
 eval $cmd
 
 
