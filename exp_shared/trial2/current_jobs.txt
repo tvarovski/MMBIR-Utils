@@ -1,0 +1,287 @@
+job-ID  prior   name       user         state submit/start at     queue                          slots ja-task-ID 
+-----------------------------------------------------------------------------------------------------------------
+9131635 0.50386 download-T twarowski    r     09/28/2022 18:25:40 TELOMER@argon-lc-d7-25.hpc         8        
+9140730 0.50012 clusterArr twarowski    Rr    09/29/2022 09:28:33 all.q@argon-itf-bx50-05.hpc        4 1
+9140767 0.50012 clusterArr twarowski    r     09/29/2022 09:14:14 all.q@argon-itf-bx48-31.hpc        4 1
+9140767 0.50012 clusterArr twarowski    r     09/29/2022 09:14:14 all.q@argon-itf-bx50-09.hpc        4 8
+9140767 0.50012 clusterArr twarowski    r     09/29/2022 09:14:14 all.q@argon-itf-bx48-11.hpc        4 11
+9140807 0.50011 clusterArr twarowski    r     09/29/2022 09:21:12 all.q@argon-itf-bx50-15.hpc        4 1
+9140896 0.50011 clusterArr twarowski    r     09/29/2022 09:25:25 all.q@argon-itf-bx50-15.hpc        4 1
+9140896 0.50011 clusterArr twarowski    r     09/29/2022 09:25:25 all.q@argon-itf-bx50-12.hpc        4 2
+9140896 0.50011 clusterArr twarowski    r     09/29/2022 09:26:15 all.q@argon-itf-bx50-10.hpc        4 17
+9140905 0.50011 clusterArr twarowski    r     09/29/2022 09:26:45 all.q@argon-itf-bx50-09.hpc        4 2
+9140970 0.50010 clusterArr twarowski    r     09/29/2022 09:32:59 all.q@argon-itf-bx50-12.hpc        4 17
+9140985 0.50010 clusterArr twarowski    r     09/29/2022 09:33:50 all.q@argon-itf-bx54-08.hpc        4 19
+9141015 0.50010 clusterArr twarowski    r     09/29/2022 09:36:01 all.q@argon-itf-bx50-12.hpc        4 24
+9141019 0.50010 clusterArr twarowski    r     09/29/2022 09:36:10 all.q@argon-itf-bx50-13.hpc        4 12
+9141019 0.50010 clusterArr twarowski    r     09/29/2022 09:36:27 all.q@argon-lc-d7-21.hpc           4 15
+9141019 0.50010 clusterArr twarowski    r     09/29/2022 09:36:27 all.q@argon-itf-bx50-09.hpc        4 17
+9141023 0.50010 clusterArr twarowski    r     09/29/2022 09:36:35 all.q@argon-lc-g21-16.hpc          4 1
+9141038 0.50010 clusterArr twarowski    r     09/29/2022 09:38:54 all.q@argon-lc-h21-08.hpc          4 6
+9141038 0.50010 clusterArr twarowski    r     09/29/2022 09:38:54 all.q@argon-itf-bx50-15.hpc        4 12
+9141042 0.50010 clusterArr twarowski    r     09/29/2022 09:39:11 all.q@argon-itf-bx50-08.hpc        4 3
+9141058 0.50010 clusterArr twarowski    r     09/29/2022 09:40:40 all.q@argon-itf-bx50-13.hpc        4 1
+9141058 0.50010 clusterArr twarowski    r     09/29/2022 09:40:40 all.q@argon-itf-bx48-05.hpc        4 7
+9141069 0.50010 clusterArr twarowski    r     09/29/2022 09:41:19 all.q@argon-itf-bx50-01.hpc        4 1
+9141083 0.50009 clusterArr twarowski    r     09/29/2022 09:42:41 all.q@argon-itf-bx50-01.hpc        4 1
+9141088 0.50009 clusterArr twarowski    r     09/29/2022 09:43:31 all.q@argon-itf-bx50-08.hpc        4 1
+9141088 0.50009 clusterArr twarowski    r     09/29/2022 09:43:33 all.q@argon-itf-bx50-10.hpc        4 10
+9141088 0.50009 clusterArr twarowski    r     09/29/2022 09:43:33 all.q@argon-itf-bx50-01.hpc        4 11
+9141088 0.50009 clusterArr twarowski    r     09/29/2022 09:43:33 all.q@argon-itf-bx50-01.hpc        4 12
+9141132 0.50009 clusterArr twarowski    r     09/29/2022 09:46:59 all.q@argon-itf-bx54-04.hpc        4 3
+9141133 0.50009 clusterArr twarowski    r     09/29/2022 09:47:25 all.q@argon-itf-bx50-15.hpc        4 1
+9141135 0.50009 clusterArr twarowski    r     09/29/2022 09:48:10 all.q@argon-itf-bx53-14.hpc        4 1
+9141135 0.50009 clusterArr twarowski    r     09/29/2022 09:48:10 all.q@argon-itf-bx54-04.hpc        4 2
+9141135 0.50009 clusterArr twarowski    r     09/29/2022 09:48:26 all.q@argon-itf-bx48-05.hpc        4 11
+9141135 0.50009 clusterArr twarowski    r     09/29/2022 09:48:26 all.q@argon-itf-bx50-02.hpc        4 17
+9141136 0.50009 clusterArr twarowski    r     09/29/2022 09:48:26 all.q@argon-itf-ca37-30.hpc        4 3
+9141136 0.50009 clusterArr twarowski    r     09/29/2022 09:48:47 all.q@argon-itf-bx50-08.hpc        4 12
+9141136 0.50009 clusterArr twarowski    r     09/29/2022 09:48:47 all.q@argon-itf-bx50-03.hpc        4 14
+9141136 0.50009 clusterArr twarowski    r     09/29/2022 09:48:47 all.q@argon-itf-bx50-09.hpc        4 16
+9141139 0.50009 clusterArr twarowski    r     09/29/2022 09:49:31 all.q@argon-itf-ca37-15.hpc        4 2
+9141139 0.50009 clusterArr twarowski    r     09/29/2022 09:49:47 all.q@argon-itf-bx50-13.hpc        4 12
+9141139 0.50009 clusterArr twarowski    r     09/29/2022 09:49:47 all.q@argon-itf-bx50-03.hpc        4 16
+9141139 0.50009 clusterArr twarowski    r     09/29/2022 09:49:47 all.q@argon-itf-bx53-13.hpc        4 19
+9141146 0.50009 clusterArr twarowski    r     09/29/2022 09:51:34 all.q@argon-lc-i18-23.hpc          4 1
+9141146 0.50009 clusterArr twarowski    r     09/29/2022 09:51:34 all.q@argon-itf-bx48-34.hpc        4 2
+9141146 0.50009 clusterArr twarowski    r     09/29/2022 09:51:34 all.q@argon-itf-bx48-36.hpc        4 3
+9141146 0.50009 clusterArr twarowski    r     09/29/2022 09:51:34 all.q@argon-itf-bx48-05.hpc        4 6
+9141146 0.50009 clusterArr twarowski    r     09/29/2022 09:51:34 all.q@argon-itf-bx48-10.hpc        4 7
+9141146 0.50009 clusterArr twarowski    r     09/29/2022 09:51:34 all.q@argon-itf-bx50-15.hpc        4 9
+9141146 0.50009 clusterArr twarowski    r     09/29/2022 09:51:34 all.q@argon-itf-bx54-05.hpc        4 10
+9141146 0.50009 clusterArr twarowski    r     09/29/2022 09:51:34 all.q@argon-itf-bx54-02.hpc        4 11
+9141146 0.50009 clusterArr twarowski    r     09/29/2022 09:51:34 all.q@argon-itf-bx53-09.hpc        4 12
+9141146 0.50009 clusterArr twarowski    r     09/29/2022 09:51:34 all.q@argon-itf-bx54-03.hpc        4 14
+9141146 0.50009 clusterArr twarowski    r     09/29/2022 09:51:34 all.q@argon-itf-ca37-24.hpc        4 17
+9141146 0.50009 clusterArr twarowski    r     09/29/2022 09:51:34 all.q@argon-itf-bx55-04.hpc        4 19
+9141146 0.50009 clusterArr twarowski    r     09/29/2022 09:51:34 all.q@argon-itf-bx55-02.hpc        4 20
+9141146 0.50009 clusterArr twarowski    r     09/29/2022 09:51:34 all.q@argon-itf-bx54-14.hpc        4 22
+9141146 0.50009 clusterArr twarowski    r     09/29/2022 09:51:42 all.q@argon-lc-h21-25.hpc          4 23
+9141146 0.50009 clusterArr twarowski    r     09/29/2022 09:51:42 all.q@argon-itf-bx48-07.hpc        4 24
+9141147 0.50009 clusterArr twarowski    r     09/29/2022 09:51:59 all.q@argon-lc-g11-08.hpc          4 2
+9141150 0.50009 clusterArr twarowski    Rr    09/29/2022 09:56:06 all.q@argon-lc-d7-15.hpc           4 1
+9141150 0.50009 clusterArr twarowski    r     09/29/2022 09:51:59 all.q@argon-itf-bx50-09.hpc        4 6
+9141150 0.50009 clusterArr twarowski    r     09/29/2022 09:51:59 all.q@argon-itf-bx50-09.hpc        4 7
+9141150 0.50009 clusterArr twarowski    r     09/29/2022 09:51:59 all.q@argon-itf-bx54-02.hpc        4 15
+9141150 0.50009 clusterArr twarowski    r     09/29/2022 09:51:59 all.q@argon-itf-ca37-18.hpc        4 17
+9141151 0.50009 clusterArr twarowski    r     09/29/2022 09:51:59 all.q@argon-itf-bx48-22.hpc        4 1
+9141151 0.50009 clusterArr twarowski    r     09/29/2022 09:52:17 all.q@argon-itf-bx50-09.hpc        4 7
+9141151 0.50009 clusterArr twarowski    r     09/29/2022 09:52:17 all.q@argon-itf-ca38-39.hpc        4 10
+9141151 0.50009 clusterArr twarowski    r     09/29/2022 09:52:17 all.q@argon-itf-ca39-39.hpc        4 11
+9141151 0.50009 clusterArr twarowski    r     09/29/2022 09:52:17 all.q@argon-itf-bx54-13.hpc        4 12
+9141151 0.50009 clusterArr twarowski    r     09/29/2022 09:52:31 all.q@argon-lc-d7-15.hpc           4 15
+9141151 0.50009 clusterArr twarowski    Rr    09/29/2022 09:56:06 all.q@argon-lc-g11-06.hpc          4 24
+9141152 0.50009 clusterArr twarowski    r     09/29/2022 09:52:31 all.q@argon-itf-bx53-09.hpc        4 1
+9141152 0.50009 clusterArr twarowski    r     09/29/2022 09:52:31 all.q@argon-itf-bx53-13.hpc        4 2
+9141152 0.50009 clusterArr twarowski    r     09/29/2022 09:52:31 all.q@argon-itf-ca37-12.hpc        4 5
+9141152 0.50009 clusterArr twarowski    r     09/29/2022 09:52:43 all.q@argon-itf-bx50-05.hpc        4 18
+9141152 0.50009 clusterArr twarowski    r     09/29/2022 09:52:43 all.q@argon-itf-bx50-05.hpc        4 19
+9141154 0.50009 clusterArr twarowski    r     09/29/2022 09:53:42 all.q@argon-lc-h21-39.hpc          4 1
+9141154 0.50009 clusterArr twarowski    r     09/29/2022 09:53:42 all.q@argon-itf-bx50-15.hpc        4 14
+9141154 0.50009 clusterArr twarowski    r     09/29/2022 09:53:42 all.q@argon-itf-bx50-10.hpc        4 15
+9141158 0.50009 clusterArr twarowski    r     09/29/2022 09:54:16 all.q@argon-itf-bx53-12.hpc        4 1
+9141160 0.50009 clusterArr twarowski    r     09/29/2022 09:54:43 all.q@argon-itf-bx48-03.hpc        4 1
+9141160 0.50009 clusterArr twarowski    r     09/29/2022 09:55:18 all.q@argon-lc-d7-15.hpc           4 14
+9141163 0.50009 clusterArr twarowski    r     09/29/2022 09:55:18 all.q@argon-itf-bx48-11.hpc        4 1
+9141163 0.50009 clusterArr twarowski    r     09/29/2022 09:55:18 all.q@argon-itf-bx50-08.hpc        4 4
+9141163 0.50009 clusterArr twarowski    r     09/29/2022 09:55:18 all.q@argon-itf-bx50-01.hpc        4 5
+9141163 0.50009 clusterArr twarowski    r     09/29/2022 09:55:18 all.q@argon-itf-bx50-05.hpc        4 6
+9141163 0.50009 clusterArr twarowski    r     09/29/2022 09:55:18 all.q@argon-itf-bx50-13.hpc        4 7
+9141163 0.50009 clusterArr twarowski    r     09/29/2022 09:55:18 all.q@argon-itf-ca40-21.hpc        4 12
+9141163 0.50009 clusterArr twarowski    r     09/29/2022 09:55:18 all.q@argon-itf-bx54-05.hpc        4 14
+9141163 0.50009 clusterArr twarowski    r     09/29/2022 09:55:18 all.q@argon-itf-ca37-27.hpc        4 16
+9141163 0.50009 clusterArr twarowski    r     09/29/2022 09:55:31 all.q@argon-itf-bx48-20.hpc        4 24
+9141168 0.50009 clusterArr twarowski    r     09/29/2022 09:55:31 all.q@argon-itf-bx50-03.hpc        4 1
+9141168 0.50009 clusterArr twarowski    r     09/29/2022 09:55:31 all.q@argon-itf-bx48-23.hpc        4 2
+9141168 0.50009 clusterArr twarowski    r     09/29/2022 09:55:31 all.q@argon-itf-bx50-14.hpc        4 3
+9141168 0.50009 clusterArr twarowski    r     09/29/2022 09:55:31 all.q@argon-itf-bx47-38.hpc        4 6
+9141168 0.50009 clusterArr twarowski    r     09/29/2022 09:55:31 all.q@argon-itf-bx50-09.hpc        4 7
+9141168 0.50009 clusterArr twarowski    r     09/29/2022 09:55:31 all.q@argon-itf-bx50-15.hpc        4 8
+9141168 0.50009 clusterArr twarowski    r     09/29/2022 09:55:31 all.q@argon-itf-bx50-02.hpc        4 9
+9141168 0.50009 clusterArr twarowski    r     09/29/2022 09:55:31 all.q@argon-itf-bx50-10.hpc        4 10
+9141168 0.50009 clusterArr twarowski    r     09/29/2022 09:55:31 all.q@argon-itf-bx50-05.hpc        4 11
+9141168 0.50009 clusterArr twarowski    r     09/29/2022 09:55:31 all.q@argon-itf-bx50-05.hpc        4 12
+9141168 0.50009 clusterArr twarowski    r     09/29/2022 09:55:31 all.q@argon-itf-bx50-13.hpc        4 13
+9141168 0.50009 clusterArr twarowski    r     09/29/2022 09:55:31 all.q@argon-itf-bx48-03.hpc        4 17
+9141168 0.50009 clusterArr twarowski    r     09/29/2022 09:55:31 all.q@argon-itf-bx48-32.hpc        4 19
+9141168 0.50009 clusterArr twarowski    r     09/29/2022 09:55:31 all.q@argon-itf-bx55-03.hpc        4 24
+9141173 0.50009 clusterArr twarowski    r     09/29/2022 09:56:17 all.q@argon-itf-bx50-08.hpc        4 1
+9141173 0.50009 clusterArr twarowski    r     09/29/2022 09:56:17 all.q@argon-itf-bx50-14.hpc        4 2
+9141173 0.50009 clusterArr twarowski    r     09/29/2022 09:56:17 all.q@argon-itf-bx50-05.hpc        4 3
+9141173 0.50009 clusterArr twarowski    r     09/29/2022 09:56:17 all.q@argon-itf-bx51-02.hpc        4 4
+9141173 0.50009 clusterArr twarowski    r     09/29/2022 09:56:32 all.q@argon-lc-h21-25.hpc          4 5
+9141173 0.50009 clusterArr twarowski    r     09/29/2022 09:56:32 all.q@argon-lc-d7-18.hpc           4 6
+9141173 0.50009 clusterArr twarowski    r     09/29/2022 09:56:32 all.q@argon-lc-d7-18.hpc           4 7
+9141173 0.50009 clusterArr twarowski    r     09/29/2022 09:56:32 all.q@argon-itf-bx48-36.hpc        4 9
+9141173 0.50009 clusterArr twarowski    r     09/29/2022 09:56:32 all.q@argon-itf-bx48-02.hpc        4 10
+9141173 0.50009 clusterArr twarowski    r     09/29/2022 09:56:32 all.q@argon-itf-bx48-10.hpc        4 11
+9141173 0.50009 clusterArr twarowski    r     09/29/2022 09:56:32 all.q@argon-itf-bx48-05.hpc        4 12
+9141173 0.50009 clusterArr twarowski    r     09/29/2022 09:56:32 all.q@argon-itf-bx53-06.hpc        4 14
+9141173 0.50009 clusterArr twarowski    r     09/29/2022 09:56:32 all.q@argon-itf-bx53-11.hpc        4 15
+9141173 0.50009 clusterArr twarowski    r     09/29/2022 09:56:32 all.q@argon-itf-bx54-08.hpc        4 16
+9141173 0.50009 clusterArr twarowski    r     09/29/2022 09:56:32 all.q@argon-itf-bx54-06.hpc        4 17
+9141173 0.50009 clusterArr twarowski    r     09/29/2022 09:56:32 all.q@argon-itf-ca39-36.hpc        4 18
+9141173 0.50009 clusterArr twarowski    r     09/29/2022 09:56:32 all.q@argon-itf-bx55-02.hpc        4 19
+9141173 0.50009 clusterArr twarowski    r     09/29/2022 09:56:32 all.q@argon-itf-bx54-14.hpc        4 20
+9141173 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-lc-d7-21.hpc           4 21
+9141173 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx48-34.hpc        4 24
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx48-31.hpc        4 1
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx48-08.hpc        4 2
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx47-06.hpc        4 3
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx48-07.hpc        4 4
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx47-08.hpc        4 5
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx48-12.hpc        4 6
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx48-20.hpc        4 7
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx47-01.hpc        4 8
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx48-32.hpc        4 9
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx50-02.hpc        4 10
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx50-12.hpc        4 11
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx50-15.hpc        4 12
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx50-10.hpc        4 13
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx47-39.hpc        4 14
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx47-39.hpc        4 15
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx48-24.hpc        4 16
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx48-05.hpc        4 17
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx53-12.hpc        4 18
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx53-08.hpc        4 19
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-bx53-11.hpc        4 20
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-ca37-21.hpc        4 21
+9141175 0.50009 clusterArr twarowski    r     09/29/2022 09:56:42 all.q@argon-itf-ca38-12.hpc        4 24
+9141177 0.50009 clusterArr twarowski    r     09/29/2022 09:56:59 all.q@argon-lc-i18-09.hpc          4 1
+9141177 0.50009 clusterArr twarowski    r     09/29/2022 09:56:59 all.q@argon-itf-bx50-01.hpc        4 7
+9141177 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-lc-g14-35.hpc          4 14
+9141177 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-lc-g21-21.hpc          4 16
+9141177 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-bx53-03.hpc        4 21
+9141177 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-bx48-12.hpc        4 24
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-bx50-02.hpc        4 1
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-bx47-02.hpc        4 2
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-bx48-01.hpc        4 3
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-bx48-19.hpc        4 4
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-bx50-01.hpc        4 5
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-lc-f14-32.hpc          4 6
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-bx53-14.hpc        4 7
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-bx53-08.hpc        4 8
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-bx53-07.hpc        4 9
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-bx54-03.hpc        4 10
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-ca37-36.hpc        4 11
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-ca39-30.hpc        4 12
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-ca38-15.hpc        4 13
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-bx55-29.hpc        4 14
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-bx55-29.hpc        4 15
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-bx54-06.hpc        4 16
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-bx55-04.hpc        4 17
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-bx55-03.hpc        4 18
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-bx54-13.hpc        4 19
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:28 all.q@argon-itf-bx48-22.hpc        4 20
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-lc-d7-21.hpc           4 21
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-lc-h21-39.hpc          4 22
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-lc-h21-39.hpc          4 23
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-lc-i18-09.hpc          4 24
+9141180 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-itf-bx56-35.hpc        4 25
+9141181 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-itf-bx47-01.hpc        4 1
+9141181 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-itf-bx47-38.hpc        4 2
+9141181 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-itf-bx48-18.hpc        4 3
+9141181 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-itf-bx50-14.hpc        4 4
+9141181 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-itf-bx50-15.hpc        4 5
+9141181 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-itf-bx47-02.hpc        4 6
+9141181 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-itf-bx48-09.hpc        4 7
+9141181 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-itf-bx47-06.hpc        4 8
+9141181 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-itf-bx48-01.hpc        4 9
+9141181 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-itf-bx48-19.hpc        4 10
+9141181 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-itf-bx48-02.hpc        4 11
+9141181 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-itf-bx50-01.hpc        4 12
+9141181 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-itf-ca40-21.hpc        4 13
+9141181 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-itf-bx53-34.hpc        4 14
+9141181 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-lc-f14-32.hpc          4 15
+9141181 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-itf-bx53-06.hpc        4 16
+9141181 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-itf-ca39-21.hpc        4 17
+9141181 0.50009 clusterArr twarowski    r     09/29/2022 09:57:51 all.q@argon-itf-ca39-33.hpc        4 18
+9141181 0.00000 clusterArr twarowski    qw    09/29/2022 09:32:12                                    4 19-25:1
+9141195 0.00000 clusterArr twarowski    qw    09/29/2022 09:32:49                                    4 1-25:1
+9141197 0.00000 clusterArr twarowski    qw    09/29/2022 09:32:54                                    4 1-25:1
+9141199 0.00000 clusterArr twarowski    qw    09/29/2022 09:32:59                                    4 1-25:1
+9141200 0.00000 clusterArr twarowski    qw    09/29/2022 09:33:01                                    4 1-25:1
+9141202 0.00000 clusterArr twarowski    qw    09/29/2022 09:33:11                                    4 1-25:1
+9141205 0.00000 clusterArr twarowski    qw    09/29/2022 09:33:13                                    4 1-25:1
+9141207 0.00000 clusterArr twarowski    qw    09/29/2022 09:33:16                                    4 1-25:1
+9141208 0.00000 clusterArr twarowski    qw    09/29/2022 09:33:26                                    4 1-25:1
+9141213 0.00000 clusterArr twarowski    qw    09/29/2022 09:33:40                                    4 1-25:1
+9141217 0.00000 clusterArr twarowski    qw    09/29/2022 09:33:50                                    4 1-25:1
+9141219 0.00000 clusterArr twarowski    qw    09/29/2022 09:33:56                                    4 1-25:1
+9141223 0.00000 clusterArr twarowski    qw    09/29/2022 09:34:03                                    4 1-25:1
+9141225 0.00000 clusterArr twarowski    qw    09/29/2022 09:34:12                                    4 1-25:1
+9141228 0.00000 clusterArr twarowski    qw    09/29/2022 09:34:14                                    4 1-25:1
+9141229 0.00000 clusterArr twarowski    qw    09/29/2022 09:34:15                                    4 1-25:1
+9141230 0.00000 clusterArr twarowski    qw    09/29/2022 09:34:20                                    4 1-25:1
+9141232 0.00000 clusterArr twarowski    qw    09/29/2022 09:34:27                                    4 1-25:1
+9141236 0.00000 clusterArr twarowski    qw    09/29/2022 09:34:45                                    4 1-25:1
+9141238 0.00000 clusterArr twarowski    qw    09/29/2022 09:34:49                                    4 1-25:1
+9141239 0.00000 clusterArr twarowski    qw    09/29/2022 09:34:57                                    4 1-25:1
+9141242 0.00000 clusterArr twarowski    qw    09/29/2022 09:35:08                                    4 1-25:1
+9141245 0.00000 clusterArr twarowski    qw    09/29/2022 09:35:13                                    4 1-25:1
+9141246 0.00000 clusterArr twarowski    qw    09/29/2022 09:35:23                                    4 1-25:1
+9141249 0.00000 clusterArr twarowski    qw    09/29/2022 09:35:27                                    4 1-25:1
+9141250 0.00000 clusterArr twarowski    qw    09/29/2022 09:35:35                                    4 1-25:1
+9141255 0.00000 clusterArr twarowski    qw    09/29/2022 09:35:46                                    4 1-25:1
+9141258 0.00000 clusterArr twarowski    qw    09/29/2022 09:35:52                                    4 1-25:1
+9141262 0.00000 clusterArr twarowski    qw    09/29/2022 09:35:57                                    4 1-25:1
+9141266 0.00000 clusterArr twarowski    qw    09/29/2022 09:36:09                                    4 1-25:1
+9141269 0.00000 clusterArr twarowski    qw    09/29/2022 09:36:14                                    4 1-25:1
+9141272 0.00000 clusterArr twarowski    qw    09/29/2022 09:36:23                                    4 1-25:1
+9141276 0.00000 clusterArr twarowski    qw    09/29/2022 09:36:34                                    4 1-25:1
+9141280 0.00000 clusterArr twarowski    qw    09/29/2022 09:36:45                                    4 1-25:1
+9141284 0.00000 clusterArr twarowski    qw    09/29/2022 09:36:53                                    4 1-25:1
+9141285 0.00000 clusterArr twarowski    qw    09/29/2022 09:37:00                                    4 1-25:1
+9141287 0.00000 clusterArr twarowski    qw    09/29/2022 09:37:03                                    4 1-25:1
+9141291 0.00000 clusterArr twarowski    qw    09/29/2022 09:37:14                                    4 1-25:1
+9141293 0.00000 clusterArr twarowski    qw    09/29/2022 09:37:22                                    4 1-25:1
+9141298 0.00000 clusterArr twarowski    qw    09/29/2022 09:37:29                                    4 1-25:1
+9141300 0.00000 clusterArr twarowski    qw    09/29/2022 09:37:34                                    4 1-25:1
+9141302 0.00000 clusterArr twarowski    qw    09/29/2022 09:37:42                                    4 1-25:1
+9141304 0.00000 clusterArr twarowski    qw    09/29/2022 09:37:49                                    4 1-25:1
+9141306 0.00000 clusterArr twarowski    qw    09/29/2022 09:37:55                                    4 1-25:1
+9141308 0.00000 clusterArr twarowski    qw    09/29/2022 09:38:02                                    4 1-25:1
+9141311 0.00000 clusterArr twarowski    qw    09/29/2022 09:38:12                                    4 1-25:1
+9141315 0.00000 clusterArr twarowski    qw    09/29/2022 09:38:20                                    4 1-25:1
+9141318 0.00000 clusterArr twarowski    qw    09/29/2022 09:38:28                                    4 1-25:1
+9141323 0.00000 clusterArr twarowski    qw    09/29/2022 09:38:46                                    4 1-25:1
+9141329 0.00000 clusterArr twarowski    qw    09/29/2022 09:38:54                                    4 1-25:1
+9141332 0.00000 clusterArr twarowski    qw    09/29/2022 09:39:10                                    4 1-25:1
+9141336 0.00000 clusterArr twarowski    qw    09/29/2022 09:39:18                                    4 1-25:1
+9141340 0.00000 clusterArr twarowski    qw    09/29/2022 09:39:29                                    4 1-25:1
+9141343 0.00000 clusterArr twarowski    qw    09/29/2022 09:39:42                                    4 1-25:1
+9141348 0.00000 clusterArr twarowski    qw    09/29/2022 09:39:55                                    4 1-25:1
+9141350 0.00000 clusterArr twarowski    qw    09/29/2022 09:40:03                                    4 1-25:1
+9141352 0.00000 clusterArr twarowski    qw    09/29/2022 09:40:10                                    4 1-25:1
+9141354 0.00000 clusterArr twarowski    qw    09/29/2022 09:40:20                                    4 1-25:1
+9141356 0.00000 clusterArr twarowski    qw    09/29/2022 09:40:26                                    4 1-25:1
+9141358 0.00000 clusterArr twarowski    qw    09/29/2022 09:40:35                                    4 1-25:1
+9141385 0.00000 clusterArr twarowski    qw    09/29/2022 09:42:19                                    4 1-25:1
+9141390 0.00000 clusterArr twarowski    qw    09/29/2022 09:42:30                                    4 1-25:1
+9141396 0.00000 clusterArr twarowski    qw    09/29/2022 09:42:47                                    4 1-25:1
+9141402 0.00000 clusterArr twarowski    qw    09/29/2022 09:43:03                                    4 1-25:1
+9141408 0.00000 clusterArr twarowski    qw    09/29/2022 09:43:13                                    4 1-25:1
+9141411 0.00000 clusterArr twarowski    qw    09/29/2022 09:43:21                                    4 1-25:1
+9141415 0.00000 clusterArr twarowski    qw    09/29/2022 09:43:38                                    4 1-25:1
+9141424 0.00000 clusterArr twarowski    qw    09/29/2022 09:43:58                                    4 1-25:1
+9141428 0.00000 clusterArr twarowski    qw    09/29/2022 09:44:11                                    4 1-25:1
+9141435 0.00000 clusterArr twarowski    qw    09/29/2022 09:44:34                                    4 1-25:1
+9141440 0.00000 clusterArr twarowski    qw    09/29/2022 09:44:41                                    4 1-25:1
+9141476 0.00000 clusterArr twarowski    qw    09/29/2022 09:46:34                                    4 1-25:1
+9141480 0.00000 clusterArr twarowski    qw    09/29/2022 09:46:43                                    4 1-25:1
+9141484 0.00000 clusterArr twarowski    qw    09/29/2022 09:46:59                                    4 1-25:1
+9141518 0.00000 clusterArr twarowski    qw    09/29/2022 09:48:47                                    4 1-25:1
+9141524 0.00000 clusterArr twarowski    qw    09/29/2022 09:49:07                                    4 1-25:1
+9141533 0.00000 clusterArr twarowski    qw    09/29/2022 09:49:31                                    4 1-25:1
+9141538 0.00000 clusterArr twarowski    qw    09/29/2022 09:49:47                                    4 1-25:1
+9141543 0.00000 clusterArr twarowski    qw    09/29/2022 09:50:05                                    4 1-25:1
+9141549 0.00000 clusterArr twarowski    qw    09/29/2022 09:50:20                                    4 1-25:1
+9141555 0.00000 clusterArr twarowski    qw    09/29/2022 09:50:39                                    4 1-25:1
+9141563 0.00000 clusterArr twarowski    qw    09/29/2022 09:50:52                                    4 1-25:1
+9141568 0.00000 clusterArr twarowski    qw    09/29/2022 09:51:09                                    4 1-25:1
+9141575 0.00000 clusterArr twarowski    qw    09/29/2022 09:51:31                                    4 1-25:1
+9141650 0.00000 clusterArr twarowski    qw    09/29/2022 09:55:06                                    4 1-25:1
+9141657 0.00000 clusterArr twarowski    qw    09/29/2022 09:55:23                                    4 1-25:1
+9141664 0.00000 clusterArr twarowski    qw    09/29/2022 09:55:39                                    4 1-25:1
+9141669 0.00000 clusterArr twarowski    qw    09/29/2022 09:55:59                                    4 1-25:1
+9141711 0.00000 clusterArr twarowski    qw    09/29/2022 09:57:58                                    4 1-25:1

@@ -3,7 +3,7 @@ import os
 import pandas as pd
 
 
-metadata_file_path="/Users/twarowski/MMBIR_Databases/TCGA/TCGA-BRCA-WXS-BAM-metadata.tsv"
+metadata_file_path="/Users/twarowski/MMBIR_Databases/TCGA/TCGA-OV-WXS-BAM-metadata.tsv"
 
 df_metadata = pd.read_csv(metadata_file_path, sep="\t")
 
