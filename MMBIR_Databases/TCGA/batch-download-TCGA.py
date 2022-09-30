@@ -7,10 +7,10 @@ from math import ceil
 import os
 
 #PARAMS
-project = "TCGA-BRCA"
+project = "TCGA-LUSC"
 strategy = "WXS"
 format = "BAM"
-slice_size = 60
+slice_size = 200
 #END PARAMS
 
 
@@ -21,7 +21,26 @@ def retreiveProjectData(project, strategy, format, output_name, manifest=False):
       "cases.case_id",
       "cases.samples.sample_type",
       "cases.disease_type",
-      "cases.project.project_id"
+      "cases.project.project_id",
+      "cases.project.project_name",
+      "cases.samples.tumor_descriptor",
+      "cases.diagnoses.age_at_diagnosis",
+      "cases.demographic.vital_status",
+      "cases.diagnoses.days_to_last_followup",
+      "cases.demographic.days_to_birth",
+      "cases.demographic.days_to_death",
+      "cases.diagnoses.tumor_grade",
+      "cases.diagnoses.tumor_stage",
+      #days to sample collection
+      "cases.samples.days_to_collection",
+      "cases.samples.days_to_sample_procurment",
+      "cases.samples.portions.analytes.aliquots.concentration",
+      "cases.samples.portions.analytes.concentration",
+      "cases.diagnoses.ajcc_pathologic_stage",
+      "cases.diagnoses.ajcc_pathologic_n",
+      "cases.diagnoses.ajcc_pathologic_m",
+      "cases.diagnoses.ajcc_pathologic_t",
+      "cases.diagnoses.figo_stage"
       ]
 
   fields = ",".join(fields)
@@ -93,11 +112,11 @@ def createManifestSlices(samples_file_metadata, samples_file_manifest, slice_siz
   slices = ceil(id_list_length/slice_size)
 
   print(f"Found {id_list_length} file IDs. Creating {slices} manifest files with {slice_size} IDs each")
-
+  
   df_manifest = pd.read_csv(samples_file_manifest, sep="\t")
 
   slices_dir="manifest_slices"
-
+  
   if not os.path.exists(slices_dir):
     os.makedirs(slices_dir)
 
