@@ -1,8 +1,8 @@
-import shutil 
 import os
 import pandas as pd
 
 def groupCases(df_metadata):
+  import shutil 
   mypath = os.path.abspath(os.getcwd())
 
   onlydirs = [d for d in os.listdir(mypath) if os.path.isdir(os.path.join(mypath, d))]

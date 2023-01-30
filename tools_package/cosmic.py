@@ -4,29 +4,15 @@ import pandas as pd
 import ast
 import cancer_config as cfg
 
-census_dir = cfg.settings['tools/Cosmid.tsv']
+census_dir = cfg.settings['cosmicdb_dir']
 mmb_df_input=sys.argv[1]
 
-ref_complexity_filter = cfg.settings["ref_complexity_filter"]
-bir_complexity_filter =  cfg.settings["bir_complexity_filter"]
-ref_homology_check_filter = cfg.settings["ref_homology_check_filter"]
-bir_homology_check_filter = cfg.settings["bir_homology_check_filter"]
-exones_only = cfg.settings["exones_only"]
-
-### PARAMS, HARDCODED
-ref_complexity_filter=True
-bir_complexity_filter=True
-ref_homology_check_filter=True
-bir_homology_check_filter=True
-exones_only=True
-
-#ref_complexity_filter=False
-#bir_complexity_filter=False
-#ref_homology_check_filter=False
-#bir_homology_check_filter=False
-#exones_only=False
-
-### END PARAMS
+filter_dict={"ref_complexity_filter": cfg.settings["ref_complexity_filter"]
+             "bir_complexity_filter": cfg.settings["bir_complexity_filter"]
+             "ref_homology_check_filter": cfg.settings["ref_homology_check_filter"]
+             "bir_homology_check_filter": cfg.settings["bir_homology_check_filter"]
+             "exones_only": cfg.settings["exones_only"]
+             }
 
 
 def getCancerGeneNamesMMB(genes_list, df_census):
@@ -49,7 +35,6 @@ def getCancerGeneNamesMMB(genes_list, df_census):
                   df_census['Name'][ind], df_census['Tier'][ind])
 
 
-
 def getMMBGenes(df_mmb_out):
   gene_list = df_mmb_out["genes"].tolist()
 
@@ -66,18 +51,18 @@ def getMMBGenes(df_mmb_out):
   return(gene_list_final, outstr)
 
 
-def df_filter(df):
+def df_filter(df, filter_dict):
 
   filtered_df = df
-  if ref_complexity_filter:
+  if filter_dict["ref_complexity_filter"]:
     filtered_df = filtered_df[(filtered_df['ref_complexity_fail'] == False)]
-  if bir_complexity_filter:
+  if filter_dict["bir_complexity_filter"]:
     filtered_df = filtered_df[(filtered_df['bir_complexity_fail'] == False)]
-  if ref_homology_check_filter:
+  if filter_dict["ref_homology_check_filter"]:
     filtered_df = filtered_df[(filtered_df['homology_check_ref'] == True)]
-  if bir_homology_check_filter:
+  if filter_dict["bir_homology_check_filter"]:
     filtered_df = filtered_df[(filtered_df['homology_check_bir'] == True)]
-  if exones_only:
+  if filter_dict["exones_only"]:
     filtered_df = filtered_df[filtered_df['exones'].map(lambda d: len(d)) > 0]
   
   return filtered_df

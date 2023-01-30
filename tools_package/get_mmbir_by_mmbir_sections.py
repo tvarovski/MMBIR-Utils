@@ -30,7 +30,9 @@ min_concentration = 0.0
 raw_dir="outputs/raw"
 filtered_dir="outputs/filtered"
 
-os.chdir("/Shared/malkova_lab/Jacob/TCGA_Glioblastoma_Project/")
+output_file_name="../gene_frequencies_mmbir_sections_highconc_test.csv"
+
+#os.chdir("/Shared/malkova_lab/Jacob/TCGA_Glioblastoma_Project/")
 
 #get the current working directory
 cwd = os.getcwd()
@@ -53,7 +55,7 @@ os.chdir(cwd)
 
 # get the IDs of the cases that are high mmbir
 threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_path, MMBIR_THRESHOLD_HIGH, min_concentration)
-threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, MMBIR_THRESHOLD_LOW, below=True, min_concentration)
+threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, MMBIR_THRESHOLD_LOW, min_concentration, below=True)
 
 high_mmbir_cases = threshold_mmb_cases_high_df["Case_ID_"].values.tolist()
 low_mmbir_cases = threshold_mmb_cases_low_df["Case_ID_"].values.tolist()
@@ -202,6 +204,4 @@ df_frequency = pd.DataFrame.from_dict(frequency_dict, orient="index")
 df_frequency = df_frequency.sort_values(by="filtered_high", ascending=False)
 
 # save the dataframe as a csv
-df_frequency.to_csv("../gene_frequencies_mmbir_sections_highconc_test.csv")
-
-
+df_frequency.to_csv(output_file_name)
