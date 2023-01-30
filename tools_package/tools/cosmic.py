@@ -18,7 +18,7 @@ exones_only=True
 #exones_only=False
 
 
-census_dir='tools/Cosmid.tsv'
+census_dir='tools/Cosmic.tsv'
 mmb_df_input=sys.argv[1]
 
 ### END PARAMS

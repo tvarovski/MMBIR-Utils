@@ -2,7 +2,7 @@ settings = {
 
     "TCGA-PROJECT": "KIRC", # e.g. "BRCA"
     "username": "twarowski", #e.g. jsmith123
-    "cosmicdb_dir": 'tools/Cosmid.tsv',
+    "cosmicdb_dir": 'tools/Cosmic.tsv',
     "ref_complexity_filter": True,
     "bir_complexity_filter": True,
     "ref_homology_check_filter": True,

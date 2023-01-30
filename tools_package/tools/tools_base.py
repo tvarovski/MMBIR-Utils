@@ -368,4 +368,4 @@ def extractAffectedGeneNames(maf_path):
     except ValueError:
         logging.info(f"Couldn't parse the MAF file: {maf_path}")
         return None
-    
+
