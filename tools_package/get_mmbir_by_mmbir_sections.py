@@ -4,6 +4,8 @@ import logging
 import cancer_config as cfg
 from tools import getCasesAboveMMBThreshold, returnGenes, countGenes
 
+#returnGenes needs update in tools_base
+
 cancer = cfg.settings["TCGA-PROJECT"]
 username = cfg.settings["username"]
 
@@ -24,13 +26,6 @@ bir_homology_check_filter = cfg.settings["bir_homology_check_filter"]
 exones_only = cfg.settings["exones_only"]
 
 min_concentration = 0.0
-
-#### Needs Refactoring with Up ####
-exones_only = True
-homology_ref = False
-homology_bir = False
-complexity_ref = True
-complexity_bir = True
 
 raw_dir="outputs/raw"
 filtered_dir="outputs/filtered"
@@ -99,7 +94,7 @@ for file in raw_files:
         continue
 
     file=raw_dir+"/"+file
-    genes = returnGenes(file, high_mmbir, exones_only, homology_ref)
+    genes = returnGenes(file, high_mmbir, exones_only, ref_homology_check_filter)
     raw_genes.extend(genes)
 
 for file in filtered_files:
