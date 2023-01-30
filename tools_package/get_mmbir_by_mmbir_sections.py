@@ -2,6 +2,7 @@ import pandas as pd
 import os
 import logging
 import cancer_config as cfg
+from tools import getCasesAboveMMBThreshold, returnGenes, countGenes
 
 cancer = cfg.settings["TCGA-PROJECT"]
 username = cfg.settings["username"]
@@ -34,89 +35,6 @@ complexity_bir = True
 raw_dir="outputs/raw"
 filtered_dir="outputs/filtered"
 
-def getCasesAboveMMBThreshold(consolidated_results_path, min_MMBIR_events, below=False, min_concentration=0):
-
-    df_consolidated=pd.read_csv(consolidated_results_path, sep="\t")
-
-    df_consolidated=pd.merge(df_consolidated, df_sample_metadata, left_on="Sample_Name", right_on="file_name")
-
-    df_consolidated["age_at_collection"] = df_consolidated["cases.0.diagnoses.0.age_at_diagnosis"] + df_consolidated["cases.0.samples.0.days_to_collection"]
-    df_consolidated.rename(columns={"cases.0.samples.0.portions.0.analytes.0.aliquots.0.concentration": "Concentration"}, inplace=True)
-    df_consolidated=df_consolidated[df_consolidated["Concentration"] >= min_concentration]
-
-
-    agg_dict={"Raw_Count": ['min', 'max'],
-              "Filtered_Count": ['min', 'max']}
-    df_agg = df_consolidated.groupby("Case_ID").agg(agg_dict).reset_index()
-
-    df_agg.columns = ['_'.join(col).strip() for col in df_agg.columns.values]
-
-    if below:
-        df_agg = df_agg[df_agg["Filtered_Count_max"] < min_MMBIR_events]
-    else:
-        df_agg = df_agg[df_agg["Filtered_Count_max"] >= min_MMBIR_events]
-
-
-    logging.info(f"The length is: {len(df_agg)}")
-
-    df_agg = df_agg.sort_values("Filtered_Count_max",ascending=False)
-
-    return df_agg
-
-def returnGenes(file, high_mmbir, exones_only=False, homology_ref=False, homology_bir=False, complexity_ref=False, complexity_bir=False):
-
-    df = pd.read_csv(file, sep='\t')
-
-    if exones_only:
-        df = df[df["exones"].str.len() != 2]
-        #print(df)
-    if homology_ref:
-        df = df[df["homology_check_ref"] == True]
-    if homology_bir:
-        df = df[df["homology_check_bir"] == True]
-    if complexity_ref:
-        df = df[df["ref_complexity_fail"] == False]
-    if complexity_bir:
-        df = df[df["bir_complexity_fail"] == False]
-
-    # read genes column of the df and return list of genes
-    genes = df["genes"].tolist()
-    # get unique genes
-    genes = list(set(genes))
-
-    #if mmbir is high, return each gene with a high flag
-    if high_mmbir == True:
-        for index, gene in enumerate(genes):
-            genes[index] = (gene, True)
-    
-    #if mmbir is low, return each gene with a low flag
-    elif high_mmbir == False:
-        for index, gene in enumerate(genes):
-            genes[index] = (gene, False)
-    
-    else:
-        raise ValueError("high_mmbir must be True or False")
-
-    return genes
-
-def countGenes(genes):
-    gene_count_high = {}
-    gene_count_low = {}
-    for gene, high_mmbir in genes:
-        if high_mmbir == True:
-            if gene in gene_count_high:
-                gene_count_high[gene] += 1
-            else:
-                gene_count_high[gene] = 1
-
-        if high_mmbir == False:
-            if gene in gene_count_low:
-                gene_count_low[gene] += 1
-            else:
-                gene_count_low[gene] = 1
-    return gene_count_high, gene_count_low
-
-
 os.chdir("/Shared/malkova_lab/Jacob/TCGA_Glioblastoma_Project/")
 
 #get the current working directory
@@ -141,8 +59,6 @@ os.chdir(cwd)
 # get the IDs of the cases that are high mmbir
 threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_path, MMBIR_THRESHOLD_HIGH, min_concentration)
 threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, MMBIR_THRESHOLD_LOW, below=True, min_concentration)
-
-
 
 high_mmbir_cases = threshold_mmb_cases_high_df["Case_ID_"].values.tolist()
 low_mmbir_cases = threshold_mmb_cases_low_df["Case_ID_"].values.tolist()

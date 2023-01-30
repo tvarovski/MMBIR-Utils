@@ -8,6 +8,7 @@ import numpy
 from numpy.lib import scimath
 import statsmodels.stats.multitest as smm
 import cancer_config as cfg
+from tools import getCasesAboveMMBThreshold
 
 cancer = cfg.settings["TCGA-PROJECT"]
 username = cfg.settings["username"]
@@ -24,52 +25,20 @@ consolidated_results_path = cfg.settings["consolidated_results_path"]
 df_sample_metadata = pd.read_csv(metadata_location, sep="\t")
 expression_df = pd.read_csv(expression_df_path, sep="\t")
 
-def getCasesAboveMMBThreshold(consolidated_results_path, MMBIR_events, below=False):
-    
-    
-    df_consolidated=pd.read_csv(consolidated_results_path, sep="\t")
- 
-    df_consolidated=pd.merge(df_consolidated, df_sample_metadata, left_on="Sample_Name", right_on="file_name")
-    
-    df_consolidated["age_at_collection"] = df_consolidated["cases.0.diagnoses.0.age_at_diagnosis"] + df_consolidated["cases.0.samples.0.days_to_collection"]
-    df_consolidated.rename(columns={"cases.0.samples.0.portions.0.analytes.0.aliquots.0.concentration": "Concentration"}, inplace=True)
-    df_consolidated=df_consolidated[df_consolidated["Concentration"] == .5]
-
-
-    agg_dict={"Raw_Count": ['min', 'max'],
-              "Filtered_Count": ['min', 'max']}
-    df_agg = df_consolidated.groupby("Case_ID").agg(agg_dict).reset_index()
-
-    df_agg.columns = ['_'.join(col).strip() for col in df_agg.columns.values]
-
-    if below:
-        df_agg = df_agg[df_agg["Filtered_Count_max"] < MMBIR_events]
-
-    else:
-        df_agg = df_agg[df_agg["Filtered_Count_max"] > MMBIR_events]
-
-    logging.info(f"The length is: {len(df_agg)}")
-
-    df_agg = df_agg.sort_values("Filtered_Count_max",ascending=False)
-
-    return df_agg
-
 
 #threshold_mmb_cases_high_df = df_consolidated=pd.read_csv("case_ids_rad52_SNP.txt", sep="\t")
 #threshold_mmb_cases_low_df = df_consolidated=pd.read_csv("case_ids_rad52_wtSNP.txt", sep="\t")
 
 #threshold_mmb_cases_df = getCasesAboveMMBThreshold(consolidated_results_path, MMBIR_THRESHOLD)
 
-threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_path, MMBIR_THRESHOLD_HIGH)
-threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, MMBIR_THRESHOLD_LOW, below=True)
+threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_path, MMBIR_THRESHOLD_HIGH, min_concentration=0)
+threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, MMBIR_THRESHOLD_LOW, below=True, min_concentration=0)
 
 
 
 # get the IDs of the cases that are high mmbir
 high_mmbir_cases=threshold_mmb_cases_high_df["Case_ID_"].values.tolist()
 low_mmbir_cases=threshold_mmb_cases_low_df["Case_ID_"].values.tolist()
-
-
 
 
 # Mark the cases that are above the MMBIR threshold as high in the expression dataframe
@@ -80,8 +49,6 @@ expression_df.loc[expression_df["case_id"].isin(low_mmbir_cases), "high_mmbir"]=
 len_high=len(expression_df[expression_df["high_mmbir"] == "high"])
 len_low=len(expression_df[expression_df["high_mmbir"] == "low"])
 print(f"high cases: {len_high}, low cases: {len_low}")
-
-
 
 
 # get the list of all columns (transcripts) in the expression dataframe
@@ -130,7 +97,6 @@ for transcript in expression_transcripts:
 
     # store the results and fold change in a dictionary
     expression_dict[transcript] = {"t": t_stat, "p-value": p_value, "fold-change": fold_change, "high_mmbir_mean": high_mmbir_mean, "low_mmbir_mean": low_mmbir_mean}
-
 
 
 # sort the dictionary by the two-sample t-test and output the results to a list

@@ -3,6 +3,7 @@ import numpy
 import os
 import logging
 import cancer_config as cfg
+from tools import extractAffectedGeneNames, getCasesAboveMMBThreshold
 
 cancer = cfg.settings["TCGA-PROJECT"]
 username = cfg.settings["username"]
@@ -28,60 +29,10 @@ cases_file = open("cases.txt", 'r')
 cases = cases_file.readlines()
 cases_file.close()
 
-
-def extractAffectedGeneNames(maf_path):
-
-    try:
-        df_masked_snvs=pd.read_csv(maf_path, sep="\t", comment='#')
-    except OSError:
-        logging.info(f"Couldnt open the MAF file: {maf_path} Is it there?")
-        return None
-    try:
-        # remove silent mutations
-        df_masked_snvs = df_masked_snvs[df_masked_snvs["Variant_Classification"] != "Silent"]
-        return_gene_list = df_masked_snvs["Hugo_Symbol"].values.tolist()
-        return return_gene_list
-    except ValueError:
-        logging.info(f"Couldn't parse the MAF file: {maf_path}")
-        return None
-
-
-def getCasesAboveMMBThreshold(consolidated_results_path, MMBIR_events, below=False):
-    
-    
-    df_consolidated=pd.read_csv(consolidated_results_path, sep="\t")
- 
-    df_consolidated=pd.merge(df_consolidated, df_sample_metadata, left_on="Sample_Name", right_on="file_name")
-    
-    df_consolidated["age_at_collection"] = df_consolidated["cases.0.diagnoses.0.age_at_diagnosis"] + df_consolidated["cases.0.samples.0.days_to_collection"]
-    df_consolidated.rename(columns={"cases.0.samples.0.portions.0.analytes.0.aliquots.0.concentration": "Concentration"}, inplace=True)
-    df_consolidated=df_consolidated[df_consolidated["Concentration"] == .5]
-
-
-    agg_dict={"Raw_Count": ['min', 'max'],
-              "Filtered_Count": ['min', 'max']}
-    df_agg = df_consolidated.groupby("Case_ID").agg(agg_dict).reset_index()
-
-    df_agg.columns = ['_'.join(col).strip() for col in df_agg.columns.values]
-
-    if below:
-        df_agg = df_agg[df_agg["Filtered_Count_max"] < MMBIR_events]
-
-    else:
-        df_agg = df_agg[df_agg["Filtered_Count_max"] > MMBIR_events]
-
-    logging.info(f"The length is: {len(df_agg)}")
-
-    df_agg = df_agg.sort_values("Filtered_Count_max",ascending=False)
-
-    return df_agg
-
 ###################################################################################
 
-
-
-threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_path, MMBIR_THRESHOLD_HIGH)
-threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, MMBIR_THRESHOLD_LOW, below=True)
+threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_path, MMBIR_THRESHOLD_HIGH, min_concentration=0)
+threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, MMBIR_THRESHOLD_LOW, below=True, , min_concentration=0)
 
 high_mmbir_cases=0
 high_mmbir_snv_genes=[]
