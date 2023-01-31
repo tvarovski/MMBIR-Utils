@@ -7,7 +7,7 @@ import sys
 #we will also create a function to find the closest match SNP to each result\
 
 
-snps_df_path = "dbSNP_complex_indel8.csv"
+snps_df_path = "tools/dbSNP_complex_indel8.csv"
 results_df_path = sys.argv[1]
 
 

@@ -42,16 +42,16 @@ def runMainPool(results_df_path, num_processes=8):
 if __name__ == "__main__":
 
     try:
-    results_df_path = sys.argv[1]
-    num_processes = int(sys.argv[2])
+        results_df_path = sys.argv[1]
+        num_processes = int(sys.argv[2])
 
-    if results_df_path == "":
-        print(f"no results_df_path given, using raw_mmbir_results_master_df.csv")
-        results_df_path = "raw_mmbir_results_master_df.csv"
+        if results_df_path == "":
+            print(f"no results_df_path given, using raw_mmbir_results_master_df.csv")
+            results_df_path = "raw_mmbir_results_master_df.csv"
         
-    if num_processes == "":
-        print(f"no num_processes given, using 8")
-        num_processes = 8
+        if num_processes == "":
+            print(f"no num_processes given, using 8")
+            num_processes = 8
 
     except:
         print(f"no results_df_path or num_processes given, using raw_mmbir_results_master_df.csv and 8")
