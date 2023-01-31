@@ -46,8 +46,6 @@ len_low=len(expression_df[expression_df["high_mmbir"] == "low"])
 print(f"high cases: {len_high}, low cases: {len_low}")
 
 
-
-
 # get the list of all columns (transcripts) in the expression dataframe
 expression_transcripts = expression_df.columns.values.tolist()[:-3]
 

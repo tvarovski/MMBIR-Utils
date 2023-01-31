@@ -3,21 +3,13 @@ import time
 import sys
 
 ###REMINDER:
-#we will create a multiprocessing pool to speed up the process (one process for each chromosome) in the future!
-#we will also create a function to find the closest match SNP to each result
+#we will create a multiprocessing pool to speed up the process in the future!
+#we will also create a function to find the closest match SNP to each result\
+
 
 snps_df_path = "dbSNP_complex_indel8.csv"
 results_df_path = sys.argv[1]
 
-cancer_project = "OV"
-filtered_status='raw' # 'raw' or 'filtered'
-
-
-if results_df_path == "":
-    print(f"no results_df_path given, using {cancer_project}\{filtered_status}_mmbir_results_master_df.csv")
-    results_df_path = f"{cancer_project}\{filtered_status}_mmbir_results_master_df.csv"
-else:
-    print(f"job:{results_df_path}: started.")
 
 def find_closest_snp(df_results, df_snps, jobid):
     #for each result in the df, find if there is a similar SNP in the df_snps 10bp around the result
@@ -57,8 +49,21 @@ def find_closest_snp(df_results, df_snps, jobid):
     print(f"job:{jobid}: processed {row_counter} results in {time.time() - time_start} seconds.")
     return df_results
 
-df = find_closest_snp(pd.read_csv(results_df_path), pd.read_csv(snps_df_path), results_df_path)
 
-#save the df to a csv file (name based on the input file)
-df.to_csv(f"{results_df_path}", index=False)
-print(f"finished, saved to {results_df_path}")
+if __name__ == "__main__":
+
+    if results_df_path == "":
+
+        cancer_project = "OV"
+        filtered_status='raw'  # 'raw' or 'filtered'
+    
+        print(f"no results_df_path given, using {cancer_project}\{filtered_status}_mmbir_results_master_df.csv")
+        results_df_path = f"{cancer_project}\{filtered_status}_mmbir_results_master_df.csv"
+
+    print(f"job:{results_df_path}: started.")
+
+    df = find_closest_snp(pd.read_csv(results_df_path), pd.read_csv(snps_df_path), results_df_path)
+
+    #save the df to a csv file (name based on the input file)
+    df.to_csv(f"{results_df_path}", index=False)
+    print(f"finished, saved to {results_df_path}")

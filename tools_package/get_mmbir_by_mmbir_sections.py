@@ -27,8 +27,8 @@ exones_only = cfg.settings["exones_only"]
 
 min_concentration = 0.0
 
-raw_dir="outputs/raw"
-filtered_dir="outputs/filtered"
+raw_dir = cfg.setting["outputs_path_raw"]
+filtered_dir = cfg.setting["outputs_path_filtered"]
 
 output_file_name="../gene_frequencies_mmbir_sections_highconc_test.csv"
 
@@ -79,10 +79,8 @@ for file in raw_files:
 
     # get the file name without the extension
     file_name = os.path.splitext(file)[0]
-
     file_name = file_name[:-4]+".bam"
     print(file_name)
-
 
     # get the case id of the file by referencing metadata file
     case_id = df_metadata[df_metadata["file_name"] == file_name]["cases.0.case_id"].values[0]
@@ -105,6 +103,7 @@ for file in filtered_files:
     file_name = os.path.splitext(file)[0]
     file_name = file_name[:-25]+".bam"
     print(file_name)
+
     # get the case id of the file by referencing metadata file
     case_id = df_metadata[df_metadata["file_name"] == file_name]["cases.0.case_id"].values[0]
 
@@ -121,12 +120,10 @@ for file in filtered_files:
     filtered_genes.extend(genes)
 
 # count the number of occurences of each gene in the raw and filtered files and return a dictionary
-
 gene_freq_raw_high, gene_freq_raw_low = countGenes(raw_genes)
 gene_freq_filtered_high, gene_freq_filtered_low = countGenes(filtered_genes)
 
-# sort the dictionaries by frequency of occurence of genes
-# in the raw and filtered files
+# sort the dictionaries by frequency of occurence of genes in the raw and filtered files
 # and return a list of tuples sorted by frequency of occurence
 raw_sorted_high = sorted(gene_freq_raw_high.items(), key=lambda x: x[1], reverse=True)
 raw_sorted_low = sorted(gene_freq_raw_low.items(), key=lambda x: x[1], reverse=True)
@@ -139,7 +136,6 @@ raw_sorted_high = [(x[0], x[1]/len(high_mmbir_files)) for x in raw_sorted_high]
 raw_sorted_low = [(x[0], x[1]/len(low_mmbir_files)) for x in raw_sorted_low]
 filtered_sorted_high = [(x[0], x[1]/len(high_mmbir_files)) for x in filtered_sorted_high]
 filtered_sorted_low = [(x[0], x[1]/len(low_mmbir_files)) for x in filtered_sorted_low]
-
 
 # print the top_N_genes in the raw and filtered files
 top_n_genes=10

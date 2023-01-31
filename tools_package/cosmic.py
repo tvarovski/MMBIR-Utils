@@ -4,17 +4,6 @@ import pandas as pd
 import ast
 import cancer_config as cfg
 
-census_dir = cfg.settings['cosmicdb_dir']
-mmb_df_input=sys.argv[1]
-
-filter_dict={"ref_complexity_filter": cfg.settings["ref_complexity_filter"]
-             "bir_complexity_filter": cfg.settings["bir_complexity_filter"]
-             "ref_homology_check_filter": cfg.settings["ref_homology_check_filter"]
-             "bir_homology_check_filter": cfg.settings["bir_homology_check_filter"]
-             "exones_only": cfg.settings["exones_only"]
-             }
-
-
 def getCancerGeneNamesMMB(genes_list, df_census):
 
   df_census["Synonyms"] = df_census["Synonyms"].astype(str)
@@ -67,20 +56,33 @@ def df_filter(df, filter_dict):
   
   return filtered_df
 
-#Filter of MMB Calls
-df = pd.read_csv(mmb_df_input, sep="\t")
-filtered_df=df_filter(df)
-gene_list_final, outstr = getMMBGenes(filtered_df)
+
+if __name__ == "__main__":
+  census_dir = cfg.settings['cosmicdb_dir']
+  mmb_df_input = sys.argv[1]
+
+  filter_dict={"ref_complexity_filter": cfg.settings["ref_complexity_filter"]
+                "bir_complexity_filter": cfg.settings["bir_complexity_filter"]
+                "ref_homology_check_filter": cfg.settings["ref_homology_check_filter"]
+                "bir_homology_check_filter": cfg.settings["bir_homology_check_filter"]
+                "exones_only": cfg.settings["exones_only"]
+                }
 
 
-# finding cancer genes
-print(f"the length of filtered MMBIR list: {len(filtered_df)}")
-print(f'the length of filtered gene list: {len(gene_list_final)}')
+  #Filter of MMB Calls
+  df = pd.read_csv(mmb_df_input, sep="\t")
+  filtered_df=df_filter(df)
+  gene_list_final, outstr = getMMBGenes(filtered_df)
 
-print(gene_list_final)
-#print(outstr)
 
-print("**************************************************\nCancer Genes:")
+  # finding cancer genes
+  print(f"the length of filtered MMBIR list: {len(filtered_df)}")
+  print(f'the length of filtered gene list: {len(gene_list_final)}')
 
-df_census = pd.read_csv(census_dir, sep='\t')
-getCancerGeneNamesMMB(gene_list_final, df_census)
+  print(gene_list_final)
+  #print(outstr)
+
+  print("**************************************************\nCancer Genes:")
+
+  df_census = pd.read_csv(census_dir, sep='\t')
+  getCancerGeneNamesMMB(gene_list_final, df_census)
