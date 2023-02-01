@@ -156,7 +156,7 @@ def plot_concentration_raw_filtered(df_consolidated, filterset, hue="Concentrati
 
     plt.show()
 
-def plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=0.5):
+def plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=0.5, cancer="cancer"):
 
     df_figure = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
     df_figure = df_figure[df_figure["Concentration"] >= min_concentration]

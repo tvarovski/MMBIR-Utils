@@ -9,7 +9,7 @@ from BioAid import split_df, join_slices, clean_up_slices
 
 
 def runScriptSubprocess(df_slice):
-    #this function runs the script on each chunk
+    #this function runs the script on each chunk, modify path to script as needed
     subprocess.call(['python', 'tools/find_SNPs.py', df_slice])
 
 

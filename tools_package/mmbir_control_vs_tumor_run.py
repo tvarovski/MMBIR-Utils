@@ -1,4 +1,4 @@
-from .tools import *
+from tools import *
 import cancer_config as cfg
 
 
@@ -24,7 +24,7 @@ if __name__ == "__main__":
     filterset=["Blood Derived Normal","Primary Tumor"] #"Blood Derived Normal", "Primary Tumor"
 
     plot_concentration_raw_filtered(df_consolidated, filterset, hue="Concentration") #Concentration_bin
-    plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=0.5)
+    plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=0.5, cancer=cancer)
 
     filterset=["Primary Tumor"] #"Blood Derived Normal", "Primary Tumor"
 
