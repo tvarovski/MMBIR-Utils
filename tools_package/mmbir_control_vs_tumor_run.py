@@ -10,7 +10,7 @@ if __name__ == "__main__":
     metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
     metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
 
-    #load the consolidated results file
+    #load the consolidated results file, in future try migrating away from it to rely solely on mmbir_master_tables...
     df_consolidated=pd.read_csv(f"consolidated_results_{cancer}.tsv", sep="\t")
     df_metadata=pd.read_csv(metadata_location, sep="\t")
 

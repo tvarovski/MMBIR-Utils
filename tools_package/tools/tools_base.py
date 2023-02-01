@@ -368,3 +368,33 @@ def extractAffectedGeneNames(maf_path):
     except ValueError:
         logging.info(f"Couldn't parse the MAF file: {maf_path}")
         return None
+
+def createFullCancerTable(params):
+    #if not working, uncomment the os library lines
+
+    #unwrap the dictionary of params
+    df_metadata = params["df_metadata"]
+    manifest_location = params["manifest_location"]
+    missing_manifest_output_name = params["missing_manifest_output_name"]
+    log = params["log"]
+    output_raw_name = params["output_raw_name"]
+    output_filtered_name = params["output_filtered_name"]
+
+    #my_dir=os.getcwd()
+    #check for missing bams
+    missing_files = check_for_missing_bams(df_metadata)
+    #pass the list, if missing create manifest for redownload
+    create_missing_bams_manifest(missing_files, manifest_location, missing_manifest_output_name)
+    #create the master dataframe for the raw mmbir results
+    raw_mmbir_results_master_df = create_mmbir_results_master_df(df_metadata, filtered=False, log=log)
+    print(f"Finished creating the master dataframe for the raw mmbir results")
+    #create the master dataframe for the filtered mmbir results
+    filtered_mmbir_results_master_df = create_mmbir_results_master_df(df_metadata, filtered=True, log=log)
+    print(f"Finished creating the master dataframe for the filtered mmbir results")
+
+    #os.chdir(my_dir)
+    #save the master dataframes to csv
+    raw_mmbir_results_master_df.to_csv(output_raw_name, index=False)
+    filtered_mmbir_results_master_df.to_csv(output_filtered_name, index=False)
+    print(f"Finished saving the master dataframes to csv")
+
