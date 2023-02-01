@@ -18,6 +18,12 @@ def retreiveProjectData(project, strategy, format, output_name, manifest=False):
 
   fields = [
       "file_name",
+      "total_reads",
+      "average_read_length",
+      "mean_coverage",
+      "pairs_on_different_chr",
+      "proportion_targets_no_coverage",
+      "proportion_reads_mapped",
       "cases.case_id",
       "cases.samples.sample_type",
       "cases.disease_type",
