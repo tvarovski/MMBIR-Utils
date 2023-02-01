@@ -435,7 +435,7 @@ def getMMBGenes(df_mmb_out):
     outstr = ""
     gene_list_final=[]
 
-  for gene_name in gene_list:
+    for gene_name in gene_list:
 
         gene_names = ast.literal_eval(gene_name)
 
