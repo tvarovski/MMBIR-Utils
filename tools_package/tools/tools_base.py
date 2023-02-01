@@ -206,19 +206,19 @@ def countGenes(genes):
                 gene_count_low[gene] = 1
     return gene_count_high, gene_count_low
 
-def get_case_bam_files(case_id):
+def get_case_bam_files(case_id, df_metadata):
     #this function returns a list of bam files for a given case_id
     df_case = df_metadata[df_metadata["cases.0.case_id"]==case_id]
     bam_files = df_case["file_name"].tolist()
     return bam_files
 
-def get_bam_file_metadata(bam_file):
+def get_bam_file_metadata(bam_file, df_metadata):
     #this function returns metadata associated with a given bam file
     df_bam = df_metadata[df_metadata["file_name"]==bam_file]
     #return a dictionary of metadata
     return df_bam
 
-def check_for_missing_bams():
+def check_for_missing_bams(df_metadata):
     #go through all the cases and create a list of all the files
     cases_list = []
     for index, row in df_metadata.iterrows():
@@ -248,7 +248,7 @@ def check_for_missing_bams():
             dir_list = os.listdir()
             
             #get the bam files for the case
-            case_bam_files = get_case_bam_files(case_id)
+            case_bam_files = get_case_bam_files(case_id, df_metadata)
             #check if the bam files are in the directory
             for bam_file in case_bam_files:
                 if bam_file.strip(".bam") not in dir_list:
@@ -293,7 +293,7 @@ def create_missing_bams_manifest(missing_files, manifest_location, missing_manif
         df_out.to_csv(missing_manifest_output_name, sep="\t", index=False)
         return(df_out)
 
-def create_mmbir_results_master_df(filtered=False, log=False):
+def create_mmbir_results_master_df(df_metadata, filtered=False, log=False):
     # create a master dataframe for raw mmbir results
 
     results_master_df = pd.DataFrame()
@@ -314,7 +314,7 @@ def create_mmbir_results_master_df(filtered=False, log=False):
         bam_name = bam_name.replace("_allchrmmbir_filtered_all.txt", "")
         bam_name += ".bam"
 
-        bam_metadata = get_bam_file_metadata(bam_name)
+        bam_metadata = get_bam_file_metadata(bam_name, df_metadata)
         #print(bam_metadata)
 
         if len(bam_metadata) == 0:
@@ -368,4 +368,3 @@ def extractAffectedGeneNames(maf_path):
     except ValueError:
         logging.info(f"Couldn't parse the MAF file: {maf_path}")
         return None
-

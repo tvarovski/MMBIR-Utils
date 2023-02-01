@@ -9,14 +9,14 @@ def main():
     my_dir=os.getcwd()
     #os.chdir(f"{my_dir}/finished")
     #check for missing bams
-    missing_files = check_for_missing_bams()
+    missing_files = check_for_missing_bams(df_metadata)
     #pass the list, if missing create manifest for redownload
     create_missing_bams_manifest(missing_files, manifest_location, missing_manifest_output_name)
     #create the master dataframe for the raw mmbir results
-    raw_mmbir_results_master_df = create_mmbir_results_master_df(filtered=False, log=False)
+    raw_mmbir_results_master_df = create_mmbir_results_master_df(df_metadata, filtered=False, log=False)
     print(f"Finished creating the master dataframe for the raw mmbir results")
     #create the master dataframe for the filtered mmbir results
-    filtered_mmbir_results_master_df = create_mmbir_results_master_df(filtered=True, log=False)
+    filtered_mmbir_results_master_df = create_mmbir_results_master_df(df_metadata, filtered=True, log=False)
     print(f"Finished creating the master dataframe for the filtered mmbir results")
 
     os.chdir(my_dir)
@@ -31,9 +31,8 @@ if __name__ == "__main__":
     username = cfg.settings["username"]
 
     metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
-    metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
-
     manifest_file = f"TCGA-{cancer}-WXS-BAM-manifest.tsv"
+    metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
     manifest_location = f"/Users/{username}/MMBIR_Databases/TCGA/{manifest_file}"
 
     output_raw_name = "raw_mmbir_results_master_df.csv"
