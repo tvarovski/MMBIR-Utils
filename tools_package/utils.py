@@ -78,14 +78,14 @@ elif command == "findCosmicGenes":
     mmb_df_input_path = sys.argv[2]
 
     filter_dict={
-        "ref_complexity_filter": cfg.settings["ref_complexity_filter"]
-        "bir_complexity_filter": cfg.settings["bir_complexity_filter"]
-        "ref_homology_check_filter": cfg.settings["ref_homology_check_filter"]
-        "bir_homology_check_filter": cfg.settings["bir_homology_check_filter"]
+        "ref_complexity_filter": cfg.settings["ref_complexity_filter"],
+        "bir_complexity_filter": cfg.settings["bir_complexity_filter"],
+        "ref_homology_check_filter": cfg.settings["ref_homology_check_filter"],
+        "bir_homology_check_filter": cfg.settings["bir_homology_check_filter"],
         "exones_only": cfg.settings["exones_only"]
         }
 
-    findCosmicGenes(mmb_df_input_path, filter_dict)
+    findCosmicGenes(mmb_df_input_path, filter_dict, census_dir)
     
 
 else:

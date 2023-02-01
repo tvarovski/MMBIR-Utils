@@ -28,7 +28,7 @@ def annotate_consolidated_results(df_consolidated, df_metadata):
 
 def plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_concentration=0.5, method="spearman"):
     '''function plot_blood_tumor_count_correlations_treshold_delta() takes the output from
-    function annotate_consolidated_results() function as input and plots the correlations between 
+    annotate_consolidated_results() function as input and plots the correlations between 
     blood-derived normal and primary tumor sample counts using different thresholds. 
     The correlations are calculated using either the spearman or pearson method. 
     The plot shows the R-squared values for different thresholds and draws a horizontal line at 0.7.'''
@@ -93,6 +93,10 @@ def plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_conc
     return df_wide
 
 def plot_blood_tumor_count_correlation(df_wide, method="spearman", threshold=3000):
+    '''function plot_blood_tumor_count_correlation() plots the correlations between
+    blood-derived normal and primary tumor sample counts using a threshold.
+    The correlations are calculated using either the spearman or pearson method.
+    The plot shows the R-squared values for different thresholds and draws a horizontal line at 0.7.'''
 
     df_wide_size_initial=len(df_wide)
     df_wide = df_wide[(df_wide["Blood_Derived_Normal"] <= threshold) & (df_wide["Primary_Tumor"] <= threshold)]
@@ -116,6 +120,8 @@ def plot_blood_tumor_count_correlation(df_wide, method="spearman", threshold=300
     plt.show()
 
 def plot_count_vs_concentration(df_consolidated, x_count="Raw_Count"):
+    '''function plot_count_vs_concentration() plots the concentration vs the MMBIR count.
+    The plot shows the MMBIR count on the x-axis and the concentration on the y-axis.'''
 
     # plot the number of MMBIR events in of "Raw_Count" and "cases.0.samples.0.portions.0.analytes.0.aliquots.0.concentration"
     sns.scatterplot(x=x_count,y="Concentration", data=df_consolidated, alpha=0.5, hue="Sample_Type")
@@ -128,6 +134,10 @@ def plot_count_vs_concentration(df_consolidated, x_count="Raw_Count"):
     plt.show()
 
 def plot_concentration_raw_filtered(df_consolidated, filterset, hue="Concentration"):
+    '''function plot_concentration_raw_filtered() plots the concentration vs the MMBIR count.
+    The plot shows the Filtered MMBIR count on the x-axis and the Raw MMBIR count on y-axis.'''
+
+
     df_consolidated = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
 
     print("Mean and standard deviation of the Filtered_Count:")
@@ -157,6 +167,8 @@ def plot_concentration_raw_filtered(df_consolidated, filterset, hue="Concentrati
     plt.show()
 
 def plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=0.5, cancer="cancer"):
+    '''function plot_Sample_Type_counts() plots the concentration vs the MMBIR count.
+    The plot shows the MMBIR count on the x-axis and the concentration on the y-axis.'''
 
     df_figure = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
     df_figure = df_figure[df_figure["Concentration"] >= min_concentration]
@@ -187,6 +199,8 @@ def plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=0.5, c
     plt.show()
 
 def plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Filtered_Count", min_concentration=0.5, adjust_staging='early_late'):
+    '''function plot_stage_vs_count() plots the stage vs the MMBIR count as a kde plot.'''
+   
     #staging='ajcc' or 'figo', adjust='early_late' or 'early_middle_late'
 
     df_consolidated = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
@@ -240,7 +254,10 @@ def plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Fil
     plt.show()
 
 def plot_stage_vs_concentration(df_consolidated, filterset, staging='ajcc', x_count="Filtered_Count", min_concentration=0.5, adjust_staging='early_late'):
-    #staging='ajcc' or 'figo', adjust='early_late' or 'early_middle_late'
+    '''function plot_stage_vs_count() plots the stage vs concentration.
+    The plot shows the concentration on the x-axis and the stage as a hist.
+    you can adjust the staging to early, middle and late or early and late.
+    staging='ajcc' or 'figo', adjust='early_late' or 'early_middle_late' '''
 
     df_consolidated = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
     df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
@@ -288,6 +305,7 @@ def plot_stage_vs_concentration(df_consolidated, filterset, staging='ajcc', x_co
     plt.show()
 
 def plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=0.5):
+    '''function plot_ajcc_pathologic_n_vs_count() plots the ajcc pathologic n vs the MMBIR count.'''
 
     df_consolidated = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
     df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
@@ -322,6 +340,7 @@ def plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtere
     plt.show()
 
 def plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=0.5):
+    '''function plot_ajcc_pathologic_t_vs_count() plots the ajcc pathologic t vs the MMBIR count.'''
 
     df_consolidated = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
     df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
@@ -359,6 +378,8 @@ def plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtere
     plt.show()
 
 def plot_count_vs_age_correlation(df_consolidated, count="Filtered_Count", min_concentration=0.5, method="spearman"):
+    '''function plot_count_vs_age_correlation() plots the MMBIR count vs the age at collection.
+    The plot shows the MMBIR count on the y-axis and the age at collection on the x-axis.'''
 
     df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
 

@@ -2,38 +2,56 @@ import os
 import pandas as pd
 
 def groupCases(df_metadata):
-  import shutil 
-  mypath = os.path.abspath(os.getcwd())
+    # this function groups the samples by case ID
+    # and moves them to a folder with the case ID name
+    import shutil 
 
-  onlydirs = [d for d in os.listdir(mypath) if os.path.isdir(os.path.join(mypath, d))]
+    # get the current working directory
+    mypath = os.path.abspath(os.getcwd())
 
-  print(f"Found {len(onlydirs)} directories: {onlydirs}")
+    # get the list of directories in the current working directory
+    onlydirs = [d for d in os.listdir(mypath) if os.path.isdir(os.path.join(mypath, d))]
 
-  for current_name in onlydirs:
+    print(f"Found {len(onlydirs)} directories: {onlydirs}")
 
-    current_file_entry = df_metadata[df_metadata["file_name"] == f"{current_name}.bam"]
-    current_case_id = current_file_entry["cases.0.case_id"].tolist()
-    if len(current_case_id) == 0:
-      continue
-    if len(current_case_id) != 1:
-      print("Retreived unexpected number of case_id for sample metadata. Exitting...")
-      print(f"Case IDs: {current_case_id}")
-      exit()
-    current_case_id_samples = df_metadata[df_metadata["cases.0.case_id"] == current_case_id[0]]
+    # iterate over the directories
+    for current_name in onlydirs:
 
-    current_case_id_samples_list = current_case_id_samples["file_name"].tolist()
+        # get the case ID associated with the current directory's bam file
+        # it should retrieve exactly one case ID
+        current_file_entry = df_metadata[df_metadata["file_name"] == f"{current_name}.bam"]
+        current_case_id = current_file_entry["cases.0.case_id"].tolist()
 
-    for sample in current_case_id_samples_list:
-      current_case_id_path = os.path.join(mypath, current_case_id[0])
-      if not os.path.exists(current_case_id_path):
-        os.makedirs(current_case_id_path)
+        # if the current directory doesn't have a bam file, skip it
+        if len(current_case_id) == 0:
+            continue
+        
+        # if the current directory has more than one bam file, exit
+        if len(current_case_id) != 1:
+            print("Retreived unexpected number of case_id for sample metadata. Exitting...")
+            print(f"Case IDs: {current_case_id}")
+            exit()
 
-      if os.path.exists(os.path.join(mypath, sample[:-4])):
-        try:
-          shutil.move(sample[:-4], current_case_id_path)
-          print(f"Moved {sample[:-4]} to {current_case_id_path}")
-        except:
-          print("directory exist, couldn't move it")
+        # get the list of samples associated with the current case ID from the metadata
+        current_case_id_samples = df_metadata[df_metadata["cases.0.case_id"] == current_case_id[0]]
+        current_case_id_samples_list = current_case_id_samples["file_name"].tolist()
+
+        # create a directory with the case ID name
+        for sample in current_case_id_samples_list:
+            current_case_id_path = os.path.join(mypath, current_case_id[0])
+
+            # if the directory doesn't exist, create it
+            if not os.path.exists(current_case_id_path):
+                os.makedirs(current_case_id_path)
+
+            # if the directory exists, move the sample to it
+            if os.path.exists(os.path.join(mypath, sample[:-4])):
+
+                try:
+                    shutil.move(sample[:-4], current_case_id_path)
+                    print(f"Moved {sample[:-4]} to {current_case_id_path}")
+                except:
+                    print("directory exist, couldn't move it")
 
 def parseOutputs(df_metadata, consolidated_results_name="consolidated_results.tsv"):
 
@@ -471,7 +489,7 @@ def df_filter(df, filter_dict):
     return filtered_df
 
 #Used by findCosmicGenes
-def findCosmicGenes(mmb_df_input_path, filter_dict):
+def findCosmicGenes(mmb_df_input_path, filter_dict, census_dir):
 
     #Filter of MMB Calls
     df = pd.read_csv(mmb_df_input_path, sep="\t")
