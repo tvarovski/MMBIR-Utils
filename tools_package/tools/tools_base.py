@@ -444,9 +444,9 @@ def getMMBGenes(df_mmb_out):
             gene_list_final.append(gene_name)
             outstr+=f"{gene_name}\n"
 
-  gene_list_final = sorted(list(set(gene_list_final)))
+    gene_list_final = sorted(list(set(gene_list_final)))
 
-  return(gene_list_final, outstr)
+    return(gene_list_final, outstr)
 
 #Used by findCosmicGenes
 def df_filter(df, filter_dict):
