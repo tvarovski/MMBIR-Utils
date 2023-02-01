@@ -216,10 +216,10 @@ def plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Fil
 
     if adjust_staging=='early_late':
         df_consolidated["stage_adjusted"] = df_consolidated["Stage"].apply(lambda x: "Early" if x in ["Stage IA", "Stage IB", "Stage I", "Stage IIA","Stage IIB"] else "Late")
-    if adjust_staging=='early_middle_late':
+    elif adjust_staging=='early_middle_late':
         df_consolidated["stage_adjusted"] = df_consolidated["Stage"].apply(lambda x: "Early" if x in ["Stage IA", "Stage IB", "Stage I"] else ("Middle" if x in ["Stage IIA","Stage IIB"] else "Late"))
     else:
-        print("Unknown adjust_staging")
+        print(f"Unknown adjust_staging: {adjust_staging}")
         return
     
     #show mean, median and standard deviation for each stage
