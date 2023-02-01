@@ -398,3 +398,91 @@ def createFullCancerTable(params):
     filtered_mmbir_results_master_df.to_csv(output_filtered_name, index=False)
     print(f"Finished saving the master dataframes to csv")
 
+#Used by findCosmicGenes
+def getCancerGeneNamesMMB(genes_list, df_census):
+
+    from re import search
+
+    df_census["Synonyms"] = df_census["Synonyms"].astype(str)
+
+    for i in genes_list:
+
+        for ind in df_census.index:
+
+            if search("[\\^, ]"+i+"[, $]", df_census['Gene Symbol'][ind]):
+                
+                print(i,df_census['Gene Symbol'][ind], df_census['Synonyms'][ind],
+                      df_census['Name'][ind], df_census['Tier'][ind])
+            
+            else:
+
+                if search("[\\^, ]"+i+"[, $]", df_census['Synonyms'][ind]):
+
+                    print(i,df_census['Gene Symbol'][ind], df_census['Synonyms'][ind],
+                          df_census['Name'][ind], df_census['Tier'][ind])
+                else:
+
+                    if df_census['Gene Symbol'][ind] == i:
+
+                        print(i,df_census['Gene Symbol'][ind], df_census['Synonyms'][ind],
+                            df_census['Name'][ind], df_census['Tier'][ind])
+
+#Used by findCosmicGenes
+def getMMBGenes(df_mmb_out):
+    import ast
+
+    gene_list = df_mmb_out["genes"].tolist()
+    outstr = ""
+    gene_list_final=[]
+
+  for gene_name in gene_list:
+
+        gene_names = ast.literal_eval(gene_name)
+
+        for gene_name in gene_names:
+
+            gene_list_final.append(gene_name)
+            outstr+=f"{gene_name}\n"
+
+  gene_list_final = sorted(list(set(gene_list_final)))
+
+  return(gene_list_final, outstr)
+
+#Used by findCosmicGenes
+def df_filter(df, filter_dict):
+
+    filtered_df = df
+
+    if filter_dict["ref_complexity_filter"]:
+        filtered_df = filtered_df[(filtered_df['ref_complexity_fail'] == False)]
+
+    if filter_dict["bir_complexity_filter"]:
+        filtered_df = filtered_df[(filtered_df['bir_complexity_fail'] == False)]
+
+    if filter_dict["ref_homology_check_filter"]:
+        filtered_df = filtered_df[(filtered_df['homology_check_ref'] == True)]
+
+    if filter_dict["bir_homology_check_filter"]:
+        filtered_df = filtered_df[(filtered_df['homology_check_bir'] == True)]
+
+    if filter_dict["exones_only"]:
+        filtered_df = filtered_df[filtered_df['exones'].map(lambda d: len(d)) > 0]
+    
+    return filtered_df
+
+#Used by findCosmicGenes
+def findCosmicGenes(mmb_df_input_path, filter_dict):
+
+    #Filter of MMB Calls
+    df = pd.read_csv(mmb_df_input_path, sep="\t")
+    filtered_df=df_filter(df, filter_dict)
+    gene_list_final, outstr = getMMBGenes(filtered_df)
+
+    # finding cancer genes
+    print(f"the length of filtered MMBIR list: {len(filtered_df)}")
+    print(f'the length of filtered gene list: {len(gene_list_final)}')
+    print(gene_list_final)
+    print("**************************************************\nCancer Genes:")
+
+    df_census = pd.read_csv(census_dir, sep='\t')
+    getCancerGeneNamesMMB(gene_list_final, df_census)

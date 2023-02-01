@@ -1,7 +1,7 @@
 import pandas as pd
 import sys
 import cancer_config as cfg
-from tools import groupCases, parseOutputs, masked_snv_mv, createFullCancerTable
+from tools import groupCases, parseOutputs, masked_snv_mv, createFullCancerTable, findCosmicGenes
 
 ###DESCRIPTION###
 
@@ -30,6 +30,10 @@ Currently available KEYWORDs:
         # results from all available data
 
         # creates a manifest file with missing bam_files
+
+  - findCosmicGenes
+        #filteres out and prints out genes in the Cosmic_DB that
+        #are present in the specified DF path (sys.argv[2])
 
 '''
 
@@ -67,6 +71,21 @@ elif command == "createFullCancerTable":
         }
         
     createFullCancerTable(params)
+
+elif command == "findCosmicGenes":
+
+    census_dir = cfg.settings['cosmicdb_dir']
+    mmb_df_input_path = sys.argv[2]
+
+    filter_dict={
+        "ref_complexity_filter": cfg.settings["ref_complexity_filter"]
+        "bir_complexity_filter": cfg.settings["bir_complexity_filter"]
+        "ref_homology_check_filter": cfg.settings["ref_homology_check_filter"]
+        "bir_homology_check_filter": cfg.settings["bir_homology_check_filter"]
+        "exones_only": cfg.settings["exones_only"]
+        }
+
+    findCosmicGenes(mmb_df_input_path, filter_dict)
     
 
 else:
