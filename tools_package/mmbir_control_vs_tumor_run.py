@@ -16,7 +16,7 @@ if __name__ == "__main__":
 
     df_consolidated = annotate_consolidated_results(df_consolidated, df_metadata)
 
-    df_wide = plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_concentration=0.5, method="spearman") #method="spearman" or "pearson"
+    df_wide = plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_concentration=0.0, method="spearman") #method="spearman" or "pearson"
     plot_blood_tumor_count_correlation(df_wide, method="spearman", threshold=3000)
 
     plot_count_vs_concentration(df_consolidated, x_count="Raw_Count")
@@ -24,15 +24,15 @@ if __name__ == "__main__":
     filterset=["Blood Derived Normal","Primary Tumor"] #"Blood Derived Normal", "Primary Tumor"
 
     plot_concentration_raw_filtered(df_consolidated, filterset, hue="Concentration") #Concentration_bin
-    plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=0.5, cancer=cancer)
+    plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=0.0, cancer=cancer)
 
     filterset=["Primary Tumor"] #"Blood Derived Normal", "Primary Tumor"
 
     #staging='ajcc' or 'figo', adjust='early_late' or 'early_middle_late'
-    plot_stage_vs_count(df_consolidated, filterset, staging='figo', x_count="Filtered_Count", min_concentration=0.5, adjust_staging='early_late')
-    plot_stage_vs_concentration(df_consolidated, filterset, staging='figo', x_count="Filtered_Count", min_concentration=0.5, adjust_staging='early_late')
+    plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Filtered_Count", min_concentration=0.0, adjust_staging='early_late')
+    plot_stage_vs_concentration(df_consolidated, filterset, staging='ajcc', x_count="Filtered_Count", min_concentration=0.0, adjust_staging='early_late')
 
-    plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=0.5)
-    plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=0.5)
+    plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=0.0)
+    plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=0.0)
 
-    plot_count_vs_age_correlation(df_consolidated, count="Filtered_Count", min_concentration=0.5, method="spearman")
+    plot_count_vs_age_correlation(df_consolidated, count="Filtered_Count", min_concentration=0.0, method="spearman")
