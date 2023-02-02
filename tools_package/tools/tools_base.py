@@ -121,7 +121,7 @@ def parseOutputs(df_metadata, consolidated_results_name="consolidated_results.ts
   print(output_df)
   output_df.to_csv(consolidated_results_name, sep="\t", index=False)
   
-def masked_snv_mv(df_metadata):
+def masked_snv_mv(df_metadata, snvs_loc=""):
 
   output = os.system(f"ls -d1 *-*-*-*-* > cases.txt")
   print(f"cases exited with a code {output}")
@@ -141,8 +141,8 @@ def masked_snv_mv(df_metadata):
         print(f"there is a problem with {snvs_loc}/{id}/{file_name} {caseID}")
       output = os.system(f"yes n | gunzip {caseID}/{file_name}")
 
-def getCasesAboveMMBThreshold(consolidated_results_path, min_MMBIR_events, below=False, min_concentration=0):
-
+def getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, min_MMBIR_events, below=False, min_concentration=0):
+    import logging
     df_consolidated=pd.read_csv(consolidated_results_path, sep="\t")
 
     df_consolidated=pd.merge(df_consolidated, df_sample_metadata, left_on="Sample_Name", right_on="file_name")
@@ -284,7 +284,7 @@ def check_for_missing_bams(df_metadata):
     print(missing_cases)
     return([missing_bams, missing_cases])
 
-def create_missing_bams_manifest(missing_files, manifest_location, missing_manifest_output_name):
+def create_missing_bams_manifest(missing_files, manifest_location, df_metadata, missing_manifest_output_name):
 
     if len(missing_files[0]) == 0 & len(missing_files[0]) == 0:
         print("All good! All files present!")
@@ -300,7 +300,6 @@ def create_missing_bams_manifest(missing_files, manifest_location, missing_manif
             
         if len(missing_files[1]) > 0:
             #open the metadata file to retreive filenames associated with missing caseIDs
-            df_metadata = pd.read_csv(metadata_location, sep="\t")
             df_metadata_missing_cases = df_metadata[df_metadata["cases.0.case_id"].isin(missing_files[1])]
 
             #get the manifest rows containing only files from missing cases
@@ -402,7 +401,7 @@ def createFullCancerTable(params):
     #check for missing bams
     missing_files = check_for_missing_bams(df_metadata)
     #pass the list, if missing create manifest for redownload
-    create_missing_bams_manifest(missing_files, manifest_location, missing_manifest_output_name)
+    create_missing_bams_manifest(missing_files, manifest_location, df_metadata, missing_manifest_output_name)
     #create the master dataframe for the raw mmbir results
     raw_mmbir_results_master_df = create_mmbir_results_master_df(df_metadata, filtered=False, log=log)
     print(f"Finished creating the master dataframe for the raw mmbir results")

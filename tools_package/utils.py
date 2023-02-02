@@ -55,7 +55,8 @@ elif command == "parseOutputs":
     parseOutputs(df_metadata, consolidated_results_name="consolidated_results.tsv")
 
 elif command == "masked_snv_mv":
-    masked_snv_mv(df_metadata)
+    #need to add a sys.argv[2] for the snvs_loc
+    masked_snv_mv(df_metadata, snvs_loc="")
 
 elif command == "createFullCancerTable":
 

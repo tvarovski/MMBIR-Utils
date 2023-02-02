@@ -54,8 +54,8 @@ os.chdir(cwd)
 
 
 # get the IDs of the cases that are high mmbir
-threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_path, MMBIR_THRESHOLD_HIGH, min_concentration)
-threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, MMBIR_THRESHOLD_LOW, min_concentration, below=True)
+threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_path, df_metadata, MMBIR_THRESHOLD_HIGH, min_concentration)
+threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, df_metadata, MMBIR_THRESHOLD_LOW, min_concentration, below=True)
 
 high_mmbir_cases = threshold_mmb_cases_high_df["Case_ID_"].values.tolist()
 low_mmbir_cases = threshold_mmb_cases_low_df["Case_ID_"].values.tolist()
