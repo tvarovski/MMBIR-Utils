@@ -1,10 +1,9 @@
 import requests
-import json
 import sys
 import pandas as pd
-import re
 from math import ceil
 import os
+#import argparse
 
 #PARAMS
 project = "TCGA-LUSC"
@@ -133,20 +132,6 @@ def retreiveProjectData(project, strategy, format, output_name, manifest=False):
                 {
                 "op": "in",
                 "content":{
-                    "field": "files.experimental_strategy",
-                    "value": [strategy]
-                    }
-                },
-#                {
-#                "op": "in",
-#                "content":{
-#                    "field": "files.data_format",
-#                    "value": [format]
-#                    }
-#                },
-                {
-                "op": "in",
-                "content":{
                     "field": "files.data_type",
                     "value": "Gene Expression Quantification"
                     }
@@ -158,7 +143,7 @@ def retreiveProjectData(project, strategy, format, output_name, manifest=False):
         print("ERROR: format not recognized")
         return
 
-  # A POST is used, so the filter parameters can be passed directly as a Dict object.
+    # A POST is used, so the filter parameters can be passed directly as a Dict object.
     params = {
         "filters": filters,
         "fields": fields,
@@ -216,18 +201,33 @@ def createManifestSlices(samples_file_metadata, samples_file_manifest, slice_siz
 
   print("Finished!")
 
+def main(project, strategy, format, slice_size):
+    # retreive project metadata
+    output_name_meta = f'{project}-{strategy}-{format}-metadata.tsv'
+    retreiveProjectData(project, strategy, format, output_name_meta, manifest=False)
 
-# retreive project metadata
-output_name_meta = f'{project}-{strategy}-{format}-metadata.tsv'
-retreiveProjectData(project, strategy, format, output_name_meta, manifest=False)
+    # retreive project manifest
+    output_name_manifest = f'{project}-{strategy}-{format}-manifest.tsv'
+    retreiveProjectData(project, strategy, format, output_name_manifest, manifest=True)
 
-# retreive project manifest
-output_name_manifest = f'{project}-{strategy}-{format}-manifest.tsv'
-retreiveProjectData(project, strategy, format, output_name_manifest, manifest=True)
+    # slice the project manifest by ordered metadata case-ids into chunks of size slice_size
+    samples_file_manifest = f"{output_name_manifest}"
+    samples_file_metadata = f"{output_name_meta}"
 
-# slice the project manifest by ordered metadata case-ids into chunks of size slice_size
-samples_file_manifest = f"{output_name_manifest}"
-samples_file_metadata = f"{output_name_meta}"
+    if format != "expression": 
+        output_name_root = f"{project}-{strategy}-{format}-manifest"
+        createManifestSlices(samples_file_metadata, samples_file_manifest, slice_size, output_name_root)
 
-output_name_root = f"{project}-{strategy}-{format}-manifest"
-createManifestSlices(samples_file_metadata, samples_file_manifest, slice_size, output_name_root)
+if __name__ == "__main__":
+
+    '''parser = argparse.ArgumentParser(description='Retreive GDC project data')
+    parser.add_argument('-p', '--project', type=str, required=True, help='GDC project ID')
+    parser.add_argument('-s', '--strategy', type=str, required=True, help='GDC experimental strategy, e.g. WGS, WXS, RNA-Seq, miRNA-Seq, Bisulfite-Seq, etc.')
+    parser.add_argument('-f', '--format', type=str, required=True, help='GDC data format, e.g. BAM, MAF, expression (for gene expression quantification)')
+    parser.add_argument('-n', '--slice_size', type=int, required=True, help='Size of manifest slices')
+
+    args = parser.parse_args()
+
+    main(args.project, args.strategy, args.format, args.slice_size)'''
+
+    main(project, strategy, format, slice_size)
