@@ -76,8 +76,6 @@ def loadSampleMetadata(sample_metadata_path):
 
 
 def addCaseIDtoExpressionDataframe(expression_df, expression_metadata):
-    # read in the expression data
-    expression_df = pd.read_csv(expression_data_path, sep="\t")
 
     # load expression metdata
     expression_metadata=loadSampleMetadata(metadata_location)
