@@ -12,7 +12,8 @@ expression_data_path_root = cfg.settings["expression_data_path"]
 expression_data_path = f"{expression_data_path_root}/{username}/TCGA-{cancer}/expression"
 
 #sample_metadata_path = r"C:\Users\twaro\OneDrive\Desktop\development\TCGA-BRCA-RNA-Seq-TSV-manifest.tsv"
-sample_metadata_path = cfg.settings["sample_metadata_path"]
+metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
+metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
 
 #output_name = r"C:\Users\twaro\OneDrive\Desktop\development\expression\expression_data.tsv"
 output_name = "expression_data_{cancer}.tsv"
@@ -77,7 +78,7 @@ def addCaseIDtoExpressionDataframe(expression_df, expression_metadata):
     expression_df = pd.read_csv(expression_data_path, sep="\t")
 
     # load expression metdata
-    expression_metadata=loadSampleMetadata(sample_metadata_path)
+    expression_metadata=loadSampleMetadata(metadata_location)
 
     # iterate through the sample_names in expression_df and add the caseID to the expression_df
     for sample_name in expression_df["sample_name"]:
@@ -93,7 +94,7 @@ def main():
     expression_df = createExpressionDataframe(expression_data_path)
 
     # add the case ID to the expression dataframe
-    expression_df = addCaseIDtoExpressionDataframe(expression_df, loadSampleMetadata(sample_metadata_path))
+    expression_df = addCaseIDtoExpressionDataframe(expression_df, loadSampleMetadata(metadata_location))
 
     # save the expression data
     expression_df.to_csv(output_name, sep="\t", index=False)
