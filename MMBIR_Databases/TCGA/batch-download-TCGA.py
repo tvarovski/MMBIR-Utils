@@ -16,96 +16,176 @@ slice_size = 200
 
 def retreiveProjectData(project, strategy, format, output_name, manifest=False):
 
-  fields = [
-      "file_name",
-      "total_reads",
-      "average_read_length",
-      "mean_coverage",
-      "pairs_on_different_chr",
-      "proportion_targets_no_coverage",
-      "proportion_reads_mapped",
-      "cases.case_id",
-      "cases.samples.sample_type",
-      "cases.disease_type",
-      "cases.project.project_id",
-      "cases.project.project_name",
-      "cases.samples.tumor_descriptor",
-      "cases.diagnoses.age_at_diagnosis",
-      "cases.demographic.vital_status",
-      "cases.diagnoses.days_to_last_followup",
-      "cases.demographic.days_to_birth",
-      "cases.demographic.days_to_death",
-      "cases.diagnoses.tumor_grade",
-      "cases.diagnoses.tumor_stage",
-      #days to sample collection
-      "cases.samples.days_to_collection",
-      "cases.samples.days_to_sample_procurment",
-      "cases.samples.portions.analytes.aliquots.concentration",
-      "cases.samples.portions.analytes.concentration",
-      "cases.diagnoses.ajcc_pathologic_stage",
-      "cases.diagnoses.ajcc_pathologic_n",
-      "cases.diagnoses.ajcc_pathologic_m",
-      "cases.diagnoses.ajcc_pathologic_t",
-      "cases.diagnoses.figo_stage"
-      ]
+    fields = [
+        "file_name",
+        "total_reads",
+        "average_read_length",
+        "mean_coverage",
+        "pairs_on_different_chr",
+        "proportion_targets_no_coverage",
+        "proportion_reads_mapped",
+        "cases.case_id",
+        "cases.samples.sample_type",
+        "cases.disease_type",
+        "cases.project.project_id",
+        "cases.project.project_name",
+        "cases.samples.tumor_descriptor",
+        "cases.diagnoses.age_at_diagnosis",
+        "cases.demographic.vital_status",
+        "cases.diagnoses.days_to_last_followup",
+        "cases.demographic.days_to_birth",
+        "cases.demographic.days_to_death",
+        "cases.diagnoses.tumor_grade",
+        "cases.diagnoses.tumor_stage",
+        "cases.samples.days_to_collection",
+        "cases.samples.days_to_sample_procurment",
+        "cases.samples.portions.analytes.aliquots.concentration",
+        "cases.samples.portions.analytes.concentration",
+        "cases.diagnoses.ajcc_pathologic_stage",
+        "cases.diagnoses.ajcc_pathologic_n",
+        "cases.diagnoses.ajcc_pathologic_m",
+        "cases.diagnoses.ajcc_pathologic_t",
+        "cases.diagnoses.figo_stage"
+        ]
 
-  fields = ",".join(fields)
+    fields = ",".join(fields)
 
-  files_endpt = "https://api.gdc.cancer.gov/files" #files
+    files_endpt = "https://api.gdc.cancer.gov/files" #files
 
-  # This set of filters is nested under an 'and' operator.
-  filters = {
-      "op": "and",
-      "content":[
-          {
-          "op": "in",
-          "content":{
-              "field": "cases.project.project_id",
-              "value": [project]
-              }
-          },
-          {
-          "op": "in",
-          "content":{
-              "field": "files.experimental_strategy",
-              "value": [strategy]
-              }
-          },
-          {
-          "op": "in",
-          "content":{
-              "field": "files.data_format",
-              "value": [format]
-              }
-          }
-      ]
-  }
+    # This set of filters is nested under an 'and' operator.
+    if format=="BAM":
+
+        filters = {
+            "op": "and",
+            "content":[
+                {
+                "op": "in",
+                "content":{
+                    "field": "cases.project.project_id",
+                    "value": [project]
+                    }
+                },
+                {
+                "op": "in",
+                "content":{
+                    "field": "files.experimental_strategy",
+                    "value": [strategy]
+                    }
+                },
+                {
+                "op": "in",
+                "content":{
+                    "field": "files.data_format",
+                    "value": [format]
+                    }
+                }
+            ]
+        }
+
+    elif format=="MAF":
+
+        filters = {
+            "op": "and",
+            "content":[
+                {
+                "op": "in",
+                "content":{
+                    "field": "cases.project.project_id",
+                    "value": [project]
+                    }
+                },
+                {
+                "op": "in",
+                "content":{
+                    "field": "files.experimental_strategy",
+                    "value": [strategy]
+                    }
+                },
+                {
+                "op": "in",
+                "content":{
+                    "field": "files.data_format",
+                    "value": [format]
+                    }
+                },
+                {
+                "op": "in",
+                "content":{
+                    "field": "files.data_type",
+                    "value": "Masked Somatic Mutation"
+                }
+            }
+        ]
+    }
+
+    elif format=="expression":
+        
+        filters = {
+            "op": "and",
+            "content":[
+                {
+                "op": "in",
+                "content":{
+                    "field": "cases.project.project_id",
+                    "value": [project]
+                    }
+                },
+                {
+                "op": "in",
+                "content":{
+                    "field": "files.experimental_strategy",
+                    "value": [strategy]
+                    }
+                },
+#                {
+#                "op": "in",
+#                "content":{
+#                    "field": "files.data_format",
+#                    "value": [format]
+#                    }
+#                },
+                {
+                "op": "in",
+                "content":{
+                    "field": "files.data_type",
+                    "value": "Gene Expression Quantification"
+                    }
+                 }
+            ]
+        }
+
+    else:
+        print("ERROR: format not recognized")
+        return
 
   # A POST is used, so the filter parameters can be passed directly as a Dict object.
-  params = {
-      "filters": filters,
-      "fields": fields,
-      "format": "TSV",
-      "size": "10000"
-      }
+    params = {
+        "filters": filters,
+        "fields": fields,
+        "format": "TSV",
+        "size": "10000"
+        }
 
-  if manifest:
-      params = {
-      "filters": filters,
-      "fields": fields,
-      "format": "TSV",
-      "size": "10000",
-      "return_type":"manifest"
-      }
+    if manifest:
+        params = {
+        "filters": filters,
+        "fields": fields,
+        "format": "TSV",
+        "size": "10000",
+        "return_type":"manifest"
+        }
 
-  # The parameters are passed to 'json' rather than 'params' in this case
-  response = requests.post(files_endpt, headers = {"Content-Type": "application/json"}, json = params)
-  original_stdout = sys.stdout
 
-  with open(output_name, 'w') as f:
-      sys.stdout = f # Change the standard output to the file we created.
-      print(response.content.decode("utf-8"))
-      sys.stdout = original_stdout # Reset the standard output to its original value
+
+
+    # The parameters are passed to 'json' rather than 'params' in this case
+    response = requests.post(files_endpt, headers = {"Content-Type": "application/json"}, json = params)
+    original_stdout = sys.stdout
+
+    with open(output_name, 'w') as f:
+        sys.stdout = f # Change the standard output to the file we created.
+        print(response.content.decode("utf-8"))
+        sys.stdout = original_stdout # Reset the standard output to its original value
 
 def createManifestSlices(samples_file_metadata, samples_file_manifest, slice_size, output_name_root):
 
