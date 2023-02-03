@@ -14,6 +14,7 @@ settings = {
     "consolidated_results_path": "consolidated_results.tsv",
     "outputs_path": "outputs",
     "outputs_path_raw": "outputs/raw",
-    "outputs_path_filtered": "outputs/filtered"
+    "outputs_path_filtered": "outputs/filtered",
+    "expression_data_path_root": "/nfsscratch",
 
 }

@@ -3,11 +3,19 @@ import os
 import cancer_config as cfg
 
 # set environment variables
-expression_data_path = r"C:\Users\twaro\OneDrive\Desktop\development\expression"
-expression_data_path = os.path.realpath(expression_data_path)
-sample_metadata_path = r"C:\Users\twaro\OneDrive\Desktop\development\TCGA-BRCA-RNA-Seq-TSV-manifest.tsv"
+cancer = cfg.settings["TCGA-PROJECT"]
+username = cfg.settings["username"]
 
-output_name = r"C:\Users\twaro\OneDrive\Desktop\development\expression\expression_data.tsv"
+#expression_data_path = r"C:\Users\twaro\OneDrive\Desktop\development\expression"
+#expression_data_path = os.path.realpath(expression_data_path)
+expression_data_path_root = cfg.settings["expression_data_path"]
+expression_data_path = f"{expression_data_path_root}/{username}/TCGA-{cancer}/expression"
+
+#sample_metadata_path = r"C:\Users\twaro\OneDrive\Desktop\development\TCGA-BRCA-RNA-Seq-TSV-manifest.tsv"
+sample_metadata_path = cfg.settings["sample_metadata_path"]
+
+#output_name = r"C:\Users\twaro\OneDrive\Desktop\development\expression\expression_data.tsv"
+output_name = "expression_data_{cancer}.tsv"
 
 # this function is used to extract the expressoion data from the file specified by the path
 def processSample(sample_path):
@@ -30,7 +38,7 @@ def processSample(sample_path):
     return(expression_transpose)
 
 
-def createExpressionDataframe(expression_data_path, output_name):
+def createExpressionDataframe(expression_data_path):
     # create a new dataframe to store the expression data
     expression_df = pd.DataFrame()
 
@@ -50,10 +58,7 @@ def createExpressionDataframe(expression_data_path, output_name):
                     sample_df = processSample(os.path.join(sample_path, sample_file))
                     expression_df = expression_df.append(sample_df)
 
-
-
-    # save the expression data
-    expression_df.to_csv(output_name, sep="\t", index=False)
+    return(expression_df)
 
 
 def loadSampleMetadata(sample_metadata_path):
@@ -67,7 +72,7 @@ def loadSampleMetadata(sample_metadata_path):
     return(sample_metadata)
 
 
-def addCaseIDtoExpressionDataframe(expression_data_path, expression_metadata):
+def addCaseIDtoExpressionDataframe(expression_df, expression_metadata):
     # read in the expression data
     expression_df = pd.read_csv(expression_data_path, sep="\t")
 
@@ -80,18 +85,21 @@ def addCaseIDtoExpressionDataframe(expression_data_path, expression_metadata):
 
 
     # save the expression data
-    expression_df.to_csv("output.tsv", sep="\t", index=False)
+    return expression_df
 
 
+def main():
+    # create the expression dataframe
+    expression_df = createExpressionDataframe(expression_data_path)
 
-#sample_metadata_path = "TCGA-BRCA-RNA-Seq-TSV-metadata.tsv"
+    # add the case ID to the expression dataframe
+    expression_df = addCaseIDtoExpressionDataframe(expression_df, loadSampleMetadata(sample_metadata_path))
 
-#addCaseIDtoExpressionDataframe("expression_data.tsv", loadSampleMetadata(sample_metadata_path))
+    # save the expression data
+    expression_df.to_csv(output_name, sep="\t", index=False)
 
-#read in the expression data
+if __name__ == "__main__":
+    main()
 
-expression_df = pd.read_csv("expression_data_with_CaseID.tsv", sep="\t")
-
-print(expression_df.head())
 
 
