@@ -8,7 +8,7 @@ username = cfg.settings["username"]
 
 #expression_data_path = r"C:\Users\twaro\OneDrive\Desktop\development\expression"
 #expression_data_path = os.path.realpath(expression_data_path)
-expression_data_path_root = cfg.settings["expression_data_path"]
+expression_data_path_root = cfg.settings["expression_data_path_root"]
 expression_data_path = f"{expression_data_path_root}/{username}/TCGA-{cancer}/expression"
 
 #sample_metadata_path = r"C:\Users\twaro\OneDrive\Desktop\development\TCGA-BRCA-RNA-Seq-TSV-manifest.tsv"
@@ -57,7 +57,9 @@ def createExpressionDataframe(expression_data_path):
                 # check if the file is a tsv file, and if it is, add it to the dataframe
                 if sample_file.endswith(".tsv"):
                     sample_df = processSample(os.path.join(sample_path, sample_file))
-                    expression_df = expression_df.append(sample_df)
+
+                    #concatenate the dataframes
+                    expression_df = pd.concat([expression_df, sample_df], ignore_index=True)
 
     return(expression_df)
 
