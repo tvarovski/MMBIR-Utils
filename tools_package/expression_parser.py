@@ -80,6 +80,11 @@ def addCaseIDtoExpressionDataframe(expression_df, expression_metadata):
     # load expression metdata
     expression_metadata=loadSampleMetadata(metadata_location)
 
+    print(expression_df["sample_name"].head())
+
+    #expression_df = expression_df.merge(expression_metadata[["file_name", "case_id"]], left_on="sample_name", right_on="file_name")
+
+
     # iterate through the sample_names in expression_df and add the caseID to the expression_df
     for sample_name in expression_df["sample_name"]:
 
