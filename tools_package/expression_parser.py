@@ -16,7 +16,7 @@ metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
 metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
 
 #output_name = r"C:\Users\twaro\OneDrive\Desktop\development\expression\expression_data.tsv"
-output_name = "expression_data_{cancer}.tsv"
+output_name = f"expression_data_{cancer}.tsv"
 
 # this function is used to extract the expressoion data from the file specified by the path
 def processSample(sample_path):
@@ -82,17 +82,16 @@ def addCaseIDtoExpressionDataframe(expression_df, expression_metadata):
 
     print(expression_df["sample_name"].head())
 
-    #expression_df = expression_df.merge(expression_metadata[["file_name", "case_id"]], left_on="sample_name", right_on="file_name")
-
 
     # iterate through the sample_names in expression_df and add the caseID to the expression_df
     for sample_name in expression_df["sample_name"]:
 
         #broken in the following line
-        expression_df.loc[expression_df["sample_name"] == sample_name, "case_id"] = expression_metadata[expression_metadata["file_name"] == sample_name.split("/")[-1]]["case_id"].values[0]
+        expression_df.loc[expression_df["sample_name"] == sample_name, "case_id"] = expression_metadata[expression_metadata["file_name"] == sample_name.split("/")[-1]]["case_id"] #.values[0]
 
 
     # save the expression data
+    print(expression_df.head())
     return expression_df
 
 
