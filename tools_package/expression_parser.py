@@ -82,6 +82,8 @@ def addCaseIDtoExpressionDataframe(expression_df, expression_metadata):
 
     # iterate through the sample_names in expression_df and add the caseID to the expression_df
     for sample_name in expression_df["sample_name"]:
+
+        #broken in the following line
         expression_df.loc[expression_df["sample_name"] == sample_name, "case_id"] = expression_metadata[expression_metadata["file_name"] == sample_name.split("/")[-1]]["case_id"].values[0]
 
 
