@@ -439,11 +439,18 @@ def plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concen
     print(df_consolidated.groupby("age_bin").std()[count])
 
     #compare the mean of the early age bin to the mean of the late age bin statistically using a mann-whitney test
-    print(stats.mannwhitneyu(df_consolidated[df_consolidated["age_bin"]=="0-20"][count], df_consolidated[df_consolidated["age_bin"]=="60+"][count]))
-    print(stats.ttest_ind(df_consolidated[df_consolidated["age_bin"]=="0-20"][count], df_consolidated[df_consolidated["age_bin"]=="60+"][count]))
+    print(stats.mannwhitneyu(df_consolidated[df_consolidated["age_bin"]=="40-50"][count], df_consolidated[df_consolidated["age_bin"]=="70+"][count]))
+    print(stats.ttest_ind(df_consolidated[df_consolidated["age_bin"]=="40-50"][count], df_consolidated[df_consolidated["age_bin"]=="70+"][count]))
 
+    #plot the bins as a series of violin plots where the x-axis is the age bin and the y-axis is the count
     sns.set_context("poster")
-    sns.histplot(data=df_consolidated, x=count, bins=100, hue="age_bin", kde=True)
-    plt.xlabel("Raw MMBIR Signature Count")
-    plt.ylabel("Frequency")
+    sns.violinplot(x="age_bin", y=count, data=df_consolidated, inner="quartile", scale="count")
+    plt.xlabel("Age at sample collection (years)")
+    plt.ylabel(f"MMBIR {count}")
     plt.show()
+
+
+
+
+
+
