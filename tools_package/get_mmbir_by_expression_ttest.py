@@ -19,16 +19,16 @@ MMBIR_THRESHOLD_LOW = cfg.settings["MMBIR_THRESHOLD_LOW"]
 MMBIR_THRESHOLD_HIGH = cfg.settings["MMBIR_THRESHOLD_HIGH"]
 
 consolidated_results_path = cfg.settings["consolidated_results_path"]
-expression_df_path = cfg.settings["expression_df_path"]
+expression_df_path = f"expression_data_{cancer}.pickle"
 
-expression_df = pd.read_csv(expression_df_path, sep="\t")
+expression_df = pd.read_pickle(expression_df_path)
 df_sample_metadata = pd.read_csv(metadata_location, sep="\t")
 
 
-#threshold_mmb_cases_df = getCasesAboveMMBThreshold(consolidated_results_path, MMBIR_THRESHOLD)
+min_concentration=0
 
-threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, MMBIR_THRESHOLD_HIGH, min_concentration=0)
-threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, MMBIR_THRESHOLD_LOW, below=True, min_concentration=0)
+threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, MMBIR_THRESHOLD_HIGH, min_concentration=min_concentration)
+threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, MMBIR_THRESHOLD_LOW, below=True, min_concentration=min_concentration)
 
 
 # get the IDs of the cases that are high mmbir
