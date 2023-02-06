@@ -6,16 +6,15 @@ import cancer_config as cfg
 cancer = cfg.settings["TCGA-PROJECT"]
 username = cfg.settings["username"]
 
-#expression_data_path = r"C:\Users\twaro\OneDrive\Desktop\development\expression"
-#expression_data_path = os.path.realpath(expression_data_path)
 expression_data_path_root = cfg.settings["expression_data_path_root"]
 expression_data_path = f"{expression_data_path_root}/{username}/TCGA-{cancer}/expression"
 
-#sample_metadata_path = r"C:\Users\twaro\OneDrive\Desktop\development\TCGA-BRCA-RNA-Seq-TSV-manifest.tsv"
 metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
 metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
 
-#output_name = r"C:\Users\twaro\OneDrive\Desktop\development\expression\expression_data.tsv"
+expression_metadata_file = f"TCGA-{cancer}-WXS-expression-metadata.tsv"
+expression_metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{expression_metadata_file}"
+
 output_name = f"expression_data_{cancer}.tsv"
 
 # this function is used to extract the expressoion data from the file specified by the path
@@ -108,7 +107,7 @@ def main():
     expression_df = pd.read_csv(output_name, sep="\t")
 
     # add the case ID to the expression dataframe
-    expression_df = addCaseIDtoExpressionDataframe(expression_df, loadSampleMetadata(metadata_location))
+    expression_df = addCaseIDtoExpressionDataframe(expression_df, loadSampleMetadata(expression_metadata_location))
 
     # overwrite the expression data file
     expression_df.to_csv(output_name, sep="\t", index=False)
