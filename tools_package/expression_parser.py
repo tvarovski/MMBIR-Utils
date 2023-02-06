@@ -24,7 +24,7 @@ def processSample(sample_path):
     expression_sample=pd.read_csv(sample_path, sep="\t", comment="#")
 
     # extract the gene expression data, transpose the data, and remove the first column
-    expression_transpose = expression_sample[["gene_name","tpm_unstranded"]].dropna().T
+    expression_transpose = expression_sample[["gene_id", "tpm_unstranded"]].dropna().T
     expression_transpose.columns = expression_transpose.iloc[0]
 
     # remove the first row (the header) to have gene names as the index
