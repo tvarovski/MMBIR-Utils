@@ -10,7 +10,7 @@ settings = {
     "exones_only": True,
     "MMBIR_THRESHOLD_LOW": 150,
     "MMBIR_THRESHOLD_HIGH": 250,
-    "consolidated_results_path": "consolidated_results.tsv",
+    "consolidated_results_path": "consolidated_results_KIRC.tsv",
     "outputs_path": "outputs",
     "outputs_path_raw": "outputs/raw",
     "outputs_path_filtered": "outputs/filtered",

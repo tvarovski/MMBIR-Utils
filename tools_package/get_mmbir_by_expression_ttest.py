@@ -49,7 +49,7 @@ print(f"high cases: {len_high}, low cases: {len_low}")
 # get the list of all columns (transcripts) in the expression dataframe
 expression_transcripts = expression_df.columns.values.tolist()[:-3]
 
-expression_transcripts=["MSH5"]
+#expression_transcripts=["MSH5"]
 
 expression_dict = {}
 for transcript in expression_transcripts:
@@ -58,13 +58,33 @@ for transcript in expression_transcripts:
     transcript_df = expression_df[[transcript, "high_mmbir"]].copy()
 
     # take the log2 of the transcript expression values and add 0.1 to avoid log2(0)
-    transcript_df[f"{transcript}_log2"] = transcript_df[transcript].apply(lambda x: numpy.lib.scimath.log2(x+0.1))
+    try:
+        #set transcript_df[transcript] column to float
+        transcript_df[transcript] = transcript_df[transcript].astype(float)
+        transcript_df[f"{transcript}_log2"] = transcript_df[transcript].apply(lambda x: numpy.lib.scimath.log2(x+0.1))
+    
+    except:
+        
+        #print column names
+        print(transcript_df.columns.values.tolist())
+
+        #if there are 2 of the same column name, drop the one whose values are all 0s or NaNs
+        if transcript_df.columns.values.tolist().count(transcript) > 1:
+            
+            print(f"dropping one of the columns of {transcript}")
+            transcript_df = transcript_df.loc[:,~transcript_df.columns.duplicated()]
+
+            transcript_df[transcript] = transcript_df[transcript].astype(float)
+            transcript_df[f"{transcript}_log2"] = transcript_df[transcript].apply(lambda x: numpy.lib.scimath.log2(x+0.1))
+        else:
+            print(f"couldn't drop a column. Skipping {transcript}")
+            continue
 
     # create violin plots for the transcript_df in seaborn
-    sns.violinplot(data=transcript_df, x="high_mmbir", y=transcript)
-    plt.show()
-    sns.swarmplot(data=transcript_df, x="high_mmbir", y=transcript)
-    plt.show()
+    #sns.violinplot(data=transcript_df, x="high_mmbir", y=transcript)
+    #plt.show()
+    #sns.swarmplot(data=transcript_df, x="high_mmbir", y=transcript)
+    #plt.show()
 
     # split the expression dataframe into high and low mmbir
     high_mmbir_transcript_df = transcript_df[transcript_df["high_mmbir"] == "high"]
