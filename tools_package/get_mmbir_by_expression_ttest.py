@@ -9,9 +9,15 @@ from tools import getCasesAboveMMBThreshold
 
 def performTTest(expression_df, df_sample_metadata, output_name, min_concentration=0):
 
+    #if there are multiple samples associated with a case_id, print a warning
+    if len(expression_df["case_id"].unique()) != len(expression_df["case_id"]):
+        print("WARNING: There are multiple samples associated with a case_id")
+
+        #print the case_ids that have multiple samples
+        print(expression_df["case_id"].value_counts() > 1)
+
     threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, MMBIR_THRESHOLD_HIGH, min_concentration=min_concentration)
     threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, MMBIR_THRESHOLD_LOW, below=True, min_concentration=min_concentration)
-
 
     # get the IDs of the cases that are high mmbir
     high_mmbir_cases=threshold_mmb_cases_high_df["Case_ID_"].values.tolist()
@@ -132,7 +138,11 @@ def addGeneNameColumnFromGeneID(expression_df, gene_id_column_name):
     #returns the expression dataframe with the gene name column added
 
     #apply the pyensembl function to the gene ID column
-    expression_df["gene_name"] = expression_df[gene_id_column_name].apply(lambda x: pyensembl.EnsemblRelease(104).gene_by_id(x).gene_name)
+    try:
+        expression_df["gene_name"] = expression_df[gene_id_column_name].apply(lambda x: pyensembl.EnsemblRelease(104).gene_name_of_gene_id(x.split(".")[0]).gene_name)
+    except:
+        print("couldn't find gene name for gene ID. Using gene ID instead")
+        expression_df["gene_name"] = expression_df[gene_id_column_name]
 
 
 if __name__ == "__main__":
