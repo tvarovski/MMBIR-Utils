@@ -39,7 +39,7 @@ def processSample(sample_path):
     return(expression_transpose)
 
 
-def createExpressionDataframe(expression_data_path):
+def createExpressionDataframe(expression_data_path, output_name):
     # create a new dataframe to store the expression data
     expression_df = pd.DataFrame()
 
@@ -60,6 +60,9 @@ def createExpressionDataframe(expression_data_path):
 
                     #concatenate the dataframes
                     expression_df = pd.concat([expression_df, sample_df], ignore_index=True)
+
+    # save the expression data
+    expression_df.to_csv(output_name, sep="\t", index=False)
 
     return(expression_df)
 
@@ -99,12 +102,15 @@ def addCaseIDtoExpressionDataframe(expression_df, expression_metadata):
 
 def main():
     # create the expression dataframe
-    expression_df = createExpressionDataframe(expression_data_path)
+    createExpressionDataframe(expression_data_path, output_name)
+
+    #read expression df from file
+    expression_df = pd.read_csv(output_name, sep="\t")
 
     # add the case ID to the expression dataframe
     expression_df = addCaseIDtoExpressionDataframe(expression_df, loadSampleMetadata(metadata_location))
 
-    # save the expression data
+    # overwrite the expression data file
     expression_df.to_csv(output_name, sep="\t", index=False)
 
 if __name__ == "__main__":
