@@ -3,6 +3,7 @@ import scipy
 import numpy
 import statsmodels.stats.multitest
 import cancer_config as cfg
+import pyensembl
 from tools import getCasesAboveMMBThreshold
 
 
@@ -120,6 +121,11 @@ def performTTest(expression_df, df_sample_metadata, min_concentration=0):
     # create a dataframe from the dictionary where the index is the transcript name and the columns are the results
     expression_df = pd.DataFrame.from_dict(expression_dict, orient="index")
 
+    #reset index, rename column
+    expression_df = expression_df.reset_index()
+    expression_df = expression_df.rename(columns={"index": "gene_id"})
+
+
     # sort the dataframe by the two-sample t-test, lowest p-value first, and output the results to a file
     expression_df = expression_df.sort_values(by="p-value")
     expression_df.to_csv(output_name, sep="\t")
@@ -141,10 +147,20 @@ def performBenjaminiHochbergCorrection(expression_df, output_name, *min_p_value)
     expression_df.to_csv(f"{output_name}.fdr_bh.tsv", sep="\t")
     return expression_df
 
+def addGeneNameColumnFromGeneID(expression_df, gene_id_column_name):
+    #add a gene name column to the expression dataframe by using pyensembl to look up the gene name from the gene ID
+    #gene_id_column_name is the name of the column in the expression dataframe that contains the gene ID
+    #returns the expression dataframe with the gene name column added
+
+    #apply the pyensembl function to the gene ID column
+    expression_df["gene_name"] = expression_df[gene_id_column_name].apply(lambda x: pyensembl.gene_name_of_gene_id(x))
+
+
 
 
 expression_df = performTTest(expression_df, df_sample_metadata, min_concentration=0)
 
 #read in the expression dataframe from file
 expression_df = pd.read_csv(output_name, sep="\t", index_col=0)
+expression_df = addGeneNameColumnFromGeneID(expression_df, "gene_id")
 expression_df = performBenjaminiHochbergCorrection(expression_df, output_name)
