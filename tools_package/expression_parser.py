@@ -80,15 +80,17 @@ def addCaseIDtoExpressionDataframe(expression_df, expression_metadata):
     # load expression metdata
     expression_metadata=loadSampleMetadata(metadata_location)
 
-    print(expression_df["sample_name"].head())
+    #create sample_name_file column with path removed from sample_name
+    expression_df["sample_name_file"] = expression_df["sample_name"].str.split("/").str[-1]
+    print(expression_df["sample_name_file"].head())
 
 
     # iterate through the sample_names in expression_df and add the caseID to the expression_df
-    for sample_name in expression_df["sample_name"]:
+    for sample_name_file in expression_df["sample_name_file"]:
+        #print(sample_name_file)
+        #print(expression_metadata[expression_metadata["file_name"]==sample_name_file]["case_id"].values[0])
 
-        #broken in the following line
-        expression_df.loc[expression_df["sample_name"] == sample_name, "case_id"] = expression_metadata[expression_metadata["file_name"] == sample_name.split("/")[-1]]["case_id"] #.values[0]
-
+        expression_df.loc[expression_df["sample_name_file"]==sample_name_file, "case_id"] = expression_metadata[expression_metadata["file_name"]==sample_name_file]["case_id"].values[0]
 
     # save the expression data
     print(expression_df.head())
