@@ -14,7 +14,27 @@ def performTTest(expression_df, df_sample_metadata, output_name, min_concentrati
         print("WARNING: There are multiple samples associated with a case_id")
 
         #print the case_ids that have multiple samples
-        print(expression_df["case_id"].value_counts() > 1)
+        df_multiple_samples = expression_df[expression_df["case_id"].value_counts() > 1]
+        print(f"There are {len(df_multiple_samples['case_id'].unique())} cases with multiple samples")
+
+        #ask the user if they want to keep only one sample per case_id
+        keep_one_sample = input("Do you want to keep only one sample per case_id? (y/n): ")
+
+        if keep_one_sample == "y":
+
+            print("Keeping only one sample per case_id")
+            # keep only one sample per case_id
+            expression_df = expression_df.drop_duplicates(subset="case_id", keep="first")
+
+            print(f"There are now {len(expression_df['case_id'].unique())} cases with one sample")
+            print(f"Following case_ids kept only the first record: {df_multiple_samples['case_id'].unique()}")
+        
+        else:
+
+            print("Keeping all samples")
+            #keep all samples
+            pass
+        
 
     threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, MMBIR_THRESHOLD_HIGH, min_concentration=min_concentration)
     threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, MMBIR_THRESHOLD_LOW, below=True, min_concentration=min_concentration)
@@ -122,6 +142,10 @@ def performBenjaminiHochbergCorrection(expression_df, output_name, *min_p_value)
     #perform a benjamini-hochberg correction on the p-values, and output the results to a file
     #if fold change is 1.0000000000000002, remove those transcripts
 
+    print(expression_df.columns)
+
+    print("Performing Benjamini-Hochberg correction on p-values...")
+
     expression_df = expression_df[expression_df["fold-change"] != 1.0000000000000002]
     expression_df["p-value"] = statsmodels.stats.multitest.multipletests(expression_df["p-value"], method="fdr_bh")[1]
 
@@ -129,7 +153,7 @@ def performBenjaminiHochbergCorrection(expression_df, output_name, *min_p_value)
         expression_df = expression_df[expression_df["p-value"] < min_p_value[0]]
 
     expression_df = expression_df.sort_values(by="p-value")
-    expression_df.to_csv(f"{output_name}.fdr_bh.tsv", sep="\t")
+    expression_df.to_csv(f"{output_name}", sep="\t")
     return expression_df
 
 def addGeneNameColumnFromGeneID(expression_df, gene_id_column_name):
@@ -161,14 +185,15 @@ if __name__ == "__main__":
     expression_df_path = f"expression_data_{cancer}.pickle"
     expression_df = pd.read_pickle(expression_df_path)
 
-    output_name_pickle = f"ttest_results_{cancer}.pickle"
-    min_concentration=0
 
-    expression_df = performTTest(expression_df, df_sample_metadata, output_name_pickle, min_concentration=0)
+    min_concentration=0
+    output_name = f"ttest_results_{cancer}_minconc{min_concentration}.tsv"
+
+    expression_df = performTTest(expression_df, df_sample_metadata, output_name, min_concentration=0)
 
     #read in the expression dataframe from file
-    expression_df = pd.read_csv(output_name_pickle, sep="\t", index_col=0)
+    expression_df = pd.read_csv(output_name, sep="\t", index_col=0)
     expression_df = addGeneNameColumnFromGeneID(expression_df, "gene_id")
 
-    output_name = f"ttest_results_{cancer}_conc{min_concentration}.tsv"
+    output_name = f"ttest_results_{cancer}_minconc{min_concentration}_bh_corrected.tsv"
     expression_df = performBenjaminiHochbergCorrection(expression_df, output_name)
