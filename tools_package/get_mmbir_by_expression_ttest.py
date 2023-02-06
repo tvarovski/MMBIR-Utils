@@ -1,13 +1,11 @@
 import pandas as pd
-import logging
 import scipy
-from scipy import stats
-import seaborn as sns
-import matplotlib.pyplot as plt
 import numpy
-from numpy.lib import scimath
+import statsmodels.stats.multitest
 import cancer_config as cfg
 from tools import getCasesAboveMMBThreshold
+
+
 
 cancer = cfg.settings["TCGA-PROJECT"]
 username = cfg.settings["username"]
@@ -24,8 +22,12 @@ expression_df_path = f"expression_data_{cancer}.pickle"
 expression_df = pd.read_pickle(expression_df_path)
 df_sample_metadata = pd.read_csv(metadata_location, sep="\t")
 
+output_name = f"ttest_results_{cancer}.pickle"
+
 
 min_concentration=0
+
+output_name = f"ttest_results_{cancer}_conc{min_concentration}.tsv"
 
 threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, MMBIR_THRESHOLD_HIGH, min_concentration=min_concentration)
 threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, MMBIR_THRESHOLD_LOW, below=True, min_concentration=min_concentration)
@@ -70,7 +72,7 @@ for transcript in expression_transcripts:
 
         #if there are 2 of the same column name, drop the one whose values are all 0s or NaNs
         if transcript_df.columns.values.tolist().count(transcript) > 1:
-            
+
             print(f"dropping one of the columns of {transcript}")
             transcript_df = transcript_df.loc[:,~transcript_df.columns.duplicated()]
 
@@ -115,12 +117,31 @@ for transcript in expression_transcripts:
 
 
 
-# sort the dictionary by the two-sample t-test and output the results to a list
+# create a dataframe from the dictionary where the index is the transcript name and the columns are the results
+expression_df = pd.DataFrame.from_dict(expression_dict, orient="index")
+
+# sort the dataframe by the two-sample t-test, lowest p-value first, and output the results to a file
+expression_df = expression_df.sort_values(by="p-value")
+expression_df.to_csv(output_name, sep="\t")
+
+
+
+'''# sort the dictionary by the two-sample t-test and output the results to a list
 sorted_expression_list = sorted(expression_dict.items(), key=lambda x: x[1]["p-value"])
 
 #save the results to a file
-with open("t_test_200_300_result_highconc.tsv", "w") as f:
+with open("output_name", "w") as f:
     f.write("Transcript\tt\tp-value\tfold-change\n")
     for transcript, result in sorted_expression_list:
-        f.write(f"{transcript}\t{result['t']}\t{result['p-value']}\t{result['fold-change']}\n")
+        f.write(f"{transcript}\t{result['t']}\t{result['p-value']}\t{result['fold-change']}\n")'''
 
+
+
+# get the list of transcripts that are significantly differentially expressed,
+#perform a benjamini-hochberg correction on the p-values, and output the results to a file
+
+#if fold change is 1.0000000000000002, remove those transcripts
+expression_df = expression_df[expression_df["fold-change"] != 1.0000000000000002]
+significant_transcripts = expression_df[expression_df["p-value"] < 0.05]
+significant_transcripts["p-value"] = statsmodels.stats.multitest.multipletests(significant_transcripts["p-value"], method="fdr_bh")[1]
+significant_transcripts.to_csv(f"{output_name}.fdr_bh.tsv", sep="\t")
