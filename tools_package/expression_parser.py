@@ -9,8 +9,8 @@ username = cfg.settings["username"]
 expression_data_path_root = cfg.settings["expression_data_path_root"]
 expression_data_path = f"{expression_data_path_root}/{username}/TCGA-{cancer}/expression"
 
-metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
-metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
+#metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
+#metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
 
 expression_metadata_file = f"TCGA-{cancer}-WXS-expression-metadata.tsv"
 expression_metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{expression_metadata_file}"
@@ -38,7 +38,7 @@ def processSample(sample_path):
     return(expression_transpose)
 
 
-def createExpressionDataframe(expression_data_path, output_name):
+def createExpressionDataframe(expression_data_path):
     # create a new dataframe to store the expression data
     expression_df = pd.DataFrame()
 
@@ -60,15 +60,12 @@ def createExpressionDataframe(expression_data_path, output_name):
                     #concatenate the dataframes
                     expression_df = pd.concat([expression_df, sample_df], ignore_index=True)
 
-    # save the expression data
-    expression_df.to_csv(output_name, sep="\t", index=False)
-
     return(expression_df)
 
 
-def loadSampleMetadata(sample_metadata_path):
+def loadSampleMetadata(expression_metadata_location):
     # read in the sample metadata
-    sample_metadata = pd.read_csv(sample_metadata_path, sep="\t")
+    sample_metadata = pd.read_csv(expression_metadata_location, sep="\t")
 
     # create a new column to store the case ID
     sample_metadata["case_id"] = sample_metadata["cases.0.case_id"]
@@ -77,10 +74,10 @@ def loadSampleMetadata(sample_metadata_path):
     return(sample_metadata)
 
 
-def addCaseIDtoExpressionDataframe(expression_df, expression_metadata):
+def addCaseIDtoExpressionDataframe(expression_df, expression_metadata_location):
 
     # load expression metdata
-    expression_metadata=loadSampleMetadata(metadata_location)
+    expression_metadata=loadSampleMetadata(expression_metadata_location)
 
     #create sample_name_file column with path removed from sample_name
     expression_df["sample_name_file"] = expression_df["sample_name"].str.split("/").str[-1]
@@ -111,10 +108,13 @@ def addCaseIDtoExpressionDataframe(expression_df, expression_metadata):
 
 def main():
     # create the expression dataframe
-    createExpressionDataframe(expression_data_path, output_name)
+    expression_df = createExpressionDataframe(expression_data_path, output_name)
+
+    # save the expression data, in parquet format
+    expression_df.to_parquet(f"{output_name}.parquet")
 
     #read expression df from file
-    expression_df = pd.read_csv(output_name, sep="\t")
+    expression_df = pd.read_parquet(f"{output_name}.parquet")
 
     # add the case ID to the expression dataframe
     expression_df = addCaseIDtoExpressionDataframe(expression_df, loadSampleMetadata(expression_metadata_location))
