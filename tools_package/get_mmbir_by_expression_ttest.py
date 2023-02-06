@@ -7,28 +7,7 @@ import pyensembl
 from tools import getCasesAboveMMBThreshold
 
 
-cancer = cfg.settings["TCGA-PROJECT"]
-username = cfg.settings["username"]
-
-metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
-metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
-
-MMBIR_THRESHOLD_LOW = cfg.settings["MMBIR_THRESHOLD_LOW"]
-MMBIR_THRESHOLD_HIGH = cfg.settings["MMBIR_THRESHOLD_HIGH"]
-
-consolidated_results_path = cfg.settings["consolidated_results_path"]
-expression_df_path = f"expression_data_{cancer}.pickle"
-
-expression_df = pd.read_pickle(expression_df_path)
-df_sample_metadata = pd.read_csv(metadata_location, sep="\t")
-
-output_name = f"ttest_results_{cancer}.pickle"
-
-
-min_concentration=0
-output_name = f"ttest_results_{cancer}_conc{min_concentration}.tsv"
-
-def performTTest(expression_df, df_sample_metadata, min_concentration=0):
+def performTTest(expression_df, df_sample_metadata, output_name, min_concentration=0):
 
     threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, MMBIR_THRESHOLD_HIGH, min_concentration=min_concentration)
     threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, MMBIR_THRESHOLD_LOW, below=True, min_concentration=min_concentration)
@@ -153,14 +132,33 @@ def addGeneNameColumnFromGeneID(expression_df, gene_id_column_name):
     #returns the expression dataframe with the gene name column added
 
     #apply the pyensembl function to the gene ID column
-    expression_df["gene_name"] = expression_df[gene_id_column_name].apply(lambda x: pyensembl.gene_name_of_gene_id(x))
+    expression_df["gene_name"] = expression_df[gene_id_column_name].apply(lambda x: pyensembl.EnsemblRelease(104).gene_by_id(x).gene_name)
 
 
+if __name__ == "__main__":
 
+    cancer = cfg.settings["TCGA-PROJECT"]
+    username = cfg.settings["username"]
 
-expression_df = performTTest(expression_df, df_sample_metadata, min_concentration=0)
+    metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
+    metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
+    df_sample_metadata = pd.read_csv(metadata_location, sep="\t")
 
-#read in the expression dataframe from file
-expression_df = pd.read_csv(output_name, sep="\t", index_col=0)
-expression_df = addGeneNameColumnFromGeneID(expression_df, "gene_id")
-expression_df = performBenjaminiHochbergCorrection(expression_df, output_name)
+    MMBIR_THRESHOLD_LOW = cfg.settings["MMBIR_THRESHOLD_LOW"]
+    MMBIR_THRESHOLD_HIGH = cfg.settings["MMBIR_THRESHOLD_HIGH"]
+
+    consolidated_results_path = cfg.settings["consolidated_results_path"]
+    expression_df_path = f"expression_data_{cancer}.pickle"
+    expression_df = pd.read_pickle(expression_df_path)
+
+    output_name_pickle = f"ttest_results_{cancer}.pickle"
+    min_concentration=0
+
+    expression_df = performTTest(expression_df, df_sample_metadata, output_name_pickle, min_concentration=0)
+
+    #read in the expression dataframe from file
+    expression_df = pd.read_csv(output_name_pickle, sep="\t", index_col=0)
+    expression_df = addGeneNameColumnFromGeneID(expression_df, "gene_id")
+
+    output_name = f"ttest_results_{cancer}_conc{min_concentration}.tsv"
+    expression_df = performBenjaminiHochbergCorrection(expression_df, output_name)
