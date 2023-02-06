@@ -84,16 +84,26 @@ def addCaseIDtoExpressionDataframe(expression_df, expression_metadata):
 
     #create sample_name_file column with path removed from sample_name
     expression_df["sample_name_file"] = expression_df["sample_name"].str.split("/").str[-1]
-    print(expression_df["sample_name_file"].head())
+    print("expression_df['sample_name_file']")
+    print(expression_df["sample_name_file"].head(10))
+
+    print("expression_metadata['file_name']")
+    print(expression_metadata["file_name"].head(10))
+
+    # add the case_id from expression_metadata to the expression_df by matching the file_name
+    # if the file_name is not found, the case_id will be NaN
+
+    expression_df["case_id"] = expression_df["sample_name_file"].map(expression_metadata.set_index("file_name")["case_id"])
 
 
-    # iterate through the sample_names in expression_df and add the caseID to the expression_df
+
+    '''# iterate through the sample_names in expression_df and add the caseID to the expression_df
     for sample_name_file in expression_df["sample_name_file"]:
         #print(sample_name_file)
         #print(expression_metadata[expression_metadata["file_name"]==sample_name_file]["case_id"].values[0])
 
         expression_df.loc[expression_df["sample_name_file"]==sample_name_file, "case_id"] = expression_metadata[expression_metadata["file_name"]==sample_name_file]["case_id"].values[0]
-
+'''
     # save the expression data
     print(expression_df.head())
     return expression_df
