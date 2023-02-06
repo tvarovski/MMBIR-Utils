@@ -425,8 +425,8 @@ def plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concen
     df_consolidated = df_consolidated[df_consolidated["age_at_collection"].notna()]
 
     #bin the samples into age bins
-    # bins are 0-20, 20-40, 40-50, 50-60, 60-70, 70+
-    df_consolidated["age_bin"] = pd.cut(df_consolidated["age_at_collection"], bins=[0,20,40,50,60,70,200], labels=["0-20", "20-40", "40-50", "50-60", "60-70", "70+"])
+    # bins are 0-20, 20-40, 40-50, 50-60, 60-70, 70-80, 80+
+    df_consolidated["age_bin"] = pd.cut(df_consolidated["age_at_collection"], bins=[0,20,40,50,60,70,80,200], labels=["0-20", "20-40", "40-50", "50-60", "60-70", "70-80", "80+"])
 
     #count how many samples of each age bin there are
     print("Age bin counts:")
@@ -439,8 +439,8 @@ def plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concen
     print(df_consolidated.groupby("age_bin").std()[count])
 
     #compare the mean of the early age bin to the mean of the late age bin statistically using a mann-whitney test
-    print(stats.mannwhitneyu(df_consolidated[df_consolidated["age_bin"]=="40-50"][count], df_consolidated[df_consolidated["age_bin"]=="70+"][count]))
-    print(stats.ttest_ind(df_consolidated[df_consolidated["age_bin"]=="40-50"][count], df_consolidated[df_consolidated["age_bin"]=="70+"][count]))
+    print(stats.mannwhitneyu(df_consolidated[df_consolidated["age_bin"]=="40-50"][count], df_consolidated[df_consolidated["age_bin"]=="80+"][count]))
+    print(stats.ttest_ind(df_consolidated[df_consolidated["age_bin"]=="40-50"][count], df_consolidated[df_consolidated["age_bin"]=="80+"][count]))
 
     #plot the bins as a series of violin plots where the x-axis is the age bin and the y-axis is the count
     sns.set_context("poster")
