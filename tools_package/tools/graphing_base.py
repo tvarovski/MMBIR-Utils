@@ -444,7 +444,7 @@ def plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concen
 
     #plot the bins as a series of violin plots where the x-axis is the age bin and the y-axis is the count
     sns.set_context("poster")
-    sns.violinplot(x="age_bin", y=count, data=df_consolidated, inner="quartile", scale="count")
+    sns.violinplot(x="age_bin", y=count, data=df_consolidated, inner="quartile", scale="count", gridsize=1000)
     plt.xlabel("Age at sample collection (years)")
     plt.ylabel(f"MMBIR {count}")
     plt.show()

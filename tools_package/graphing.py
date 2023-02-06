@@ -38,4 +38,4 @@ if __name__ == "__main__":
     plot_age_vs_count_correlation(df_consolidated, count="Filtered_Count", min_concentration=0.0, method="spearman")
     
     plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concentration=0.0)
-    plot_age_vs_count_binned(df_consolidated, count="Raw_count", min_concentration=0.0)
+    plot_age_vs_count_binned(df_consolidated, count="Raw_Count", min_concentration=0.0)
