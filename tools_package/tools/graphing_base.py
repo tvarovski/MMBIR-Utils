@@ -377,7 +377,7 @@ def plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtere
     plt.ylabel("Frequency")
     plt.show()
 
-def plot_count_vs_age_correlation(df_consolidated, count="Filtered_Count", min_concentration=0.5, method="spearman"):
+def plot_age_vs_count_correlation(df_consolidated, count="Filtered_Count", min_concentration=0.5, method="spearman"):
     '''function plot_count_vs_age_correlation() plots the MMBIR count vs the age at collection.
     The plot shows the MMBIR count on the y-axis and the age at collection on the x-axis.'''
 
@@ -414,3 +414,36 @@ def plot_count_vs_age_correlation(df_consolidated, count="Filtered_Count", min_c
         plt.ylabel(f"MMBIR {count}")
 
         plt.show()
+
+def plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concentration=0.5):
+    '''function plot_count_vs_age_binned() plots the MMBIR count vs the age at collection.
+    The plot shows the MMBIR count on the y-axis and the age at collection on the x-axis.'''
+
+    df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
+
+    #if age at collection is not available, remove the sample
+    df_consolidated = df_consolidated[df_consolidated["age_at_collection"].notna()]
+
+    #bin the samples into age bins
+    # bins are 0-20, 20-40, 40-50, 50-60, 60-70, 70+
+    df_consolidated["age_bin"] = pd.cut(df_consolidated["age_at_collection"], bins=[0,20,40,50,60,70,200], labels=["0-20", "20-40", "40-50", "50-60", "60-70", "70+"])
+
+    #count how many samples of each age bin there are
+    print("Age bin counts:")
+    print(df_consolidated["age_bin"].value_counts())
+
+    #show mean median and standard deviation for each age bin
+    print("Mean, median and standard deviation for each age bin:")
+    print(df_consolidated.groupby("age_bin").mean()[count])
+    print(df_consolidated.groupby("age_bin").median()[count])
+    print(df_consolidated.groupby("age_bin").std()[count])
+
+    #compare the mean of the early age bin to the mean of the late age bin statistically using a mann-whitney test
+    print(stats.mannwhitneyu(df_consolidated[df_consolidated["age_bin"]=="0-20"][count], df_consolidated[df_consolidated["age_bin"]=="60+"][count]))
+    print(stats.ttest_ind(df_consolidated[df_consolidated["age_bin"]=="0-20"][count], df_consolidated[df_consolidated["age_bin"]=="60+"][count]))
+
+    sns.set_context("poster")
+    sns.histplot(data=df_consolidated, x=count, bins=100, hue="age_bin", kde=True)
+    plt.xlabel("Raw MMBIR Signature Count")
+    plt.ylabel("Frequency")
+    plt.show()
