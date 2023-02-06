@@ -14,7 +14,7 @@ def performTTest(expression_df, df_sample_metadata, output_name, min_concentrati
         print("WARNING: There are multiple samples associated with a case_id")
 
         #print the case_ids that have multiple samples
-        df_multiple_samples = expression_df[expression_df["case_id"].value_counts() > 1]
+        df_multiple_samples = expression_df[expression_df.duplicated(subset="case_id", keep=False)]
         print(f"There are {len(df_multiple_samples['case_id'].unique())} cases with multiple samples")
 
         #ask the user if they want to keep only one sample per case_id
@@ -24,7 +24,7 @@ def performTTest(expression_df, df_sample_metadata, output_name, min_concentrati
 
             print("Keeping only one sample per case_id")
             # keep only one sample per case_id
-            expression_df = expression_df.drop_duplicates(subset="case_id", keep="first")
+            expression_df = expression_df.drop_duplicates(subset="case_id", keep="first").copy()
 
             print(f"There are now {len(expression_df['case_id'].unique())} cases with one sample")
             print(f"Following case_ids kept only the first record: {df_multiple_samples['case_id'].unique()}")
@@ -45,7 +45,7 @@ def performTTest(expression_df, df_sample_metadata, output_name, min_concentrati
 
 
     # Mark the cases that are above the MMBIR threshold as high in the expression dataframe
-    expression_df["high_mmbir"]="none"
+    expression_df["high_mmbir"] = "none"
     expression_df.loc[expression_df["case_id"].isin(high_mmbir_cases), "high_mmbir"]="high"
     expression_df.loc[expression_df["case_id"].isin(low_mmbir_cases), "high_mmbir"]="low"
 
@@ -142,7 +142,8 @@ def performBenjaminiHochbergCorrection(expression_df, output_name, *min_p_value)
     #perform a benjamini-hochberg correction on the p-values, and output the results to a file
     #if fold change is 1.0000000000000002, remove those transcripts
 
-    print(expression_df.columns)
+    #show column names
+    print(expression_df.columns.values.tolist())
 
     print("Performing Benjamini-Hochberg correction on p-values...")
 
@@ -153,8 +154,18 @@ def performBenjaminiHochbergCorrection(expression_df, output_name, *min_p_value)
         expression_df = expression_df[expression_df["p-value"] < min_p_value[0]]
 
     expression_df = expression_df.sort_values(by="p-value")
-    expression_df.to_csv(f"{output_name}", sep="\t")
+    expression_df.to_csv(f"{output_name}", sep="\t", index=False)
     return expression_df
+
+def lambdaEnsemblLookup(gene_id, release=104):
+    #look up the gene name from the gene ID using pyensembl
+    #if the gene ID is not in the database, use the gene ID instead
+    try:
+        gene_name = pyensembl.EnsemblRelease(release).gene_by_id(gene_id).gene_name
+    except Exception as e:
+        print(f"couldn't find {gene_id} in the database. Using the gene ID instead.")
+        gene_name = gene_id
+    return gene_name
 
 def addGeneNameColumnFromGeneID(expression_df, gene_id_column_name):
     #add a gene name column to the expression dataframe by using pyensembl to look up the gene name from the gene ID
@@ -163,10 +174,16 @@ def addGeneNameColumnFromGeneID(expression_df, gene_id_column_name):
 
     #apply the pyensembl function to the gene ID column
     try:
-        expression_df["gene_name"] = expression_df[gene_id_column_name].apply(lambda x: pyensembl.EnsemblRelease(104).gene_name_of_gene_id(x.split(".")[0]).gene_name)
-    except:
+        #if the gene ID is in the format ENSG00000157764.13, split it on the period and take the first part
+        #if the geneID is not in the database, use the gene ID instead
+        expression_df["gene_name"] = expression_df[gene_id_column_name].apply(lambda x: x.split(".")[0])
+        expression_df["gene_name"] = expression_df["gene_name"].apply(lambda x: lambdaEnsemblLookup(x))
+    except Exception as e:
+        print(e)
         print("couldn't find gene name for gene ID. Using gene ID instead")
         expression_df["gene_name"] = expression_df[gene_id_column_name]
+    
+    return expression_df
 
 
 if __name__ == "__main__":
@@ -192,7 +209,7 @@ if __name__ == "__main__":
     expression_df = performTTest(expression_df, df_sample_metadata, output_name, min_concentration=0)
 
     #read in the expression dataframe from file
-    expression_df = pd.read_csv(output_name, sep="\t", index_col=0)
+    expression_df = pd.read_csv(output_name, sep="\t")
     expression_df = addGeneNameColumnFromGeneID(expression_df, "gene_id")
 
     output_name = f"ttest_results_{cancer}_minconc{min_concentration}_bh_corrected.tsv"
