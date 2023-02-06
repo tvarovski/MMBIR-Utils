@@ -15,7 +15,7 @@ expression_data_path = f"{expression_data_path_root}/{username}/TCGA-{cancer}/ex
 expression_metadata_file = f"TCGA-{cancer}-WXS-expression-metadata.tsv"
 expression_metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{expression_metadata_file}"
 
-output_name = f"expression_data_{cancer}.tsv"
+output_name = f"expression_data_{cancer}.pickle"
 
 # this function is used to extract the expressoion data from the file specified by the path
 def processSample(sample_path):
@@ -64,6 +64,7 @@ def createExpressionDataframe(expression_data_path):
 
 
 def loadSampleMetadata(expression_metadata_location):
+
     # read in the sample metadata
     sample_metadata = pd.read_csv(expression_metadata_location, sep="\t")
 
@@ -77,7 +78,7 @@ def loadSampleMetadata(expression_metadata_location):
 def addCaseIDtoExpressionDataframe(expression_df, expression_metadata_location):
 
     # load expression metdata
-    expression_metadata=loadSampleMetadata(expression_metadata_location)
+    expression_metadata = loadSampleMetadata(expression_metadata_location)
 
     #create sample_name_file column with path removed from sample_name
     expression_df["sample_name_file"] = expression_df["sample_name"].str.split("/").str[-1]
@@ -89,18 +90,8 @@ def addCaseIDtoExpressionDataframe(expression_df, expression_metadata_location):
 
     # add the case_id from expression_metadata to the expression_df by matching the file_name
     # if the file_name is not found, the case_id will be NaN
-
     expression_df["case_id"] = expression_df["sample_name_file"].map(expression_metadata.set_index("file_name")["case_id"])
 
-
-
-    '''# iterate through the sample_names in expression_df and add the caseID to the expression_df
-    for sample_name_file in expression_df["sample_name_file"]:
-        #print(sample_name_file)
-        #print(expression_metadata[expression_metadata["file_name"]==sample_name_file]["case_id"].values[0])
-
-        expression_df.loc[expression_df["sample_name_file"]==sample_name_file, "case_id"] = expression_metadata[expression_metadata["file_name"]==sample_name_file]["case_id"].values[0]
-'''
     # save the expression data
     print(expression_df.head())
     return expression_df
@@ -108,22 +99,20 @@ def addCaseIDtoExpressionDataframe(expression_df, expression_metadata_location):
 
 def main():
     # create the expression dataframe
-    expression_df = createExpressionDataframe(expression_data_path, output_name)
+    expression_df = createExpressionDataframe(expression_data_path)
 
-    # save the expression data, in parquet format
-    expression_df.to_parquet(f"{output_name}.parquet")
+    # save the expression data, in pickle format
+    expression_df.to_pickle(f"{output_name}")
 
     #read expression df from file
-    expression_df = pd.read_parquet(f"{output_name}.parquet")
+    expression_df = pd.read_pickle(f"{output_name}")
 
     # add the case ID to the expression dataframe
-    expression_df = addCaseIDtoExpressionDataframe(expression_df, loadSampleMetadata(expression_metadata_location))
+    expression_df = addCaseIDtoExpressionDataframe(expression_df, expression_metadata_location)
 
     # overwrite the expression data file
-    expression_df.to_csv(output_name, sep="\t", index=False)
+    expression_df.to_pickle(f"{output_name}")
 
 if __name__ == "__main__":
     main()
-
-
 
