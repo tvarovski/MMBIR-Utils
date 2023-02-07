@@ -7,6 +7,7 @@ def graphing(params):
     cancer = params["cancer"]
     metadata_location = params["metadata_location"]
     min_concentration = params["min_concentration"]
+    staging = params["staging"]
 
     #load the consolidated results file, in future try migrating away from it to rely solely on mmbir_master_tables...
     df_consolidated=pd.read_csv(f"consolidated_results_{cancer}.tsv", sep="\t")
@@ -26,12 +27,13 @@ def graphing(params):
 
     filterset=["Primary Tumor"] #"Blood Derived Normal", "Primary Tumor"
 
-    #staging='ajcc' or 'figo', adjust='early_late' or 'early_middle_late'
+    #staging='ajcc'/'figo'/'tumor_grade', adjust='early_late' or 'early_middle_late'
     plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Filtered_Count", min_concentration=min_concentration, adjust_staging='early_late')
     plot_stage_vs_concentration(df_consolidated, filterset, staging='ajcc', x_count="Filtered_Count", min_concentration=min_concentration, adjust_staging='early_late')
 
-    plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=min_concentration)
-    plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=min_concentration)
+    if staging == 'ajcc':
+        plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=min_concentration)
+        plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=min_concentration)
 
     plot_age_vs_count_correlation(df_consolidated, count="Filtered_Count", min_concentration=min_concentration, method="spearman")
     
@@ -50,7 +52,8 @@ if __name__ == "__main__":
     params = {
         "cancer": cancer,
         "metadata_location": metadata_location,
-        "min_concentration": 0
+        "min_concentration": 0,
+        "staging": "ajcc"
     }
 
     graphing(params)
