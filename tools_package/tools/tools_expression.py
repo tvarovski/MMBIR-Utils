@@ -2,7 +2,7 @@ import pandas as pd
 import scipy
 import numpy
 import pyensembl
-from tools import count_calls, getCasesAboveMMBThreshold, time_elapsed, fancy_status
+from tools import count_calls, time_elapsed, fancy_status, getCasesAboveMMBThreshold
 import statsmodels.stats.multitest as smm
 
 def performExpressionTTest(expression_df, df_sample_metadata, output_name, consolidated_results_path, MMBIR_THRESHOLD_LOW, MMBIR_THRESHOLD_HIGH, min_concentration=0):

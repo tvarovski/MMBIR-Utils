@@ -1,14 +1,7 @@
 import pandas as pd
 import sys
 import cancer_config as cfg
-from tools import (groupCases, 
-                   parseOutputs,
-                   masked_snv_mv, 
-                   createFullCancerTable, 
-                   findCosmicGenes, 
-                   performDiffExprAnalysis, 
-                   getMissingBams,
-                   )
+
 
 ###DESCRIPTION###
 
@@ -62,18 +55,24 @@ metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
 df_metadata = pd.read_csv(metadata_location, sep="\t")
 
 if command == "groupCases":
-    
+
+    from tools import groupCases
     groupCases(df_metadata)
 
 elif command == "parseOutputs":
+
+    from tools import parseOutputs
     parseOutputs(df_metadata, consolidated_results_name="consolidated_results.tsv")
 
 elif command == "masked_snv_mv":
+
+    from tools import masked_snv_mv
     #need to add a sys.argv[2] for the snvs_loc
     masked_snv_mv(df_metadata, snvs_loc="")
 
 elif command == "createFullCancerTable":
 
+    from tools import createFullCancerTable
     manifest_file = f"TCGA-{cancer}-WXS-BAM-manifest.tsv"
 
     params={
@@ -89,6 +88,7 @@ elif command == "createFullCancerTable":
 
 elif command == "findCosmicGenes":
 
+    from tools import findCosmicGenes
     census_dir = cfg.settings['cosmicdb_dir']
     mmb_df_input_path = sys.argv[2]
 
@@ -103,7 +103,8 @@ elif command == "findCosmicGenes":
     findCosmicGenes(mmb_df_input_path, filter_dict, census_dir)
 
 elif command == "performDiffExprAnalysis":
-        
+
+    from tools import performDiffExprAnalysis
     params = {
         "cancer": cancer,
         "df_metadata": df_metadata,
@@ -117,6 +118,8 @@ elif command == "performDiffExprAnalysis":
     performDiffExprAnalysis(params)
     
 elif command == "getMissingBams":
+
+    from tools import getMissingBams
     manifest_file = f"TCGA-{cancer}-WXS-BAM-manifest.tsv"
     manifest_location = f"/Users/{username}/MMBIR_Databases/TCGA/{manifest_file}"
     missing_manifest_output_name = f"missing_bams_{cancer}_manifest.tsv"
