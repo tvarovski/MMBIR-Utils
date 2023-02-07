@@ -124,14 +124,14 @@ def performExpressionTTest(expression_df, df_sample_metadata, output_name, conso
     # create a dataframe from the dictionary where the index is the transcript name and the columns are the results
     expression_df = pd.DataFrame.from_dict(expression_dict, orient="index")
 
-    #reset index, rename column
+    #remove index, rename column
     expression_df = expression_df.reset_index()
     expression_df = expression_df.rename(columns={"index": "gene_id"})
 
 
     # sort the dataframe by the two-sample t-test, lowest p-value first, and output the results to a file
     expression_df = expression_df.sort_values(by="p-value")
-    expression_df.to_csv(output_name, sep="\t")
+    expression_df.to_csv(output_name, sep="\t", index=False)
     return expression_df
 
 @count_calls
@@ -195,7 +195,6 @@ def performDiffExprAnalysis(params):
 
     #read in the expression dataframe from file
     expression_df = pd.read_pickle(expression_df_path)
-
     output_name = f"ttest_results_{cancer}_minconc{min_concentration}.tsv"
     expression_df = performExpressionTTest(expression_df, df_metadata, output_name, consolidated_results_path, MMBIR_THRESHOLD_LOW, MMBIR_THRESHOLD_HIGH, min_concentration=0)
 
