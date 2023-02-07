@@ -1,6 +1,9 @@
 import os
 import pandas as pd
+from tools import time_elapsed, fancy_status
 
+@fancy_status
+@time_elapsed
 def groupCases(df_metadata):
     # this function groups the samples by case ID
     # and moves them to a folder with the case ID name
@@ -53,6 +56,8 @@ def groupCases(df_metadata):
                 except:
                     print("directory exist, couldn't move it")
 
+@fancy_status
+@time_elapsed
 def parseOutputs(df_metadata, consolidated_results_name="consolidated_results.tsv"):
 
   df_metadata = df_metadata.sort_values(by=["cases.0.case_id"])
@@ -120,7 +125,9 @@ def parseOutputs(df_metadata, consolidated_results_name="consolidated_results.ts
 
   print(output_df)
   output_df.to_csv(consolidated_results_name, sep="\t", index=False)
-  
+
+@fancy_status
+@time_elapsed
 def masked_snv_mv(df_metadata, snvs_loc=""):
 
   output = os.system(f"ls -d1 *-*-*-*-* > cases.txt")
@@ -310,6 +317,8 @@ def create_missing_bams_manifest(missing_files, manifest_location, df_metadata, 
         df_out.to_csv(missing_manifest_output_name, sep="\t", index=False)
         return(df_out)
 
+@fancy_status
+@time_elapsed
 def getMissingBams(df_metadata, manifest_location, missing_manifest_output_name):
     #check if all the bam files are present
     missing_files = check_for_missing_bams(df_metadata)
@@ -317,6 +326,8 @@ def getMissingBams(df_metadata, manifest_location, missing_manifest_output_name)
     df_missing_bams = create_missing_bams_manifest(missing_files, manifest_location, df_metadata, missing_manifest_output_name)
     return df_missing_bams
 
+@fancy_status
+@fancy_status
 def create_mmbir_results_master_df(df_metadata, filtered=False, log=False):
     # create a master dataframe for raw mmbir results
 
@@ -393,6 +404,8 @@ def extractAffectedGeneNames(maf_path):
         logging.info(f"Couldn't parse the MAF file: {maf_path}")
         return None
 
+@fancy_status
+@time_elapsed
 def createFullCancerTable(params):
     #if not working, uncomment the os library lines
 
@@ -495,6 +508,8 @@ def df_filter(df, filter_dict):
     return filtered_df
 
 #Used by findCosmicGenes
+@fancy_status
+@time_elapsed
 def findCosmicGenes(mmb_df_input_path, filter_dict, census_dir):
 
     #Filter of MMB Calls

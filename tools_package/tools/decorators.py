@@ -16,3 +16,36 @@ def count_calls(func):
     wrapper.num_calls = 0
 
     return wrapper
+
+def time_elapsed(func):
+    import time
+    # decorator that times the elapsed time of a function
+    
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+
+        #start the timer
+        start = time.time()
+        #call the function
+        result = func(*args, **kwargs)
+        #stop the timer
+        end = time.time()
+        #calculate the elapsed time
+        elapsed = end - start
+        #print the elapsed time rounded to 2 decimal places
+        print(f"{func.__name__} took {elapsed:.2f} seconds to run...")
+        return result
+    
+    return wrapper
+
+def fancy_status(func):
+    # decorator that prints a fancy message when a function is called
+    
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        print(f"{'*'*5}Calling {func.__name__}...{'*'*5}\n")
+        result = func(*args, **kwargs)
+        print(f"\n{'*'*5}Done with {func.__name__}!{'*'*5}")
+        return result
+    
+    return wrapper

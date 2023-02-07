@@ -2,7 +2,7 @@ import pandas as pd
 import scipy
 import numpy
 import pyensembl
-from tools import count_calls, getCasesAboveMMBThreshold
+from tools import count_calls, getCasesAboveMMBThreshold, time_elapsed, fancy_status
 import statsmodels.stats.multitest as smm
 
 def performExpressionTTest(expression_df, df_sample_metadata, output_name, consolidated_results_path, MMBIR_THRESHOLD_LOW, MMBIR_THRESHOLD_HIGH, min_concentration=0):
@@ -145,6 +145,7 @@ def lambdaEnsemblLookup(gene_id, release=104):
         gene_name = gene_id
     return gene_name
 
+@fancy_status
 def addGeneNameColumnFromGeneID(expression_df, gene_id_column_name):
     #add a gene name column to the expression dataframe by using pyensembl to look up the gene name from the gene ID
     #gene_id_column_name is the name of the column in the expression dataframe that contains the gene ID
@@ -183,6 +184,8 @@ def performBenjaminiHochbergCorrection(expression_df, output_name, *min_p_value)
     expression_df.to_csv(f"{output_name}", sep="\t", index=False)
     return expression_df
 
+@fancy_status
+@time_elapsed
 def performDiffExprAnalysis(params):
 
     cancer = params["cancer"]

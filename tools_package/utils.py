@@ -1,8 +1,14 @@
 import pandas as pd
 import sys
 import cancer_config as cfg
-from tools import groupCases, parseOutputs, masked_snv_mv, createFullCancerTable, findCosmicGenes, performDiffExprAnalysis, getMissingBams
-
+from tools import (groupCases, 
+                   parseOutputs,
+                   masked_snv_mv, 
+                   createFullCancerTable, 
+                   findCosmicGenes, 
+                   performDiffExprAnalysis, 
+                   getMissingBams,
+                   )
 
 ###DESCRIPTION###
 
@@ -36,6 +42,12 @@ Currently available KEYWORDs:
         #filteres out and prints out genes in the Cosmic_DB that
         #are present in the specified DF path (sys.argv[2])
 
+  - performDiffExprAnalysis
+        # performs differential expression analysis
+
+  - getMissingBams
+        # creates a manifest file with missing bam_files if any are missing
+
 '''
 
 
@@ -50,6 +62,7 @@ metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
 df_metadata = pd.read_csv(metadata_location, sep="\t")
 
 if command == "groupCases":
+    
     groupCases(df_metadata)
 
 elif command == "parseOutputs":
