@@ -33,7 +33,7 @@ def time_elapsed(func):
         #calculate the elapsed time
         elapsed = end - start
         #print the elapsed time rounded to 2 decimal places
-        print(f"{func.__name__} took {elapsed:.2f} seconds to run...")
+        print(f"\n{func.__name__} took {elapsed:.2f} seconds to run...")
         return result
     
     return wrapper
@@ -43,7 +43,7 @@ def fancy_status(func):
     
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        print(f"{'*'*5}Calling {func.__name__}...{'*'*5}\n")
+        print(f"\n{'*'*5}Calling {func.__name__}...{'*'*5}\n")
         result = func(*args, **kwargs)
         print(f"\n{'*'*5}Done with {func.__name__}!{'*'*5}")
         return result
