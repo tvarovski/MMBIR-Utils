@@ -269,7 +269,7 @@ def check_for_missing_bams(df_metadata):
             case_bam_files = get_case_bam_files(case_id, df_metadata)
             #check if the bam files are in the directory
             for bam_file in case_bam_files:
-                if bam_file.strip(".bam") not in dir_list:
+                if os.path.spltext(bam_file)[0] not in dir_list:
                     print(f"WARNING: The bam file: {bam_file} does not exist in: {case_dir}")
                     missing_bams.append(bam_file)
                 else:
