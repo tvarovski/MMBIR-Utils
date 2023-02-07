@@ -1,7 +1,7 @@
 import pandas as pd
 import sys
 import cancer_config as cfg
-from tools import groupCases, parseOutputs, masked_snv_mv, createFullCancerTable, findCosmicGenes, performDiffExprAnalysis
+from tools import groupCases, parseOutputs, masked_snv_mv, createFullCancerTable, findCosmicGenes, performDiffExprAnalysis, getMissingBams
 
 
 ###DESCRIPTION###
@@ -103,6 +103,12 @@ elif command == "performDiffExprAnalysis":
 
     performDiffExprAnalysis(params)
     
+elif command == "getMissingBams":
+    manifest_file = f"TCGA-{cancer}-WXS-BAM-manifest.tsv"
+    manifest_location = f"/Users/{username}/MMBIR_Databases/TCGA/{manifest_file}"
+    missing_manifest_output_name = f"missing_bams_{cancer}_manifest.tsv"
+
+    getMissingBams(df_metadata, manifest_location, missing_manifest_output_name)
 
 else:
     print(f"{command} is not a recognized option")

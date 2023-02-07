@@ -254,7 +254,7 @@ def check_for_missing_bams(df_metadata):
     for case_id in cases_list:
         #get current directory
         current_dir = os.getcwd()
-        case_dir = f"{current_dir}/{case_id}"
+        case_dir = f"{current_dir.strip()}/{case_id.strip()}"
         if not os.path.exists(case_dir):
             print(f"WARNING: The directory: {case_dir} does not exist")
             missing_cases.append(case_dir)
@@ -309,6 +309,13 @@ def create_missing_bams_manifest(missing_files, manifest_location, df_metadata, 
         #save the df_out to the new output_file
         df_out.to_csv(missing_manifest_output_name, sep="\t", index=False)
         return(df_out)
+
+def getMissingBams(df_metadata, manifest_location, missing_manifest_output_name):
+    #check if all the bam files are present
+    missing_files = check_for_missing_bams(df_metadata)
+    #create a manifest file for the missing bams
+    df_missing_bams = create_missing_bams_manifest(missing_files, manifest_location, df_metadata, missing_manifest_output_name)
+    return df_missing_bams
 
 def create_mmbir_results_master_df(df_metadata, filtered=False, log=False):
     # create a master dataframe for raw mmbir results
@@ -503,3 +510,4 @@ def findCosmicGenes(mmb_df_input_path, filter_dict, census_dir):
 
     df_census = pd.read_csv(census_dir, sep='\t')
     getCancerGeneNamesMMB(gene_list_final, df_census)
+
