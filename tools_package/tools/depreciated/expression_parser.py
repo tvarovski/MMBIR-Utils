@@ -1,5 +1,3 @@
-import pandas as pd
-import os
 import cancer_config as cfg
 from tools import expressionParser
 
@@ -12,9 +10,6 @@ if __name__ == "__main__":
 
     expression_data_path_root = cfg.settings["expression_data_path_root"]
     expression_data_path = f"{expression_data_path_root}/{username}/TCGA-{cancer}/expression"
-
-    #metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
-    #metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
 
     expression_metadata_file = f"TCGA-{cancer}-WXS-expression-metadata.tsv"
     expression_metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{expression_metadata_file}"
