@@ -138,16 +138,16 @@ def performTTest(expression_df, df_sample_metadata, output_name, min_concentrati
 
 
 def performBenjaminiHochbergCorrection(expression_df, output_name, *min_p_value):
-    # get the list of transcripts that are significantly differentially expressed,
-    #perform a benjamini-hochberg correction on the p-values, and output the results to a file
-    #if fold change is 1.0000000000000002, remove those transcripts
 
     #show column names
     print(expression_df.columns.values.tolist())
 
     print("Performing Benjamini-Hochberg correction on p-values...")
 
-    expression_df = expression_df[expression_df["fold-change"] != 1.0000000000000002]
+    #if fold change is 1.0, remove those transcripts
+    expression_df = expression_df[expression_df["fold-change"] != 1.0]
+
+    #perform a benjamini-hochberg correction on the p-values, and output the results to a file
     expression_df["p-value"] = statsmodels.stats.multitest.multipletests(expression_df["p-value"], method="fdr_bh")[1]
 
     if min_p_value:
@@ -157,6 +157,23 @@ def performBenjaminiHochbergCorrection(expression_df, output_name, *min_p_value)
     expression_df.to_csv(f"{output_name}", sep="\t", index=False)
     return expression_df
 
+#create a function that is a decorator that counts the number of times a function is called
+def count_calls(func):
+
+    #create a wrapper function that counts the number of times the function is called
+    def wrapper(*args, **kwargs):
+        wrapper.num_calls += 1
+        #print out the number of times the function has been called every 1000 times
+        if wrapper.num_calls % 1000 == 0:
+            print(f"{wrapper.num_calls} calls to {func.__name__}")
+        return func(*args, **kwargs)
+    
+    #initialize the number of calls to 0
+    wrapper.num_calls = 0
+
+    return wrapper
+
+@count_calls
 def lambdaEnsemblLookup(gene_id, release=104):
     #look up the gene name from the gene ID using pyensembl
     #if the gene ID is not in the database, use the gene ID instead
