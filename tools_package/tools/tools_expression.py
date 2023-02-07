@@ -5,6 +5,7 @@ import pyensembl
 from tools import count_calls, time_elapsed, fancy_status, getCasesAboveMMBThreshold
 import statsmodels.stats.multitest as smm
 
+#used by performDiffExprAnalysis
 def performExpressionTTest(expression_df, df_sample_metadata, output_name, consolidated_results_path, MMBIR_THRESHOLD_LOW, MMBIR_THRESHOLD_HIGH, min_concentration=0):
 
     #if there are multiple samples associated with a case_id, print a warning
@@ -134,6 +135,7 @@ def performExpressionTTest(expression_df, df_sample_metadata, output_name, conso
     expression_df.to_csv(output_name, sep="\t", index=False)
     return expression_df
 
+#used by performDiffExprAnalysis
 @count_calls
 def lambdaEnsemblLookup(gene_id, release=104):
     #look up the gene name from the gene ID using pyensembl
@@ -145,6 +147,7 @@ def lambdaEnsemblLookup(gene_id, release=104):
         gene_name = gene_id
     return gene_name
 
+#used by performDiffExprAnalysis
 @fancy_status
 def addGeneNameColumnFromGeneID(expression_df, gene_id_column_name):
     #add a gene name column to the expression dataframe by using pyensembl to look up the gene name from the gene ID
@@ -164,6 +167,7 @@ def addGeneNameColumnFromGeneID(expression_df, gene_id_column_name):
     
     return expression_df
 
+#used by performDiffExprAnalysis
 def performBenjaminiHochbergCorrection(expression_df, output_name, *min_p_value):
 
     #show column names
@@ -184,6 +188,7 @@ def performBenjaminiHochbergCorrection(expression_df, output_name, *min_p_value)
     expression_df.to_csv(f"{output_name}", sep="\t", index=False)
     return expression_df
 
+#used by performDiffExprAnalysis
 @fancy_status
 @time_elapsed
 def performDiffExprAnalysis(params):
@@ -207,3 +212,112 @@ def performDiffExprAnalysis(params):
 
     output_name = f"ttest_results_{cancer}_minconc{min_concentration}_bh_corrected.tsv"
     expression_df = performBenjaminiHochbergCorrection(expression_df, output_name)
+
+#used by expressionParser
+def processSample(sample_path):
+    # this function is used to extract the expressoion data from the file specified by the path
+
+    # read in the sample file
+    expression_sample=pd.read_csv(sample_path, sep="\t", comment="#")
+
+    # extract the gene expression data, transpose the data, and remove the first column
+    expression_transpose = expression_sample[["gene_id", "tpm_unstranded"]].dropna().T
+    expression_transpose.columns = expression_transpose.iloc[0]
+
+    # remove the first row (the header) to have gene names as the index
+    expression_transpose.drop(expression_transpose.index[0], inplace=True)
+
+    # add the sample name to the dataframe as a new column and reset the index
+    expression_transpose["sample_name"] = sample_path
+    expression_transpose.reset_index(drop=True, inplace=True)
+
+    # return the dataframe
+    return(expression_transpose)
+
+#used by expressionParser
+@time_elapsed
+def createExpressionDataframe(expression_data_path):
+    import os
+
+    # create a new dataframe to store the expression data
+    expression_df = pd.DataFrame()
+
+    # find all the sample files in the specified directory
+    expression_data = os.listdir(expression_data_path)
+
+
+    # loop through the sample files, extract the expression data, and append to the dataframe
+    for sample in expression_data:
+        sample_path = os.path.join(expression_data_path, sample)
+        if os.path.isdir(sample_path):
+            sample_files=os.listdir(sample_path)
+            for sample_file in sample_files:
+
+                # check if the file is a tsv file, and if it is, add it to the dataframe
+                if sample_file.endswith(".tsv"):
+                    sample_df = processSample(os.path.join(sample_path, sample_file))
+
+                    #concatenate the dataframes
+                    expression_df = pd.concat([expression_df, sample_df], ignore_index=True)
+
+    return(expression_df)
+
+#used by expressionParser
+def loadSampleMetadata(expression_metadata_location):
+
+    # read in the sample metadata
+    sample_metadata = pd.read_csv(expression_metadata_location, sep="\t")
+
+    # create a new column to store the case ID
+    sample_metadata["case_id"] = sample_metadata["cases.0.case_id"]
+
+    # return the sample metadata
+    return(sample_metadata)
+
+#used by expressionParser
+def addCaseIDtoExpressionDataframe(expression_df, expression_metadata_location):
+
+    # load expression metdata
+    expression_metadata = loadSampleMetadata(expression_metadata_location)
+
+    #create sample_name_file column with path removed from sample_name
+    expression_df["sample_name_file"] = expression_df["sample_name"].str.split("/").str[-1]
+    print("expression_df['sample_name_file']")
+    print(expression_df["sample_name_file"].head(10))
+
+    print("expression_metadata['file_name']")
+    print(expression_metadata["file_name"].head(10))
+
+    # add the case_id from expression_metadata to the expression_df by matching the file_name
+    # if the file_name is not found, the case_id will be NaN
+    expression_df["case_id"] = expression_df["sample_name_file"].map(expression_metadata.set_index("file_name")["case_id"])
+
+    # save the expression data
+    print(expression_df.head())
+    return expression_df
+
+#used by expressionParser
+@fancy_status
+@time_elapsed
+def expressionParser(params):
+
+    # set environment variables
+    expression_data_path = params["expression_data_path"]
+    expression_metadata_location = params["expression_metadata_location"]
+    output_name = params["output_name"]
+
+
+    # create the expression dataframe
+    expression_df = createExpressionDataframe(expression_data_path)
+
+    # save the expression data, in pickle format
+    expression_df.to_pickle(f"{output_name}")
+
+    #read expression df from file
+    expression_df = pd.read_pickle(f"{output_name}")
+
+    # add the case ID to the expression dataframe
+    expression_df = addCaseIDtoExpressionDataframe(expression_df, expression_metadata_location)
+
+    # overwrite the expression data file
+    expression_df.to_pickle(f"{output_name}")
