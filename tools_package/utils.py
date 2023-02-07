@@ -1,7 +1,8 @@
 import pandas as pd
 import sys
 import cancer_config as cfg
-from tools import groupCases, parseOutputs, masked_snv_mv, createFullCancerTable, findCosmicGenes
+from tools import groupCases, parseOutputs, masked_snv_mv, createFullCancerTable, findCosmicGenes, performDiffExprAnalysis
+
 
 ###DESCRIPTION###
 
@@ -87,6 +88,20 @@ elif command == "findCosmicGenes":
         }
 
     findCosmicGenes(mmb_df_input_path, filter_dict, census_dir)
+
+elif command == "performDiffExprAnalysis":
+        
+    params = {
+        "cancer": cancer,
+        "df_metadata": df_metadata,
+        "MMBIR_THRESHOLD_LOW": cfg.settings["MMBIR_THRESHOLD_LOW"],
+        "MMBIR_THRESHOLD_HIGH":cfg.settings["MMBIR_THRESHOLD_HIGH"],
+        "consolidated_results_path": cfg.settings["consolidated_results_path"],
+        "expression_df_path": f"expression_data_{cancer}.pickle",
+        "min_concentration": 0
+        }
+
+    performDiffExprAnalysis(params)
     
 
 else:

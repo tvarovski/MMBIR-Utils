@@ -15,5 +15,6 @@ settings = {
     "outputs_path_raw": "outputs/raw",
     "outputs_path_filtered": "outputs/filtered",
     "expression_data_path_root": "/nfsscratch",
+    "min_concentration": 0,
 
 }
