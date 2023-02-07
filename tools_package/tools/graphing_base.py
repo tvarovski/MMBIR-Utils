@@ -241,12 +241,12 @@ def plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Fil
 
     if adjust_staging=='early_late':
 
-        print("Adjusting staging to early and late: Early = Stage IA, Stage IB, Stage I, Stage IIA, Stage IIB; Late = everything else")
-        df_consolidated["stage_adjusted"] = df_consolidated["Stage"].apply(lambda x: "Early" if x in ["Stage IA", "Stage IB", "Stage I", "Stage IIA","Stage IIB"] else "Late")
+        print("Adjusting staging to early and late: Early = Stage IA, Stage IB, Stage IC, Stage I, Stage IIA, Stage IIB, Stage IIC; Late = everything else")
+        df_consolidated["stage_adjusted"] = df_consolidated["Stage"].apply(lambda x: "Early" if x in ["Stage IA", "Stage IB", "Stage IC" "Stage I", "Stage IIA","Stage IIB", "Stage IIC"] else "Late")
     elif adjust_staging=='early_middle_late':
 
-        print("Adjusting staging to early, middle and late: Early = Stage IA, Stage IB, Stage I; Middle = Stage IIA, Stage IIB; Late = everything else")
-        df_consolidated["stage_adjusted"] = df_consolidated["Stage"].apply(lambda x: "Early" if x in ["Stage IA", "Stage IB", "Stage I"] else ("Middle" if x in ["Stage IIA","Stage IIB"] else "Late"))
+        print("Adjusting staging to early, middle and late: Early = Stage IA, Stage IB, Stage IC, Stage I; Middle = Stage IIA, Stage IIB, Stage IIC; Late = everything else")
+        df_consolidated["stage_adjusted"] = df_consolidated["Stage"].apply(lambda x: "Early" if x in ["Stage IA", "Stage IB", "Stage IC", "Stage I"] else ("Middle" if x in ["Stage IIA","Stage IIB", "Stage IIC"] else "Late"))
     else:
         print(f"Unknown adjust_staging: {adjust_staging}")
         return
@@ -302,13 +302,13 @@ def plot_stage_vs_concentration(df_consolidated, filterset, staging='ajcc', x_co
     if adjust_staging=='early_late':
 
         # if the stage is Stage I or Stage II, then set the stage to "Early"
-        print("Adjusting staging to early and late: Early = Stage IA, Stage IB, Stage I, Stage IIA, Stage IIB, Late = everything else")
-        df_consolidated["stage_adjusted"] = df_consolidated["Stage"].apply(lambda x: "Early" if x in ["Stage IA", "Stage IB", "Stage I", "Stage IIA","Stage IIB"] else "Late")
-    
+        print("Adjusting staging to early and late: Early = Stage IA, Stage IB, Stage IC, Stage I, Stage IIA, Stage IIB, Stage IIC; Late = everything else")
+        df_consolidated["stage_adjusted"] = df_consolidated["Stage"].apply(lambda x: "Early" if x in ["Stage IA", "Stage IB", "Stage IC" "Stage I", "Stage IIA","Stage IIB", "Stage IIC"] else "Late")
+
     elif adjust_staging=='early_middle_late':
 
-        print("Adjusting staging to early, middle and late: Early = Stage IA, Stage IB, Stage I, Middle = Stage IIA, Stage IIB, Late = everything else")
-        df_consolidated["stage_adjusted"] = df_consolidated["Stage"].apply(lambda x: "Early" if x in ["Stage IA", "Stage IB", "Stage I"] else ("Middle" if x in ["Stage IIA","Stage IIB"] else "Late"))
+        print("Adjusting staging to early, middle and late: Early = Stage IA, Stage IB, Stage IC, Stage I; Middle = Stage IIA, Stage IIB, Stage IIC; Late = everything else")
+        df_consolidated["stage_adjusted"] = df_consolidated["Stage"].apply(lambda x: "Early" if x in ["Stage IA", "Stage IB", "Stage IC", "Stage I"] else ("Middle" if x in ["Stage IIA","Stage IIB", "Stage IIC"] else "Late"))
     
     else:
         print(f"Unknown adjust_staging: {adjust_staging}")

@@ -28,8 +28,8 @@ def graphing(params):
     filterset=["Primary Tumor"] #"Blood Derived Normal", "Primary Tumor"
 
     #staging='ajcc'/'figo'/'tumor_grade', adjust='early_late' or 'early_middle_late'
-    plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Filtered_Count", min_concentration=min_concentration, adjust_staging='early_late')
-    plot_stage_vs_concentration(df_consolidated, filterset, staging='ajcc', x_count="Filtered_Count", min_concentration=min_concentration, adjust_staging='early_late')
+    plot_stage_vs_count(df_consolidated, filterset, staging=staging, x_count="Filtered_Count", min_concentration=min_concentration, adjust_staging='early_late')
+    plot_stage_vs_concentration(df_consolidated, filterset, staging=staging, x_count="Filtered_Count", min_concentration=min_concentration, adjust_staging='early_late')
 
     if staging == 'ajcc':
         plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=min_concentration)
