@@ -251,6 +251,9 @@ def plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Fil
         print(f"Unknown adjust_staging: {adjust_staging}")
         return
     
+    #show the number of samples per stage
+    print(df_consolidated["stage_adjusted"].value_counts())
+    
     #show mean, median and standard deviation for each stage
     print("Mean, median and standard deviation for each stage")
     print(df_consolidated.groupby("stage_adjusted").mean()[x_count])
@@ -313,6 +316,9 @@ def plot_stage_vs_concentration(df_consolidated, filterset, staging='ajcc', x_co
     else:
         print(f"Unknown adjust_staging: {adjust_staging}")
         return
+    
+    #show the number of samples per stage
+    print(df_consolidated["stage_adjusted"].value_counts())
     
     #show mean, median and standard deviation for each stage
     print("Mean, median and standard deviation for each stage")
