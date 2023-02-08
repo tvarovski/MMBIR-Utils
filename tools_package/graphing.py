@@ -1,6 +1,31 @@
 from tools import *
 import cancer_config as cfg
 
+@fancy_status
+def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_concentration=0.5):
+
+    '''function plot_total_reads_vs_count() plots the MMBIR count vs the total reads.
+    The plot shows the MMBIR count on the y-axis and the total reads on the x-axis.'''
+
+    df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
+
+    #calculate the linear regression between total_reads and count
+    slope, intercept, r_value, p_value, std_err = stats.linregress(df_consolidated["total_reads"], df_consolidated[count])
+    print(f"Slope: {slope}, Intercept: {intercept}, R-squared: {r_value**2}, P-value: {p_value}")
+
+    sns.set_context("poster")
+    sns.scatterplot(x="total_reads", y=count, data=df_consolidated, alpha=0.5)
+    sns.regplot(x="total_reads",y=count, data=df_consolidated, scatter=False, robust=True, color="orange")
+
+    # add the pvalue and R-squared to the plot title, round the R-squared to 2 decimal places
+    plt.title(f"R-squared: {r_value**2:.3f}, P-value: {p_value:.4f}, slope: {slope:.3f}")
+
+    # rename the x-axis and y-axis
+    plt.xlabel("Total reads")
+    plt.ylabel(f"MMBIR {count}")
+
+    plt.show()
+
 
 def graphing(params):
 
@@ -14,6 +39,13 @@ def graphing(params):
     df_metadata=pd.read_csv(metadata_location, sep="\t")
 
     df_consolidated = annotate_consolidated_results(df_consolidated, df_metadata)
+
+    plot_total_reads_vs_count(df_consolidated, count="Raw_Count", min_concentration=min_concentration)
+
+    df_consolidated = df_consolidated[df_consolidated["total_reads"] >= 100000000]
+    print("removing samples with fewer than 100000000 reads")
+
+    plot_total_reads_vs_count(df_consolidated, count="Raw_Count", min_concentration=min_concentration)
 
     df_wide = plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_concentration=min_concentration, method="spearman") #method="spearman" or "pearson"
     plot_blood_tumor_count_correlation(df_wide, method="spearman", threshold=3000)

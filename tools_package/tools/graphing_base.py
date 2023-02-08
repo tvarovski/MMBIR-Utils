@@ -482,3 +482,27 @@ def plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concen
     plt.ylabel(f"MMBIR {count}")
     plt.show()
 
+@fancy_status
+def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_concentration=0.5):
+
+    '''function plot_total_reads_vs_count() plots the MMBIR count vs the total reads.
+    The plot shows the MMBIR count on the y-axis and the total reads on the x-axis.'''
+
+    df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
+
+    #calculate the linear regression between total_reads and count
+    slope, intercept, r_value, p_value, std_err = stats.linregress(df_consolidated["total_reads"], df_consolidated[count])
+    print(f"Slope: {slope}, Intercept: {intercept}, R-squared: {r_value**2}, P-value: {p_value}")
+
+    sns.set_context("poster")
+    sns.scatterplot(x="total_reads", y=count, data=df_consolidated, alpha=0.5)
+    sns.regplot(x="total_reads",y=count, data=df_consolidated, scatter=False, robust=True, color="orange")
+
+    # add the pvalue and R-squared to the plot title, round the R-squared to 2 decimal places
+    plt.title(f"R-squared: {r_value**2:.3f}, P-value: {p_value:.4f}, slope: {slope:.3f}")
+
+    # rename the x-axis and y-axis
+    plt.xlabel("Total reads")
+    plt.ylabel(f"MMBIR {count}")
+
+    plt.show()
