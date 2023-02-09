@@ -126,28 +126,6 @@ def parseOutputs(df_metadata, consolidated_results_name="consolidated_results.ts
   print(output_df)
   output_df.to_csv(consolidated_results_name, sep="\t", index=False)
 
-@fancy_status
-@time_elapsed
-def masked_snv_mv(df_metadata, snvs_loc=""):
-
-  output = os.system(f"ls -d1 *-*-*-*-* > cases.txt")
-  print(f"cases exited with a code {output}")
-  cases_file = open("cases.txt", 'r')
-  cases = cases_file.readlines()
-  cases_file.close()
-
-
-  for caseID in cases:
-      
-    caseID=caseID.strip()
-    case_snvs = df_metadata[df_metadata["cases.0.case_id"] == caseID]
-    case_files = case_snvs[["file_name", "id"]].values.tolist()
-    for file_name, id in case_files:
-      output = os.system(f"cp {snvs_loc}/{id}/{file_name} {caseID}")
-      if output == 1:
-        print(f"there is a problem with {snvs_loc}/{id}/{file_name} {caseID}")
-      output = os.system(f"yes n | gunzip {caseID}/{file_name}")
-
 def getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, min_MMBIR_events, below=False, min_concentration=0):
     import logging
     df_consolidated=pd.read_csv(consolidated_results_path, sep="\t")
@@ -386,23 +364,6 @@ def create_mmbir_results_master_df(df_metadata, filtered=False, log=False):
     #go back to the current directory
     os.chdir(current_dir)
     return results_master_df
-
-def extractAffectedGeneNames(maf_path):
-    import logging
-
-    try:
-        df_masked_snvs=pd.read_csv(maf_path, sep="\t", comment='#')
-    except OSError:
-        logging.info(f"Couldnt open the MAF file: {maf_path} Is it there?")
-        return None
-    try:
-        # remove silent mutations
-        df_masked_snvs = df_masked_snvs[df_masked_snvs["Variant_Classification"] != "Silent"]
-        return_gene_list = df_masked_snvs["Hugo_Symbol"].values.tolist()
-        return return_gene_list
-    except ValueError:
-        logging.info(f"Couldn't parse the MAF file: {maf_path}")
-        return None
 
 @fancy_status
 @time_elapsed

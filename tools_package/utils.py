@@ -41,109 +41,143 @@ Currently available KEYWORDs:
   - getMissingBams
         # creates a manifest file with missing bam_files if any are missing
 
+  - expressionParser
+        # parses the expression data from the TCGA database
+
+  - performSNVanalysis
+        # performs SNV analysis
+
+
 '''
 
+if __name__ == "__main__":
 
-command = sys.argv[1]
+    command = sys.argv[1]
 
-cancer = cfg.settings["TCGA-PROJECT"]
-username = cfg.settings["username"]
+    cancer = cfg.settings["TCGA-PROJECT"]
+    username = cfg.settings["username"]
 
-metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
-metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
+    metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
+    metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
 
-df_metadata = pd.read_csv(metadata_location, sep="\t")
+    df_metadata = pd.read_csv(metadata_location, sep="\t")
 
-if command == "groupCases":
+    if command == "groupCases":
 
-    from tools import groupCases
-    groupCases(df_metadata)
+        from tools import groupCases
+        groupCases(df_metadata)
 
-elif command == "parseOutputs":
+    elif command == "parseOutputs":
 
-    from tools import parseOutputs
-    parseOutputs(df_metadata, consolidated_results_name="consolidated_results.tsv")
+        from tools import parseOutputs
+        parseOutputs(df_metadata, consolidated_results_name="consolidated_results.tsv")
 
-elif command == "masked_snv_mv":
+    elif command == "createFullCancerTable":
 
-    from tools import masked_snv_mv
-    #need to add a sys.argv[2] for the snvs_loc
-    masked_snv_mv(df_metadata, snvs_loc="")
+        from tools import createFullCancerTable
+        manifest_file = f"TCGA-{cancer}-WXS-BAM-manifest.tsv"
 
-elif command == "createFullCancerTable":
+        params={
+            "df_metadata": df_metadata,
+            "manifest_location": f"/Users/{username}/MMBIR_Databases/TCGA/{manifest_file}",
+            "missing_manifest_output_name": f"missing_bams_{cancer}_manifest.tsv",
+            "log": False,
+            "output_raw_name": "raw_mmbir_results_master_df.csv",
+            "output_filtered_name": "filtered_mmbir_results_master_df.csv"
+            }
+            
+        createFullCancerTable(params)
 
-    from tools import createFullCancerTable
-    manifest_file = f"TCGA-{cancer}-WXS-BAM-manifest.tsv"
+    elif command == "findCosmicGenes":
 
-    params={
-        "df_metadata": df_metadata,
-        "manifest_location": f"/Users/{username}/MMBIR_Databases/TCGA/{manifest_file}",
-        "missing_manifest_output_name": f"missing_bams_{cancer}_manifest.tsv",
-        "log": False,
-        "output_raw_name": "raw_mmbir_results_master_df.csv",
-        "output_filtered_name": "filtered_mmbir_results_master_df.csv"
-        }
+        from tools import findCosmicGenes
+        census_dir = cfg.settings['cosmicdb_dir']
+        mmb_df_input_path = sys.argv[2]
+
+        filter_dict={
+            "ref_complexity_filter": cfg.settings["ref_complexity_filter"],
+            "bir_complexity_filter": cfg.settings["bir_complexity_filter"],
+            "ref_homology_check_filter": cfg.settings["ref_homology_check_filter"],
+            "bir_homology_check_filter": cfg.settings["bir_homology_check_filter"],
+            "exones_only": cfg.settings["exones_only"]
+            }
+
+        findCosmicGenes(mmb_df_input_path, filter_dict, census_dir)
+
+    elif command == "performDiffExprAnalysis":
+
+        from tools import performDiffExprAnalysis
+        params = {
+            "cancer": cancer,
+            "df_metadata": df_metadata,
+            "MMBIR_THRESHOLD_LOW": cfg.settings["MMBIR_THRESHOLD_LOW"],
+            "MMBIR_THRESHOLD_HIGH":cfg.settings["MMBIR_THRESHOLD_HIGH"],
+            "consolidated_results_path": cfg.settings["consolidated_results_path"],
+            "expression_df_path": f"expression_data_{cancer}.pickle",
+            "min_concentration": 0
+            }
+
+        performDiffExprAnalysis(params)
         
-    createFullCancerTable(params)
+    elif command == "getMissingBams":
 
-elif command == "findCosmicGenes":
+        from tools import getMissingBams
+        manifest_file = f"TCGA-{cancer}-WXS-BAM-manifest.tsv"
+        manifest_location = f"/Users/{username}/MMBIR_Databases/TCGA/{manifest_file}"
+        missing_manifest_output_name = f"missing_bams_{cancer}_manifest.tsv"
 
-    from tools import findCosmicGenes
-    census_dir = cfg.settings['cosmicdb_dir']
-    mmb_df_input_path = sys.argv[2]
+        getMissingBams(df_metadata, manifest_location, missing_manifest_output_name)
 
-    filter_dict={
-        "ref_complexity_filter": cfg.settings["ref_complexity_filter"],
-        "bir_complexity_filter": cfg.settings["bir_complexity_filter"],
-        "ref_homology_check_filter": cfg.settings["ref_homology_check_filter"],
-        "bir_homology_check_filter": cfg.settings["bir_homology_check_filter"],
-        "exones_only": cfg.settings["exones_only"]
-        }
-
-    findCosmicGenes(mmb_df_input_path, filter_dict, census_dir)
-
-elif command == "performDiffExprAnalysis":
-
-    from tools import performDiffExprAnalysis
-    params = {
-        "cancer": cancer,
-        "df_metadata": df_metadata,
-        "MMBIR_THRESHOLD_LOW": cfg.settings["MMBIR_THRESHOLD_LOW"],
-        "MMBIR_THRESHOLD_HIGH":cfg.settings["MMBIR_THRESHOLD_HIGH"],
-        "consolidated_results_path": cfg.settings["consolidated_results_path"],
-        "expression_df_path": f"expression_data_{cancer}.pickle",
-        "min_concentration": 0
-        }
-
-    performDiffExprAnalysis(params)
-    
-elif command == "getMissingBams":
-
-    from tools import getMissingBams
-    manifest_file = f"TCGA-{cancer}-WXS-BAM-manifest.tsv"
-    manifest_location = f"/Users/{username}/MMBIR_Databases/TCGA/{manifest_file}"
-    missing_manifest_output_name = f"missing_bams_{cancer}_manifest.tsv"
-
-    getMissingBams(df_metadata, manifest_location, missing_manifest_output_name)
-
-elif command == "expressionParser":
-    
-    from tools import expressionParser
-
-    expression_data_path_root = cfg.settings["expression_data_path_root"]
-    expression_data_path = f"{expression_data_path_root}/{username}/TCGA-{cancer}/expression"
-
-    expression_metadata_file = f"TCGA-{cancer}-WXS-expression-metadata.tsv"
-    expression_metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{expression_metadata_file}"
-
-    output_name = f"expression_data_{cancer}.pickle"
-    params = {
-        "expression_data_path": expression_data_path,
-        "expression_metadata_location": expression_metadata_location,
-        "output_name": output_name}
+    elif command == "expressionParser":
         
-    expressionParser(params)
+        from tools import expressionParser
 
+        expression_data_path_root = cfg.settings["expression_data_path_root"]
+        expression_data_path = f"{expression_data_path_root}/{username}/TCGA-{cancer}/expression"
 
-else:
-    print(f"{command} is not a recognized option")
+        expression_metadata_file = f"TCGA-{cancer}-WXS-expression-metadata.tsv"
+        expression_metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{expression_metadata_file}"
+
+        output_name = f"expression_data_{cancer}.pickle"
+        params = {
+            "expression_data_path": expression_data_path,
+            "expression_metadata_location": expression_metadata_location,
+            "output_name": output_name}
+            
+        expressionParser(params)
+
+    elif command == "masked_snv_mv":
+
+        from tools import masked_snv_mv
+
+        #need to add a sys.argv[2] for the snvs_loc
+        snvs_loc = sys.argv[2]
+
+        metadata_file_maf = f"TCGA-{cancer}-WXS-MAF-metadata.tsv"
+        metadata_location_maf = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file_maf}"
+        df_metadata = pd.read_csv(metadata_location_maf, sep="\t")
+
+        masked_snv_mv(df_metadata, snvs_loc=snvs_loc)
+
+    elif command == "performSNVanalysis":
+
+        from tools import performSNVanalysis
+
+        metadata_file_maf = f"TCGA-{cancer}-WXS-MAF-metadata.tsv"
+        metadata_location_maf = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file_maf}"
+        df_metadata_maf = pd.read_csv(metadata_location_maf, sep="\t")
+
+        params = {
+            "consolidated_results_path": cfg.settings["consolidated_results_path"],
+            "df_metadata": df_metadata,
+            "df_metadata_maf": df_metadata_maf,
+            "MMBIR_THRESHOLD_LOW": cfg.settings["MMBIR_THRESHOLD_LOW"],
+            "MMBIR_THRESHOLD_HIGH": cfg.settings["MMBIR_THRESHOLD_HIGH"],
+            "min_concentration": cfg.settings["min_concentration"]
+        }
+
+        performSNVanalysis(params)
+
+    else:
+        print(f"{command} is not a recognized option")
+
