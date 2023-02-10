@@ -114,7 +114,7 @@ def getSNV_frequencies(cases, df_metadata_maf, threshold_mmb_cases_low_df, thres
     for i in sorted_fdist_HIGH:
 
         try:
-            compl_all=fdist_all[i[0]]
+            compl_low=fdist_LOW[i[0]]
 
         except:
             logging.info(f"No corresponding record found for {i[0]} in the LOW-MMBIR Set")
