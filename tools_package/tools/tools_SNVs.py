@@ -174,7 +174,7 @@ def performSNVanalysis(params):
     threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, df_metadata, MMBIR_THRESHOLD_LOW, below=True, min_concentration=min_concentration)
 
     print(f"found {len(threshold_mmb_cases_high_df)} cases above threshold {MMBIR_THRESHOLD_HIGH}")
-    print(f"found {len()} cases below threshold {MMBIR_THRESHOLD_LOW}")
+    print(f"found {len(threshold_mmb_cases_low_df)} cases below threshold {MMBIR_THRESHOLD_LOW}")
 
     cases = findCurrentCases()
 
