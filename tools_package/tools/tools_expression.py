@@ -40,7 +40,9 @@ def performExpressionTTest(expression_df, df_sample_metadata, output_name, conso
 
     #new method of getting high+low mmbir cases
     df_consolidated = pd.read_csv(consolidated_results_path, sep="\t")
-    threshold_mmb_cases_high_df, threshold_mmb_cases_low_df = findThresholdCases(df_consolidated, df_sample_metadata, fraction_high=fraction_high, fraction_low=fraction_low, min_concentration=min_concentration)
+
+    #default behavior is to filter out cases based on Raw_Counts not Filtered_Counts, but this can be changed by setting filtered=True
+    threshold_mmb_cases_high_df, threshold_mmb_cases_low_df = findThresholdCases(df_consolidated, df_sample_metadata, fraction_high=fraction_high, fraction_low=fraction_low, min_concentration=min_concentration, filtered=False)
 
     #get a list of all the case_ids that are high mmbir
 
@@ -208,17 +210,18 @@ def performDiffExprAnalysis(params):
     consolidated_results_path = params["consolidated_results_path"]
     expression_df_path = params["expression_df_path"]
     min_concentration = params["min_concentration"]
+    outputs_path = params["outputs_path"]
 
     #read in the expression dataframe from file
     expression_df = pd.read_pickle(expression_df_path)
-    output_name = f"ttest_results_{cancer}_minconc{min_concentration}.tsv"
+    output_name = f"{outputs_path}/ttest_results_{cancer}_minconc{min_concentration}.tsv"
     expression_df = performExpressionTTest(expression_df, df_metadata, output_name, consolidated_results_path, fraction_high=fraction_high, fraction_low=fraction_low, min_concentration=min_concentration)
 
     #read in the expression dataframe from file
     expression_df = pd.read_csv(output_name, sep="\t")
     expression_df = addGeneNameColumnFromGeneID(expression_df, "gene_id")
 
-    output_name = f"ttest_results_{cancer}_minconc{min_concentration}_bh_corrected.tsv"
+    output_name = f"{outputs_path}/ttest_results_{cancer}_minconc{min_concentration}_bh_corrected.tsv"
     expression_df = performBenjaminiHochbergCorrection(expression_df, output_name)
 
 #used by expressionParser

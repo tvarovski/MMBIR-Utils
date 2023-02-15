@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 import logging
-from tools import getCasesAboveMMBThreshold, fancy_status, time_elapsed
+from tools import getCasesAboveMMBThreshold, fancy_status, time_elapsed, findThresholdCases
 
 @fancy_status
 @time_elapsed
@@ -88,6 +88,12 @@ def getSNV_frequencies(cases, df_metadata_maf, threshold_mmb_cases_low_df, thres
         else:
             #if neither -> set is ambiguous, do nothing
             pass
+    
+    #get the average number of affected genes per case
+    avg_high_mmbir_snv_genes = len(high_mmbir_snv_genes)/high_mmbir_cases
+    avg_low_mmbir_snv_genes = len(low_mmbir_snv_genes)/low_mmbir_cases
+
+    print(f"average number of affected genes per case in HIGH: {avg_high_mmbir_snv_genes} and LOW: {avg_low_mmbir_snv_genes}")
 
 
     #calculate the frequency distribution of the genes in the high, low and all sets
@@ -168,13 +174,23 @@ def performSNVanalysis(params):
     df_metadata_maf = params["df_metadata_maf"]
     MMBIR_THRESHOLD_LOW = params["MMBIR_THRESHOLD_LOW"]
     MMBIR_THRESHOLD_HIGH = params["MMBIR_THRESHOLD_HIGH"]
+    fraction_high= params["mmbir_fraction_high"]
+    fraction_low= params["mmbir_fraction_low"]
+
     min_concentration = params["min_concentration"]
 
-    threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_path, df_metadata, MMBIR_THRESHOLD_HIGH, min_concentration=min_concentration)
-    threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, df_metadata, MMBIR_THRESHOLD_LOW, below=True, min_concentration=min_concentration)
+    #old method of getting high+low mmbir cases
+    #threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_path, df_metadata, MMBIR_THRESHOLD_HIGH, min_concentration=min_concentration)
+    #threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, df_metadata, MMBIR_THRESHOLD_LOW, below=True, min_concentration=min_concentration)
 
-    print(f"found {len(threshold_mmb_cases_high_df)} cases above threshold {MMBIR_THRESHOLD_HIGH}")
-    print(f"found {len(threshold_mmb_cases_low_df)} cases below threshold {MMBIR_THRESHOLD_LOW}")
+    #print(f"found {len(threshold_mmb_cases_high_df)} cases above threshold {MMBIR_THRESHOLD_HIGH}")
+    #print(f"found {len(threshold_mmb_cases_low_df)} cases below threshold {MMBIR_THRESHOLD_LOW}")
+
+    #new method of getting high+low mmbir cases
+    df_consolidated = pd.read_csv(consolidated_results_path, sep="\t")
+
+    #default behavior is to filter out cases based on Raw_Counts not Filtered_Counts, but this can be changed by setting filtered=True
+    threshold_mmb_cases_high_df, threshold_mmb_cases_low_df = findThresholdCases(df_consolidated, df_metadata, fraction_high=fraction_high, fraction_low=fraction_low, min_concentration=min_concentration, filtered=False)
 
     cases = findCurrentCases()
 

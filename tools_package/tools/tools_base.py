@@ -487,7 +487,7 @@ def findCosmicGenes(mmb_df_input_path, filter_dict, census_dir):
     df_census = pd.read_csv(census_dir, sep='\t')
     getCancerGeneNamesMMB(gene_list_final, df_census)
 
-def keepHigherMMBIRCases(df_consolidated, df_metadata, min_concentration=0, filtered=False):
+def keepHigherMMBIRCases(df_consolidated, df_metadata, min_concentration=0):
 
     df_consolidated=pd.merge(df_consolidated, df_metadata, left_on="Sample_Name", right_on="file_name")
     df_consolidated["age_at_collection"] = df_consolidated["cases.0.diagnoses.0.age_at_diagnosis"] + df_consolidated["cases.0.samples.0.days_to_collection"]
@@ -515,7 +515,7 @@ def findThresholdCases(df_consolidated, df_metadata, fraction_high=0.4, fraction
     else:
         filter_by = "Raw_Count_max"
 
-    df = keepHigherMMBIRCases(df_consolidated, df_metadata, min_concentration=min_concentration, filtered=filtered)
+    df = keepHigherMMBIRCases(df_consolidated, df_metadata, min_concentration=min_concentration)
     
     df = df.sort_values(by=filter_by, ascending=False)
     df = df.reset_index(drop=True)
