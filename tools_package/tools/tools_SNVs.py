@@ -73,13 +73,13 @@ def getSNV_frequencies(cases, df_metadata_maf, threshold_mmb_cases_low_df, thres
 
 
         #check if case is high or low mmbir
-        if caseID in threshold_mmb_cases_high_df["Case_ID_"].values.tolist():
+        if caseID in threshold_mmb_cases_high_df["Case_ID"].values.tolist():
 
             #if yes -> HIGH MMBIR, count as high mmbir sample, add to high mmbir cohort
             high_mmbir_cases+=1
             high_mmbir_snv_genes.extend(maf_genes)
 
-        elif caseID in threshold_mmb_cases_low_df["Case_ID_"].values.tolist():
+        elif caseID in threshold_mmb_cases_low_df["Case_ID"].values.tolist():
 
             #if no -> LOW MMBIR, count as low mmbir sample, add to low mmbir cohort
             low_mmbir_cases+=1
