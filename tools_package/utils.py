@@ -178,7 +178,10 @@ if __name__ == "__main__":
             "df_metadata_maf": df_metadata_maf,
             "MMBIR_THRESHOLD_LOW": cfg.settings["MMBIR_THRESHOLD_LOW"],
             "MMBIR_THRESHOLD_HIGH": cfg.settings["MMBIR_THRESHOLD_HIGH"],
-            "min_concentration": cfg.settings["min_concentration"]
+            "min_concentration": cfg.settings["min_concentration"],
+            "mmbir_fraction_high": cfg.settings["mmbir_fraction_high"],
+            "mmbir_fraction_low": cfg.settings["mmbir_fraction_low"],
+            "outputs_path": cfg.settings["outputs_path"]
         }
 
         performSNVanalysis(params)

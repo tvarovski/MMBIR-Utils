@@ -176,6 +176,7 @@ def performSNVanalysis(params):
     MMBIR_THRESHOLD_HIGH = params["MMBIR_THRESHOLD_HIGH"]
     fraction_high= params["mmbir_fraction_high"]
     fraction_low= params["mmbir_fraction_low"]
+    outputs_path = params["outputs_path"]
 
     min_concentration = params["min_concentration"]
 
@@ -195,4 +196,4 @@ def performSNVanalysis(params):
     cases = findCurrentCases()
 
     df = getSNV_frequencies(cases, df_metadata_maf, threshold_mmb_cases_low_df, threshold_mmb_cases_high_df)
-    df.to_csv(f"mmbir_snv_genes_low_{MMBIR_THRESHOLD_LOW}_high_{MMBIR_THRESHOLD_HIGH}.csv", index=False)
+    df.to_csv(f"{outputs_path}/mmbir_snv_fraction_low_{fraction_low}_high_{fraction_high}.csv", index=False)
