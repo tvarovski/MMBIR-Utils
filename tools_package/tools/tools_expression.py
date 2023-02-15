@@ -39,8 +39,10 @@ def performExpressionTTest(expression_df, df_sample_metadata, output_name, conso
     #threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, MMBIR_THRESHOLD_LOW, below=True, min_concentration=min_concentration)
 
     #new method of getting high+low mmbir cases
-    threshold_mmb_cases_high_df, threshold_mmb_cases_low_df = findThresholdCases(consolidated_results_path, df_sample_metadata, fraction_high=0.4, fraction_low=0.4, min_concentration=min_concentration)
+    df_consolidated = pd.read_csv(consolidated_results_path, sep="\t")
+    threshold_mmb_cases_high_df, threshold_mmb_cases_low_df = findThresholdCases(df_consolidated, df_sample_metadata, fraction_high=0.4, fraction_low=0.4, min_concentration=min_concentration)
 
+    #get a list of all the case_ids that are high mmbir
 
     # get the IDs of the cases that are high mmbir #if using old method, change Case_ID to Case_ID_
     high_mmbir_cases=threshold_mmb_cases_high_df["Case_ID"].values.tolist()

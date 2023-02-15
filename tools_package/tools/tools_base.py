@@ -509,7 +509,7 @@ def keepHigherMMBIRCases(df_consolidated, df_metadata, min_concentration=0, filt
 
 #This function finds find high and low mmbir_thresholds for a given cancer type so that x% of the samples are above the threshold and y% of the samples are below the threshold
 #Used by findMMBIRThresholds
-def findThresholdCases(df_consolidated, df_metadata, fraction_high=0.4, fraction_low=0.4, min_concentration=0, log=False, filtered=False): #df is the consolidated mmbir results dataframe
+def findThresholdCases(df_consolidated, df_metadata, fraction_high=0.4, fraction_low=0.4, min_concentration=0, log=True, filtered=False): #df is the consolidated mmbir results dataframe
 
     #sort the dataframe by the mmbir scores
     if filtered:
@@ -544,5 +544,5 @@ def findThresholdCases(df_consolidated, df_metadata, fraction_high=0.4, fraction
 
     print(f"Finished finding the mmbir_thresholds ({filter_by}) for the {fraction_high*100}% highest and {fraction_low*100}% lowest MMBIR Count samples at min concentration of {min_concentration}.")
 
-    return mmbir_threshold_high_cases, mmbir_threshold_low_cases
+    return df_above_threshold, df_below_threshold
 
