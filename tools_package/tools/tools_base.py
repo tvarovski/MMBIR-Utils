@@ -487,3 +487,62 @@ def findCosmicGenes(mmb_df_input_path, filter_dict, census_dir):
     df_census = pd.read_csv(census_dir, sep='\t')
     getCancerGeneNamesMMB(gene_list_final, df_census)
 
+
+def keepHigherMMBIRCases(df_consolidated, df_metadata, min_concentration=0, filtered=False):
+
+    df_consolidated=pd.merge(df_consolidated, df_metadata, left_on="Sample_Name", right_on="file_name")
+    df_consolidated["age_at_collection"] = df_consolidated["cases.0.diagnoses.0.age_at_diagnosis"] + df_consolidated["cases.0.samples.0.days_to_collection"]
+    df_consolidated.rename(columns={"cases.0.samples.0.portions.0.analytes.0.aliquots.0.concentration": "Concentration"}, inplace=True)
+    df_consolidated=df_consolidated[df_consolidated["Concentration"] >= min_concentration]
+
+    agg_dict={"Raw_Count": ['min', 'max'],
+              "Filtered_Count": ['min', 'max']}
+    
+    df_agg = df_consolidated.groupby("Case_ID").agg(agg_dict).reset_index()
+
+    df_agg.columns = ['_'.join(col).strip() for col in df_agg.columns.values]
+
+    df_agg.rename(columns={"Case_ID_": "Case_ID"}, inplace=True)
+
+    return df_agg
+
+
+#This function finds find high and low mmbir_thresholds for a given cancer type so that x% of the samples are above the threshold and y% of the samples are below the threshold
+#Used by findMMBIRThresholds
+def findThresholdCases(df_consolidated, df_metadata, fraction_high=0.4, fraction_low=0.4, min_concentration=0, log=False, filtered=False): #df is the consolidated mmbir results dataframe
+
+    #sort the dataframe by the mmbir scores
+    if filtered:
+        filter_by = "Filtered_Count_max"
+    else:
+        filter_by = "Raw_Count_max"
+
+    df = keepHigherMMBIRCases(df_consolidated, df_metadata, min_concentration=min_concentration, filtered=filtered)
+    
+    df = df.sort_values(by=filter_by, ascending=False)
+    df = df.reset_index(drop=True)
+
+    #find the number of samples that are above the threshold
+    num_samples_above_threshold = int(len(df)*fraction_high)
+    #find the number of samples that are below the threshold
+    num_samples_below_threshold = int(len(df)*fraction_low)
+
+    # retrieve the first num_samples_above_threshold samples, these are the samples that are above the threshold
+    df_above_threshold = df.iloc[:num_samples_above_threshold]
+
+    # retrieve the last num_samples_below_threshold samples, these are the samples that are below the threshold
+    df_below_threshold = df.iloc[-num_samples_below_threshold:]
+
+    #find the mmbir score for the last sample in the df_above_threshold
+    mmbir_threshold_high_cases = df_above_threshold[filter_by].iloc[-1]
+    #find the mmbir score for the first sample in the df_below_threshold
+    mmbir_threshold_low_cases = df_below_threshold[filter_by].iloc[0]
+
+    if log:
+        print(f"mmbir_threshold_high: {mmbir_threshold_high_cases}")
+        print(f"mmbir_threshold_low: {mmbir_threshold_low_cases}")
+
+    print(f"Finished finding the mmbir_thresholds ({filter_by}) for the {fraction_high*100}% highest and {fraction_low*100}% lowest MMBIR Count samples at min concentration of {min_concentration}.")
+
+    return mmbir_threshold_high_cases, mmbir_threshold_low_cases
+

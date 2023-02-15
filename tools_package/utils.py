@@ -32,10 +32,12 @@ Currently available KEYWORDs:
         # creates a manifest file with missing bam_files
 
   - findCosmicGenes
+        #!!!NOT WORKING!!!
         #filteres out and prints out genes in the Cosmic_DB that
         #are present in the specified DF path (sys.argv[2])
 
   - performDiffExprAnalysis
+        #!!!add parallelization!!!
         # performs differential expression analysis
 
   - getMissingBams

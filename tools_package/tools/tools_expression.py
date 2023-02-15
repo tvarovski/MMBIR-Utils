@@ -2,7 +2,7 @@ import pandas as pd
 import scipy
 import numpy
 import pyensembl
-from tools import count_calls, time_elapsed, fancy_status, getCasesAboveMMBThreshold
+from tools import count_calls, time_elapsed, fancy_status, getCasesAboveMMBThreshold, findThresholdCases
 import statsmodels.stats.multitest as smm
 
 #used by performDiffExprAnalysis
@@ -34,13 +34,17 @@ def performExpressionTTest(expression_df, df_sample_metadata, output_name, conso
             #keep all samples
             pass
         
+    #old method of getting high+low mmbir cases
+    #threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, MMBIR_THRESHOLD_HIGH, min_concentration=min_concentration)
+    #threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, MMBIR_THRESHOLD_LOW, below=True, min_concentration=min_concentration)
 
-    threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, MMBIR_THRESHOLD_HIGH, min_concentration=min_concentration)
-    threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, MMBIR_THRESHOLD_LOW, below=True, min_concentration=min_concentration)
+    #new method of getting high+low mmbir cases
+    threshold_mmb_cases_high_df, threshold_mmb_cases_low_df = findThresholdCases(consolidated_results_path, df_sample_metadata, fraction_high=0.4, fraction_low=0.4, min_concentration=min_concentration)
 
-    # get the IDs of the cases that are high mmbir
-    high_mmbir_cases=threshold_mmb_cases_high_df["Case_ID_"].values.tolist()
-    low_mmbir_cases=threshold_mmb_cases_low_df["Case_ID_"].values.tolist()
+
+    # get the IDs of the cases that are high mmbir #if using old method, change Case_ID to Case_ID_
+    high_mmbir_cases=threshold_mmb_cases_high_df["Case_ID"].values.tolist()
+    low_mmbir_cases=threshold_mmb_cases_low_df["Case_ID"].values.tolist()
 
 
     # Mark the cases that are above the MMBIR threshold as high in the expression dataframe
@@ -188,7 +192,7 @@ def performBenjaminiHochbergCorrection(expression_df, output_name, *min_p_value)
     expression_df.to_csv(f"{output_name}", sep="\t", index=False)
     return expression_df
 
-#used by performDiffExprAnalysis
+#used by performDiffExprAnalysis, can be parallelized
 @fancy_status
 @time_elapsed
 def performDiffExprAnalysis(params):

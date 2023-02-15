@@ -48,10 +48,7 @@ if __name__ == "__main__":
         break
 
       else:
-        time.sleep(30)
         print(f"query again in 1 min")
-        time.sleep(30)
-        #print(f"query again in 30s min")
-        time.sleep(30)
+        time.sleep(60)
 
         
