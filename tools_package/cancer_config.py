@@ -3,6 +3,8 @@ settings = {
     "TCGA-PROJECT": "KIRC", # e.g. "BRCA"
     "username": "twarowski", #e.g. jsmith123
     "consolidated_results_path": "consolidated_results_KIRC.tsv",
+    "mmbir_fraction_high": 0.4,
+    "mmbir_fraction_low": 0.4,
     "MMBIR_THRESHOLD_LOW": 150,
     "MMBIR_THRESHOLD_HIGH": 250,
     "min_concentration": 0,

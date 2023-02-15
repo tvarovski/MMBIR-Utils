@@ -487,7 +487,6 @@ def findCosmicGenes(mmb_df_input_path, filter_dict, census_dir):
     df_census = pd.read_csv(census_dir, sep='\t')
     getCancerGeneNamesMMB(gene_list_final, df_census)
 
-
 def keepHigherMMBIRCases(df_consolidated, df_metadata, min_concentration=0, filtered=False):
 
     df_consolidated=pd.merge(df_consolidated, df_metadata, left_on="Sample_Name", right_on="file_name")
@@ -506,10 +505,9 @@ def keepHigherMMBIRCases(df_consolidated, df_metadata, min_concentration=0, filt
 
     return df_agg
 
-
 #This function finds find high and low mmbir_thresholds for a given cancer type so that x% of the samples are above the threshold and y% of the samples are below the threshold
 #Used by findMMBIRThresholds
-def findThresholdCases(df_consolidated, df_metadata, fraction_high=0.4, fraction_low=0.4, min_concentration=0, log=True, filtered=False): #df is the consolidated mmbir results dataframe
+def findThresholdCases(df_consolidated, df_metadata, fraction_high=0.4, fraction_low=0.4, min_concentration=0, log=True, filtered=False):
 
     #sort the dataframe by the mmbir scores
     if filtered:

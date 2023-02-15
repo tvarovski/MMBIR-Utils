@@ -6,7 +6,7 @@ from tools import count_calls, time_elapsed, fancy_status, getCasesAboveMMBThres
 import statsmodels.stats.multitest as smm
 
 #used by performDiffExprAnalysis
-def performExpressionTTest(expression_df, df_sample_metadata, output_name, consolidated_results_path, MMBIR_THRESHOLD_LOW, MMBIR_THRESHOLD_HIGH, min_concentration=0):
+def performExpressionTTest(expression_df, df_sample_metadata, output_name, consolidated_results_path, fraction_high=0.4, fraction_low=0.4, min_concentration=0):
 
     #if there are multiple samples associated with a case_id, print a warning
     if len(expression_df["case_id"].unique()) != len(expression_df["case_id"]):
@@ -40,7 +40,7 @@ def performExpressionTTest(expression_df, df_sample_metadata, output_name, conso
 
     #new method of getting high+low mmbir cases
     df_consolidated = pd.read_csv(consolidated_results_path, sep="\t")
-    threshold_mmb_cases_high_df, threshold_mmb_cases_low_df = findThresholdCases(df_consolidated, df_sample_metadata, fraction_high=0.4, fraction_low=0.4, min_concentration=min_concentration)
+    threshold_mmb_cases_high_df, threshold_mmb_cases_low_df = findThresholdCases(df_consolidated, df_sample_metadata, fraction_high=fraction_high, fraction_low=fraction_low, min_concentration=min_concentration)
 
     #get a list of all the case_ids that are high mmbir
 
@@ -201,8 +201,10 @@ def performDiffExprAnalysis(params):
 
     cancer = params["cancer"]
     df_metadata = params["df_metadata"]
-    MMBIR_THRESHOLD_LOW = params["MMBIR_THRESHOLD_LOW"]
-    MMBIR_THRESHOLD_HIGH = params["MMBIR_THRESHOLD_HIGH"]
+    #MMBIR_THRESHOLD_LOW = params["MMBIR_THRESHOLD_LOW"]
+    #MMBIR_THRESHOLD_HIGH = params["MMBIR_THRESHOLD_HIGH"]
+    fraction_high = params["mmbir_fraction_high"]
+    fraction_low = params["mmbir_fraction_low"]
     consolidated_results_path = params["consolidated_results_path"]
     expression_df_path = params["expression_df_path"]
     min_concentration = params["min_concentration"]
@@ -210,7 +212,7 @@ def performDiffExprAnalysis(params):
     #read in the expression dataframe from file
     expression_df = pd.read_pickle(expression_df_path)
     output_name = f"ttest_results_{cancer}_minconc{min_concentration}.tsv"
-    expression_df = performExpressionTTest(expression_df, df_metadata, output_name, consolidated_results_path, MMBIR_THRESHOLD_LOW, MMBIR_THRESHOLD_HIGH, min_concentration=0)
+    expression_df = performExpressionTTest(expression_df, df_metadata, output_name, consolidated_results_path, fraction_high=fraction_high, fraction_low=fraction_low, min_concentration=min_concentration)
 
     #read in the expression dataframe from file
     expression_df = pd.read_csv(output_name, sep="\t")
