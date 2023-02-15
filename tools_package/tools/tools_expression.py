@@ -2,7 +2,7 @@ import pandas as pd
 import scipy
 import numpy
 import pyensembl
-from tools import count_calls, time_elapsed, fancy_status, getCasesAboveMMBThreshold, findThresholdCases
+from tools import count_calls, time_elapsed, fancy_status, findThresholdCases
 import statsmodels.stats.multitest as smm
 
 #used by performDiffExprAnalysis
