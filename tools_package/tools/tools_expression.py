@@ -296,10 +296,10 @@ def addCaseIDtoExpressionDataframe(expression_df, expression_metadata_location):
 
     #create sample_name_file column with path removed from sample_name
     expression_df["sample_name_file"] = expression_df["sample_name"].str.split("/").str[-1]
-    print("expression_df['sample_name_file']")
+    print("expression_df['sample_name_file'] (head)")
     print(expression_df["sample_name_file"].head(10))
 
-    print("expression_metadata['file_name']")
+    print("expression_metadata['file_name'] (head)")
     print(expression_metadata["file_name"].head(10))
 
     # add the case_id from expression_metadata to the expression_df by matching the file_name
@@ -307,7 +307,7 @@ def addCaseIDtoExpressionDataframe(expression_df, expression_metadata_location):
     expression_df["case_id"] = expression_df["sample_name_file"].map(expression_metadata.set_index("file_name")["case_id"])
 
     # save the expression data
-    print(expression_df.head())
+    print(expression_df)
     return expression_df
 
 #used by expressionParser
