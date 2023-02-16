@@ -182,7 +182,7 @@ def plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=0.5, c
     
     sns.set_context("poster")
     #set color for each sample type
-    color_dict = {"Primary Tumor": "tab:blue", "Blood Derived Normal": "tab:orange"}
+    color_dict = {"Primary Tumor": "tab:blue", "Blood Derived Normal": "tab:orange", "Solid Tissue Normal": "tab:green", "Metastatic": "tab:red"}
     sns.histplot(data=df_figure, x="Raw_Count", bins=400, multiple="stack", hue="Sample_Type", palette=color_dict) #multiple="stack", hue="Sample_Type",
     
     #make labels bold
