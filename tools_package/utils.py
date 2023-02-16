@@ -116,7 +116,7 @@ if __name__ == "__main__":
             "MMBIR_THRESHOLD_HIGH":cfg.settings["MMBIR_THRESHOLD_HIGH"],
             "consolidated_results_path": cfg.settings["consolidated_results_path"],
             "expression_df_path": f"expression_data_{cancer}.pickle",
-            "min_concentration": 0,
+            "min_concentration": cfg.settings["min_concentration"],
             "mmbir_fraction_high": cfg.settings["mmbir_fraction_high"],
             "mmbir_fraction_low": cfg.settings["mmbir_fraction_low"],
             "outputs_path": cfg.settings["outputs_path"]
