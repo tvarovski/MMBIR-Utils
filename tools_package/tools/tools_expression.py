@@ -246,6 +246,7 @@ def processSample(sample_path):
     return(expression_transpose)
 
 #used by expressionParser
+@fancy_status
 @time_elapsed
 def createExpressionDataframe(expression_data_path):
     import os
@@ -286,6 +287,8 @@ def loadSampleMetadata(expression_metadata_location):
     return(sample_metadata)
 
 #used by expressionParser
+@fancy_status
+@time_elapsed
 def addCaseIDtoExpressionDataframe(expression_df, expression_metadata_location):
 
     # load expression metdata
