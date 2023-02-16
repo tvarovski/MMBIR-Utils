@@ -271,7 +271,7 @@ def check_for_missing_bams(df_metadata):
 
 def create_missing_bams_manifest(missing_files, manifest_location, df_metadata, missing_manifest_output_name):
 
-    if len(missing_files[0]) == 0 & len(missing_files[0]) == 0:
+    if len(missing_files[0]) == 0 & len(missing_files[1]) == 0:
         print("All good! All files present!")
         return
     else:
@@ -286,7 +286,6 @@ def create_missing_bams_manifest(missing_files, manifest_location, df_metadata, 
         if len(missing_files[1]) > 0:
             #open the metadata file to retreive filenames associated with missing caseIDs
             df_metadata_missing_cases = df_metadata[df_metadata["cases.0.case_id"].isin(missing_files[1])]
-
             #get the manifest rows containing only files from missing cases
             df_missing_cases = df[df["filename"].isin(df_metadata_missing_cases["file_name"])]
             df_out = pd.concat([df_out, df_missing_cases], axis=0)
