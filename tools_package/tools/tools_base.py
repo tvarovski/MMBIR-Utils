@@ -242,7 +242,8 @@ def check_for_missing_bams(df_metadata):
         case_dir = f"{current_dir.strip()}/{case_id.strip()}"
         if not os.path.exists(case_dir):
             print(f"WARNING: The directory: {case_dir} does not exist")
-            missing_cases.append(case_dir)
+            case_id = case_id.split("/")[-1].strip()
+            missing_cases.append(case_id)
         else:
             found_cases+=1
             #enter the directory
@@ -271,7 +272,7 @@ def check_for_missing_bams(df_metadata):
 
 def create_missing_bams_manifest(missing_files, manifest_location, df_metadata, missing_manifest_output_name):
 
-    if len(missing_files[0]) == 0 & len(missing_files[1]) == 0:
+    if (len(missing_files[0])) == 0 & (len(missing_files[1]) == 0):
         print("All good! All files present!")
         return
     else:
