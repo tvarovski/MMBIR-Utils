@@ -272,7 +272,7 @@ def check_for_missing_bams(df_metadata):
 
 def create_missing_bams_manifest(missing_files, manifest_location, df_metadata, missing_manifest_output_name):
 
-    if (len(missing_files[0])) == 0 & (len(missing_files[1]) == 0):
+    if (len(missing_files[0]) == 0) & (len(missing_files[1]) == 0):
         print("All good! All files present!")
         return
     else:
