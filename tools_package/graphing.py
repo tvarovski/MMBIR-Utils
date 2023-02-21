@@ -83,6 +83,8 @@ def graphing(params, save=False):
 
     df_consolidated = annotate_consolidated_results(df_consolidated, df_metadata)
 
+    plot_differential_expression(cancer, save=False)
+
     plot_total_reads_vs_count(df_consolidated, count="Raw_Count", min_concentration=min_concentration, save=save)
 
     df_consolidated = df_consolidated[df_consolidated["total_reads"] >= 100000000]
