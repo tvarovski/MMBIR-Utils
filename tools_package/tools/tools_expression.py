@@ -95,6 +95,9 @@ def performExpressionTTest(expression_df, df_sample_metadata, output_name, conso
                 print(f"couldn't drop a column. Skipping {transcript}")
                 continue
 
+        
+
+
         # create violin plots for the transcript_df in seaborn
         #sns.violinplot(data=transcript_df, x="high_mmbir", y=transcript)
         #plt.show()
@@ -106,8 +109,11 @@ def performExpressionTTest(expression_df, df_sample_metadata, output_name, conso
         low_mmbir_transcript_df = transcript_df[transcript_df["high_mmbir"] == "low"]
 
         # get the mean expression values for the high and low mmbir cases
-        high_mmbir_mean = high_mmbir_transcript_df[f"{transcript}_log2"].mean()
-        low_mmbir_mean = low_mmbir_transcript_df[f"{transcript}_log2"].mean()
+        high_mmbir_mean_log2 = high_mmbir_transcript_df[f"{transcript}_log2"].mean()
+        low_mmbir_mean_log2 = low_mmbir_transcript_df[f"{transcript}_log2"].mean()
+
+        high_mmbir_mean = high_mmbir_transcript_df[f"{transcript}"].mean()
+        low_mmbir_mean = low_mmbir_transcript_df[f"{transcript}"].mean()
 
         high_mmbir_transcript_df = high_mmbir_transcript_df[f"{transcript}_log2"]
         #print(f"High: {high_mmbir_transcript_df.describe()}")
