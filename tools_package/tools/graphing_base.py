@@ -486,12 +486,15 @@ def plot_age_vs_count_correlation(df_consolidated, count="Filtered_Count", min_c
         slope, intercept, r_value, p_value, std_err = stats.linregress(df[0]["age_at_collection"], df[0][count])
         print(f"Slope: {slope}, Intercept: {intercept}, R-squared: {r_value**2}, P-value: {p_value}")
 
+        #make the plot bigger
+        plt.figure(figsize=(10,8))
+
         sns.set_context("talk")
         sns.scatterplot(x="age_at_collection", y=count, data=df[0], alpha=0.5)
         sns.regplot(x="age_at_collection",y=count, data=df[0], scatter=False, robust=True, color="orange")
 
         # add the pvalue and R-squared to the plot title, round the R-squared to 2 decimal places
-        plt.title(f"R-squared: {r_value**2:.3f}, P-value: {p_value:.4f}, slope: {slope:.3f} for {df[1]}")
+        plt.title(f"R-squared: {r_value**2:.3f}, P-value: {p_value:.4f}, slope: {slope:.3f} for {df[1]}", fontsize=12, pad=10)
 
         # rename the x-axis and y-axis
         plt.xlabel("Age (years)") #at sample collection
