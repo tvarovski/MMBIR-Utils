@@ -59,7 +59,7 @@ def plot_differential_expression(cancer, save=False):
     plt.show()
 
 
-def graphing(params):
+def graphing(params, save=False):
 
     cancer = params["cancer"]
     metadata_location = params["metadata_location"]
@@ -72,37 +72,37 @@ def graphing(params):
 
     df_consolidated = annotate_consolidated_results(df_consolidated, df_metadata)
 
-    plot_total_reads_vs_count(df_consolidated, count="Raw_Count", min_concentration=min_concentration)
+    plot_total_reads_vs_count(df_consolidated, count="Raw_Count", min_concentration=min_concentration, save=save)
 
     df_consolidated = df_consolidated[df_consolidated["total_reads"] >= 100000000]
     print("removing samples with fewer than 100000000 reads")
 
-    plot_total_reads_vs_count(df_consolidated, count="Raw_Count", min_concentration=min_concentration)
+    plot_total_reads_vs_count(df_consolidated, count="Raw_Count", min_concentration=min_concentration, save=save)
 
-    df_wide = plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_concentration=min_concentration, method="spearman") #method="spearman" or "pearson"
-    plot_blood_tumor_count_correlation(df_wide, method="spearman", threshold=3000)
+    df_wide = plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_concentration=min_concentration, method="spearman", save=save) #method="spearman" or "pearson"
+    plot_blood_tumor_count_correlation(df_wide, method="spearman", threshold=3000, save=save) #method="spearman" or "pearson"
 
-    plot_count_vs_concentration(df_consolidated, x_count="Raw_Count")
+    plot_count_vs_concentration(df_consolidated, x_count="Raw_Count", save=save)
 
     filterset=["Blood Derived Normal","Primary Tumor"] #"Blood Derived Normal", "Primary Tumor"
 
-    plot_concentration_raw_filtered(df_consolidated, filterset, hue="Concentration") #Concentration_bin
-    plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=min_concentration, cancer=cancer)
+    plot_concentration_raw_filtered(df_consolidated, filterset, hue="Concentration", save=save) #Concentration_bin
+    plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=min_concentration, cancer=cancer, save=save)
 
     filterset=["Primary Tumor"] #"Blood Derived Normal", "Primary Tumor"
 
     #staging='ajcc'/'figo'/'tumor_grade', adjust='early_late' or 'early_middle_late'
-    plot_stage_vs_count(df_consolidated, filterset, staging=staging, x_count="Filtered_Count", min_concentration=min_concentration, adjust_staging='early_late')
-    plot_stage_vs_concentration(df_consolidated, filterset, staging=staging, x_count="Filtered_Count", min_concentration=min_concentration, adjust_staging='early_late')
+    plot_stage_vs_count(df_consolidated, filterset, staging=staging, x_count="Filtered_Count", min_concentration=min_concentration, adjust_staging='early_late', save=save)
+    plot_stage_vs_concentration(df_consolidated, filterset, staging=staging, x_count="Filtered_Count", min_concentration=min_concentration, adjust_staging='early_late', save=save)
 
     if staging == 'ajcc':
-        plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=min_concentration)
-        plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=min_concentration)
+        plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=min_concentration, save=save)
+        plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=min_concentration, save=save)
 
-    plot_age_vs_count_correlation(df_consolidated, count="Filtered_Count", min_concentration=min_concentration, method="spearman")
+    plot_age_vs_count_correlation(df_consolidated, count="Filtered_Count", min_concentration=min_concentration, method="spearman", save=save)
     
-    plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concentration=min_concentration)
-    plot_age_vs_count_binned(df_consolidated, count="Raw_Count", min_concentration=min_concentration)
+    plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concentration=min_concentration, save=save)
+    plot_age_vs_count_binned(df_consolidated, count="Raw_Count", min_concentration=min_concentration, save=save)
 
 
 if __name__ == "__main__":
@@ -120,4 +120,4 @@ if __name__ == "__main__":
         "staging": "ajcc"
     }
 
-    graphing(params)
+    graphing(params, save=True)
