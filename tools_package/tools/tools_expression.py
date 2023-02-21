@@ -115,6 +115,12 @@ def performExpressionTTest(expression_df, df_sample_metadata, output_name, conso
         high_mmbir_mean = high_mmbir_transcript_df[f"{transcript}"].mean()
         low_mmbir_mean = low_mmbir_transcript_df[f"{transcript}"].mean()
 
+        #handle cases where the mean is 0 or extremely low
+        if high_mmbir_mean == 0:
+            high_mmbir_mean = 0.1
+        if low_mmbir_mean == 0:
+            low_mmbir_mean = 0.1
+
         high_mmbir_transcript_df = high_mmbir_transcript_df[f"{transcript}_log2"]
         #print(f"High: {high_mmbir_transcript_df.describe()}")
         low_mmbir_transcript_df = low_mmbir_transcript_df[f"{transcript}_log2"]
@@ -124,9 +130,11 @@ def performExpressionTTest(expression_df, df_sample_metadata, output_name, conso
         # Perform t-test to see if the mean expression values for the high and low mmbir cases are different
         t_stat, p_value = scipy.stats.ttest_ind(high_mmbir_transcript_df, low_mmbir_transcript_df, nan_policy='omit')
         try:
+
             fold_change = high_mmbir_mean/low_mmbir_mean
         except ZeroDivisionError:
             fold_change = "NA"
+        
 
 
         #print(f"{transcript}, t: {t_stat}, p-value: {p_value}, fold-change: {fold_change}")

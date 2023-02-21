@@ -2,7 +2,7 @@ from tools import *
 import cancer_config as cfg
 
 @fancy_status
-def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_concentration=0.5):
+def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_concentration=0.5, save=False):
 
     '''function plot_total_reads_vs_count() plots the MMBIR count vs the total reads.
     The plot shows the MMBIR count on the y-axis and the total reads on the x-axis.'''
@@ -24,9 +24,12 @@ def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_conce
     plt.xlabel("Total reads")
     plt.ylabel(f"MMBIR {count}")
 
+    if save:
+        plt.savefig(f"total_reads_vs_{count}_mincon{min_concentration}.png")
+
     plt.show()
 
-def plot_differential_expression(cancer):
+def plot_differential_expression(cancer, save=False):
     import numpy as np
     path = f"ttest_results_{cancer}_minconc0_bh_corrected.tsv"
 
@@ -50,6 +53,9 @@ def plot_differential_expression(cancer):
 
     sns.scatterplot(x="log2(fold change)", y="-log10(p-value)", data=df, hue="significant")
     plt.axhline(y=1.3, color="red", linestyle="--")
+
+    if save:
+        plt.savefig(f"{cancer}_differential_expression.png")
     plt.show()
 
 
