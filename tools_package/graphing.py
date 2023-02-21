@@ -25,7 +25,7 @@ def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_conce
     plt.ylabel(f"MMBIR {count}")
 
     if save:
-        plt.savefig(f"total_reads_vs_{count}_mincon{min_concentration}.png")
+        plt.savefig(f"total_reads_vs_{count}_mincon{min_concentration}.png", dpi=600)
 
     plt.show()
 
@@ -55,7 +55,7 @@ def plot_differential_expression(cancer, save=False):
     plt.axhline(y=1.3, color="red", linestyle="--")
 
     if save:
-        plt.savefig(f"{cancer}_differential_expression.png")
+        plt.savefig(f"{cancer}_differential_expression.png", dpi=600)
     plt.show()
 
 
