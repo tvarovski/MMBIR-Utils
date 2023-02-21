@@ -131,11 +131,11 @@ if __name__ == "__main__":
         "metadata_location": metadata_location,
         "min_concentration": 0,
         "staging": "ajcc",
-        "save": True
+        "save_plots": True
     }
 
     #check if folder outputs/plots exists, if not, create it given that params["save"] is True
-    if params["save"]:
+    if params["save_plots"]:
         if not os.path.exists("outputs/plots"):
             os.makedirs("outputs/plots")
 
