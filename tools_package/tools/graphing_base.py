@@ -90,6 +90,7 @@ def plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_conc
     # rename the x-axis and y-axis
     plt.xlabel("Max Patient MMBIR cut-off")
     plt.ylabel("Correlation (R-squared)")
+    plt.tight_layout()
 
     if save:
         plt.savefig(f"outputs/plots/plot_blood_tumor_count_correlations_treshold_delta_{method}_minconc{min_concentration}.png", dpi=600)
@@ -124,6 +125,8 @@ def plot_blood_tumor_count_correlation(df_wide, method="spearman", threshold=300
     # calculate the R-squared
     print(f"R-squared is: {r_squared}")
 
+    plt.tight_layout()
+
     if save:
         plt.savefig(f"outputs/plots/plot_blood_tumor_count_correlation_{method}_threshold{threshold}.png", dpi=600)
 
@@ -142,6 +145,7 @@ def plot_count_vs_concentration(df_consolidated, x_count="Raw_Count", save=False
     plt.xlabel("Raw MMBIR Signature Count")
     #rename the y-axis
     plt.ylabel("Aliquot Concentration")
+    plt.tight_layout()
 
     if save:
         plt.savefig(f"outputs/plots/plot_count_vs_concentration_{x_count}.png", dpi=600)
@@ -178,6 +182,7 @@ def plot_concentration_raw_filtered(df_consolidated, filterset, hue="Concentrati
     #rename the x-axis and y-axis
     plt.xlabel("Filtered MMBIR Signature Count")
     plt.ylabel("Raw MMBIR Signature Count")
+    plt.tight_layout()
 
     if save:
         plt.savefig(f"outputs/plots/plot_concentration_raw_filtered_{hue}.png", dpi=600)
@@ -215,6 +220,7 @@ def plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=0.5, c
     #make tick labels bold
     plt.xticks(fontweight="bold", fontsize=20)
     plt.yticks(fontweight="bold", fontsize=20)
+    plt.tight_layout()
 
     if save:
         plt.savefig(f"outputs/plots/plot_Sample_Type_counts_{cancer}_minconc{min_concentration}.png", dpi=600)
@@ -258,7 +264,7 @@ def plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Fil
     if adjust_staging=='early_late':
 
         print("Adjusting staging to early and late: Early = Stage IA, Stage IB, Stage IC, Stage I, Stage IIA, Stage IIB, Stage IIC; Late = everything else")
-        df_consolidated["stage_adjusted"] = df_consolidated["Stage"].apply(lambda x: "Early" if x in ["Stage IA", "Stage IB", "Stage IC" "Stage I", "Stage IIA","Stage IIB", "Stage IIC"] else "Late")
+        df_consolidated["stage_adjusted"] = df_consolidated["Stage"].apply(lambda x: "Early" if x in ["Stage IA", "Stage IB", "Stage IC" "Stage I", "Stage IIA","Stage IIB", "Stage IIC", "Stage II"] else "Late")
     elif adjust_staging=='early_middle_late':
 
         print("Adjusting staging to early, middle and late: Early = Stage IA, Stage IB, Stage IC, Stage I; Middle = Stage IIA, Stage IIB, Stage IIC; Late = everything else")
@@ -285,6 +291,7 @@ def plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Fil
     # sns.histplot(data=df_consolidated, x="Raw_Count", bins=200, hue="stage_adjusted", kde=True)
     plt.xlabel(f"{x_count} MMBIR Signature Count")
     plt.ylabel("Frequency")
+    plt.tight_layout()
 
     if save:
         plt.savefig(f"outputs/plots/plot_stage_vs_count_{staging}_{adjust_staging}_mincon{min_concentration}.png", dpi=600)
@@ -350,6 +357,7 @@ def plot_stage_vs_concentration(df_consolidated, filterset, staging='ajcc', x_co
     sns.histplot(data=df_consolidated, x="Concentration", bins=200, hue="stage_adjusted", kde=True)
     plt.xlabel("Aliquot Concentration")
     plt.ylabel("Frequency")
+    plt.tight_layout()
 
     if save:
         plt.savefig(f"outputs/plots/plot_stage_vs_concentration_{staging}_{adjust_staging}_minconc{min_concentration}.png", dpi=600)
@@ -390,6 +398,7 @@ def plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtere
     # sns.histplot(data=df_consolidated, x=x_count, bins=200, hue="stage_adjusted", kde=True)
     plt.xlabel("Raw MMBIR Signature Count")
     plt.ylabel("Frequency")
+    plt.tight_layout()
 
     if save:
         plt.savefig(f"outputs/plots/plot_stageN_vs_count_{x_count}_minconc{min_concentration}.png", dpi=600)
@@ -433,6 +442,7 @@ def plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtere
     sns.kdeplot(data=df_consolidated, x=x_count, hue="stageT_adjusted", common_norm=False, common_grid=True)
     plt.xlabel("Raw MMBIR Signature Count")
     plt.ylabel("Frequency")
+    plt.tight_layout()
 
     if save:
         plt.savefig(f"outputs/plots/plot_stageT_vs_count_{x_count}_minconc{min_concentration}.png", dpi=600)
@@ -475,6 +485,7 @@ def plot_age_vs_count_correlation(df_consolidated, count="Filtered_Count", min_c
         # rename the x-axis and y-axis
         plt.xlabel("Age at sample collection (years)")
         plt.ylabel(f"MMBIR {count}")
+        plt.tight_layout()
 
         if save:
             plt.savefig(f"outputs/plots/plot_age_vs_count_{count}_minconc{min_concentration}_{df[1]}.png", dpi=600)
@@ -514,6 +525,7 @@ def plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concen
     sns.violinplot(x="age_bin", y=count, data=df_consolidated, inner="quartile", scale="count", gridsize=1000)
     plt.xlabel("Age at sample collection (years)")
     plt.ylabel(f"MMBIR {count}")
+    plt.tight_layout()
 
     if save:
         plt.savefig(f"outputs/plots/plot_age_vs_count_binned_{count}_minconc{min_concentration}.png", dpi=600)
@@ -542,6 +554,7 @@ def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_conce
     # rename the x-axis and y-axis
     plt.xlabel("Total reads")
     plt.ylabel(f"MMBIR {count}")
+    plt.tight_layout()
 
     if save:
         plt.savefig(f"outputs/plots/plot_total_reads_vs_count_{count}_minconc{min_concentration}.png", dpi=600)

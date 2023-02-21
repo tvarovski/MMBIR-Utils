@@ -24,6 +24,7 @@ def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_conce
     # rename the x-axis and y-axis
     plt.xlabel("Total reads")
     plt.ylabel(f"MMBIR {count}")
+    plt.tight_layout()
 
     if save:
         plt.savefig(f"outputs/plots/total_reads_vs_{count}_mincon{min_concentration}.png", dpi=600)
@@ -62,6 +63,7 @@ def plot_differential_expression(cancer, save=False):
 
     #add the title
     plt.title(f"Differential expression of {cancer}", fontsize=20, fontweight="bold")
+    plt.tight_layout()
     
     #add the a vertical line at log2(fold change) = 0, which is the threshold for differential expression
 
