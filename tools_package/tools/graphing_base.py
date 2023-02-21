@@ -121,7 +121,7 @@ def plot_blood_tumor_count_correlation(df_wide, method="spearman", threshold=300
     #rename the x-axis
     plt.xlabel("Primary Tumor MMBIR count")
     #rename the y-axis
-    plt.ylabel("Blood Derived Normal MMBIR count")
+    plt.ylabel("Blood MMBIR count") #Derived Normal
     # calculate the R-squared
     print(f"R-squared is: {r_squared}")
 
@@ -142,7 +142,7 @@ def plot_count_vs_concentration(df_consolidated, x_count="Raw_Count", save=False
     # set log scale for x-axis
     plt.xscale("log")
     #rename the x-axis
-    plt.xlabel("Raw MMBIR Signature Count")
+    plt.xlabel("Raw MMBIR Count")
     #rename the y-axis
     plt.ylabel("Aliquot Concentration")
     plt.tight_layout()
@@ -152,7 +152,7 @@ def plot_count_vs_concentration(df_consolidated, x_count="Raw_Count", save=False
     plt.show()
 
 @fancy_status
-def plot_concentration_raw_filtered(df_consolidated, filterset, hue="Concentration", save=False):
+def plot_concentration_raw_filtered(df_consolidated, filterset, hue="Concentration", save=False, cancer="cancer"):
     '''function plot_concentration_raw_filtered() plots the concentration vs the MMBIR count.
     The plot shows the Filtered MMBIR count on the x-axis and the Raw MMBIR count on y-axis.'''
 
@@ -172,16 +172,22 @@ def plot_concentration_raw_filtered(df_consolidated, filterset, hue="Concentrati
         df_consolidated["Concentration_bin"] = df_consolidated["Concentration"].apply(lambda x: "low" if x < .5 else "high")
 
     # set the plot context
-    sns.set_context("poster")
+    sns.set_context("talk")
     sns.scatterplot(x="Filtered_Count", y="Raw_Count", data=df_consolidated, alpha=0.5, hue=hue, palette="flare")
 
+    #add title
+    plt.title(f"Filtered vs Raw MMBIR Count ({cancer})", fontsize=14, fontweight='bold')
+
+    #place the legend outside the plot
+    plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+    
     # set both x- and y-axis to log scale
     plt.xscale("log")
     plt.yscale("log")
 
     #rename the x-axis and y-axis
-    plt.xlabel("Filtered MMBIR Signature Count")
-    plt.ylabel("Raw MMBIR Signature Count")
+    plt.xlabel("Filtered MMBIR Count")
+    plt.ylabel("Raw MMBIR Count")
     plt.tight_layout()
 
     if save:
@@ -197,14 +203,14 @@ def plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=0.5, c
     df_figure = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
     df_figure = df_figure[df_figure["Concentration"] >= min_concentration]
     
-    sns.set_context("poster")
+    sns.set_context("talk")
     #set color for each sample type
     color_dict = {"Primary Tumor": "tab:blue", "Blood Derived Normal": "tab:orange", "Solid Tissue Normal": "tab:green", "Metastatic": "tab:red"}
     sns.histplot(data=df_figure, x="Raw_Count", bins=400, multiple="stack", hue="Sample_Type", palette=color_dict) #multiple="stack", hue="Sample_Type",
     
     #make labels bold
-    plt.xlabel("MMBIR Signature Count", fontweight="bold")
-    plt.ylabel("Number of tumor samples", fontweight="bold")
+    plt.xlabel("MMBIR Count", fontweight="bold")
+    plt.ylabel("Tumor Samples (N)", fontweight="bold")
     
     #add title
     #show the length of the df_figure on the title
@@ -286,10 +292,10 @@ def plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Fil
     print(stats.mannwhitneyu(df_consolidated[df_consolidated["stage_adjusted"]=="Early"][x_count], df_consolidated[df_consolidated["stage_adjusted"]=="Late"]["Raw_Count"]))
     print(stats.ttest_ind(df_consolidated[df_consolidated["stage_adjusted"]=="Early"][x_count], df_consolidated[df_consolidated["stage_adjusted"]=="Late"]["Raw_Count"]))
 
-    sns.set_context("poster")
+    sns.set_context("talk")
     sns.kdeplot(data=df_consolidated, x=x_count, hue="stage_adjusted", common_norm=False, common_grid=True)
     # sns.histplot(data=df_consolidated, x="Raw_Count", bins=200, hue="stage_adjusted", kde=True)
-    plt.xlabel(f"{x_count} MMBIR Signature Count")
+    plt.xlabel(f"{x_count} MMBIR Count")
     plt.ylabel("Frequency")
     plt.tight_layout()
 
@@ -353,7 +359,7 @@ def plot_stage_vs_concentration(df_consolidated, filterset, staging='ajcc', x_co
     print(df_consolidated.groupby("stage_adjusted").std()[x_count])
 
     #show stage vs concentration
-    sns.set_context("poster")
+    sns.set_context("talk")
     sns.histplot(data=df_consolidated, x="Concentration", bins=200, hue="stage_adjusted", kde=True)
     plt.xlabel("Aliquot Concentration")
     plt.ylabel("Frequency")
@@ -393,10 +399,10 @@ def plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtere
     print(stats.mannwhitneyu(df_consolidated[df_consolidated["stageN_adjusted"]=="N0"][x_count], df_consolidated[df_consolidated["stageN_adjusted"]=="N2+N3"]["Raw_Count"]))
     print(stats.ttest_ind(df_consolidated[df_consolidated["stageN_adjusted"]=="N0"][x_count], df_consolidated[df_consolidated["stageN_adjusted"]=="N2+N3"]["Raw_Count"]))
 
-    sns.set_context("poster")
+    sns.set_context("talk")
     sns.kdeplot(data=df_consolidated, x=x_count, hue="stageN_adjusted", common_norm=False, common_grid=True) #
     # sns.histplot(data=df_consolidated, x=x_count, bins=200, hue="stage_adjusted", kde=True)
-    plt.xlabel("Raw MMBIR Signature Count")
+    plt.xlabel("Raw MMBIR Count")
     plt.ylabel("Frequency")
     plt.tight_layout()
 
@@ -437,10 +443,10 @@ def plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtere
     print(stats.mannwhitneyu(df_consolidated[df_consolidated["stageT_adjusted"]=="T1"][x_count], df_consolidated[df_consolidated["stageT_adjusted"]=="T3&4"]["Raw_Count"]))
     print(stats.ttest_ind(df_consolidated[df_consolidated["stageT_adjusted"]=="T1"][x_count], df_consolidated[df_consolidated["stageT_adjusted"]=="T3&4"]["Raw_Count"]))
 
-    sns.set_context("poster")
+    sns.set_context("talk")
     #sns.histplot(data=df_consolidated, x=x_count, bins=100, hue="stageT_adjusted", kde=True)
     sns.kdeplot(data=df_consolidated, x=x_count, hue="stageT_adjusted", common_norm=False, common_grid=True)
-    plt.xlabel("Raw MMBIR Signature Count")
+    plt.xlabel("Raw MMBIR Count")
     plt.ylabel("Frequency")
     plt.tight_layout()
 
@@ -475,7 +481,7 @@ def plot_age_vs_count_correlation(df_consolidated, count="Filtered_Count", min_c
         slope, intercept, r_value, p_value, std_err = stats.linregress(df[0]["age_at_collection"], df[0][count])
         print(f"Slope: {slope}, Intercept: {intercept}, R-squared: {r_value**2}, P-value: {p_value}")
 
-        sns.set_context("poster")
+        sns.set_context("talk")
         sns.scatterplot(x="age_at_collection", y=count, data=df[0], alpha=0.5)
         sns.regplot(x="age_at_collection",y=count, data=df[0], scatter=False, robust=True, color="orange")
 
@@ -483,7 +489,7 @@ def plot_age_vs_count_correlation(df_consolidated, count="Filtered_Count", min_c
         plt.title(f"R-squared: {r_value**2:.3f}, P-value: {p_value:.4f}, slope: {slope:.3f} for {df[1]}")
 
         # rename the x-axis and y-axis
-        plt.xlabel("Age at sample collection (years)")
+        plt.xlabel("Age (years)") #at sample collection
         plt.ylabel(f"MMBIR {count}")
         plt.tight_layout()
 
@@ -521,9 +527,9 @@ def plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concen
     print(stats.ttest_ind(df_consolidated[df_consolidated["age_bin"]=="40-50"][count], df_consolidated[df_consolidated["age_bin"]=="80+"][count]))
 
     #plot the bins as a series of violin plots where the x-axis is the age bin and the y-axis is the count
-    sns.set_context("poster")
+    sns.set_context("talk")
     sns.violinplot(x="age_bin", y=count, data=df_consolidated, inner="quartile", scale="count", gridsize=1000)
-    plt.xlabel("Age at sample collection (years)")
+    plt.xlabel("Age (years)") #at sample collection
     plt.ylabel(f"MMBIR {count}")
     plt.tight_layout()
 
@@ -544,7 +550,7 @@ def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_conce
     slope, intercept, r_value, p_value, std_err = stats.linregress(df_consolidated["total_reads"], df_consolidated[count])
     print(f"Slope: {slope}, Intercept: {intercept}, R-squared: {r_value**2}, P-value: {p_value}")
 
-    sns.set_context("poster")
+    sns.set_context("talk")
     sns.scatterplot(x="total_reads", y=count, data=df_consolidated, alpha=0.5)
     sns.regplot(x="total_reads",y=count, data=df_consolidated, scatter=False, robust=True, color="orange")
 
