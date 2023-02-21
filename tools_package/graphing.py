@@ -14,12 +14,15 @@ def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_conce
     slope, intercept, r_value, p_value, std_err = stats.linregress(df_consolidated["total_reads"], df_consolidated[count])
     print(f"Slope: {slope}, Intercept: {intercept}, R-squared: {r_value**2}, P-value: {p_value}")
 
+    #make a figuure large enough to fit the plot and the title
+    plt.figure(figsize=(12,12))
+
     sns.set_context("poster")
     sns.scatterplot(x="total_reads", y=count, data=df_consolidated, alpha=0.5)
     sns.regplot(x="total_reads",y=count, data=df_consolidated, scatter=False, robust=True, color="orange")
 
     # add the pvalue and R-squared to the plot title, round the R-squared to 2 decimal places
-    plt.title(f"R-squared: {r_value**2:.3f}, P-value: {p_value:.4f}, slope: {slope:.3f}")
+    plt.title(f"R-squared: {r_value**2:.3f}, P-value: {p_value:.4f}, slope: {slope:.3f}", fontsize=11, fontweight="bold")
 
     # rename the x-axis and y-axis
     plt.xlabel("Total reads")

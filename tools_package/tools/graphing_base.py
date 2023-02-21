@@ -145,6 +145,8 @@ def plot_count_vs_concentration(df_consolidated, x_count="Raw_Count", save=False
     plt.xlabel("Raw MMBIR Count")
     #rename the y-axis
     plt.ylabel("Aliquot Concentration")
+    #move the legend outside the plot
+    plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
     plt.tight_layout()
 
     if save:
@@ -170,6 +172,9 @@ def plot_concentration_raw_filtered(df_consolidated, filterset, hue="Concentrati
         #bin the concentration into 2 groups for plotting 2 discrete colors based on the concentration
         df_consolidated["Concentration_bin"] = "none"
         df_consolidated["Concentration_bin"] = df_consolidated["Concentration"].apply(lambda x: "low" if x < .5 else "high")
+
+    #make the plot bigger
+    plt.figure(figsize=(16,12))
 
     # set the plot context
     sns.set_context("talk")
