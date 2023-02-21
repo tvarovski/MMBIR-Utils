@@ -1,5 +1,6 @@
 from tools import *
 import cancer_config as cfg
+import os
 
 @fancy_status
 def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_concentration=0.5, save=False):
@@ -117,7 +118,13 @@ if __name__ == "__main__":
         "cancer": cancer,
         "metadata_location": metadata_location,
         "min_concentration": 0,
-        "staging": "ajcc"
+        "staging": "ajcc",
+        "save": True
     }
+
+    #check if folder outputs/plots exists, if not, create it given that params["save"] is True
+    if params["save"]:
+        if not os.path.exists("outputs/plots"):
+            os.makedirs("outputs/plots")
 
     graphing(params, save=True)
