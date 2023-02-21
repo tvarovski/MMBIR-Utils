@@ -26,7 +26,7 @@ def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_conce
     plt.ylabel(f"MMBIR {count}")
 
     if save:
-        plt.savefig(f"total_reads_vs_{count}_mincon{min_concentration}.png", dpi=600)
+        plt.savefig(f"outputs/plots/total_reads_vs_{count}_mincon{min_concentration}.png", dpi=600)
 
     plt.show()
 
@@ -66,7 +66,7 @@ def plot_differential_expression(cancer, save=False):
     #add the a vertical line at log2(fold change) = 0, which is the threshold for differential expression
 
     if save:
-        plt.savefig(f"{cancer}_differential_expression.png", dpi=600)
+        plt.savefig(f"outputs/plots/{cancer}_differential_expression.png", dpi=600)
     plt.show()
 
 
@@ -83,7 +83,7 @@ def graphing(params, save=False):
 
     df_consolidated = annotate_consolidated_results(df_consolidated, df_metadata)
 
-    plot_differential_expression(cancer, save=False)
+    plot_differential_expression(cancer, save=save)
 
     plot_total_reads_vs_count(df_consolidated, count="Raw_Count", min_concentration=min_concentration, save=save)
 
