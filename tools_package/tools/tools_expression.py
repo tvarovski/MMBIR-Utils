@@ -235,7 +235,7 @@ def performDiffExprAnalysis(params):
     expression_df = pd.read_csv(output_name, sep="\t")
     expression_df = addGeneNameColumnFromGeneID(expression_df, "gene_id")
 
-    output_name = f"{outputs_path}/ttest_results_{cancer}_minconc{min_concentration}_bh_corrected.tsv"
+    output_name = f"{outputs_path}/ttest_results_{cancer}_minconc{min_concentration}_low{fraction_low}_high{fraction_high}_bh_corrected.tsv"
     expression_df = performBenjaminiHochbergCorrection(expression_df, output_name)
 
 #used by expressionParser
