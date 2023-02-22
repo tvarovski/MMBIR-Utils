@@ -228,7 +228,7 @@ def performDiffExprAnalysis(params):
 
     #read in the expression dataframe from file
     expression_df = pd.read_pickle(expression_df_path)
-    output_name = f"{outputs_path}/ttest_results_{cancer}_minconc{min_concentration}.tsv"
+    output_name = f"{outputs_path}/ttest_results_{cancer}_minconc{min_concentration}_low{fraction_low}_high{fraction_high}.tsv"
     expression_df = performExpressionTTest(expression_df, df_metadata, output_name, consolidated_results_path, fraction_high=fraction_high, fraction_low=fraction_low, min_concentration=min_concentration)
 
     #read in the expression dataframe from file
