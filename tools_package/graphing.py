@@ -2,39 +2,9 @@ from tools import *
 import cancer_config as cfg
 import os
 
+
 @fancy_status
-def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_concentration=0.5, save=False):
-
-    '''function plot_total_reads_vs_count() plots the MMBIR count vs the total reads.
-    The plot shows the MMBIR count on the y-axis and the total reads on the x-axis.'''
-
-    df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
-
-    #calculate the linear regression between total_reads and count
-    slope, intercept, r_value, p_value, std_err = stats.linregress(df_consolidated["total_reads"], df_consolidated[count])
-    print(f"Slope: {slope}, Intercept: {intercept}, R-squared: {r_value**2}, P-value: {p_value}")
-
-    #make a figuure large enough to fit the plot and the title
-    plt.figure(figsize=(12,12))
-
-    sns.set_context("poster")
-    sns.scatterplot(x="total_reads", y=count, data=df_consolidated, alpha=0.5)
-    sns.regplot(x="total_reads",y=count, data=df_consolidated, scatter=False, robust=True, color="orange")
-
-    # add the pvalue and R-squared to the plot title, round the R-squared to 2 decimal places
-    plt.title(f"R-squared: {r_value**2:.3f}, P-value: {p_value:.4f}, slope: {slope:.3f}", fontsize=11, fontweight="bold")
-
-    # rename the x-axis and y-axis
-    plt.xlabel("Total reads")
-    plt.ylabel(f"MMBIR {count}")
-    plt.tight_layout()
-
-    if save:
-        plt.savefig(f"outputs/plots/total_reads_vs_{count}_mincon{min_concentration}.png", dpi=600)
-
-    plt.show()
-
-def plot_differential_expression(cancer, save=False):
+def plot_differential_expression(cancer, save=False, show=True):
     import numpy as np
     path = f"outputs/ttest_results_{cancer}_minconc0_bh_corrected.tsv"
 
@@ -72,15 +42,19 @@ def plot_differential_expression(cancer, save=False):
 
     if save:
         plt.savefig(f"outputs/plots/{cancer}_differential_expression.png", dpi=600)
-    plt.show()
 
+    if show:
+        plt.show()
+    else:
+        plt.close()
 
-def graphing(params, save=False):
+def graphing(params, save=False, show=True):
 
     cancer = params["cancer"]
     metadata_location = params["metadata_location"]
     min_concentration = params["min_concentration"]
     staging = params["staging"]
+    show = params["show_plots"]
 
     #load the consolidated results file, in future try migrating away from it to rely solely on mmbir_master_tables...
     df_consolidated=pd.read_csv(f"consolidated_results_{cancer}.tsv", sep="\t")
@@ -88,40 +62,39 @@ def graphing(params, save=False):
 
     df_consolidated = annotate_consolidated_results(df_consolidated, df_metadata)
 
-    plot_differential_expression(cancer, save=save)
+    plot_differential_expression(cancer, save=save, show=show)
 
-    plot_total_reads_vs_count(df_consolidated, count="Raw_Count", min_concentration=min_concentration, save=save)
+    plot_total_reads_vs_count(df_consolidated, count="Raw_Count", min_concentration=min_concentration, save=save, show=show)
 
     df_consolidated = df_consolidated[df_consolidated["total_reads"] >= 100000000]
     print("removing samples with fewer than 100000000 reads")
 
-    plot_total_reads_vs_count(df_consolidated, count="Raw_Count", min_concentration=min_concentration, save=save)
+    plot_total_reads_vs_count(df_consolidated, count="Raw_Count", min_concentration=min_concentration, save=save, show=show)
 
-    df_wide = plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_concentration=min_concentration, method="spearman", save=save) #method="spearman" or "pearson"
-    plot_blood_tumor_count_correlation(df_wide, method="spearman", threshold=3000, save=save) #method="spearman" or "pearson"
+    df_wide = plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_concentration=min_concentration, method="spearman", save=save, show=show) #method="spearman" or "pearson"
+    plot_blood_tumor_count_correlation(df_wide, method="spearman", threshold=3000, save=save, show=show) #method="spearman" or "pearson"
 
-    plot_count_vs_concentration(df_consolidated, x_count="Raw_Count", save=save)
+    plot_count_vs_concentration(df_consolidated, x_count="Raw_Count", save=save, show=show)
 
     filterset=["Blood Derived Normal","Primary Tumor"] #"Blood Derived Normal", "Primary Tumor"
 
-    plot_concentration_raw_filtered(df_consolidated, filterset, hue="Concentration", save=save) #Concentration_bin
-    plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=min_concentration, cancer=cancer, save=save)
+    plot_concentration_raw_filtered(df_consolidated, filterset, hue="Concentration", save=save, show=show) #Concentration_bin
+    plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=min_concentration, cancer=cancer, save=save, show=show)
 
     filterset=["Primary Tumor"] #"Blood Derived Normal", "Primary Tumor"
 
     #staging='ajcc'/'figo'/'tumor_grade', adjust='early_late' or 'early_middle_late'
-    plot_stage_vs_count(df_consolidated, filterset, staging=staging, x_count="Filtered_Count", min_concentration=min_concentration, adjust_staging='early_late', save=save)
-    plot_stage_vs_concentration(df_consolidated, filterset, staging=staging, x_count="Filtered_Count", min_concentration=min_concentration, adjust_staging='early_late', save=save)
+    plot_stage_vs_count(df_consolidated, filterset, staging=staging, x_count="Filtered_Count", min_concentration=min_concentration, adjust_staging='early_late', save=save, show=show)
+    plot_stage_vs_concentration(df_consolidated, filterset, staging=staging, x_count="Filtered_Count", min_concentration=min_concentration, adjust_staging='early_late', save=save, show=show)
 
     if staging == 'ajcc':
-        plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=min_concentration, save=save)
-        plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=min_concentration, save=save)
+        plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=min_concentration, save=save, show=show)
+        plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=min_concentration, save=save, show=show)
 
-    plot_age_vs_count_correlation(df_consolidated, count="Filtered_Count", min_concentration=min_concentration, method="spearman", save=save)
+    plot_age_vs_count_correlation(df_consolidated, count="Filtered_Count", min_concentration=min_concentration, method="spearman", save=save, show=show)
     
-    plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concentration=min_concentration, save=save)
-    plot_age_vs_count_binned(df_consolidated, count="Raw_Count", min_concentration=min_concentration, save=save)
-
+    plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concentration=min_concentration, save=save, show=show)
+    plot_age_vs_count_binned(df_consolidated, count="Raw_Count", min_concentration=min_concentration, save=save, show=show)
 
 if __name__ == "__main__":
 
@@ -136,7 +109,8 @@ if __name__ == "__main__":
         "metadata_location": metadata_location,
         "min_concentration": 0,
         "staging": "ajcc",
-        "save_plots": True
+        "save_plots": True,
+        "show_plots": True,
     }
 
     #check if folder outputs/plots exists, if not, create it given that params["save"] is True

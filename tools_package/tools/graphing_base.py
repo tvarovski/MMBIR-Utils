@@ -29,7 +29,7 @@ def annotate_consolidated_results(df_consolidated, df_metadata):
     return df_consolidated
 
 @fancy_status
-def plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_concentration=0.5, method="spearman", save=False):
+def plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_concentration=0.5, method="spearman", save=False, show=True):
     '''function plot_blood_tumor_count_correlations_treshold_delta() takes the output from
     annotate_consolidated_results() function as input and plots the correlations between 
     blood-derived normal and primary tumor sample counts using different thresholds. 
@@ -95,12 +95,16 @@ def plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_conc
     if save:
         plt.savefig(f"outputs/plots/plot_blood_tumor_count_correlations_treshold_delta_{method}_minconc{min_concentration}.png", dpi=600)
 
-    plt.show()
+
+    if show:
+        plt.show()
+    else:
+        plt.close()
 
     return df_wide
 
 @fancy_status
-def plot_blood_tumor_count_correlation(df_wide, method="spearman", threshold=3000, save=False):
+def plot_blood_tumor_count_correlation(df_wide, method="spearman", threshold=3000, save=False, show=True):
     '''function plot_blood_tumor_count_correlation() plots the correlations between
     blood-derived normal and primary tumor sample counts using a threshold.
     The correlations are calculated using either the spearman or pearson method.
@@ -130,10 +134,13 @@ def plot_blood_tumor_count_correlation(df_wide, method="spearman", threshold=300
     if save:
         plt.savefig(f"outputs/plots/plot_blood_tumor_count_correlation_{method}_threshold{threshold}.png", dpi=600)
 
-    plt.show()
+    if show:
+        plt.show()
+    else:
+        plt.close()
 
 @fancy_status
-def plot_count_vs_concentration(df_consolidated, x_count="Raw_Count", save=False):
+def plot_count_vs_concentration(df_consolidated, x_count="Raw_Count", save=False, show=True):
     '''function plot_count_vs_concentration() plots the concentration vs the MMBIR count.
     The plot shows the MMBIR count on the x-axis and the concentration on the y-axis.'''
 
@@ -151,10 +158,14 @@ def plot_count_vs_concentration(df_consolidated, x_count="Raw_Count", save=False
 
     if save:
         plt.savefig(f"outputs/plots/plot_count_vs_concentration_{x_count}.png", dpi=600)
-    plt.show()
+    
+    if show:
+        plt.show()
+    else:
+        plt.close()
 
 @fancy_status
-def plot_concentration_raw_filtered(df_consolidated, filterset, hue="Concentration", save=False, cancer="cancer"):
+def plot_concentration_raw_filtered(df_consolidated, filterset, hue="Concentration", cancer="cancer", save=False, show=True):
     '''function plot_concentration_raw_filtered() plots the concentration vs the MMBIR count.
     The plot shows the Filtered MMBIR count on the x-axis and the Raw MMBIR count on y-axis.'''
 
@@ -174,7 +185,7 @@ def plot_concentration_raw_filtered(df_consolidated, filterset, hue="Concentrati
         df_consolidated["Concentration_bin"] = df_consolidated["Concentration"].apply(lambda x: "low" if x < .5 else "high")
 
     #make the plot bigger
-    plt.figure(figsize=(16,12))
+    plt.figure(figsize=(10,8))
 
     # set the plot context
     sns.set_context("talk")
@@ -198,10 +209,13 @@ def plot_concentration_raw_filtered(df_consolidated, filterset, hue="Concentrati
     if save:
         plt.savefig(f"outputs/plots/plot_concentration_raw_filtered_{hue}.png", dpi=600)
 
-    plt.show()
+    if show:
+        plt.show()
+    else:
+        plt.close()
 
 @fancy_status
-def plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=0.5, cancer="cancer", save=False):
+def plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=0.5, cancer="cancer", save=False, show=True):
     '''function plot_Sample_Type_counts() plots the concentration vs the MMBIR count.
     The plot shows the MMBIR count on the x-axis and the concentration on the y-axis.'''
 
@@ -236,10 +250,13 @@ def plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=0.5, c
     if save:
         plt.savefig(f"outputs/plots/plot_Sample_Type_counts_{cancer}_minconc{min_concentration}.png", dpi=600)
 
-    plt.show()
+    if show:
+        plt.show()
+    else:
+        plt.close()
 
 @fancy_status
-def plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Filtered_Count", min_concentration=0.5, adjust_staging='early_late', save=False):
+def plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Filtered_Count", min_concentration=0.5, adjust_staging='early_late', save=False, show=True):
     '''function plot_stage_vs_count() plots the stage vs the MMBIR count as a kde plot.'''
    
     #staging='ajcc'/'figo'/'tumor_grade', adjust='early_late'/'early_middle_late'
@@ -306,10 +323,14 @@ def plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Fil
 
     if save:
         plt.savefig(f"outputs/plots/plot_stage_vs_count_{staging}_{adjust_staging}_mincon{min_concentration}.png", dpi=600)
-    plt.show()
+    
+    if show:
+        plt.show()
+    else:
+        plt.close()
 
 @fancy_status
-def plot_stage_vs_concentration(df_consolidated, filterset, staging='ajcc', x_count="Filtered_Count", min_concentration=0.5, adjust_staging='early_late', save=False):
+def plot_stage_vs_concentration(df_consolidated, filterset, staging='ajcc', x_count="Filtered_Count", min_concentration=0.5, adjust_staging='early_late', save=False, show=True):
     '''function plot_stage_vs_count() plots the stage vs concentration.
     The plot shows the concentration on the x-axis and the stage as a hist.
     you can adjust the staging to early, middle and late or early and late.
@@ -373,10 +394,13 @@ def plot_stage_vs_concentration(df_consolidated, filterset, staging='ajcc', x_co
     if save:
         plt.savefig(f"outputs/plots/plot_stage_vs_concentration_{staging}_{adjust_staging}_minconc{min_concentration}.png", dpi=600)
 
-    plt.show()
+    if show:
+        plt.show()
+    else:
+        plt.close()
 
 @fancy_status
-def plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=0.5, save=False):
+def plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=0.5, save=False, show=True):
     '''function plot_ajcc_pathologic_n_vs_count() plots the ajcc pathologic n vs the MMBIR count.'''
 
     df_consolidated = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
@@ -414,10 +438,13 @@ def plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtere
     if save:
         plt.savefig(f"outputs/plots/plot_stageN_vs_count_{x_count}_minconc{min_concentration}.png", dpi=600)
 
-    plt.show()
+    if show:
+        plt.show()
+    else:
+        plt.close()
 
 @fancy_status
-def plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=0.5, save=False):
+def plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=0.5, save=False, show=True):
     '''function plot_ajcc_pathologic_t_vs_count() plots the ajcc pathologic t vs the MMBIR count.'''
 
     df_consolidated = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
@@ -458,10 +485,13 @@ def plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtere
     if save:
         plt.savefig(f"outputs/plots/plot_stageT_vs_count_{x_count}_minconc{min_concentration}.png", dpi=600)
 
-    plt.show()
+    if show:
+        plt.show()
+    else:
+        plt.close()
 
 @fancy_status
-def plot_age_vs_count_correlation(df_consolidated, count="Filtered_Count", min_concentration=0.5, method="spearman", save=False):
+def plot_age_vs_count_correlation(df_consolidated, count="Filtered_Count", min_concentration=0.5, method="spearman", save=False, show=True):
     '''function plot_count_vs_age_correlation() plots the MMBIR count vs the age at collection.
     The plot shows the MMBIR count on the y-axis and the age at collection on the x-axis.'''
 
@@ -504,10 +534,13 @@ def plot_age_vs_count_correlation(df_consolidated, count="Filtered_Count", min_c
         if save:
             plt.savefig(f"outputs/plots/plot_age_vs_count_{count}_minconc{min_concentration}_{df[1]}.png", dpi=600)
 
-        plt.show()
+        if show:
+            plt.show()
+        else:
+            plt.close()
 
 @fancy_status
-def plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concentration=0.5, save=False):
+def plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concentration=0.5, save=False, show=True):
     '''function plot_count_vs_age_binned() plots the MMBIR count vs the age at collection.
     The plot shows the MMBIR count on the y-axis and the age at collection on the x-axis.'''
 
@@ -544,10 +577,13 @@ def plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concen
     if save:
         plt.savefig(f"outputs/plots/plot_age_vs_count_binned_{count}_minconc{min_concentration}.png", dpi=600)
 
-    plt.show()
+    if show:
+        plt.show()
+    else:
+        plt.close()
 
 @fancy_status
-def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_concentration=0.5, save=False):
+def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_concentration=0.5, save=False, show=True):
 
     '''function plot_total_reads_vs_count() plots the MMBIR count vs the total reads.
     The plot shows the MMBIR count on the y-axis and the total reads on the x-axis.'''
@@ -573,4 +609,43 @@ def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_conce
     if save:
         plt.savefig(f"outputs/plots/plot_total_reads_vs_count_{count}_minconc{min_concentration}.png", dpi=600)
 
-    plt.show()
+    if show:
+        plt.show()
+    else:
+        plt.close()
+
+@fancy_status
+def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_concentration=0.5, save=False, show=True):
+
+    '''function plot_total_reads_vs_count() plots the MMBIR count vs the total reads.
+    The plot shows the MMBIR count on the y-axis and the total reads on the x-axis.'''
+
+    df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
+
+    #calculate the linear regression between total_reads and count
+    slope, intercept, r_value, p_value, std_err = stats.linregress(df_consolidated["total_reads"], df_consolidated[count])
+    print(f"Slope: {slope}, Intercept: {intercept}, R-squared: {r_value**2}, P-value: {p_value}")
+
+    #make a figuure large enough to fit the plot and the title
+    plt.figure(figsize=(12,12))
+
+    sns.set_context("poster")
+    sns.scatterplot(x="total_reads", y=count, data=df_consolidated, alpha=0.5)
+    sns.regplot(x="total_reads",y=count, data=df_consolidated, scatter=False, robust=True, color="orange")
+
+    # add the pvalue and R-squared to the plot title, round the R-squared to 2 decimal places
+    plt.title(f"R-squared: {r_value**2:.3f}, P-value: {p_value:.4f}, slope: {slope:.3f}", fontsize=11, fontweight="bold")
+
+    # rename the x-axis and y-axis
+    plt.xlabel("Total reads")
+    plt.ylabel(f"MMBIR {count}")
+    plt.tight_layout()
+
+    if save:
+        plt.savefig(f"outputs/plots/total_reads_vs_{count}_mincon{min_concentration}.png", dpi=600)
+
+
+    if show:
+        plt.show()
+    else:
+        plt.close()
