@@ -311,14 +311,25 @@ def plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Fil
     print(df_consolidated.groupby("stage_adjusted").std()[x_count])
 
     #compare the mean of the early stage to the mean of the late stage statistically using a mann-whitney test
-    print(stats.mannwhitneyu(df_consolidated[df_consolidated["stage_adjusted"]=="Early"][x_count], df_consolidated[df_consolidated["stage_adjusted"]=="Late"]["Raw_Count"]))
-    print(stats.ttest_ind(df_consolidated[df_consolidated["stage_adjusted"]=="Early"][x_count], df_consolidated[df_consolidated["stage_adjusted"]=="Late"]["Raw_Count"]))
+    statistic, pvalue = stats.mannwhitneyu(df_consolidated[df_consolidated["stage_adjusted"]=="Early"][x_count], df_consolidated[df_consolidated["stage_adjusted"]=="Late"][x_count])
+    print(f"Mann-Whitney U test: statistic={statistic}, pvalue={pvalue}")
 
+    #do the same for the t-test
+    statistic, pvalue = stats.ttest_ind(df_consolidated[df_consolidated["stage_adjusted"]=="Early"][x_count], df_consolidated[df_consolidated["stage_adjusted"]=="Late"][x_count])
+    print(f"t-test: statistic={statistic}, pvalue={pvalue}")
+
+    #make the plot bigger
+    plt.figure(figsize=(8,8))
     sns.set_context("talk")
     sns.kdeplot(data=df_consolidated, x=x_count, hue="stage_adjusted", common_norm=False, common_grid=True)
+
+    #add title
+    plt.title(f"pvalue={pvalue:.4}", fontweight="bold")
+
     # sns.histplot(data=df_consolidated, x="Raw_Count", bins=200, hue="stage_adjusted", kde=True)
-    plt.xlabel(f"{x_count} MMBIR Count")
-    plt.ylabel("Frequency")
+
+    plt.xlabel(f"{x_count} MMBIR Count", fontweight="bold")
+    plt.ylabel("Frequency", fontweight="bold")
     plt.tight_layout()
 
     if save:
@@ -634,7 +645,7 @@ def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_conce
     sns.regplot(x="total_reads",y=count, data=df_consolidated, scatter=False, robust=True, color="orange")
 
     # add the pvalue and R-squared to the plot title, round the R-squared to 2 decimal places
-    plt.title(f"R-squared: {r_value**2:.3f}, P-value: {p_value:.4f}, slope: {slope:.3f}", fontsize=11, fontweight="bold")
+    plt.title(f"R-squared: {r_value**2:.3f}, P-value: {p_value:.4f}, slope: {slope:.3f}", fontsize=14, fontweight="bold")
 
     # rename the x-axis and y-axis
     plt.xlabel("Total reads")
