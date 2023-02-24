@@ -137,8 +137,8 @@ def plot_UMAP_numerical(embedding, df, numerical_col, scale_upper=None, scale_lo
     plt.axis('square')
     plt.colorbar(label=f"{numerical_col}")
     #save the figure
-    if save_path:
-        plt.savefig(f"outputs/umap_{cancer}_by_{numerical_col}.png", dpi=600)
+    if save_path is not None:
+        plt.savefig(f"{save_path}.png", dpi=600)
         logging.info(f"Saved the figure to {save_path}")
     
     if show_plot:
@@ -169,8 +169,8 @@ def plot_UMAP_categorical(embedding, df, categorical_col, save_path=None, show_p
     plt.legend(handles=patches, bbox_to_anchor=(1, 1), loc=2, borderaxespad=0.)
     plt.tight_layout()
 
-    if save_path:
-        plt.savefig(f"outputs/umap_{cancer}_by_{column_var}.png", dpi=600)
+    if save_path is not None:
+        plt.savefig(f"{save_path}", dpi=600)
         logging.info(f"Saved the figure to {save_path}")
     
     if show_plot:
