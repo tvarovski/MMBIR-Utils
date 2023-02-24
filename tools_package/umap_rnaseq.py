@@ -55,7 +55,7 @@ def filterByDiffExpr(df, df_diff_expr, min_pval=0.1, fold_change_lower=0.75, fol
     diff_expr_genes = df_diff_expr["gene_id"].tolist()
 
     #add columns to keep to the list
-    diff_expr_genes.extend(['sample_name', 'sample_name_file', 'case_id'])
+    diff_expr_genes.extend(['expression_file_name', 'sample_name_file', 'case_id'])
 
     #drop the columns from the df that are not in the list
     df = df[diff_expr_genes]
