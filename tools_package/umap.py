@@ -1,12 +1,13 @@
+import os
+import logging
+import umap
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import seaborn as sns
-import umap
 from sklearn.preprocessing import StandardScaler
 import cancer_config as cfg
-import logging
-import os
+from tools import time_elapsed, fancy_status
 
 #parameters#################
 
@@ -20,8 +21,7 @@ metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
 
 df_diff_expr_path = f"outputs/ttest_results_{cancer}_minconc0_bh_corrected.tsv"
 
-sample_type = "Primary Tumor"
-count = "Raw_Count"
+sample_type = "Primary Tumor" #where to get MMBIR counts from
 n_neighbors = 50
 min_dist = 0.1
 n_components = 2
@@ -75,7 +75,7 @@ def addMMBToDF(df, df_consolidated, sample_type):
 
     #add a column with Raw_Count to the df by merging on the Case_ID column (in df_consolidated) and the case_id column (in df)
     df = df.merge(df_consolidated[["Case_ID", "Raw_Count", "Filtered_Count"]], left_on="case_id", right_on="Case_ID")
-    logging.info(f"Added the {count} column to the dataframe.")
+    logging.info(f"Added the Raw_Count and Filtered_Count columns to the dataframe.")
 
     #remove the Case_ID column
     df = df.drop(columns=["Case_ID"])
@@ -94,6 +94,8 @@ def addMetadataToDF(df, df_metadata, columns):
     
     return df
 
+@fancy_status
+@time_elapsed
 def perform_UMAP(rnaseq_data, n_neighbors, min_dist, n_components, metric):
 
     logging.basicConfig(level=logging.INFO)
