@@ -4,33 +4,37 @@ import numpy
 import pyensembl
 from tools import count_calls, time_elapsed, fancy_status, findThresholdCases
 import statsmodels.stats.multitest as smm
+import logging
 
 #used by performDiffExprAnalysis
 def performExpressionTTest(expression_df, df_sample_metadata, output_name, consolidated_results_path, fraction_high=0.4, fraction_low=0.4, min_concentration=0):
 
+    #set the logging level to INFO
+    logging.basicConfig(level=logging.INFO)
+
     #if there are multiple samples associated with a case_id, print a warning
     if len(expression_df["case_id"].unique()) != len(expression_df["case_id"]):
-        print("WARNING: There are multiple samples associated with a case_id")
+        logging.warning("There are multiple samples associated with a case_id")
 
         #print the case_ids that have multiple samples
         df_multiple_samples = expression_df[expression_df.duplicated(subset="case_id", keep=False)]
-        print(f"There are {len(df_multiple_samples['case_id'].unique())} cases with multiple samples")
+        logging.info(f"There are {len(df_multiple_samples['case_id'].unique())} cases with multiple samples")
 
         #ask the user if they want to keep only one sample per case_id
         keep_one_sample = input("Do you want to keep only one sample per case_id? (y/n): ")
 
         if keep_one_sample == "y":
 
-            print("Keeping only one sample per case_id")
+            logging.info(f"Keeping only one sample per case_id")
             # keep only one sample per case_id
             expression_df = expression_df.drop_duplicates(subset="case_id", keep="first").copy()
 
-            print(f"There are now {len(expression_df['case_id'].unique())} cases with one sample")
-            print(f"Following case_ids kept only the first record: {df_multiple_samples['case_id'].unique()}")
+            logging.info(f"There are now {len(expression_df['case_id'].unique())} cases with one sample")
+            logging.info(f"Following case_ids kept only the first record: {df_multiple_samples['case_id'].unique()}")
         
         else:
 
-            print("Keeping all samples")
+            logging.info("Keeping all samples")
             #keep all samples
             pass
         
@@ -58,7 +62,8 @@ def performExpressionTTest(expression_df, df_sample_metadata, output_name, conso
 
     len_high=len(expression_df[expression_df["high_mmbir"] == "high"])
     len_low=len(expression_df[expression_df["high_mmbir"] == "low"])
-    print(f"high cases: {len_high}, low cases: {len_low}")
+
+    logging.info(f"high cases: {len_high}, low cases: {len_low}")
 
 
     # get the list of all columns (transcripts) in the expression dataframe
@@ -86,13 +91,13 @@ def performExpressionTTest(expression_df, df_sample_metadata, output_name, conso
             #if there are 2 of the same column name, drop the one whose values are all 0s or NaNs
             if transcript_df.columns.values.tolist().count(transcript) > 1:
 
-                print(f"dropping one of the columns of {transcript}")
+                logging.info(f"dropping one of the columns of {transcript}")
                 transcript_df = transcript_df.loc[:,~transcript_df.columns.duplicated()]
 
                 transcript_df[transcript] = transcript_df[transcript].astype(float)
                 transcript_df[f"{transcript}_log2"] = transcript_df[transcript].apply(lambda x: numpy.lib.scimath.log2(x+0.1))
             else:
-                print(f"couldn't drop a column. Skipping {transcript}")
+                logging.info(f"couldn't drop a column. Skipping {transcript}")
                 continue
 
         
@@ -165,7 +170,7 @@ def lambdaEnsemblLookup(gene_id, release=104):
     try:
         gene_name = pyensembl.EnsemblRelease(release).gene_by_id(gene_id).gene_name
     except Exception as e:
-        print(f"Couldn't find {gene_id} in the database. Using the gene ID instead.")
+        logging.warning(f"Couldn't find {gene_id} in the database. Using the gene ID instead.")
         gene_name = gene_id
     return gene_name
 
@@ -184,7 +189,7 @@ def addGeneNameColumnFromGeneID(expression_df, gene_id_column_name):
         expression_df["gene_name"] = expression_df["gene_name"].apply(lambda x: lambdaEnsemblLookup(x))
     except Exception as e:
         print(e)
-        print("Couldn't find gene name for gene ID. Using gene ID instead")
+        logging.warning("Couldn't find gene name for gene ID. Using gene ID instead")
         expression_df["gene_name"] = expression_df[gene_id_column_name]
     
     return expression_df
@@ -195,7 +200,7 @@ def performBenjaminiHochbergCorrection(expression_df, output_name, *min_p_value)
     #show column names
     print(expression_df.columns.values.tolist())
 
-    print("Performing Benjamini-Hochberg correction on p-values...")
+    logging.info("Performing Benjamini-Hochberg correction on p-values...")
 
     #if fold change is 1.0, remove those transcripts
     expression_df = expression_df[expression_df["fold-change"] != 1.0]
@@ -310,11 +315,11 @@ def addCaseIDtoExpressionDataframe(expression_df, expression_metadata_location):
 
     #create sample_name_file column with path removed from sample_name
     expression_df["sample_name_file"] = expression_df["sample_name"].str.split("/").str[-1]
-    print("expression_df['sample_name_file'] (head)")
-    print(expression_df["sample_name_file"].head(10))
+    logging.info("expression_df['sample_name_file'] (head)")
+    logging.info(expression_df["sample_name_file"].head(10))
 
-    print("expression_metadata['file_name'] (head)")
-    print(expression_metadata["file_name"].head(10))
+    logging.info("expression_metadata['file_name'] (head)")
+    logging.info(expression_metadata["file_name"].head(10))
 
     # add the case_id from expression_metadata to the expression_df by matching the file_name
     # if the file_name is not found, the case_id will be NaN
