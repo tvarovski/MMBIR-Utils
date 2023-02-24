@@ -325,7 +325,8 @@ def addCaseIDtoExpressionDataframe(expression_df, expression_metadata_location):
     expression_metadata = loadSampleMetadata(expression_metadata_location)
 
     #create sample_name_file column with path removed from sample_name
-    expression_df["sample_name_file"] = expression_df["sample_name"].str.split("/").str[-1]
+    expression_df["sample_name_file"] = expression_df["expression_file_name"].str.split("/").str[-1]
+
     logging.info("expression_df['sample_name_file'] (head)")
     logging.info(expression_df["sample_name_file"].head(10))
 
