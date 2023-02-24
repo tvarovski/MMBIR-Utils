@@ -6,7 +6,7 @@ import os
 #import argparse
 
 #PARAMS
-project = "TCGA-LUSC"
+project = "TCGA-UCEC"
 strategy = "WXS"
 format = "BAM"
 slice_size = 200
@@ -18,33 +18,47 @@ def retreiveProjectData(project, strategy, format, output_name, manifest=False):
     fields = [
         "file_name",
         "total_reads",
+        "cases.submitter_id",
         "average_read_length",
         "mean_coverage",
         "pairs_on_different_chr",
         "proportion_targets_no_coverage",
         "proportion_reads_mapped",
+
         "cases.case_id",
-        "cases.samples.sample_type",
         "cases.disease_type",
+
         "cases.project.project_id",
         "cases.project.project_name",
-        "cases.samples.tumor_descriptor",
-        "cases.diagnoses.age_at_diagnosis",
+
+
         "cases.demographic.vital_status",
-        "cases.diagnoses.days_to_last_followup",
         "cases.demographic.days_to_birth",
         "cases.demographic.days_to_death",
-        "cases.diagnoses.tumor_grade",
-        "cases.diagnoses.tumor_stage",
+
+        "cases.samples.sample_type",
         "cases.samples.days_to_collection",
         "cases.samples.days_to_sample_procurment",
         "cases.samples.portions.analytes.aliquots.concentration",
         "cases.samples.portions.analytes.concentration",
+        "cases.samples.sample_type_id",
+        "cases.samples.submitter_id",
+        "cases.samples.preservation_method",
+        "cases.samples.tissue_type",
+        "cases.samples.tumor_descriptor",
+        "cases.samples.specimen_type",
+
+        "cases.diagnoses.days_to_last_followup",
+        "cases.diagnoses.tumor_grade",
+        "cases.diagnoses.tumor_stage",
+        "cases.diagnoses.age_at_diagnosis",
         "cases.diagnoses.ajcc_pathologic_stage",
         "cases.diagnoses.ajcc_pathologic_n",
         "cases.diagnoses.ajcc_pathologic_m",
         "cases.diagnoses.ajcc_pathologic_t",
-        "cases.diagnoses.figo_stage"
+        "cases.diagnoses.figo_stage",
+        "cases.diagnoses.prior_malignancy",
+        "cases.diagnoses.prior_treatment",
         ]
 
     fields = ",".join(fields)
