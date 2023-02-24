@@ -7,10 +7,19 @@ import statsmodels.stats.multitest as smm
 import logging
 
 #used by performDiffExprAnalysis
-def performExpressionTTest(expression_df, df_sample_metadata, output_name, consolidated_results_path, fraction_high=0.4, fraction_low=0.4, min_concentration=0):
+def performExpressionTTest(expression_df, expression_df_metadata, df_sample_metadata, output_name, consolidated_results_path, fraction_high=0.4, fraction_low=0.4, min_concentration=0):
 
     #set the logging level to INFO
     logging.basicConfig(level=logging.INFO)
+
+    #remove samples that are not Primary Tumor!
+    unique_case_ids = len(expression_df['case_id'].unique())
+    logging.info(f"There are {unique_case_ids} cases in the expression_df")
+    logging.info(f"Removing samples that are not Primary Tumor")
+    expression_df_metadata = expression_df_metadata[expression_df_metadata["cases.0.samples.0.sample_type"] == "Primary Tumor"].copy()
+    expression_df = expression_df[expression_df['expression_file_name'].isin(expression_df_metadata["file_name"])].copy()
+    logging.info(f"There are now {len(expression_df['case_id'].unique())} cases in the expression_df after removing samples that are not Primary Tumor")
+
 
     #if there are multiple samples associated with a case_id, print a warning
     if len(expression_df["case_id"].unique()) != len(expression_df["case_id"]):
@@ -230,11 +239,13 @@ def performDiffExprAnalysis(params):
     expression_df_path = params["expression_df_path"]
     min_concentration = params["min_concentration"]
     outputs_path = params["outputs_path"]
+    expression_df_metadata_path = params["expression_df_metadata_path"]
 
     #read in the expression dataframe from file
     expression_df = pd.read_pickle(expression_df_path)
+    expression_df_metadata = pd.read_csv(expression_df_metadata_path, sep="\t")
     output_name = f"{outputs_path}/ttest_results_{cancer}_minconc{min_concentration}_low{fraction_low}_high{fraction_high}.tsv"
-    expression_df = performExpressionTTest(expression_df, df_metadata, output_name, consolidated_results_path, fraction_high=fraction_high, fraction_low=fraction_low, min_concentration=min_concentration)
+    expression_df = performExpressionTTest(expression_df, expression_df_metadata, df_metadata, output_name, consolidated_results_path, fraction_high=fraction_high, fraction_low=fraction_low, min_concentration=min_concentration)
 
     #read in the expression dataframe from file
     expression_df = pd.read_csv(output_name, sep="\t")
@@ -258,7 +269,7 @@ def processSample(sample_path):
     expression_transpose.drop(expression_transpose.index[0], inplace=True)
 
     # add the sample name to the dataframe as a new column and reset the index
-    expression_transpose["sample_name"] = sample_path
+    expression_transpose["expression_file_name"] = sample_path.split("/")[-1]
     expression_transpose.reset_index(drop=True, inplace=True)
 
     # return the dataframe
