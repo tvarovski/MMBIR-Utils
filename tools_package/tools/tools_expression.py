@@ -6,11 +6,11 @@ from tools import count_calls, time_elapsed, fancy_status, findThresholdCases
 import statsmodels.stats.multitest as smm
 import logging
 
+#set the logging level to INFO
+logging.basicConfig(level=logging.INFO)
+
 #used by performDiffExprAnalysis
 def performExpressionTTest(expression_df, expression_df_metadata, df_sample_metadata, output_name, consolidated_results_path, fraction_high=0.4, fraction_low=0.4, min_concentration=0):
-
-    #set the logging level to INFO
-    logging.basicConfig(level=logging.INFO)
 
     #remove samples that are not Primary Tumor!
     unique_case_ids = len(expression_df['case_id'].unique())
@@ -42,9 +42,7 @@ def performExpressionTTest(expression_df, expression_df_metadata, df_sample_meta
             logging.info(f"Following case_ids kept only the first record: {df_multiple_samples['case_id'].unique()}")
         
         else:
-
             logging.info("Keeping all samples")
-            #keep all samples
             pass
         
     #old method of getting high+low mmbir cases
@@ -95,23 +93,21 @@ def performExpressionTTest(expression_df, expression_df_metadata, df_sample_meta
         except:
             
             #print column names
-            print(transcript_df.columns.values.tolist())
+            logging.info(f"transcript_df columns: {transcript_df.columns.values.tolist()}")
 
             #if there are 2 of the same column name, drop the one whose values are all 0s or NaNs
             if transcript_df.columns.values.tolist().count(transcript) > 1:
 
-                logging.info(f"dropping one of the columns of {transcript}")
+                logging.info(f"Dropping one of the columns of {transcript}")
                 transcript_df = transcript_df.loc[:,~transcript_df.columns.duplicated()]
 
                 transcript_df[transcript] = transcript_df[transcript].astype(float)
                 transcript_df[f"{transcript}_log2"] = transcript_df[transcript].apply(lambda x: numpy.lib.scimath.log2(x+0.1))
             else:
-                logging.info(f"couldn't drop a column. Skipping {transcript}")
+                logging.warning(f"Couldn't drop a column. Skipping {transcript}")
                 continue
 
         
-
-
         # create violin plots for the transcript_df in seaborn
         #sns.violinplot(data=transcript_df, x="high_mmbir", y=transcript)
         #plt.show()
@@ -148,14 +144,13 @@ def performExpressionTTest(expression_df, expression_df_metadata, df_sample_meta
             fold_change = high_mmbir_mean/low_mmbir_mean
         except ZeroDivisionError:
             fold_change = "NA"
-        
 
+        output_dict = {"t": t_stat, "p-value": p_value, "fold-change": fold_change}
 
-        #print(f"{transcript}, t: {t_stat}, p-value: {p_value}, fold-change: {fold_change}")
+        logging.debug(f"{transcript}: {output_dict}")
 
         # store the results and fold change in a dictionary
-        expression_dict[transcript] = {"t": t_stat, "p-value": p_value, "fold-change": fold_change}
-
+        expression_dict[transcript] = output_dict
 
 
     # create a dataframe from the dictionary where the index is the transcript name and the columns are the results
@@ -169,6 +164,9 @@ def performExpressionTTest(expression_df, expression_df_metadata, df_sample_meta
     # sort the dataframe by the two-sample t-test, lowest p-value first, and output the results to a file
     expression_df = expression_df.sort_values(by="p-value")
     expression_df.to_csv(output_name, sep="\t", index=False)
+
+    logging.info(f"Finished writing to {output_name}")
+
     return expression_df
 
 #used by performDiffExprAnalysis
@@ -206,8 +204,7 @@ def addGeneNameColumnFromGeneID(expression_df, gene_id_column_name):
 #used by performDiffExprAnalysis
 def performBenjaminiHochbergCorrection(expression_df, output_name, *min_p_value):
 
-    #show column names
-    print(expression_df.columns.values.tolist())
+    logging.debug(f"expression_df columns: {expression_df.columns.values.tolist()}")
 
     logging.info("Performing Benjamini-Hochberg correction on p-values...")
 
@@ -327,18 +324,20 @@ def addCaseIDtoExpressionDataframe(expression_df, expression_metadata_location):
     #create sample_name_file column with path removed from sample_name
     expression_df["sample_name_file"] = expression_df["expression_file_name"].str.split("/").str[-1]
 
-    logging.info("expression_df['sample_name_file'] (head)")
-    logging.info(expression_df["sample_name_file"].head(10))
+    logging.debug("expression_df['sample_name_file'] (head)")
+    logging.debug(expression_df["sample_name_file"].head(10))
 
-    logging.info("expression_metadata['file_name'] (head)")
-    logging.info(expression_metadata["file_name"].head(10))
+    logging.debug("expression_metadata['file_name'] (head)")
+    logging.debug(expression_metadata["file_name"].head(10))
 
     # add the case_id from expression_metadata to the expression_df by matching the file_name
     # if the file_name is not found, the case_id will be NaN
     expression_df["case_id"] = expression_df["sample_name_file"].map(expression_metadata.set_index("file_name")["case_id"])
 
     # save the expression data
-    print(expression_df)
+    logging.debug(expression_df)
+    logging.info("Added case_id to expression dataframe")
+    
     return expression_df
 
 #used by expressionParser
