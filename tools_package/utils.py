@@ -119,7 +119,8 @@ if __name__ == "__main__":
             "min_concentration": cfg.settings["min_concentration"],
             "mmbir_fraction_high": cfg.settings["mmbir_fraction_high"],
             "mmbir_fraction_low": cfg.settings["mmbir_fraction_low"],
-            "outputs_path": cfg.settings["outputs_path"]
+            "outputs_path": cfg.settings["outputs_path"],
+            "expression_df_metadata_path": f"/Users/{username}/MMBIR_Databases/TCGA/TCGA-{cancer}-WXS-expression-metadata.tsv",
             }
 
         performDiffExprAnalysis(params)
