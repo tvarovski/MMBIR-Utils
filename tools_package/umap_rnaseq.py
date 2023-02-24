@@ -100,6 +100,9 @@ def perform_UMAP(rnaseq_data, n_neighbors, min_dist, n_components, metric):
 
     logging.basicConfig(level=logging.INFO)
 
+    logging.info("rna_seq_data shape:")
+    logging.info(rnaseq_data.shape)
+
     # first, create a umap object
     reducer = umap.UMAP(        
             n_neighbors=n_neighbors,
