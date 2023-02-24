@@ -39,9 +39,9 @@ show_plot = True
 
 #############################
 
-def filterByDiffExpr(df, df_diff_expr, min_pval=0.1, fold_change_lower=0.75, fold_change_upper=1.5):
+logging.basicConfig(level=logging.DEBUG)
 
-    logging.basicConfig(level=logging.INFO)
+def filterByDiffExpr(df, df_diff_expr, min_pval=0.1, fold_change_lower=0.75, fold_change_upper=1.5):
 
     # take only the genes where the p-value is less than min_pval
     df_diff_expr = df_diff_expr[df_diff_expr["p-value"] < min_pval]
@@ -64,8 +64,6 @@ def filterByDiffExpr(df, df_diff_expr, min_pval=0.1, fold_change_lower=0.75, fol
 
 def addMMBToDF(df, df_consolidated, sample_type):
 
-    logging.basicConfig(level=logging.INFO)
-
     # filter the df_consolidated dataframe to only include primary tumors
     df_consolidated = df_consolidated[df_consolidated["Sample_Type"] == sample_type]
 
@@ -75,7 +73,7 @@ def addMMBToDF(df, df_consolidated, sample_type):
 
     #add a column with Raw_Count to the df by merging on the Case_ID column (in df_consolidated) and the case_id column (in df)
     df = df.merge(df_consolidated[["Case_ID", "Raw_Count", "Filtered_Count"]], left_on="case_id", right_on="Case_ID")
-    logging.info(f"Added the Raw_Count and Filtered_Count columns to the dataframe.")
+    logging.debug(f"Added the Raw_Count and Filtered_Count columns to the dataframe.")
 
     #remove the Case_ID column
     df = df.drop(columns=["Case_ID"])
@@ -84,10 +82,9 @@ def addMMBToDF(df, df_consolidated, sample_type):
 
 def addMetadataToDF(df, df_metadata, columns):
     
-    logging.basicConfig(level=logging.INFO)
 
     df = df.merge(df_metadata[["cases.0.case_id"]+columns], left_on="case_id", right_on="cases.0.case_id")
-    logging.info(f"Added the {columns} columns to the dataframe.")
+    logging.debug(f"Added the {columns} columns to the dataframe.")
 
     #remove the "cases.0.case_id" column
     df = df.drop(columns=["cases.0.case_id"])
@@ -98,10 +95,8 @@ def addMetadataToDF(df, df_metadata, columns):
 @time_elapsed
 def perform_UMAP(rnaseq_data, n_neighbors, min_dist, n_components, metric):
 
-    logging.basicConfig(level=logging.INFO)
-
-    logging.info("rna_seq_data shape:")
-    logging.info(rnaseq_data.shape)
+    logging.debug("rna_seq_data shape:")
+    logging.debug(rnaseq_data.shape)
 
     # first, create a umap object
     reducer = umap.UMAP(        
@@ -117,15 +112,13 @@ def perform_UMAP(rnaseq_data, n_neighbors, min_dist, n_components, metric):
     # then, fit the umap object to the data
     logging.info("Fitting the umap object to the data")
     embedding = reducer.fit_transform(scaled_rnaseq_data)
-    logging.info("Done fitting the umap object to the data")
-    logging.info(f"The shape of the embedding is {embedding.shape}")
+
+    logging.debug(f"The shape of the embedding is {embedding.shape}")
     logging.info("Done performing UMAP, returning the embedding")
 
     return reducer, embedding
 
 def plot_UMAP_numerical(embedding, df, numerical_col, scale_upper=None, scale_lower=None, save_path=None, show_plot=True):
-
-    logging.basicConfig(level=logging.INFO)
 
     # plot the umap projection, coloring by the Raw_Count column, set the highest value of color to 1000
     plt.figure(figsize=(12,12))
@@ -148,12 +141,10 @@ def plot_UMAP_numerical(embedding, df, numerical_col, scale_upper=None, scale_lo
 
 def plot_UMAP_categorical(embedding, df, categorical_col, save_path=None, show_plot=True):
 
-    logging.basicConfig(level=logging.INFO)
-
     color_labels = df[categorical_col].unique() # get the unique values of the column
     rgb_values = sns.color_palette("tab10", len(color_labels)) # create a list of rgb values
     color_map = dict(zip(color_labels, rgb_values)) # create a dictionary of the color labels and the rgb values
-    logging.info(f"The color labels are {color_labels}")
+    logging.debug(f"The color labels are {color_labels}")
 
     plt.figure(figsize=(12,12))
     # assign color by column_var which is a string, so it will be categorical
@@ -177,7 +168,6 @@ def plot_UMAP_categorical(embedding, df, categorical_col, save_path=None, show_p
         plt.show()
     else:
         plt.close()
-
 
 # load the data from a pickle file, the consolidated results file, and the differentially expressed genes file
 df = pd.read_pickle(pickle_path)
@@ -226,9 +216,9 @@ except Exception as e:
 column_var_list_numerical = ["Raw_Count", "Filtered_Count"] + column_var_list_numerical
 trailing_columns = 5 + len(column_var_list) # add the number of metadata columns to trailing_columns
 
-#print last trailing_columns + 3 columns
-print(df.iloc[:, -trailing_columns-3:])
-print(f"There are {len(df.columns)} columns in the dataframe and {trailing_columns} are trailing")
+#print last trailing_columns + 3 extra columns
+logging.debug(df.iloc[:, -(trailing_columns+3):])
+logging.debug(f"There are {len(df.columns)} columns in the dataframe and {trailing_columns} are trailing")
 
 # create a list of the columns that we want to use for the umap projection
 #it is all columns except the last few columns which are not part of the data
@@ -240,6 +230,7 @@ reducer, embedding = perform_UMAP(rnaseq_data, n_neighbors, min_dist, n_componen
 
 # create a folder in the outputs folder to store the plots
 if not os.path.exists("outputs/plots/umap"):
+    logging.info("Creating outputs/plots/umap folder")
     os.makedirs("outputs/plots/umap")
 
 
@@ -263,7 +254,7 @@ for column_var in column_var_list_numerical:
                             save_path=f"outputs/plots/umap/umap_{cancer}_by_{column_var}.png", 
                             show_plot=show_plot)
     except:
-        logging.info(f"Could not plot numerical_col {column_var}")
+        logging.error(f"Could not plot numerical_col {column_var}")
         pass
 
 
@@ -277,6 +268,7 @@ for column_var in column_var_list_categorical:
         df[column_var] = df[column_var].str.replace("C", "")
         df[column_var] = df[column_var].str.replace("1", "")
         df[column_var] = df[column_var].str.replace("2", "")
+        logging.info("Removed ('A', 'B', 'C', '1', '2') from figo_stage column values")
     try:
         plot_UMAP_categorical(embedding,
                             df, 
@@ -284,5 +276,5 @@ for column_var in column_var_list_categorical:
                             save_path=f"outputs/plots/umap/umap_{cancer}_by_{column_var}.png", 
                             show_plot=show_plot)
     except:
-        logging.info(f"Could not plot categorical_col {column_var}")
+        logging.error(f"Could not plot categorical_col {column_var}")
         pass
