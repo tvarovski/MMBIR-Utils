@@ -175,6 +175,9 @@ df_consolidated = pd.read_csv(df_consolidated_path, sep="\t")
 df_diff_expr = pd.read_csv(df_diff_expr_path, sep="\t")
 df_metadata = pd.read_csv(metadata_location, sep="\t")
 
+# filter df_metadata to only include Primary Tumor data
+df_metadata = df_metadata[df_metadata["cases.0.samples.0.sample_type"] == "Primary Tumor"]
+
 if filter_transcriptome:
 
     df = filterByDiffExpr(df, df_diff_expr, min_pval=min_pval, fold_change_lower=fold_change_lower, fold_change_upper=fold_change_upper)
@@ -195,13 +198,12 @@ column_var_list_categorical = ["cases.0.disease_type",
                                "cases.0.diagnoses.0.prior_treatment",
                                "cases.0.diagnoses.0.tumor_grade",
                                "cases.0.samples.0.preservation_method",
-                               "cases.0.samples.0.sample_type",
-                               "cases.0.samples.0.sample_type_id",
+                               "cases.0.samples.0.sample_type", # this is the same as, check both if needed here
+                               "cases.0.samples.0.sample_type_id", # this
                                "cases.0.samples.0.submitter_id",
                                "cases.0.submitter_id"
                                
                                ]
-#"cases.0.samples.0.portions.0.analytes.0.aliquots.0.submitter_id"
 
 column_var_list=column_var_list_numerical + column_var_list_categorical
 
