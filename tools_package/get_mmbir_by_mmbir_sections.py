@@ -5,8 +5,7 @@ from tools import getCasesAboveMMBThreshold, returnGenes, countGenes
 import logging
 
 #set logging level
-logging.basicConfig()
-
+logging.basicConfig(level=logging.DEBUG)
 
 #returnGenes needs update in tools_base
 

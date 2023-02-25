@@ -1,7 +1,10 @@
 import pandas as pd
 import sys
 import cancer_config as cfg
+import logging
 
+#set logging level
+logging.basicConfig(level=logging.DEBUG)
 
 ###DESCRIPTION###
 
@@ -189,5 +192,5 @@ if __name__ == "__main__":
         performSNVanalysis(params)
 
     else:
-        print(f"{command} is not a recognized option")
+        logging.error(f"{command} is not a recognized option")
 
