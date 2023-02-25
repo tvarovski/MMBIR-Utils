@@ -3,7 +3,7 @@ import pandas as pd
 import logging
 from tools import getCasesAboveMMBThreshold, fancy_status, time_elapsed, findThresholdCases
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('__main__.' + __name__)
 
 @fancy_status
 @time_elapsed

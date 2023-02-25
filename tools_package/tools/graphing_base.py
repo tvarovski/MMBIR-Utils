@@ -6,7 +6,7 @@ from scipy import stats
 from tools import fancy_status
 import logging
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('__main__.' + __name__)
 
 @fancy_status
 def annotate_consolidated_results(df_consolidated, df_metadata):

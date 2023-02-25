@@ -3,7 +3,7 @@ import pandas as pd
 from tools import time_elapsed, fancy_status
 import logging
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('__main__.' + __name__)
 
 @fancy_status
 @time_elapsed
