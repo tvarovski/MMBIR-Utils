@@ -1,5 +1,3 @@
-# Plot number of MMBIR events in Tumor vs number of MMBIR events in Control
-
 from importlib.metadata import distribution
 import pandas as pd
 import matplotlib.pyplot as plt

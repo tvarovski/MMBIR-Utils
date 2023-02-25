@@ -4,8 +4,10 @@ import cancer_config as cfg
 import logging
 
 #set logging level
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s %(name)s.%(funcName)s +%(lineno)s: %(levelname)-8s [%(process)d] %(message)s',
+                    )
 
 ###DESCRIPTION###
 
