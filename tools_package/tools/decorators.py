@@ -1,7 +1,7 @@
 import functools
 import logging
 
-logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 def count_calls(func):
     # decorator that counts the number of times a function is called

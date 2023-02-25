@@ -6,8 +6,7 @@ from tools import count_calls, time_elapsed, fancy_status, findThresholdCases
 import statsmodels.stats.multitest as smm
 import logging
 
-logger = logging.getLogger()
-logger.basicConfig()
+logger = logging.getLogger(__name__)
 
 #used by performDiffExprAnalysis
 def performExpressionTTest(expression_df, expression_df_metadata, df_sample_metadata, output_name, consolidated_results_path, fraction_high=0.4, fraction_low=0.4, min_concentration=0, investigated_tissue="Primary Tumor"):

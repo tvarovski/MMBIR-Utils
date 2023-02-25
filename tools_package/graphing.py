@@ -3,8 +3,6 @@ import cancer_config as cfg
 import os
 
 logger = logging.getLogger(__name__)
-logging.setLevel(logging.INFO)
-
 
 @fancy_status
 def plot_differential_expression(cancer, save=False, show=True):

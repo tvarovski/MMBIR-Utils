@@ -4,7 +4,6 @@ from tools import time_elapsed, fancy_status
 import logging
 
 logger = logging.getLogger(__name__)
-logging.basicConfig()
 
 @fancy_status
 @time_elapsed
