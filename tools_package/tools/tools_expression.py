@@ -62,6 +62,9 @@ def performExpressionTTest(expression_df, expression_df_metadata, df_sample_meta
     high_mmbir_cases=threshold_mmb_cases_high_df["Case_ID"].values.tolist()
     low_mmbir_cases=threshold_mmb_cases_low_df["Case_ID"].values.tolist()
 
+    logging.debug(f"high_mmbir_cases (len={len(high_mmbir_cases)}): {high_mmbir_cases}")
+    logging.debug(f"low_mmbir_cases (len={len(low_mmbir_cases)}): {low_mmbir_cases}")
+
 
     # Mark the cases that are above the MMBIR threshold as high in the expression dataframe
     expression_df["high_mmbir"] = "none"
@@ -70,8 +73,10 @@ def performExpressionTTest(expression_df, expression_df_metadata, df_sample_meta
 
     len_high=len(expression_df[expression_df["high_mmbir"] == "high"])
     len_low=len(expression_df[expression_df["high_mmbir"] == "low"])
+    len_none=len(expression_df[expression_df["high_mmbir"] == "none"])
 
     logging.info(f"high cases: {len_high}, low cases: {len_low}")
+    logging.debug(f"there are {len_none} cases that are not high or low mmbir: {expression_df[expression_df['high_mmbir'] == 'none']['case_id'].unique()}")
 
 
     # get the list of all columns (transcripts) in the expression dataframe
