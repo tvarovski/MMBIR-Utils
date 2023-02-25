@@ -16,7 +16,7 @@ def performExpressionTTest(expression_df, expression_df_metadata, df_sample_meta
     logging.info(f"There are {len(expression_df['case_id'].unique())} cases in the expression_df")
     logging.info(f"Unique sample types: {expression_df_metadata['cases.0.samples.0.sample_type'].unique()}")
     logging.info(f"Keeping '{investigated_tissue}' samples only")
-    expression_df_metadata = expression_df_metadata[expression_df_metadata["cases.0.samples.0.sample_type"] == {investigated_tissue}].copy()
+    expression_df_metadata = expression_df_metadata[expression_df_metadata["cases.0.samples.0.sample_type"] == investigated_tissue].copy()
     logging.debug(f"expression_df_metadata: {expression_df_metadata}")
     expression_df = expression_df[expression_df['expression_file_name'].isin(expression_df_metadata["file_name"])].copy()
     logging.info(f"There are now {len(expression_df['case_id'].unique())} cases in the expression_df after removing samples that are not {investigated_tissue}")
