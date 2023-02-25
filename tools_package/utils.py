@@ -4,6 +4,12 @@ import cancer_config as cfg
 import logging
 
 
+#set logging level
+
+logging.basicConfig(level=logging.INFO, format='%(levelname)s:.%(funcName)s:%(message)s')
+#example logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(name)s.%(funcName)s +%(lineno)s: %(levelname)-8s [%(process)d] %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+logger = logging.getLogger(__name__)
+
 ###DESCRIPTION###
 
 '''
@@ -54,11 +60,6 @@ Currently available KEYWORDs:
 '''
 
 if __name__ == "__main__":
-
-    #set logging level
-
-    logging.basicConfig(level=logging.INFO, format='%(levelname)s:%(name)s.%(funcName)s:%(message)s')
-    logger = logging.getLogger(__name__)
 
     command = sys.argv[1]
 
