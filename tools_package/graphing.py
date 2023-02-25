@@ -3,7 +3,7 @@ import cancer_config as cfg
 import os
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.INFO)
+logging.setLevel(logging.INFO)
 
 
 @fancy_status
