@@ -6,7 +6,7 @@ import logging
 
 #set logging level
 
-logging.basicConfig(level=logging.INFO, format='%(levelname)s:.%(funcName)s:%(message)s')
+logging.basicConfig(level=logging.INFO, format='%(levelname)s:.%(funcName)s: %(message)s')
 #example logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(name)s.%(funcName)s +%(lineno)s: %(levelname)-8s [%(process)d] %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 logger = logging.getLogger(__name__)
 
