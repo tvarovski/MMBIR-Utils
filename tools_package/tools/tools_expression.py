@@ -7,6 +7,7 @@ import statsmodels.stats.multitest as smm
 import logging
 
 logger = logging.getLogger(__name__)
+logging.basicConfig()
 
 #used by performDiffExprAnalysis
 def performExpressionTTest(expression_df, expression_df_metadata, df_sample_metadata, output_name, consolidated_results_path, fraction_high=0.4, fraction_low=0.4, min_concentration=0, investigated_tissue="Primary Tumor"):

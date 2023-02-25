@@ -4,6 +4,7 @@ import logging
 from tools import getCasesAboveMMBThreshold, fancy_status, time_elapsed, findThresholdCases
 
 logger = logging.getLogger(__name__)
+logging.basicConfig()
 
 @fancy_status
 @time_elapsed

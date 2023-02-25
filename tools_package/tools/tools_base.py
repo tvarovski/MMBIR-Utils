@@ -4,6 +4,7 @@ from tools import time_elapsed, fancy_status
 import logging
 
 logger = logging.getLogger(__name__)
+logging.basicConfig()
 
 @fancy_status
 @time_elapsed
@@ -530,6 +531,7 @@ def findThresholdCases(df_consolidated, df_metadata, fraction_high=0.4, fraction
         filter_by = "Filtered_Count_max"
     else:
         filter_by = "Raw_Count_max"
+    logging.info(f"filter_by: {filter_by}")
 
     df = keepHigherMMBIRCases(df_consolidated, df_metadata, min_concentration=min_concentration)
     
