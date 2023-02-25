@@ -2,6 +2,9 @@ from tools import *
 import cancer_config as cfg
 import os
 
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
+
 
 @fancy_status
 def plot_differential_expression(cancer, save=False, show=True):
@@ -42,6 +45,7 @@ def plot_differential_expression(cancer, save=False, show=True):
 
     if save:
         plt.savefig(f"outputs/plots/{cancer}_differential_expression.png", dpi=600)
+        logging.info(f"Saved plot to outputs/plots/{cancer}_differential_expression.png")
 
     if show:
         plt.show()
