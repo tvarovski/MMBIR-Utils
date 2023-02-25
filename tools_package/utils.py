@@ -4,6 +4,7 @@ import cancer_config as cfg
 import logging
 
 #set logging level
+logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
 
 ###DESCRIPTION###

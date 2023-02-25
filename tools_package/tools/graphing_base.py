@@ -6,6 +6,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy import stats
 from tools import fancy_status
+import logging
+
+logger = logging.getLogger(__name__)
 
 @fancy_status
 def annotate_consolidated_results(df_consolidated, df_metadata):
@@ -60,7 +63,7 @@ def plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_conc
 
     #remove NAN rows
     df_wide = df_wide.dropna()
-    print(df_wide)
+    logging.debug(df_wide)
     
     # find correlation for range of thresholds from 0 to 3000 with the step of 50
     thresholds = range(0,3000, 50)
@@ -73,7 +76,7 @@ def plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_conc
         correlations.append([threshold, r_squared])
 
     for correlation in correlations:
-        print(f"Threshold: {correlation[0]}, R-squared: {correlation[1]}")
+        logging.debug(f"Threshold: {correlation[0]}, R-squared: {correlation[1]}")
 
     # convert to pandas dataframe
     df_correlations = pd.DataFrame(correlations, columns=["Threshold", "R-squared"])
@@ -94,6 +97,7 @@ def plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_conc
 
     if save:
         plt.savefig(f"outputs/plots/plot_blood_tumor_count_correlations_treshold_delta_{method}_minconc{min_concentration}.png", dpi=600)
+        logging.info(f"Plot saved to outputs/plots/plot_blood_tumor_count_correlations_treshold_delta_{method}_minconc{min_concentration}.png")
 
 
     if show:
@@ -114,7 +118,7 @@ def plot_blood_tumor_count_correlation(df_wide, method="spearman", threshold=300
     df_wide = df_wide[(df_wide["Blood_Derived_Normal"] <= threshold) & (df_wide["Primary_Tumor"] <= threshold)]
     df_wide_size_threshold=len(df_wide)
 
-    print(f"Initial size: {df_wide_size_initial}, Threshold size: {df_wide_size_threshold}, percentage: {df_wide_size_threshold/df_wide_size_initial*100}")
+    logging.info(f"Initial size: {df_wide_size_initial}, Threshold size: {df_wide_size_threshold}, percentage: {df_wide_size_threshold/df_wide_size_initial*100}")
 
     # plot the Blood_Derived_Normal vs Primary_Tumor on a scatter plot and find R-squared
     sns.regplot(x="Primary_Tumor",y="Blood_Derived_Normal", data=df_wide)
@@ -133,6 +137,7 @@ def plot_blood_tumor_count_correlation(df_wide, method="spearman", threshold=300
 
     if save:
         plt.savefig(f"outputs/plots/plot_blood_tumor_count_correlation_{method}_threshold{threshold}.png", dpi=600)
+        logging.info(f"Plot saved to outputs/plots/plot_blood_tumor_count_correlation_{method}_threshold{threshold}.png")
 
     if show:
         plt.show()
@@ -158,6 +163,7 @@ def plot_count_vs_concentration(df_consolidated, x_count="Raw_Count", save=False
 
     if save:
         plt.savefig(f"outputs/plots/plot_count_vs_concentration_{x_count}.png", dpi=600)
+        logging.info(f"Plot saved to outputs/plots/plot_count_vs_concentration_{x_count}.png")
     
     if show:
         plt.show()
@@ -208,6 +214,7 @@ def plot_concentration_raw_filtered(df_consolidated, filterset, hue="Concentrati
 
     if save:
         plt.savefig(f"outputs/plots/plot_concentration_raw_filtered_{hue}.png", dpi=600)
+        logging.info(f"Plot saved to outputs/plots/plot_concentration_raw_filtered_{hue}.png")
 
     if show:
         plt.show()
@@ -249,6 +256,7 @@ def plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=0.5, c
 
     if save:
         plt.savefig(f"outputs/plots/plot_Sample_Type_counts_{cancer}_minconc{min_concentration}.png", dpi=600)
+        logging.info(f"Plot saved to outputs/plots/plot_Sample_Type_counts_{cancer}_minconc{min_concentration}.png")
 
     if show:
         plt.show()
@@ -264,7 +272,7 @@ def plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Fil
     df_consolidated = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
     df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
 
-    print(df_consolidated.head())
+    logging.debug(df_consolidated.head())
 
     if staging == 'ajcc':
         col_name = "cases.0.diagnoses.0.ajcc_pathologic_stage"
@@ -276,14 +284,14 @@ def plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Fil
         col_name = "cases.0.diagnoses.0.tumor_grade"
 
     else:
-        print(f"Unknown staging input: {staging}. Please use 'ajcc' or 'figo'.")
+        logging.error(f"Unknown staging input: {staging}. Please use 'ajcc' or 'figo'.")
         return
     
     df_consolidated.rename(columns={col_name: "Stage"}, inplace=True)
     
     #show the number of samples per stage
-    print(df_consolidated.columns)
-    print(df_consolidated["Stage"].value_counts())
+    logging.debug(df_consolidated.columns)
+    logging.info(df_consolidated["Stage"].value_counts())
 
     #if Stage X, remove it
     df_consolidated = df_consolidated[df_consolidated["Stage"] != "Stage X"]
@@ -291,14 +299,14 @@ def plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Fil
 
     if adjust_staging=='early_late':
 
-        print("Adjusting staging to early and late: Early = Stage IA, Stage IB, Stage IC, Stage I, Stage IIA, Stage IIB, Stage IIC; Late = everything else")
+        logging.info("Adjusting staging to early and late: Early = Stage IA, Stage IB, Stage IC, Stage I, Stage IIA, Stage IIB, Stage IIC; Late = everything else")
         df_consolidated["stage_adjusted"] = df_consolidated["Stage"].apply(lambda x: "Early" if x in ["Stage IA", "Stage IB", "Stage IC" "Stage I", "Stage IIA","Stage IIB", "Stage IIC", "Stage II"] else "Late")
     elif adjust_staging=='early_middle_late':
 
-        print("Adjusting staging to early, middle and late: Early = Stage IA, Stage IB, Stage IC, Stage I; Middle = Stage IIA, Stage IIB, Stage IIC; Late = everything else")
+        logging.info("Adjusting staging to early, middle and late: Early = Stage IA, Stage IB, Stage IC, Stage I; Middle = Stage IIA, Stage IIB, Stage IIC; Late = everything else")
         df_consolidated["stage_adjusted"] = df_consolidated["Stage"].apply(lambda x: "Early" if x in ["Stage IA", "Stage IB", "Stage IC", "Stage I"] else ("Middle" if x in ["Stage IIA","Stage IIB", "Stage IIC"] else "Late"))
     else:
-        print(f"Unknown adjust_staging: {adjust_staging}")
+        logging.info(f"Unknown adjust_staging: {adjust_staging}")
         return
     
     #show the number of samples per stage
@@ -334,6 +342,7 @@ def plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Fil
 
     if save:
         plt.savefig(f"outputs/plots/plot_stage_vs_count_{staging}_{adjust_staging}_mincon{min_concentration}.png", dpi=600)
+        logging.info(f"Saved plot to outputs/plots/plot_stage_vs_count_{staging}_{adjust_staging}_mincon{min_concentration}.png")
     
     if show:
         plt.show()
@@ -360,13 +369,13 @@ def plot_stage_vs_concentration(df_consolidated, filterset, staging='ajcc', x_co
         col_name = "cases.0.diagnoses.0.tumor_grade"
 
     else:
-        print(f"Unknown staging input: {staging}. Please use 'ajcc' or 'figo'.")
+        logging.error(f"Unknown staging input: {staging}. Please use 'ajcc' or 'figo'.")
         return
     
     df_consolidated.rename(columns={col_name: "Stage"}, inplace=True)
     
     #show the number of samples per stage
-    print(df_consolidated["Stage"].value_counts())
+    logging.info(df_consolidated["Stage"].value_counts())
 
     #if Stage X, remove it
     df_consolidated = df_consolidated[df_consolidated["Stage"] != "Stage X"]
@@ -374,20 +383,20 @@ def plot_stage_vs_concentration(df_consolidated, filterset, staging='ajcc', x_co
     if adjust_staging=='early_late':
 
         # if the stage is Stage I or Stage II, then set the stage to "Early"
-        print("Adjusting staging to early and late: Early = Stage IA, Stage IB, Stage IC, Stage I, Stage IIA, Stage IIB, Stage IIC; Late = everything else")
+        logging.info("Adjusting staging to early and late: Early = Stage IA, Stage IB, Stage IC, Stage I, Stage IIA, Stage IIB, Stage IIC; Late = everything else")
         df_consolidated["stage_adjusted"] = df_consolidated["Stage"].apply(lambda x: "Early" if x in ["Stage IA", "Stage IB", "Stage IC" "Stage I", "Stage IIA","Stage IIB", "Stage IIC"] else "Late")
 
     elif adjust_staging=='early_middle_late':
 
-        print("Adjusting staging to early, middle and late: Early = Stage IA, Stage IB, Stage IC, Stage I; Middle = Stage IIA, Stage IIB, Stage IIC; Late = everything else")
+        logging.info("Adjusting staging to early, middle and late: Early = Stage IA, Stage IB, Stage IC, Stage I; Middle = Stage IIA, Stage IIB, Stage IIC; Late = everything else")
         df_consolidated["stage_adjusted"] = df_consolidated["Stage"].apply(lambda x: "Early" if x in ["Stage IA", "Stage IB", "Stage IC", "Stage I"] else ("Middle" if x in ["Stage IIA","Stage IIB", "Stage IIC"] else "Late"))
     
     else:
-        print(f"Unknown adjust_staging: {adjust_staging}")
+        logging.error(f"Unknown adjust_staging: {adjust_staging}")
         return
     
     #show the number of samples per stage
-    print(df_consolidated["stage_adjusted"].value_counts())
+    logging.info(df_consolidated["stage_adjusted"].value_counts())
     
     #show mean, median and standard deviation for each stage
     print("Mean, median and standard deviation for each stage")
@@ -404,6 +413,7 @@ def plot_stage_vs_concentration(df_consolidated, filterset, staging='ajcc', x_co
 
     if save:
         plt.savefig(f"outputs/plots/plot_stage_vs_concentration_{staging}_{adjust_staging}_minconc{min_concentration}.png", dpi=600)
+        logging.info(f"Saved plot to outputs/plots/plot_stage_vs_concentration_{staging}_{adjust_staging}_minconc{min_concentration}.png")
 
     if show:
         plt.show()
@@ -421,7 +431,7 @@ def plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtere
     df_consolidated.rename(columns={"cases.0.diagnoses.0.ajcc_pathologic_n": "StageN"}, inplace=True)
 
     #count how many samples of each stageN there are
-    print(df_consolidated["StageN"].value_counts())
+    logging.info(df_consolidated["StageN"].value_counts())
 
     #if Stage X, remove it
     df_consolidated = df_consolidated[df_consolidated["StageN"] != "NX"]
@@ -448,6 +458,7 @@ def plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtere
 
     if save:
         plt.savefig(f"outputs/plots/plot_stageN_vs_count_{x_count}_minconc{min_concentration}.png", dpi=600)
+        logging.info(f"Saved plot to outputs/plots/plot_stageN_vs_count_{x_count}_minconc{min_concentration}.png")
 
     if show:
         plt.show()
@@ -495,6 +506,7 @@ def plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtere
 
     if save:
         plt.savefig(f"outputs/plots/plot_stageT_vs_count_{x_count}_minconc{min_concentration}.png", dpi=600)
+        logging.info(f"Saved plot to outputs/plots/plot_stageT_vs_count_{x_count}_minconc{min_concentration}.png")
 
     if show:
         plt.show()
@@ -544,6 +556,7 @@ def plot_age_vs_count_correlation(df_consolidated, count="Filtered_Count", min_c
 
         if save:
             plt.savefig(f"outputs/plots/plot_age_vs_count_{count}_minconc{min_concentration}_{df[1]}.png", dpi=600)
+            logging.info(f"Saved plot to outputs/plots/plot_age_vs_count_{count}_minconc{min_concentration}_{df[1]}.png")
 
         if show:
             plt.show()
@@ -587,6 +600,7 @@ def plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concen
 
     if save:
         plt.savefig(f"outputs/plots/plot_age_vs_count_binned_{count}_minconc{min_concentration}.png", dpi=600)
+        logging.info(f"Saved plot to outputs/plots/plot_age_vs_count_binned_{count}_minconc{min_concentration}.png")
 
     if show:
         plt.show()
@@ -619,6 +633,7 @@ def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_conce
 
     if save:
         plt.savefig(f"outputs/plots/plot_total_reads_vs_count_{count}_minconc{min_concentration}.png", dpi=600)
+        logging.info(f"Saved plot to outputs/plots/plot_total_reads_vs_count_{count}_minconc{min_concentration}.png")
 
     if show:
         plt.show()
@@ -654,7 +669,7 @@ def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_conce
 
     if save:
         plt.savefig(f"outputs/plots/total_reads_vs_{count}_mincon{min_concentration}.png", dpi=600)
-
+        logging.info(f"Saved plot to outputs/plots/total_reads_vs_{count}_mincon{min_concentration}.png")
 
     if show:
         plt.show()
