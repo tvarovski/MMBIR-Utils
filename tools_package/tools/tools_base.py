@@ -16,7 +16,7 @@ def groupCases(df_metadata):
     # get the list of directories in the current working directory
     onlydirs = [d for d in os.listdir(mypath) if os.path.isdir(os.path.join(mypath, d))]
 
-    print(f"Found {len(onlydirs)} directories: {onlydirs}")
+    logging.info(f"Found {len(onlydirs)} directories: {onlydirs}")
 
     # iterate over the directories
     for current_name in onlydirs:
@@ -32,8 +32,8 @@ def groupCases(df_metadata):
         
         # if the current directory has more than one bam file, exit
         if len(current_case_id) != 1:
-            print("Retreived unexpected number of case_id for sample metadata. Exitting...")
-            print(f"Case IDs: {current_case_id}")
+            logging.error("Retreived unexpected number of case_id for sample metadata. Exitting...")
+            logging.error(f"Case IDs: {current_case_id}")
             exit()
 
         # get the list of samples associated with the current case ID from the metadata
@@ -53,9 +53,9 @@ def groupCases(df_metadata):
 
                 try:
                     shutil.move(sample[:-4], current_case_id_path)
-                    print(f"Moved {sample[:-4]} to {current_case_id_path}")
+                    logging.info(f"Moved {sample[:-4]} to {current_case_id_path}")
                 except:
-                    print("directory exist, couldn't move it")
+                    logging.info("directory exist, couldn't move it")
 
 @fancy_status
 @time_elapsed
@@ -76,7 +76,7 @@ def parseOutputs(df_metadata, consolidated_results_name="consolidated_results.ts
   filtered_df["sample"]=filtered_df["sample"].str[:-29]
 
   output = os.system(f"ls -d1 *-*-*-*-* > cases.txt")
-  print(f"cases exited with a code {output}")
+  logging.info(f"cases exited with a code {output}")
   cases_file = open("cases.txt", 'r')
   cases = cases_file.readlines()
   cases_file.close()
@@ -103,7 +103,7 @@ def parseOutputs(df_metadata, consolidated_results_name="consolidated_results.ts
       try:
         parsing_list.append(sample_list[0])
       except IndexError:
-        print(f"Couldn't read data in sample list: {sample_list} of CaseID: {caseID}")
+        logging.error(f"Couldn't read data in sample list: {sample_list} of CaseID: {caseID}")
         exit()
 
     for i in parsing_list:
@@ -124,7 +124,7 @@ def parseOutputs(df_metadata, consolidated_results_name="consolidated_results.ts
     output = os.system(f"rm {caseID}/ind_files.txt")
   output = os.system(f"rm cases.txt")
 
-  print(output_df)
+  logging.debug(output_df)
   output_df.to_csv(consolidated_results_name, sep="\t", index=False)
 
 def getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, min_MMBIR_events, below=False, min_concentration=0):
@@ -138,7 +138,7 @@ def getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, min
     if min_concentration > 0:
         df_consolidated=df_consolidated[df_consolidated["Concentration"] >= min_concentration]
     
-    print(df_consolidated.columns)
+    logging.debug(df_consolidated.columns)
 
 
     agg_dict={"Raw_Count": ['min', 'max'],
@@ -246,7 +246,7 @@ def check_for_missing_bams(df_metadata):
         current_dir = os.getcwd()
         case_dir = f"{current_dir.strip()}/{case_id.strip()}"
         if not os.path.exists(case_dir):
-            print(f"WARNING: The directory: {case_dir} does not exist")
+            logging.warning(f"The directory: {case_dir} does not exist")
             case_id = case_id.split("/")[-1].strip()
             missing_cases.append(case_id)
         else:
@@ -261,24 +261,31 @@ def check_for_missing_bams(df_metadata):
             #check if the bam files are in the directory
             for bam_file in case_bam_files:
                 if os.path.splitext(bam_file)[0] not in dir_list:
-                    print(f"WARNING: The bam file: {bam_file} does not exist in: {case_dir}")
+                    logging.warning(f"The bam file: {bam_file} does not exist in: {case_dir}")
                     missing_bams.append(bam_file)
                 else:
                     found_bams+=1
             #go back to the current directory
             os.chdir(current_dir)
-    print(f"Found {found_cases} cases out of {len(cases_list)}")
-    print(f"Found {found_bams} bam files out of {len(df_metadata)}")
-    print("\nMissing bams:\n")
-    print(missing_bams)
-    print("Missing cases:\n")
-    print(missing_cases)
+
+    logging.info(f"Found {found_cases} cases out of {len(cases_list)}")
+    logging.info(f"Found {found_bams} bam files out of {len(df_metadata)}")
+
+    if len(missing_bams) > 0:
+        logging.warning(f"Missing {len(missing_bams)} bam files")
+    if len(missing_cases) > 0:
+        logging.warning(f"Missing {len(missing_cases)} cases")
+
+    logging.debug("Missing bams:\n")
+    logging.debug(missing_bams)
+    logging.debug("Missing cases:\n")
+    logging.debug(missing_cases)
     return([missing_bams, missing_cases])
 
 def create_missing_bams_manifest(missing_files, manifest_location, df_metadata, missing_manifest_output_name):
 
     if (len(missing_files[0]) == 0) & (len(missing_files[1]) == 0):
-        print("All good! All files present!")
+        logging.info("All good! All files present!")
         return
     else:
         # create an empty, placeholder dataframe
@@ -311,7 +318,7 @@ def getMissingBams(df_metadata, manifest_location, missing_manifest_output_name)
 
 @fancy_status
 @fancy_status
-def create_mmbir_results_master_df(df_metadata, filtered=False, log=False):
+def create_mmbir_results_master_df(df_metadata, filtered=False):
     # create a master dataframe for raw mmbir results
 
     results_master_df = pd.DataFrame()
@@ -336,10 +343,10 @@ def create_mmbir_results_master_df(df_metadata, filtered=False, log=False):
         #print(bam_metadata)
 
         if len(bam_metadata) == 0:
-            print(f"WARNING: No metadata found for: {bam_name}, skipping")
+            logging.warning(f"No metadata found for: {bam_name}, skipping")
             continue
         elif len(bam_metadata) > 1:
-            print(f"WARNING: Multiple metadata found for: {bam_name}, skipping")
+            logging.warning(f"WARNING: Multiple metadata found for: {bam_name}, skipping")
             continue
 
         #get column names of the bam_metadata dataframe
@@ -363,8 +370,8 @@ def create_mmbir_results_master_df(df_metadata, filtered=False, log=False):
         
         #concat the filtered mmbir results to the master dataframe
         results_master_df = pd.concat([results_master_df, filtered_mmbir_results_df], axis=0)
-        if log:
-            print(f"Finished processing: {bam_name}")
+        
+        logging.debug(f"Finished processing: {bam_name}")
     
     #go back to the current directory
     os.chdir(current_dir)
@@ -390,16 +397,16 @@ def createFullCancerTable(params):
     create_missing_bams_manifest(missing_files, manifest_location, df_metadata, missing_manifest_output_name)
     #create the master dataframe for the raw mmbir results
     raw_mmbir_results_master_df = create_mmbir_results_master_df(df_metadata, filtered=False, log=log)
-    print(f"Finished creating the master dataframe for the raw mmbir results")
+    logging.info(f"Finished creating the master dataframe for the raw mmbir results")
     #create the master dataframe for the filtered mmbir results
     filtered_mmbir_results_master_df = create_mmbir_results_master_df(df_metadata, filtered=True, log=log)
-    print(f"Finished creating the master dataframe for the filtered mmbir results")
+    logging.info(f"Finished creating the master dataframe for the filtered mmbir results")
 
     #os.chdir(my_dir)
     #save the master dataframes to csv
     raw_mmbir_results_master_df.to_csv(output_raw_name, index=False)
     filtered_mmbir_results_master_df.to_csv(output_filtered_name, index=False)
-    print(f"Finished saving the master dataframes to csv")
+    logging.info(f"Finished saving the master dataframes to csv")
 
 #Used by findCosmicGenes
 def getCancerGeneNamesMMB(genes_list, df_census):
@@ -512,7 +519,7 @@ def keepHigherMMBIRCases(df_consolidated, df_metadata, min_concentration=0):
 
 #This function finds find high and low mmbir_thresholds for a given cancer type so that x% of the samples are above the threshold and y% of the samples are below the threshold
 #Used by findMMBIRThresholds
-def findThresholdCases(df_consolidated, df_metadata, fraction_high=0.4, fraction_low=0.4, min_concentration=0, log=True, filtered=False):
+def findThresholdCases(df_consolidated, df_metadata, fraction_high=0.4, fraction_low=0.4, min_concentration=0, filtered=False):
 
     #sort the dataframe by the mmbir scores
     if filtered:
@@ -530,6 +537,9 @@ def findThresholdCases(df_consolidated, df_metadata, fraction_high=0.4, fraction
     #find the number of samples that are below the threshold
     num_samples_below_threshold = int(len(df)*fraction_low)
 
+    logging.debug(f"num_samples_above_threshold: {num_samples_above_threshold}")
+    logging.debug(f"num_samples_below_threshold: {num_samples_below_threshold}")
+
     # retrieve the first num_samples_above_threshold samples, these are the samples that are above the threshold
     df_above_threshold = df.iloc[:num_samples_above_threshold]
 
@@ -541,11 +551,10 @@ def findThresholdCases(df_consolidated, df_metadata, fraction_high=0.4, fraction
     #find the mmbir score for the first sample in the df_below_threshold
     mmbir_threshold_low_cases = df_below_threshold[filter_by].iloc[0]
 
-    if log:
-        print(f"mmbir_threshold_high: {mmbir_threshold_high_cases}")
-        print(f"mmbir_threshold_low: {mmbir_threshold_low_cases}")
+    logging.info(f"mmbir_threshold_high: {mmbir_threshold_high_cases}")
+    logging.info(f"mmbir_threshold_low: {mmbir_threshold_low_cases}")
 
-    print(f"Finished finding the mmbir_thresholds ({filter_by}) for the {fraction_high*100}% highest and {fraction_low*100}% lowest MMBIR Count samples at min concentration of {min_concentration}.")
+    logging.info(f"Finished finding the mmbir_thresholds ({filter_by}) for the {fraction_high*100}% highest and {fraction_low*100}% lowest MMBIR Count samples at min concentration of {min_concentration}.")
 
     return df_above_threshold, df_below_threshold
 
