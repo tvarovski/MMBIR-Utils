@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 from tools import time_elapsed, fancy_status
+import logging
 
 @fancy_status
 @time_elapsed
@@ -127,18 +128,22 @@ def parseOutputs(df_metadata, consolidated_results_name="consolidated_results.ts
   output_df.to_csv(consolidated_results_name, sep="\t", index=False)
 
 def getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, min_MMBIR_events, below=False, min_concentration=0):
-    import logging
+    
     df_consolidated=pd.read_csv(consolidated_results_path, sep="\t")
-
     df_consolidated=pd.merge(df_consolidated, df_sample_metadata, left_on="Sample_Name", right_on="file_name")
 
     df_consolidated["age_at_collection"] = df_consolidated["cases.0.diagnoses.0.age_at_diagnosis"] + df_consolidated["cases.0.samples.0.days_to_collection"]
     df_consolidated.rename(columns={"cases.0.samples.0.portions.0.analytes.0.aliquots.0.concentration": "Concentration"}, inplace=True)
-    df_consolidated=df_consolidated[df_consolidated["Concentration"] >= min_concentration]
+    
+    if min_concentration > 0:
+        df_consolidated=df_consolidated[df_consolidated["Concentration"] >= min_concentration]
+    
+    print(df_consolidated.columns)
 
 
     agg_dict={"Raw_Count": ['min', 'max'],
               "Filtered_Count": ['min', 'max']}
+    
     df_agg = df_consolidated.groupby("Case_ID").agg(agg_dict).reset_index()
 
     df_agg.columns = ['_'.join(col).strip() for col in df_agg.columns.values]

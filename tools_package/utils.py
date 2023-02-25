@@ -121,6 +121,7 @@ if __name__ == "__main__":
             "mmbir_fraction_low": cfg.settings["mmbir_fraction_low"],
             "outputs_path": cfg.settings["outputs_path"],
             "expression_df_metadata_path": f"/Users/{username}/MMBIR_Databases/TCGA/TCGA-{cancer}-WXS-expression-metadata.tsv",
+            "investigated_tissue": cfg.settings["investigated_tissue"],
             }
 
         performDiffExprAnalysis(params)

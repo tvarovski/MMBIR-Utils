@@ -8,6 +8,7 @@ settings = {
     "MMBIR_THRESHOLD_LOW": 150,
     "MMBIR_THRESHOLD_HIGH": 250,
     "min_concentration": 0,
+    "investigated_tissue": "Primary Tumor",
     
     "ref_complexity_filter": True,
     "bir_complexity_filter": True,

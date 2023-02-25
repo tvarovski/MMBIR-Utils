@@ -1,8 +1,12 @@
 import pandas as pd
 import os
-import logging
 import cancer_config as cfg
 from tools import getCasesAboveMMBThreshold, returnGenes, countGenes
+import logging
+
+#set logging level
+logging.basicConfig()
+
 
 #returnGenes needs update in tools_base
 
@@ -27,10 +31,10 @@ exones_only = cfg.settings["exones_only"]
 
 min_concentration = 0.0
 
-raw_dir = cfg.setting["outputs_path_raw"]
-filtered_dir = cfg.setting["outputs_path_filtered"]
+raw_dir = cfg.settings["outputs_path_raw"]
+filtered_dir = cfg.settings["outputs_path_filtered"]
 
-output_file_name="../gene_frequencies_mmbir_sections_highconc_test.csv"
+output_file_name="outputs/gene_frequencies_mmbir_sections.csv"
 
 #os.chdir("/Shared/malkova_lab/Jacob/TCGA_Glioblastoma_Project/")
 
@@ -44,7 +48,7 @@ os.chdir(cwd+"/"+raw_dir)
 raw_files = [f for f in os.listdir() if f.endswith(".txt")]
 
 #displaythe number of files in the raw_dir
-print("There are {} files in the raw_dir".format(len(raw_files)))
+logging.info("There are {} files in the raw_dir".format(len(raw_files)))
 
 os.chdir(cwd)
 
@@ -54,23 +58,33 @@ os.chdir(cwd)
 
 
 # get the IDs of the cases that are high mmbir
-threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_path, df_metadata, MMBIR_THRESHOLD_HIGH, min_concentration)
-threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, df_metadata, MMBIR_THRESHOLD_LOW, min_concentration, below=True)
+threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_path, df_metadata, MMBIR_THRESHOLD_HIGH, min_concentration=min_concentration, below=False)
+threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, df_metadata, MMBIR_THRESHOLD_LOW, min_concentration=min_concentration, below=True)
+
+logging.debug(threshold_mmb_cases_high_df.head())
+logging.debug(threshold_mmb_cases_low_df.head())
+
 
 high_mmbir_cases = threshold_mmb_cases_high_df["Case_ID_"].values.tolist()
 low_mmbir_cases = threshold_mmb_cases_low_df["Case_ID_"].values.tolist()
 
+logging.debug(f"There are: {len(high_mmbir_cases)} high mmbir cases")
+logging.debug(f"There are: {len(low_mmbir_cases)} low mmbir cases")
+
 all_high_mmbir_files = df_metadata[df_metadata["cases.0.case_id"].isin(high_mmbir_cases)].file_name.values.tolist()
 all_low_mmbir_files = df_metadata[df_metadata["cases.0.case_id"].isin(low_mmbir_cases)].file_name.values.tolist()
+
+logging.debug(f"There are: {len(all_high_mmbir_files)} files associated with high mmbir cases")
+logging.debug(f"There are: {len(all_low_mmbir_files)} files associated with low mmbir cases")
 
 # get the number of files associated with high mmbir cases
 high_mmbir_files = [f for f in raw_files if f"{os.path.splitext(f)[0][:-4]}.bam" in all_high_mmbir_files]
 low_mmbir_files = [f for f in raw_files if f"{os.path.splitext(f)[0][:-4]}.bam" in all_low_mmbir_files]
 
-print(len(high_mmbir_files))
+logging.debug(len(high_mmbir_files))
 
-print(f"There are {len(high_mmbir_files)} high mmbir files")
-print(f"There are {len(low_mmbir_files)} low mmbir files")
+logging.info(f"There are {len(high_mmbir_files)} high mmbir files in the raw_dir")
+logging.info(f"There are {len(low_mmbir_files)} low mmbir files in the raw_dir")
 
 raw_genes=[]
 filtered_genes=[]
@@ -80,7 +94,7 @@ for file in raw_files:
     # get the file name without the extension
     file_name = os.path.splitext(file)[0]
     file_name = file_name[:-4]+".bam"
-    print(file_name)
+    logging.debug(file_name)
 
     # get the case id of the file by referencing metadata file
     case_id = df_metadata[df_metadata["file_name"] == file_name]["cases.0.case_id"].values[0]
@@ -102,7 +116,7 @@ for file in filtered_files:
     # get the file name without the extension
     file_name = os.path.splitext(file)[0]
     file_name = file_name[:-25]+".bam"
-    print(file_name)
+    logging.debug(file_name)
 
     # get the case id of the file by referencing metadata file
     case_id = df_metadata[df_metadata["file_name"] == file_name]["cases.0.case_id"].values[0]
@@ -140,21 +154,21 @@ filtered_sorted_low = [(x[0], x[1]/len(low_mmbir_files)) for x in filtered_sorte
 # print the top_N_genes in the raw and filtered files
 top_n_genes=10
 
-print(f"Top {top_n_genes} genes in the raw+high data set:")
+logging.info(f"Top {top_n_genes} genes in the raw+high data set:")
 for i in range(top_n_genes):
-    print(raw_sorted_high[i])
+    logging.info(raw_sorted_high[i])
 
-print(f"Top {top_n_genes} genes in the raw+low data set:")
+logging.info(f"Top {top_n_genes} genes in the raw+low data set:")
 for i in range(top_n_genes):
-    print(raw_sorted_low[i])
+    logging.info(raw_sorted_low[i])
 
-print(f"Top {top_n_genes} genes in the filtered+high data set:")
+logging.info(f"Top {top_n_genes} genes in the filtered+high data set:")
 for i in range(top_n_genes):
-    print(filtered_sorted_high[i])
+    logging.info(filtered_sorted_high[i])
 
-print(f"Top {top_n_genes} genes in the filtered+low data set:")
+logging.info(f"Top {top_n_genes} genes in the filtered+low data set:")
 for i in range(top_n_genes):
-    print(filtered_sorted_low[i])
+    logging.info(filtered_sorted_low[i])
 
 
 # create a dictionary with gene as key and the frequency of occurence as value
