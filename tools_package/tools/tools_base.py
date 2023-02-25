@@ -504,7 +504,9 @@ def keepHigherMMBIRCases(df_consolidated, df_metadata, min_concentration=0):
     df_consolidated=pd.merge(df_consolidated, df_metadata, left_on="Sample_Name", right_on="file_name")
     df_consolidated["age_at_collection"] = df_consolidated["cases.0.diagnoses.0.age_at_diagnosis"] + df_consolidated["cases.0.samples.0.days_to_collection"]
     df_consolidated.rename(columns={"cases.0.samples.0.portions.0.analytes.0.aliquots.0.concentration": "Concentration"}, inplace=True)
-    df_consolidated=df_consolidated[df_consolidated["Concentration"] >= min_concentration]
+
+    if min_concentration > 0:
+        df_consolidated=df_consolidated[df_consolidated["Concentration"] >= min_concentration]
 
     agg_dict={"Raw_Count": ['min', 'max'],
               "Filtered_Count": ['min', 'max']}
