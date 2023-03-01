@@ -1,3 +1,6 @@
+# This code was developed and authored by Jerzy Twarowski in Malkova Lab at the University of Iowa 
+# Contact: jerzymateusz-twarowski@uiowa.edu, tvarovski1@gmail.com
+
 import pandas as pd
 import cancer_config as cfg
 from tools import masked_snv_mv

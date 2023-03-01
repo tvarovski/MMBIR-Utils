@@ -1,3 +1,6 @@
+# This code was developed and authored by Jerzy Twarowski in Malkova Lab at the University of Iowa 
+# Contact: jerzymateusz-twarowski@uiowa.edu, tvarovski1@gmail.com
+
 #this script takes a path to a text file and a number of processes as arguments
 #and splits the file into chunks and runs the script on each chunk in parallel
 
