@@ -1,6 +1,21 @@
 # This code was developed and authored by Jerzy Twarowski in Malkova Lab at the University of Iowa 
 # Contact: jerzymateusz-twarowski@uiowa.edu, tvarovski1@gmail.com
 
+## Contents:
+## annotate_consolidated_results
+## plot_blood_tumor_count_correlations_treshold_delta
+## plot_blood_tumor_count_correlation
+## plot_count_vs_concentration
+## plot_concentration_raw_filtered
+## plot_Sample_Type_counts
+## plot_stage_vs_count
+## plot_stage_vs_concentration
+## plot_ajcc_pathologic_n_vs_count
+## plot_ajcc_pathologic_t_vs_count
+## plot_age_vs_count_correlation
+## plot_age_vs_count_binned
+## plot_total_reads_vs_count
+
 from importlib.metadata import distribution
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -602,39 +617,6 @@ def plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concen
     if save:
         plt.savefig(f"outputs/plots/plot_age_vs_count_binned_{count}_minconc{min_concentration}.png", dpi=600)
         logging.info(f"Saved plot to outputs/plots/plot_age_vs_count_binned_{count}_minconc{min_concentration}.png")
-
-    if show:
-        plt.show()
-    else:
-        plt.close()
-
-@fancy_status
-def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_concentration=0.5, save=False, show=True):
-
-    '''function plot_total_reads_vs_count() plots the MMBIR count vs the total reads.
-    The plot shows the MMBIR count on the y-axis and the total reads on the x-axis.'''
-
-    df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
-
-    #calculate the linear regression between total_reads and count
-    slope, intercept, r_value, p_value, std_err = stats.linregress(df_consolidated["total_reads"], df_consolidated[count])
-    print(f"Slope: {slope}, Intercept: {intercept}, R-squared: {r_value**2}, P-value: {p_value}")
-
-    sns.set_context("talk")
-    sns.scatterplot(x="total_reads", y=count, data=df_consolidated, alpha=0.5)
-    sns.regplot(x="total_reads",y=count, data=df_consolidated, scatter=False, robust=True, color="orange")
-
-    # add the pvalue and R-squared to the plot title, round the R-squared to 2 decimal places
-    plt.title(f"R-squared: {r_value**2:.3f}, P-value: {p_value:.4f}, slope: {slope:.3f}")
-
-    # rename the x-axis and y-axis
-    plt.xlabel("Total reads")
-    plt.ylabel(f"MMBIR {count}")
-    plt.tight_layout()
-
-    if save:
-        plt.savefig(f"outputs/plots/plot_total_reads_vs_count_{count}_minconc{min_concentration}.png", dpi=600)
-        logging.info(f"Saved plot to outputs/plots/plot_total_reads_vs_count_{count}_minconc{min_concentration}.png")
 
     if show:
         plt.show()

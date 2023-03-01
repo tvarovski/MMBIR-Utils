@@ -1,6 +1,12 @@
 # This code was developed and authored by Jerzy Twarowski in Malkova Lab at the University of Iowa 
 # Contact: jerzymateusz-twarowski@uiowa.edu, tvarovski1@gmail.com
 
+## Contents:
+## count_calls
+## time_elapsed
+## fancy_status
+
+
 import functools
 import logging
 

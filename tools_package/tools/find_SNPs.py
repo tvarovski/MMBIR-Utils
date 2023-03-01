@@ -1,6 +1,9 @@
 # This code was developed and authored by Jerzy Twarowski in Malkova Lab at the University of Iowa 
 # Contact: jerzymateusz-twarowski@uiowa.edu, tvarovski1@gmail.com
 
+## Contents:
+## find_closest_snp
+
 import pandas as pd
 import time
 import sys
