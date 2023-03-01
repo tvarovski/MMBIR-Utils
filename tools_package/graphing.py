@@ -7,52 +7,6 @@ import os
 
 logger = logging.getLogger(__name__)
 
-@fancy_status
-def plot_differential_expression(cancer, save=False, show=True):
-    import numpy as np
-    path = f"outputs/ttest_results_{cancer}_minconc0_bh_corrected.tsv"
-
-    df = pd.read_csv(path, sep="\t")
-
-    #transform the p-value to -log10
-    df["-log10(p-value)"] = -np.log10(df["p-value"])
-    
-    #transform the fold change to log2
-    df["log2(fold change)"] = np.log2(df["fold-change"])
-
-    #if log2(fold change) is greater than 10, set it to 10
-    #if flog2(fold change) is less than -10, set it to -10
-    df["log2(fold change)"] = df["log2(fold change)"].apply(lambda x: 6 if x > 6 else x)
-    df["log2(fold change)"] = df["log2(fold change)"].apply(lambda x: -6 if x < -6 else x)
-
-    #plot the -log10(p-value) vs the log2(fold change), color the points blue if the p-value is less than 0.05
-    #and red if the p-value is greater than 0.05
-    #also, add a line at -log10(p-value) = 1.3, which is the threshold for significance
-    df["significant"] = df["p-value"] < 0.05
-
-    sns.scatterplot(x="log2(fold change)", y="-log10(p-value)", data=df, hue="significant")
-    plt.axhline(y=1.3, color="red", linestyle="--")
-    plt.axvline(x=0, color="black", linestyle="--")
-
-    #rename the x-axis and y-axis
-    plt.xlabel("log2(fold change)", fontsize=20, fontweight="bold")
-    plt.ylabel("-log10(p-value)", fontsize=20, fontweight="bold")
-
-    #add the title
-    plt.title(f"Differential expression of {cancer}", fontsize=20, fontweight="bold")
-    plt.tight_layout()
-    
-    #add the a vertical line at log2(fold change) = 0, which is the threshold for differential expression
-
-    if save:
-        plt.savefig(f"outputs/plots/{cancer}_differential_expression.png", dpi=600)
-        logging.info(f"Saved plot to outputs/plots/{cancer}_differential_expression.png")
-
-    if show:
-        plt.show()
-    else:
-        plt.close()
-
 def graphing(params, save=False, show=True):
 
     cancer = params["cancer"]
