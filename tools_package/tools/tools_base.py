@@ -1,6 +1,25 @@
 # This code was developed and authored by Jerzy Twarowski in Malkova Lab at the University of Iowa 
 # Contact: jerzymateusz-twarowski@uiowa.edu, tvarovski1@gmail.com
 
+## Contents:
+## groupCases
+## parseOutputs
+## getCasesAboveMMBThreshold
+## returnGenes
+## countGenes
+## get_case_bam_files
+## get_bam_file_metadata
+## check_for_missing_bams
+## create_missing_bams_manifest
+## getMissingBams
+## create_mmbir_results_master_df
+## createFullCancerTable
+## getCancerGeneNamesMMB
+## getMMBGenes
+## df_filter
+## findCosmicGenes
+## keepHigherMMBIRCases
+## findThresholdCases
 
 import os
 import pandas as pd

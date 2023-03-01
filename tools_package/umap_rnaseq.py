@@ -1,6 +1,14 @@
 # This code was developed and authored by Jerzy Twarowski in Malkova Lab at the University of Iowa 
 # Contact: jerzymateusz-twarowski@uiowa.edu, tvarovski1@gmail.com
 
+## Contents: 
+## filterByDiffExpr
+## addMMBToDF
+## addMetadataToDF
+## perform_UMAP
+## plot_UMAP_numerical
+## plot_UMAP_categorical
+
 import os
 import logging
 import umap
