@@ -27,7 +27,7 @@ def annotate_consolidated_results(df_consolidated, df_metadata):
 ###############
 #Function to make all of the dataframes
 
-def make_master_df(cancer_list=['BLCA','BRCA', 'COAD', 'GBM', 'KIRC', 'LGG', 'LUAD', 'LUSC', 'OV', 'SARC', 'SKCM', 'UCEC']):
+def make_master_df(cancer_list=['BLCA','BRCA', 'COAD', 'GBM', 'KIRC', 'LGG', 'LUAD', 'LUSC', 'OV', 'SARC', 'SKCM', 'UCEC']): #'LAML'
 #Make a master dataframe by concating dfs in cancer_list
 #Need to have a consolidated_results anad metadata file for each cancer in the cancer_list
     intial_counter=1
@@ -70,6 +70,8 @@ def make_master_df(cancer_list=['BLCA','BRCA', 'COAD', 'GBM', 'KIRC', 'LGG', 'LU
         df_master["Cancer Type"] = df_master["Cancer Type"].replace(['TCGA-GBM'], value='Glioblastoma (GBM)')
     if 'KIRC' in cancer_list:
         df_master["Cancer Type"] = df_master["Cancer Type"].replace(['TCGA-KIRC'], value='Kidney (KIRC)')
+    if 'LAML' in cancer_list:
+        df_master["Cancer Type"] = df_master["Cancer Type"].replace(['TCGA-LAML'], value='Leukemia (LAML)')
     if 'LGG' in cancer_list:
         df_master["Cancer Type"] = df_master["Cancer Type"].replace(['TCGA-LGG'], value='Glioma (LGG)')
     if 'LUAD' in cancer_list:
@@ -78,27 +80,33 @@ def make_master_df(cancer_list=['BLCA','BRCA', 'COAD', 'GBM', 'KIRC', 'LGG', 'LU
         df_master["Cancer Type"] = df_master["Cancer Type"].replace(['TCGA-LUSC'], value='Lung (LUSC)')
     if 'OV' in cancer_list:
         df_master["Cancer Type"] = df_master["Cancer Type"].replace(['TCGA-OV'], value='Ovarian (OV)')
+    if 'PRAD' in cancer_list:
+        df_master["Cancer Type"] = df_master["Cancer Type"].replace(['TCGA-PRAD'], value='Prostate (PRAD)')
     if 'SARC' in cancer_list:
-        df_master["Cancer Type"] = df_master["Cancer Type"].replace(['TCGA-SARC'], value='Ovarian (SARC)')
+        df_master["Cancer Type"] = df_master["Cancer Type"].replace(['TCGA-SARC'], value='Sarcoma (SARC)')
     if 'SKCM' in cancer_list:
         df_master["Cancer Type"] = df_master["Cancer Type"].replace(['TCGA-SKCM'], value='Melanoma (SKCM)')
     if 'UCEC' in cancer_list:
         df_master["Cancer Type"] = df_master["Cancer Type"].replace(['TCGA-UCEC'], value='Uterine (UCEC)')
 
 
-def make_sub_master_df(aliquot_conc_threshold=0.5):
+def make_sub_master_df(aliquot_conc_threshold=0):
     #Assign aliquot concentration threshold for all sub master dataframes
-    df_master_aliquot = df_master[df_master["Concentration"] >= aliquot_conc_threshold]
+    global df_master_aliquot
+    if aliquot_conc_threshold > 0:
+        df_master_aliquot = df_master[df_master["Concentration"] >= aliquot_conc_threshold]
+    else:
+        df_master_aliquot = df_master
 
     #Make all sub master dataframes
     global df_master_primary
-    df_master_primary = df_master_aliquot.loc[df_master_aliquot['Sample Type'].isin(['Primary Tumor'])]
+    df_master_primary = df_master_aliquot.loc[df_master_aliquot['Sample Type'].isin(['Primary Tumor'])] #'Additional - New Primary'
     global df_master_blood
-    df_master_blood = df_master_aliquot.loc[df_master_aliquot['Sample Type'].isin(['Blood Derived Normal'])]
+    df_master_blood = df_master_aliquot.loc[df_master_aliquot['Sample Type'].isin(['Blood Derived Normal'])] #'Primary Blood Derived Cancer - Peripheral Blood'
     global df_master_combo
-    df_master_combo = df_master_aliquot.loc[df_master_aliquot['Sample Type'].isin(['Primary Tumor', 'Blood Derived Normal'])]
+    df_master_combo = df_master_aliquot.loc[df_master_aliquot['Sample Type'].isin(['Primary Tumor', 'Blood Derived Normal'])] #'Primary Blood Derived Cancer - Peripheral Blood'
     global df_master_all_tumors
-    df_master_all_tumors = df_master_aliquot.loc[df_master_aliquot['Sample Type'].isin(['Primary Tumor', 'Recurrent Tumor', 'Metastatic'])]
+    df_master_all_tumors = df_master_aliquot.loc[df_master_aliquot['Sample Type'].isin(['Primary Tumor', 'Recurrent Tumor', 'Metastatic', 'Additional - New Primary'])]
     global df_master_all_normals
     df_master_all_normals = df_master_aliquot.loc[df_master_aliquot['Sample Type'].isin(['Blood Derived Normal', 'Buccal Cell Normal', 'Solid Tissue Normal'])]
 
@@ -109,16 +117,17 @@ def violin_swarm_plot(dataframe, plot_scale=(48,27)):
     #Set the plotting size (make larger to fit swarm plot points)
     fig, ax = plt.subplots(figsize=(plot_scale))
 
-    g1 = sns.violinplot(x='Cancer Type', y='Tissue-Specific MMBIR Signatures', saturation=0.75, gridsize=1000, scale="width", data=dataframe, hue_order=["Primary Tumor", "Blood Derived Normal"], hue="Sample Type", inner=None, palette=["cornflowerblue", "tab:red"])  #palette='tab10'
+    g1 = sns.violinplot(x='Cancer Type', y='Tissue-Specific MMBIR Signatures', saturation=0.75, gridsize=1000, scale="width", data=dataframe, hue_order=["Primary Tumor",'Blood Derived Normal'], hue="Sample Type", inner=None, palette=["#E5EEFB", "mistyrose"])  #palette='tab10', 'Blood Derived Normal'
     #Final figure y-axis set below
-    #g1.set(ylim=(0, 2000))
-    g2 = sns.swarmplot(x='Cancer Type', y='Tissue-Specific MMBIR Signatures', data=dataframe, linewidth = 0.65, alpha=0.5, dodge=True, hue="Sample Type", hue_order=["Primary Tumor", "Blood Derived Normal"], edgecolor="k", s=3, color='k', ax=g1)
+    g1.set(ylim=(0, 7000))
+    
+    g2 = sns.swarmplot(x='Cancer Type', y='Tissue-Specific MMBIR Signatures', data=dataframe, linewidth = 0.5, alpha=0.5, dodge=True, hue="Sample Type", hue_order=["Primary Tumor", 'Blood Derived Normal'], edgecolor="grey", s=3, palette=["royalblue", "tab:red"], ax=g1) #, 'Blood Derived Normal'
     #Final figure size set below
-    fig.set_size_inches(16,9)
+    #fig.set_size_inches(16,9)
     plt.legend().remove()
-    plt.xlabel("Cancer Type", fontweight="bold", fontsize = 25)   #fontsize = 0
+    #plt.xlabel("Cancer Type", fontweight="bold", fontsize = 25)   #fontsize = 0
     plt.ylabel("Tissue-Specific MMBIR Signatures", fontweight="bold", fontsize = 25)
-    plt.xticks(fontweight="bold", fontsize=12)   #fontsize = 0
+    plt.xticks(fontweight="bold", fontsize=20)   #fontsize = 0
     plt.yticks(fontweight="bold", fontsize=18)
     plt.show()
 
@@ -141,91 +150,42 @@ def swarm_plot(dataframe, plot_scale=(48,27)):
     plt.xticks(fontweight="bold", fontsize=12)   #fontsize = 0
     plt.yticks(fontweight="bold", fontsize=18)
     plt.show()
+
+def calculate_n(df):
+    analyzed_cancers = set(df["Cancer Type"].values.tolist())
+    sample_types = set((df["Sample Type"].values.tolist())[::-1])
+    for cancer in analyzed_cancers:
+        print(f"For {cancer} cancer:")
+        df_temp = df.loc[df["Cancer Type"]==cancer]
+        for location in sample_types:
+            n_value = df_temp["Sample Type"].value_counts()[location]
+            print(f"\t{location} n value = {n_value}")
+
+def calculate_mean(df):
+    analyzed_cancers = set(df["Cancer Type"].values.tolist())
+    sample_types = set((df["Sample Type"].values.tolist())[::-1])
+    for cancer in analyzed_cancers:
+        print(f"For {cancer} cancer:")
+        df_temp = df.loc[df["Cancer Type"]==cancer]
+        for location in sample_types:
+            df_temp2 = df_temp.loc[df_temp["Sample Type"].isin([location])]
+            mean = round(df_temp2["Tissue-Specific MMBIR Signatures"].mean())
+            print(f"\t{location} average MMBIR Signatures = {mean}")
+
 ##################################
 def main():
     #List of cancers wanted in master dataframe
-    #my_cancer_list=['BLCA','BRCA', 'COAD', 'GBM', 'KIRC', 'LGG', 'LUAD', 'LUSC', 'OV', 'SARC', 'SKCM', 'UCEC']
+    my_cancer_list=['BRCA', 'COAD', 'GBM', 'KIRC', 'LUAD', 'OV', 'UCEC'] #'BLCA', 'LAML', 'LGG',  'LUSC',  'SARC', 'SKCM',
     make_master_df()
-    make_sub_master_df()
+    make_sub_master_df(0.5) #Value in fucntion is the aliquot thershold cutoff
+
+    #all_master_dfs = [df_master_primary, df_master_blood, df_master_combo, df_master_all_tumors, df_master_all_normals]
+
+    swarm_plot(df_master_combo)
+    violin_swarm_plot(df_master_combo)
+    calculate_mean(df_master_combo)
 
 if __name__ == '__main__':
     main()
 
 ##################################
-
-#List below is just for reference - not used in a function
-all_master_dfs = [df_master_primary, df_master_blood, df_master_combo, df_master_all_tumors, df_master_all_normals]
-
-violin_swarm_plot(df_master_primary)
-swarm_plot(df_master_primary)
-
-
-
-#Modified functions of mmbir_ctrl_vs_tumor_v2.py - might be useful still
-def jacob_plot_concentration_raw_filtered(df_consolidated, filterset, hue="Concentration"):
-    df_consolidated = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
-    df_consolidated = df_consolidated[df_consolidated["cases.0.project.project_id"] == f'TCGA-{cancer}']
-
-    print("Mean and standard deviation of the Filtered_Count:")
-    print(df_consolidated.groupby("Sample_Type").mean()["Filtered_Count"])
-    print(df_consolidated.groupby("Sample_Type").std()["Filtered_Count"])
-
-    print("Cases with concentration of 0.5:")
-    print(df_consolidated[df_consolidated["Concentration"]==.5])
-
-    if hue == "Concentration_bin":
-        #bin the concentration into 2 groups for plotting 2 discrete colors based on the concentration
-        df_consolidated["Concentration_bin"] = "none"
-        df_consolidated["Concentration_bin"] = df_consolidated["Concentration"].apply(lambda x: "low" if x < .5 else "high")
-
-    # set the plot context
-    sns.set_context("poster")
-    sns.scatterplot(x="Filtered_Count", y="Raw_Count", data=df_consolidated, alpha=0.5, hue=hue, palette="flare")
-
-    # set both x- and y-axis to log scale
-    plt.xscale("log")
-    plt.yscale("log")
-
-    #rename the x-axis and y-axis
-    plt.xlabel("Filtered MMBIR Signature Count")
-    plt.ylabel("Raw MMBIR Signature Count")
-    plt.title(f"{cancer} Cancer", fontweight="bold")
-
-    plt.show()
-
-def jacob_plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=0.5):
-
-
-    df_figure = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
-    df_figure = df_figure[df_figure["Concentration"] >= min_concentration]
-
-    df_figure = df_figure[df_figure["cases.0.project.project_id"] == f'TCGA-{cancer}']
-    
-    length=len(df_figure)
-    bin_number=int(length/1.5)
-
-    sns.set_context("poster")
-    #set color for each sample type
-    color_dict = {"Primary Tumor": "tab:blue", "Blood Derived Normal": "tab:orange"}
-    sns.histplot(data=df_figure, x="Raw_Count", bins=bin_number, multiple="stack", hue="Sample_Type", palette=color_dict, legend=False) #multiple="stack", hue="Sample_Type",
-    
-    #make labels bold
-    plt.xlabel("Tumor-Specific MMBIR Signatures", fontweight="bold")
-    plt.ylabel("Number of Tumor Samples", fontweight="bold")
-    
-    #add title
-    #show the length of the df_figure on the title
-    
-    plt.title(f"{cancer} Cancer (N={length})", fontweight="bold")
-
-    #don't show the legend
-    #plt.legend().remove()
-
-    #set x-axis to go to 1080
-    plt.xlim(0,1200)
-    plt.ylim(0,12)
-    
-    #make tick labels bold
-    plt.xticks(fontweight="bold", fontsize=20)
-    plt.yticks(fontweight="bold", fontsize=20)
-    plt.show()

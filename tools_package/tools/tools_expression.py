@@ -386,3 +386,38 @@ def expressionParser(params):
 
     # overwrite the expression data file
     expression_df.to_pickle(f"{output_name}")
+
+#this function will take all cancer-specific expression files and combine them into one file
+def combineExpressionDFs(files_path, output_name):
+    import glob
+
+    # find all .pickle files in the specified directory
+    expression_df_files = glob.glob(f"{files_path}/*.pickle")
+
+    # create a new dataframe to store the combined expression data
+    combined_expression_df = pd.DataFrame()
+
+    # loop through the expression data files, read them in, and append them to the combined dataframe
+    for expression_df_file in expression_df_files:
+
+        # read in the expression data file
+        expression_df = pd.read_pickle(expression_df_file)
+        
+        # add the cancer type to the expression data
+        cancer_type = expression_df_file.split("/")[-1].split("_")[0] # remove the path and the expression_data_ prefix
+        cancer_type = cancer_type.split(".")[0]  # also remove extension (.pickle)
+
+        expression_df["cancer_type"] = cancer_type
+
+        # append the expression data to the combined dataframe
+        combined_expression_df = pd.concat([combined_expression_df, expression_df], ignore_index=True)
+
+    # save the combined dataframe
+    combined_expression_df.to_pickle(f"{output_name}")
+
+#take the command line arguments 1 and 2 and use them as the input and output file names
+if __name__ == "__main__":
+    import sys
+    files_path = sys.argv[1]
+    output_name = sys.argv[2]
+    combineExpressionDFs(files_path, output_name)
