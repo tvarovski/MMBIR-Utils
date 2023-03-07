@@ -66,6 +66,10 @@ def graphing(params, save=False, show=True):
         plot_count_vs_concentration(df_consolidated, x_count="Raw_Count", save=save, show=show)
     except Exception as e:
         logging.error(f"Error in count vs concentration plot: {e}")
+    try:
+        plot_count_vs_concentration(df_consolidated, x_count="Filtered_Count", save=save, show=show)
+    except Exception as e:
+        logging.error(f"Error in count vs concentration plot: {e}")
 
     filterset=["Blood Derived Normal","Primary Tumor"] #"Blood Derived Normal", "Primary Tumor"
 
@@ -87,7 +91,16 @@ def graphing(params, save=False, show=True):
     except Exception as e:
         logging.error(f"Error in stage vs count plot: {e}")
     try:
+        plot_stage_vs_count(df_consolidated, filterset, staging=staging, x_count="Raw_Count", min_concentration=min_concentration, adjust_staging='early_late', save=save, show=show)
+    except Exception as e:
+        logging.error(f"Error in stage vs count plot: {e}")
+
+    try:
         plot_stage_vs_concentration(df_consolidated, filterset, staging=staging, x_count="Filtered_Count", min_concentration=min_concentration, adjust_staging='early_late', save=save, show=show)
+    except Exception as e:
+        logging.error(f"Error in stage vs concentration plot: {e}")
+    try:
+        plot_stage_vs_concentration(df_consolidated, filterset, staging=staging, x_count="Raw_Count", min_concentration=min_concentration, adjust_staging='early_late', save=save, show=show)
     except Exception as e:
         logging.error(f"Error in stage vs concentration plot: {e}")
 
@@ -97,7 +110,16 @@ def graphing(params, save=False, show=True):
         except Exception as e:
             logging.error(f"Error in ajcc pathologic n vs count plot: {e}")
         try:
+            plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Raw_Count", min_concentration=min_concentration, save=save, show=show)
+        except Exception as e:
+            logging.error(f"Error in ajcc pathologic n vs count plot: {e}")
+        
+        try:
             plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=min_concentration, save=save, show=show)
+        except Exception as e:
+            logging.error(f"Error in ajcc pathologic t vs count plot: {e}")
+        try:
+            plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Raw_Count", min_concentration=min_concentration, save=save, show=show)
         except Exception as e:
             logging.error(f"Error in ajcc pathologic t vs count plot: {e}")
     
@@ -105,12 +127,15 @@ def graphing(params, save=False, show=True):
         plot_age_vs_count_correlation(df_consolidated, count="Filtered_Count", min_concentration=min_concentration, method="spearman", save=save, show=show)
     except Exception as e:
         logging.error(f"Error in age vs count correlation plot: {e}")
+    try:
+        plot_age_vs_count_correlation(df_consolidated, count="Raw_Count", min_concentration=min_concentration, method="spearman", save=save, show=show)
+    except Exception as e:
+        logging.error(f"Error in age vs count correlation plot: {e}")
 
     try:
         plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concentration=min_concentration, save=save, show=show)
     except Exception as e:
         logging.error(f"Error in age vs count binned plot: {e}")
-    
     try:
         plot_age_vs_count_binned(df_consolidated, count="Raw_Count", min_concentration=min_concentration, save=save, show=show)
     except Exception as e:
