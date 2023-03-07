@@ -7,6 +7,13 @@ import os
 
 logger = logging.getLogger(__name__)
 
+# in LAML, must override default control_tumor=["Blood Derived Normal", "Primary Tumor"]
+# to control_tumor = ["Solid Tissue Normal", "Primary Blood Derived Cancer - Peripheral Blood"]
+# in the following functions:
+#plot_blood_tumor_count_correlations_treshold_delta
+#plot_blood_tumor_count_correlation
+#plot_age_vs_count_correlation
+
 def graphing(params, save=False, show=True):
 
     cancer = params["cancer"]
