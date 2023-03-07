@@ -1,9 +1,7 @@
 # Imported modules
-from importlib.metadata import distribution
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from scipy import stats
 
 #Required function from mmbir_ctrl_vs_tumor_v2.py
 def annotate_consolidated_results(df_consolidated, df_metadata):
@@ -51,7 +49,6 @@ def make_master_df(cancer_list=['BLCA','BRCA', 'COAD', 'GBM', 'KIRC', 'LGG', 'LU
             print(df_metadata)
             print(f'Finshed Appending {cancer}')
 
-    global df_master
     df_master = annotate_consolidated_results(df_consolidated, df_metadata)
 
     print(f'Master dataframe created!')    
@@ -88,29 +85,31 @@ def make_master_df(cancer_list=['BLCA','BRCA', 'COAD', 'GBM', 'KIRC', 'LGG', 'LU
         df_master["Cancer Type"] = df_master["Cancer Type"].replace(['TCGA-SKCM'], value='Melanoma (SKCM)')
     if 'UCEC' in cancer_list:
         df_master["Cancer Type"] = df_master["Cancer Type"].replace(['TCGA-UCEC'], value='Uterine (UCEC)')
+    
+    return df_master
 
 
-def make_sub_master_df(aliquot_conc_threshold=0):
+def make_sub_master_df(dataframe, aliquot_conc_threshold=0):
     #Assign aliquot concentration threshold for all sub master dataframes
-    global df_master_aliquot
     if aliquot_conc_threshold > 0:
-        df_master_aliquot = df_master[df_master["Concentration"] >= aliquot_conc_threshold]
+        df_master_aliquot = dataframe[dataframe["Concentration"] >= aliquot_conc_threshold]
     else:
-        df_master_aliquot = df_master
+        df_master_aliquot = dataframe
 
     #Make all sub master dataframes
-    global df_master_primary
     df_master_primary = df_master_aliquot.loc[df_master_aliquot['Sample Type'].isin(['Primary Tumor'])] #'Additional - New Primary'
-    global df_master_blood
+
     df_master_blood = df_master_aliquot.loc[df_master_aliquot['Sample Type'].isin(['Blood Derived Normal'])] #'Primary Blood Derived Cancer - Peripheral Blood'
-    global df_master_combo
+
     df_master_combo = df_master_aliquot.loc[df_master_aliquot['Sample Type'].isin(['Primary Tumor', 'Blood Derived Normal'])] #'Primary Blood Derived Cancer - Peripheral Blood'
-    global df_master_all_tumors
+
     df_master_all_tumors = df_master_aliquot.loc[df_master_aliquot['Sample Type'].isin(['Primary Tumor', 'Recurrent Tumor', 'Metastatic', 'Additional - New Primary'])]
-    global df_master_all_normals
+
     df_master_all_normals = df_master_aliquot.loc[df_master_aliquot['Sample Type'].isin(['Blood Derived Normal', 'Buccal Cell Normal', 'Solid Tissue Normal'])]
 
     print('Sub master dataframes created!')
+
+    return df_master_aliquot, df_master_primary, df_master_blood, df_master_combo, df_master_all_tumors, df_master_all_normals
 
 def violin_swarm_plot(dataframe, plot_scale=(48,27)):
     sns.set(style="darkgrid")
@@ -142,7 +141,7 @@ def swarm_plot(dataframe, plot_scale=(48,27)):
     #g1.set(ylim=(0, 2000))
 
     #Final figure size set below
-    fig.set_size_inches(16,9)
+    #fig.set_size_inches(16,9)
 
     plt.legend().remove()
     plt.xlabel("Cancer Type", fontweight="bold", fontsize = 25)   #fontsize = 0
@@ -175,9 +174,15 @@ def calculate_mean(df):
 ##################################
 def main():
     #List of cancers wanted in master dataframe
-    my_cancer_list=['BRCA', 'COAD', 'GBM', 'KIRC', 'LUAD', 'OV', 'UCEC'] #'BLCA', 'LAML', 'LGG',  'LUSC',  'SARC', 'SKCM',
-    make_master_df()
-    make_sub_master_df(0.5) #Value in fucntion is the aliquot thershold cutoff
+    #my_cancer_list=['BRCA', 'COAD', 'GBM', 'KIRC', 'LUAD', 'OV', 'UCEC'] #'BLCA', 'LAML', 'LGG',  'LUSC',  'SARC', 'SKCM',
+    df_master = make_master_df()
+    df_tuple = make_sub_master_df(df_master, 0.5) #Value in fucntion is the aliquot thershold cutoff
+    df_master_aliquot = df_tuple[0]
+    df_master_primary = df_tuple[1]
+    df_master_blood = df_tuple[2]
+    df_master_combo = df_tuple[3]
+    df_master_all_tumors = df_tuple[4]
+    df_master_all_normals = df_tuple[5]
 
     #all_master_dfs = [df_master_primary, df_master_blood, df_master_combo, df_master_all_tumors, df_master_all_normals]
 
