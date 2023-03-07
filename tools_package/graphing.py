@@ -29,6 +29,16 @@ def graphing(params, save=False, show=True):
 
     df_consolidated = annotate_consolidated_results(df_consolidated, df_metadata)
 
+    #make sure that there are no empty values in the total_reads column and "Raw_Count" column, if there are, fill them with 0
+    # and log the error
+    if df_consolidated["total_reads"].isnull().values.any():
+        logging.error("total_reads column contains null values, filling with 0")
+        df_consolidated["total_reads"].fillna(0, inplace=True)
+    if df_consolidated["Raw_Count"].isnull().values.any():
+        logging.error("Raw_Count column contains null values, filling with 0")
+        df_consolidated["Raw_Count"].fillna(0, inplace=True)
+
+
     try:
         plot_differential_expression(cancer, save=save, show=show)
     except Exception as e:
@@ -41,7 +51,7 @@ def graphing(params, save=False, show=True):
 
     try:
         df_consolidated_trimmed = df_consolidated[df_consolidated["total_reads"] >= 100000000].copy()
-        print("removing samples with fewer than 100000000 reads")
+        logging.info("Removing samples with fewer than 100000000 reads for plot_total_reads_vs_count")
         plot_total_reads_vs_count(df_consolidated_trimmed, count="Raw_Count", min_concentration=min_concentration, save=save, show=show)
     except Exception as e:
         logging.error(f"Error in total reads vs count plot: {e}")

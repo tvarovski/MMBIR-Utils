@@ -58,7 +58,8 @@ def plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, control_
     The correlations are calculated using either the spearman or pearson method. 
     The plot shows the R-squared values for different thresholds and draws a horizontal line at 0.7.'''
 
-    df_consolidated = df_consolidated[df_consolidated["Concentration"]>=min_concentration]
+    if min_concentration > 0:
+        df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
 
     #remove the Sample_Name column
     df_consolidated.drop(columns=["Sample_Name"], inplace=True)
@@ -246,7 +247,9 @@ def plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=0.5, c
     The plot shows the MMBIR count on the x-axis and the concentration on the y-axis.'''
 
     df_figure = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
-    df_figure = df_figure[df_figure["Concentration"] >= min_concentration]
+
+    if min_concentration > 0:
+        df_figure = df_figure[df_figure["Concentration"] >= min_concentration]
     
     sns.set_context("talk")
     #set color for each sample type
@@ -293,7 +296,9 @@ def plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Fil
     #staging='ajcc'/'figo'/'tumor_grade', adjust='early_late'/'early_middle_late'
 
     df_consolidated = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
-    df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
+
+    if min_concentration > 0:
+        df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
 
     logging.debug(df_consolidated.head())
 
@@ -380,7 +385,9 @@ def plot_stage_vs_concentration(df_consolidated, filterset, staging='ajcc', x_co
     staging='ajcc' or 'figo', adjust='early_late' or 'early_middle_late' '''
 
     df_consolidated = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
-    df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
+
+    if min_concentration > 0:
+        df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
 
     if staging == 'ajcc':
         col_name="cases.0.diagnoses.0.ajcc_pathologic_stage"
@@ -448,7 +455,9 @@ def plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtere
     '''function plot_ajcc_pathologic_n_vs_count() plots the ajcc pathologic n vs the MMBIR count.'''
 
     df_consolidated = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
-    df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
+
+    if min_concentration > 0:
+        df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
 
     #rename columns
     df_consolidated.rename(columns={"cases.0.diagnoses.0.ajcc_pathologic_n": "StageN"}, inplace=True)
@@ -493,7 +502,9 @@ def plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtere
     '''function plot_ajcc_pathologic_t_vs_count() plots the ajcc pathologic t vs the MMBIR count.'''
 
     df_consolidated = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
-    df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
+
+    if min_concentration > 0:
+        df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
 
     df_consolidated.rename(columns={"cases.0.diagnoses.0.ajcc_pathologic_t": "StageT"}, inplace=True)
 
@@ -592,7 +603,8 @@ def plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concen
     '''function plot_count_vs_age_binned() plots the MMBIR count vs the age at collection.
     The plot shows the MMBIR count on the y-axis and the age at collection on the x-axis.'''
 
-    df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
+    if min_concentration > 0:
+        df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
 
     #if age at collection is not available, remove the sample
     df_consolidated = df_consolidated[df_consolidated["age_at_collection"].notna()]
@@ -637,7 +649,8 @@ def plot_total_reads_vs_count(df_consolidated, count="Filtered_Count", min_conce
     '''function plot_total_reads_vs_count() plots the MMBIR count vs the total reads.
     The plot shows the MMBIR count on the y-axis and the total reads on the x-axis.'''
 
-    df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
+    if min_concentration > 0:
+        df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
 
     #calculate the linear regression between total_reads and count
     slope, intercept, r_value, p_value, std_err = stats.linregress(df_consolidated["total_reads"], df_consolidated[count])
