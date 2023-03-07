@@ -49,7 +49,9 @@ def annotate_consolidated_results(df_consolidated, df_metadata):
     return df_consolidated
 
 @fancy_status
-def plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_concentration=0.5, method="spearman", save=False, show=True):
+def plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, control_tumor=["Blood Derived Normal", "Primary Tumor"], 
+                                                       min_concentration=0.5, method="spearman", save=False, show=True):
+    
     '''function plot_blood_tumor_count_correlations_treshold_delta() takes the output from
     annotate_consolidated_results() function as input and plots the correlations between 
     blood-derived normal and primary tumor sample counts using different thresholds. 
@@ -70,13 +72,13 @@ def plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_conc
     df_agg.columns = ['_'.join(col).strip() for col in df_agg.columns.values]
 
     # get Sample_Type that is only "Blood Derived Normal" or "Primary Tumor"
-    df_agg = df_agg[df_agg["Sample_Type_"].isin(["Blood Derived Normal", "Primary Tumor"])]
+    df_agg = df_agg[df_agg["Sample_Type_"].isin(control_tumor)]
 
     # transform the df to the wide format
     df_wide = df_agg.pivot(index="Case_ID_", columns="Sample_Type_", values="Filtered_Count_max").reset_index() #Filtered_Count_max
 
     # rename the columns
-    df_wide.columns = ["Case_ID", "Blood_Derived_Normal", "Primary_Tumor"]
+    df_wide.columns = ["Case_ID"] + control_tumor
 
     #remove NAN rows
     df_wide = df_wide.dropna()
@@ -88,8 +90,8 @@ def plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_conc
     correlations = []
 
     for threshold in thresholds:
-        df_wide_thr = df_wide[(df_wide["Blood_Derived_Normal"] <= threshold) & (df_wide["Primary_Tumor"] <= threshold)]
-        r_squared = df_wide_thr.corr(method=method)["Blood_Derived_Normal"]["Primary_Tumor"]
+        df_wide_thr = df_wide[(df_wide[control_tumor[0]] <= threshold) & (df_wide[control_tumor[1]] <= threshold)]
+        r_squared = df_wide_thr.corr(method=method)[control_tumor[0]][control_tumor[1]]
         correlations.append([threshold, r_squared])
 
     for correlation in correlations:
@@ -113,8 +115,8 @@ def plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_conc
     plt.tight_layout()
 
     if save:
-        plt.savefig(f"outputs/plots/plot_blood_tumor_count_correlations_treshold_delta_{method}_minconc{min_concentration}.png", dpi=600)
-        logging.info(f"Plot saved to outputs/plots/plot_blood_tumor_count_correlations_treshold_delta_{method}_minconc{min_concentration}.png")
+        plt.savefig(f"outputs/plots/plot_control_tumor_count_correlations_treshold_delta_{method}_minconc{min_concentration}.png", dpi=600)
+        logging.info(f"Plot saved to outputs/plots/plot_control_tumor_count_correlations_treshold_delta_{method}_minconc{min_concentration}.png")
 
 
     if show:
@@ -125,36 +127,36 @@ def plot_blood_tumor_count_correlations_treshold_delta(df_consolidated, min_conc
     return df_wide
 
 @fancy_status
-def plot_blood_tumor_count_correlation(df_wide, method="spearman", threshold=3000, save=False, show=True):
+def plot_blood_tumor_count_correlation(df_wide, control_tumor=["Blood Derived Normal", "Primary Tumor"], method="spearman", threshold=3000, save=False, show=True):
     '''function plot_blood_tumor_count_correlation() plots the correlations between
     blood-derived normal and primary tumor sample counts using a threshold.
     The correlations are calculated using either the spearman or pearson method.
     The plot shows the R-squared values for different thresholds and draws a horizontal line at 0.7.'''
 
     df_wide_size_initial=len(df_wide)
-    df_wide = df_wide[(df_wide["Blood_Derived_Normal"] <= threshold) & (df_wide["Primary_Tumor"] <= threshold)]
+    df_wide = df_wide[(df_wide[control_tumor[0]] <= threshold) & (df_wide[control_tumor[1]] <= threshold)]
     df_wide_size_threshold=len(df_wide)
 
     logging.info(f"Initial size: {df_wide_size_initial}, Threshold size: {df_wide_size_threshold}, percentage: {df_wide_size_threshold/df_wide_size_initial*100}")
 
     # plot the Blood_Derived_Normal vs Primary_Tumor on a scatter plot and find R-squared
-    sns.regplot(x="Primary_Tumor",y="Blood_Derived_Normal", data=df_wide)
-    r_squared = df_wide.corr(method=method)["Blood_Derived_Normal"]["Primary_Tumor"]
+    sns.regplot(x=control_tumor[1],y=control_tumor[0], data=df_wide)
+    r_squared = df_wide.corr(method=method)[control_tumor[0]][control_tumor[1]]
     # add the R-squared to the plot title, round the R-squared to 2 decimal places
     plt.title(f"R-squared: {r_squared:.2f}, Max Patient MMBIR cut-off: {threshold}")
 
     #rename the x-axis
     plt.xlabel("Primary Tumor MMBIR count")
     #rename the y-axis
-    plt.ylabel("Blood MMBIR count") #Derived Normal
+    plt.ylabel("Control MMBIR count") #Derived Normal
     # calculate the R-squared
     print(f"R-squared is: {r_squared}")
 
     plt.tight_layout()
 
     if save:
-        plt.savefig(f"outputs/plots/plot_blood_tumor_count_correlation_{method}_threshold{threshold}.png", dpi=600)
-        logging.info(f"Plot saved to outputs/plots/plot_blood_tumor_count_correlation_{method}_threshold{threshold}.png")
+        plt.savefig(f"outputs/plots/plot_control_tumor_count_correlation_{method}_threshold{threshold}.png", dpi=600)
+        logging.info(f"Plot saved to outputs/plots/plot_control_tumor_count_correlation_{method}_threshold{threshold}.png")
 
     if show:
         plt.show()
@@ -248,7 +250,11 @@ def plot_Sample_Type_counts(df_consolidated, filterset, min_concentration=0.5, c
     
     sns.set_context("talk")
     #set color for each sample type
-    color_dict = {"Primary Tumor": "tab:blue", "Blood Derived Normal": "tab:orange", "Solid Tissue Normal": "tab:green", "Metastatic": "tab:red"}
+    color_dict = {"Primary Tumor": "tab:blue",
+                  "Blood Derived Normal": "tab:orange",
+                  "Solid Tissue Normal": "tab:green",
+                  "Metastatic": "tab:red",
+                  "Primary Blood Derived Cancer - Peripheral Blood": "tab:purple"}
     sns.histplot(data=df_figure, x="Raw_Count", bins=400, multiple="stack", hue="Sample_Type", palette=color_dict) #multiple="stack", hue="Sample_Type",
     
     #make labels bold
@@ -531,7 +537,8 @@ def plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtere
         plt.close()
 
 @fancy_status
-def plot_age_vs_count_correlation(df_consolidated, count="Filtered_Count", min_concentration=0.5, method="spearman", save=False, show=True):
+def plot_age_vs_count_correlation(df_consolidated, control_tumor=["Blood Derived Normal", "Primary Tumor"],
+                                  count="Filtered_Count", min_concentration=0.5, method="spearman", save=False, show=True):
     '''function plot_count_vs_age_correlation() plots the MMBIR count vs the age at collection.
     The plot shows the MMBIR count on the y-axis and the age at collection on the x-axis.'''
 
@@ -540,17 +547,17 @@ def plot_age_vs_count_correlation(df_consolidated, count="Filtered_Count", min_c
     #if age at collection is not available, remove the sample
     df_consolidated = df_consolidated[df_consolidated["age_at_collection"].notna()]
 
-    df_consolidated_tumor = df_consolidated[df_consolidated["Sample_Type"]=="Primary Tumor"]
+    df_consolidated_control = df_consolidated[df_consolidated["Sample_Type"]==control_tumor[0]]
+    r_squared_control=df_consolidated_control.corr(method=method)["age_at_collection"][count]
+
+    df_consolidated_tumor = df_consolidated[df_consolidated["Sample_Type"]==control_tumor[1]]
     r_squared_tumor=df_consolidated_tumor.corr(method=method)["age_at_collection"][count]
 
-    df_consolidated_blood = df_consolidated[df_consolidated["Sample_Type"]=="Blood Derived Normal"]
-    r_squared_blood=df_consolidated_blood.corr(method=method)["age_at_collection"][count]
+    print(f"R-squared for control ({control_tumor[0]}): {r_squared_control}, R-squared for tumor ({control_tumor[1]}): {r_squared_tumor}")
 
-    print(f"R-squared for tumor: {r_squared_tumor}, R-squared for blood: {r_squared_blood}")
+    #plot the correlation for both tumor and Control
 
-    #plot the correlation for both tumor and blood
-
-    for df in [[df_consolidated_tumor, "Tumor"], [df_consolidated_blood, "Blood"]]:
+    for df in [[df_consolidated_tumor, "Tumor"], [df_consolidated_control, "Control"]]:
 
         #calculate the linear regression between age_at_collection and count
         slope, intercept, r_value, p_value, std_err = stats.linregress(df[0]["age_at_collection"], df[0][count])
