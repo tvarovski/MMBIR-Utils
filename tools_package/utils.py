@@ -92,7 +92,6 @@ if __name__ == "__main__":
             "df_metadata": df_metadata,
             "manifest_location": f"/Users/{username}/MMBIR_Databases/TCGA/{manifest_file}",
             "missing_manifest_output_name": f"missing_bams_{cancer}_manifest.tsv",
-            "log": False,
             "output_raw_name": "raw_mmbir_results_master_df.csv",
             "output_filtered_name": "filtered_mmbir_results_master_df.csv"
             }

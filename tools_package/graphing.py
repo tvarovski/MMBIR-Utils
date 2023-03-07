@@ -164,3 +164,7 @@ if __name__ == "__main__":
             os.makedirs("outputs/plots")
 
     graphing(params, save=True)
+
+
+#cases.0.diagnoses.0.prior_malignancy
+#cases.0.diagnoses.0.prior_treatment
