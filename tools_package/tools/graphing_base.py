@@ -553,7 +553,8 @@ def plot_age_vs_count_correlation(df_consolidated, control_tumor=["Blood Derived
     '''function plot_count_vs_age_correlation() plots the MMBIR count vs the age at collection.
     The plot shows the MMBIR count on the y-axis and the age at collection on the x-axis.'''
 
-    df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
+    if min_concentration > 0:
+        df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
 
     #if age at collection is not available, remove the sample
     df_consolidated = df_consolidated[df_consolidated["age_at_collection"].notna()]
