@@ -228,8 +228,6 @@ def performSNVanalysisInit():
 
 if __name__ == "__main__":
 
-    option = sys.argv[1]
-
     options_dict = {
         "help": help,
         "groupCases": groupCasesInit,
@@ -242,13 +240,18 @@ if __name__ == "__main__":
         "performSNVanalysis": performSNVanalysisInit,
         "masked_snv_mv": masked_snv_mvInit
         }
-    
+
+    if len(sys.argv) == 1:
+        logging.error("No option selected. Use 'help' to see the list of available options.")
+        sys.exit()
+
+    option = sys.argv[1]
+
     if option in options_dict:
         options_dict[option]()
 
     else:
-        logging.error(f"{option} is not a recognized option. Use <help> to see the list of available options.")
-
+        logging.error(f"{option} is not a recognized option. Use 'help' to see the list of available options.")
 
 
 # to be removed if above code works...
