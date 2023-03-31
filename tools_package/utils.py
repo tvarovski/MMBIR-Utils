@@ -247,11 +247,11 @@ if __name__ == "__main__":
         options_dict[option]()
 
     else:
-        logging.error(f"{option} is not a recognized option")
+        logging.error(f"{option} is not a recognized option. Use <help> to see the list of available options.")
 
 
 
-
+# to be removed if above code works...
 '''
     if command == "groupCases":
 
