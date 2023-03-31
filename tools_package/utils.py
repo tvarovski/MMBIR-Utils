@@ -59,15 +59,36 @@ Currently available KEYWORDs:
     print(help.__doc__)
     
 def groupCasesInit():
+
     from tools import groupCases
+
+    cancer = cfg.settings["TCGA-PROJECT"]
+    username = cfg.settings["username"]
+    metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
+    metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
+    df_metadata = pd.read_csv(metadata_location, sep="\t")
+
     groupCases(df_metadata)
 
 def parseOutputsInit():
     from tools import parseOutputs
+
+    cancer = cfg.settings["TCGA-PROJECT"]
+    username = cfg.settings["username"]
+    metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
+    metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
+    df_metadata = pd.read_csv(metadata_location, sep="\t")
+
     parseOutputs(df_metadata, consolidated_results_name="consolidated_results.tsv")
 
 def createFullCancerTableInit():
     from tools import createFullCancerTable
+
+    cancer = cfg.settings["TCGA-PROJECT"]
+    username = cfg.settings["username"]
+    metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
+    metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
+    df_metadata = pd.read_csv(metadata_location, sep="\t")
     manifest_file = f"TCGA-{cancer}-WXS-BAM-manifest.tsv"
 
     params={
@@ -83,17 +104,23 @@ def createFullCancerTableInit():
 def masked_snv_mvInit():
     from tools import masked_snv_mv
 
-    #need to add a sys.argv[2] for the snvs_loc
-    snvs_loc = sys.argv[2]
-
+    cancer = cfg.settings["TCGA-PROJECT"]
+    username = cfg.settings["username"]
+    metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
+    metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
+    df_metadata = pd.read_csv(metadata_location, sep="\t")
     metadata_file_maf = f"TCGA-{cancer}-WXS-MAF-metadata.tsv"
     metadata_location_maf = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file_maf}"
     df_metadata = pd.read_csv(metadata_location_maf, sep="\t")
+
+    #need to add a sys.argv[2] for the snvs_loc
+    snvs_loc = sys.argv[2]
 
     masked_snv_mv(df_metadata, snvs_loc=snvs_loc)
 
 def findCosmicGenesInit():
     from tools import findCosmicGenes
+
     census_dir = cfg.settings['cosmicdb_dir']
     mmb_df_input_path = sys.argv[2]
 
@@ -109,6 +136,13 @@ def findCosmicGenesInit():
 
 def performDiffExprAnalysisInit():
     from tools import performDiffExprAnalysis
+
+    cancer = cfg.settings["TCGA-PROJECT"]
+    username = cfg.settings["username"]
+    metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
+    metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
+    df_metadata = pd.read_csv(metadata_location, sep="\t")
+
     params = {
         "cancer": cancer,
         "df_metadata": df_metadata,
@@ -128,6 +162,12 @@ def performDiffExprAnalysisInit():
 
 def getMissingBamsInit():
     from tools import getMissingBams
+
+    cancer = cfg.settings["TCGA-PROJECT"]
+    username = cfg.settings["username"]
+    metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
+    metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
+    df_metadata = pd.read_csv(metadata_location, sep="\t")
     manifest_file = f"TCGA-{cancer}-WXS-BAM-manifest.tsv"
 
     params={
@@ -141,6 +181,9 @@ def getMissingBamsInit():
 def expressionParserInit():
         
     from tools import expressionParser
+
+    cancer = cfg.settings["TCGA-PROJECT"]
+    username = cfg.settings["username"]
 
     expression_data_path_root = cfg.settings["expression_data_path_root"]
     expression_data_path = f"{expression_data_path_root}/{username}/TCGA-{cancer}/expression"
@@ -159,6 +202,11 @@ def expressionParserInit():
 def performSNVanalysisInit():
     from tools import performSNVanalysis
 
+    cancer = cfg.settings["TCGA-PROJECT"]
+    username = cfg.settings["username"]
+    metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
+    metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
+    df_metadata = pd.read_csv(metadata_location, sep="\t")
     metadata_file_maf = f"TCGA-{cancer}-WXS-MAF-metadata.tsv"
     metadata_location_maf = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file_maf}"
     df_metadata_maf = pd.read_csv(metadata_location_maf, sep="\t")
@@ -181,15 +229,6 @@ def performSNVanalysisInit():
 if __name__ == "__main__":
 
     option = sys.argv[1]
-
-    cancer = cfg.settings["TCGA-PROJECT"]
-    username = cfg.settings["username"]
-
-    metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
-    metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
-
-    df_metadata = pd.read_csv(metadata_location, sep="\t")
-
 
     options_dict = {
         "help": help,
