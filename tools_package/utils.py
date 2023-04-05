@@ -225,6 +225,33 @@ def performSNVanalysisInit():
 
     performSNVanalysis(params)
 
+def heatMapperInit():
+
+    from tools import heatMapper
+
+    file_path = sys.argv[1]
+
+    df = pd.read_csv(file_path)
+
+    #create a dictionary of positions for each interval from the dataframe.
+    # the chr column is the key, and the values are all the positions in the sBirStart column for that chr
+    positions = {}
+    for chr in df["chr"].unique():
+        positions[chr] = df[df["chr"] == chr]["iBirStart"].values
+
+    #Rename chr24 to chrX, chr25 to chrY, and chr23 to chrM
+    positions["chrX"] = positions.pop("chr24")
+    positions["chrY"] = positions.pop("chr25")
+    positions["chrM"] = positions.pop("chr23")
+
+    #remove duplicate positions in the dictionary values (list of positions), say how many positions there are before and after removing duplicates
+    for chr in positions:
+        print(f"{chr} has {len(positions[chr])} positions before removing duplicates...")
+        positions[chr] = list(dict.fromkeys(positions[chr]))
+        print(f"{chr} has {len(positions[chr])} positions after removing duplicates...")
+
+    heatMapper(positions, bandwidth=250000, tickspace=10000000, cmap="YlOrRd")
+
 
 if __name__ == "__main__":
 
@@ -238,7 +265,8 @@ if __name__ == "__main__":
         "getMissingBams": getMissingBamsInit,
         "expressionParser": expressionParserInit,
         "performSNVanalysis": performSNVanalysisInit,
-        "masked_snv_mv": masked_snv_mvInit
+        "masked_snv_mv": masked_snv_mvInit,
+        "heatMapper": heatMapperInit
         }
 
     if len(sys.argv) == 1:

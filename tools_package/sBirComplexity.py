@@ -28,8 +28,10 @@ if __name__ == "__main__":
 
     #read in the file
     if file_type == "tsv":
+        print("tsv file option was selected.")
         df = pd.read_csv(file_name, sep="\t")
     else:
+        print("csv file option was selected or no file type was specified, defaulting to csv.")
         df = pd.read_csv(file_name)
 
 

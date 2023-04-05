@@ -16,6 +16,7 @@
 ## plot_age_vs_count_binned
 ## plot_total_reads_vs_count
 ## plot_differential_expression
+## heatMapper
 
 from importlib.metadata import distribution
 import pandas as pd
@@ -726,4 +727,113 @@ def plot_differential_expression(cancer, save=False, show=True):
         plt.show()
     else:
         plt.close()
+
+@fancy_status
+def heatMapper(positions, intervals={}, bandwidth=250000, tickspace=100000000, cmap="YlOrRd"):
+
+    import numpy as np
+    import matplotlib as mpl
+
+    #if no intervals are specified, use the default intervals
+    if intervals == {}:
+        logging.info("No intervals were specified, using default intervals for hg38.")
+        intervals = {   "chr1":[0, 248956422],
+                        "chr2":[0, 242193529],
+                        "chr3":[0, 198295559],
+                        "chr4":[0, 190214555],
+                        "chr5":[0, 181538259],
+                        "chr6":[0, 170805979],
+                        "chr7":[0, 159345973],
+                        "chr8":[0, 145138636],
+                        "chr9":[0, 138394717],
+                        "chr10":[0, 133797422],
+                        "chr11":[0, 135086622],
+                        "chr12":[0, 133275309],
+                        "chr13":[0, 114364328],
+                        "chr14":[0, 107043718],
+                        "chr15":[0, 101991189],
+                        "chr16":[0, 90338345],
+                        "chr17":[0, 83257441],
+                        "chr18":[0, 80373285],
+                        "chr19":[0, 58617616],
+                        "chr20":[0, 64444167],
+                        "chr21":[0, 46709983],
+                        "chr22":[0, 50818468],
+                        "chrX":[0, 156040895], #chr24 in MMBS
+                        "chrY":[0, 57227415],  #chr25 in MMBS
+                        "chrM":[0, 16569],     #chr23 in MMBS
+             }
+
+    #bandwidth is the bin size of the heatmap
+
+    #for each interval, create 2 separate subplot, (1) a histogram of the positions and directly underneath (2) a heatmap of the positions
+
+    interval_number = len(intervals)
+
+    #find the largest right bound of the intervals
+    max_right_bound = 0
+    for interval in intervals:
+        if intervals[interval][1] > max_right_bound:
+            max_right_bound = intervals[interval][1]
+
+    print(max_right_bound)
+
+    cmap = mpl.cm.get_cmap(cmap).copy()
+    cmap.set_under(color='white')
+
+    
+
+    fig, axs = plt.subplots(interval_number*2, 1, figsize=(20, (interval_number)*2))
+    #set background color to light grey
+    fig.patch.set_facecolor('ghostwhite')
+
+    for i, interval in enumerate(intervals):
+            
+            
+            print(f"Creating heatmap for {interval}")
+            
+            #get the positions for the interval
+            interval_positions = positions[interval]
+    
+            #get the interval length
+            interval_length = max_right_bound
+    
+            #create the bins for the histogram
+            bins = np.arange(0, interval_length, bandwidth)
+    
+            #create the bins for the heatmap
+            heatmap_bins = np.arange(0, interval_length, bandwidth)
+    
+            #create the histogram
+            axs[i*2].hist(interval_positions, bins=bins, )
+            axs[i*2].margins(x=0, y=0)
+
+            axs[i*2].spines['bottom'].set_visible(False) #despine the bottom axes of the axs[i*2] subplot
+            axs[i*2].set_xticks([]) # remove the x axis ticks of the axs[i*2] subplot
+    
+            #create the heatmap
+            axs[i*2 + 1].hist2d(interval_positions, np.ones(len(interval_positions)), bins=[heatmap_bins, 1], cmap=cmap, vmin=0.0001)
+            axs[i*2 + 1].margins(x=0, y=0) #remove the margins of the axs[i*2 + 1] subplot
+            axs[i*2 + 1].spines['top'].set_visible(False) #despine the top and right axes of the axs[i*2 + 1] subplot
+            axs[i*2 + 1].set_yticks([]) #remove the y axis ticks of the axs[i*2 + 1] subplot
+
+            #don't show the x axis ticks of the axs[i*2 + 1] subplot past the right bound of the displayed interval
+            axs[i*2 + 1].set_xticks(np.arange(0, intervals[interval][1]+1, tickspace))
+
+            axs[i*2].set_title(interval) #set the title of the subplot
+    
+            #set the x and y labels of the subplot
+            axs[i*2 + 1].set_xlabel("Position")
+            axs[i*2].set_ylabel("Frequency")
+
+            #make the height of the axs[i*2 + 1] subplot 0.25 times the height of the axs[i*2] subplot, and set the position of the axs[i*2 + 1] subplot to be directly underneath the axs[i*2] subplot
+            axs[i*2 + 1].set_position([axs[i*2 + 1].get_position().x0, axs[i*2 + 1].get_position().y0, axs[i*2 + 1].get_position().width, axs[i*2 + 1].get_position().height*0.25])
+
+            #move the axs[i*2 + 1] subplot up by 0.85 times the height of the axs[i*2] subplot
+            axs[i*2 + 1].set_position([axs[i*2 + 1].get_position().x0, axs[i*2 + 1].get_position().y0 + axs[i*2].get_position().height*0.95, axs[i*2 + 1].get_position().width, axs[i*2 + 1].get_position().height])
+            
+    #save the figure
+    logging.info("Saving figure...")
+    fig.savefig("heatmap.png", dpi=300)
+    logging.info("Figure saved!")
 
