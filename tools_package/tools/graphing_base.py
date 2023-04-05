@@ -1,5 +1,8 @@
-# This code was developed and authored by Jerzy Twarowski in Malkova Lab at the University of Iowa 
-# Contact: jerzymateusz-twarowski@uiowa.edu, tvarovski1@gmail.com
+#!/usr/bin/python3
+
+''' This code was developed and authored by Jerzy Twarowski in Malkova Lab at the University of Iowa 
+    Contact: jerzymateusz-twarowski@uiowa.edu, tvarovski1@gmail.com
+'''
 
 ## Contents:
 ## annotate_consolidated_results
@@ -17,6 +20,7 @@
 ## plot_total_reads_vs_count
 ## plot_differential_expression
 ## heatMapper
+
 
 from importlib.metadata import distribution
 import pandas as pd
@@ -729,7 +733,7 @@ def plot_differential_expression(cancer, save=False, show=True):
         plt.close()
 
 @fancy_status
-def heatMapper(positions, intervals={}, bandwidth=250000, tickspace=100000000, cmap="YlOrRd"):
+def heatMapper(positions, intervals={}, bandwidth=250000, tickspace=100000000, cmap="YlOrRd", save_path="outputs/heatmap.png"):
 
     import numpy as np
     import matplotlib as mpl
@@ -776,7 +780,7 @@ def heatMapper(positions, intervals={}, bandwidth=250000, tickspace=100000000, c
         if intervals[interval][1] > max_right_bound:
             max_right_bound = intervals[interval][1]
 
-    print(max_right_bound)
+    logging.debug(f"max_right_bound: {max_right_bound}")
 
     cmap = mpl.cm.get_cmap(cmap).copy()
     cmap.set_under(color='white')
@@ -834,6 +838,9 @@ def heatMapper(positions, intervals={}, bandwidth=250000, tickspace=100000000, c
             
     #save the figure
     logging.info("Saving figure...")
-    fig.savefig("heatmap.png", dpi=300)
-    logging.info("Figure saved!")
-
+    try:
+        fig.savefig(save_path, dpi=300)
+    except Exception as e:
+        logging.error(f"Could not save figure to {save_path}!")
+        logging.error(e)
+    logging.info(f"Figure saved to {save_path}!")

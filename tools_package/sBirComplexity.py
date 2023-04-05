@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 # this script is designed to be run from the command line and takes
 # an annotated master_mmbir_table as input and annotates the sBir column
 # with the complexity of the sBir
