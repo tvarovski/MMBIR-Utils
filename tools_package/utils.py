@@ -246,9 +246,9 @@ def heatMapperInit():
         positions[chr] = df[df["chr"] == chr]["iBirStart"].values
 
     #Rename chr24 to chrX, chr25 to chrY, and chr23 to chrM
+    positions["chrM"] = positions.pop("chr23")
     positions["chrX"] = positions.pop("chr24")
     positions["chrY"] = positions.pop("chr25")
-    positions["chrM"] = positions.pop("chr23")
 
     #remove duplicate positions in the dictionary values (list of positions), say how many positions there are before and after removing duplicates
     for chr in positions:
