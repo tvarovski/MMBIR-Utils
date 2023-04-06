@@ -735,6 +735,14 @@ def heatMapper(positions, intervals={}, bandwidth=250000, tickspace=100000000, c
 
     import numpy as np
     import matplotlib as mpl
+    
+
+    try:
+        import cancer_config as cfg
+        cancer = cfg.settings["TCGA-PROJECT"]
+    except:
+        logging.warning("Could not import settings from cancer_config.py. Using default cancer name.")
+        cancer = "cancer"
 
     #bandwidth is the bin size of the heatmap
 
@@ -835,14 +843,19 @@ def heatMapper(positions, intervals={}, bandwidth=250000, tickspace=100000000, c
             #find the top 3 hottest bins in the heatmap and label them with their boundaries and their heat value
             top_3_bins = np.argsort(axs[i*2 + 1].get_children()[0].get_array().flatten())[-3:]
 
-            for bin in top_3_bins:
+            for j, bin in enumerate(top_3_bins):
+                #set the vertical alignment of the text to be at the top, center, or bottom of the bin, depending on how hot the bin is
+                alignments=["top","center","bottom"]
                 bin_heat = axs[i*2 + 1].get_children()[0].get_array().flatten()[bin]
-                axs[i*2 + 1].text(heatmap_bins[bin], 1, f"{heatmap_bins[bin]/1000000}-{heatmap_bins[bin+1]/1000000}Mb: {bin_heat}", color='black', fontsize=6, horizontalalignment='center', verticalalignment='center')
+                axs[i*2 + 1].text(heatmap_bins[bin], 1, f"{heatmap_bins[bin]/1000000}-{heatmap_bins[bin+1]/1000000}Mb: {bin_heat:}", color='black', fontsize=3, horizontalalignment='center', verticalalignment=alignments[j])
+
+    # add Title to the figure
+    fig.suptitle(f"Position Heatmap for {cancer}", fontsize=16)
 
     #save the figure
     logging.info("Saving figure...")
     try:
-        fig.savefig(save_path, dpi=300)
+        fig.savefig(save_path, dpi=400)
     except Exception as e:
         logging.error(f"Could not save figure to {save_path}!")
         logging.error(e)
