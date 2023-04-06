@@ -791,7 +791,7 @@ def heatMapper(positions, intervals={}, bandwidth=250000, tickspace=100000000, c
     cmap = mpl.cm.get_cmap(cmap).copy()
     cmap.set_under(color='white')
 
-    fig, axs = plt.subplots(interval_number*2, 1, figsize=(20, (interval_number)*2))
+    fig, axs = plt.subplots(interval_number*2, 1, figsize=(30, (interval_number)*2))
     #set background color to light grey
     fig.patch.set_facecolor('ghostwhite')
 
