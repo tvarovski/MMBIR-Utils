@@ -25,38 +25,43 @@ usage (from the command line):
     python utils.py <KEYWORD>
 
 Currently available KEYWORDs:
-  - groupCases
+    - groupCases
         # groups results of the MMBSearch snakemake pipeline into Case_ID dirs
 
-  - parseOutputs
+    - parseOutputs
         # creates a consolidated_results file
 
-  - masked_snv_mv
+    - masked_snv_mv
         # moves snvs data from /nfsscratch into Case_ID dirs
 
-  - createFullCancerTable
+    - createFullCancerTable
         # creates annotated master_mmbir_tables for raw and filtered
         # results from all available data
-
         # creates a manifest file with missing bam_files
 
-  - findCosmicGenes
-        #!!!NOT WORKING!!!
+    - findCosmicGenes
         #filteres out and prints out genes in the Cosmic_DB that
         #are present in the specified DF path (sys.argv[2])
 
-  - performDiffExprAnalysis
+    - performDiffExprAnalysis
         #!!!add parallelization!!!
         # performs differential expression analysis
 
-  - getMissingBams
+    - getMissingBams
         # creates a manifest file with missing bam_files if any are missing
 
-  - expressionParser
+    - expressionParser
         # parses the expression data from the TCGA database
 
-  - performSNVanalysis
+    - performSNVanalysis
         # performs SNV analysis
+
+    - heatMapper
+        # creates a heatmap from the specified DF path (sys.argv[2])
+    
+    - help
+        # prints this help message
+
 '''
     print(help.__doc__)
     
@@ -251,7 +256,7 @@ def heatMapperInit():
         positions[chr] = list(dict.fromkeys(positions[chr]))
         logging.info(f"{chr} has {len(positions[chr])} positions after removing duplicates. Removed {len(df[df['chr'] == chr]['iBirStart'].values) - len(positions[chr])} duplicates.")
 
-    heatMapper(positions, bandwidth=250000, tickspace=10000000, cmap="YlOrRd")
+    heatMapper(positions, bandwidth=250000, tickspace=10000000, cmap="YlOrRd", save_path="outputs/heatmap.png")
 
 
 if __name__ == "__main__":
