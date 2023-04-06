@@ -66,7 +66,6 @@ Currently available KEYWORDs:
     print(help.__doc__)
     
 def groupCasesInit():
-
     from tools import groupCases
 
     cancer = cfg.settings["TCGA-PROJECT"]
