@@ -252,8 +252,10 @@ def heatMapperInit():
 
     #remove duplicate positions in the dictionary values (list of positions), say how many positions there are before and after removing duplicates
     for chr in positions:
+        all_positions =  len(positions[chr])
         positions[chr] = list(dict.fromkeys(positions[chr]))
-        logging.info(f"{chr} has {len(positions[chr])} positions after removing duplicates. Removed {len(df[df['chr'] == chr]['iBirStart'].values) - len(positions[chr])} duplicates.")
+        deduplicated_positions = len(positions[chr])
+        logging.info(f"Number of positions after removing duplicates for {chr}: {deduplicated_positions} (before: {all_positions}). Removed {all_positions - deduplicated_positions} duplicates.")
 
     heatMapper(positions, bandwidth=250000, tickspace=10000000, cmap="YlOrRd", save_path="outputs/heatmap.png")
 
