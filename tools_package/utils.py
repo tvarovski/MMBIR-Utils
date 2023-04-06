@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/Users/twarowski/mambaforge/bin/python
 
 # This code was developed and authored by Jerzy Twarowski in Malkova Lab at the University of Iowa 
 # Contact: jerzymateusz-twarowski@uiowa.edu, tvarovski1@gmail.com
@@ -231,7 +231,7 @@ def heatMapperInit():
 
     from tools import heatMapper
 
-    file_path = sys.argv[1]
+    file_path = sys.argv[2]
 
     df = pd.read_csv(file_path)
 

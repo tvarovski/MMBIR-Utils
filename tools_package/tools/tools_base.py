@@ -334,7 +334,12 @@ def create_missing_bams_manifest(missing_files, manifest_location, df_metadata, 
 
 @fancy_status
 @time_elapsed
-def getMissingBams(df_metadata, manifest_location, missing_manifest_output_name):
+def getMissingBams(params): #(df_metadata, manifest_location, missing_manifest_output_name)
+
+    df_metadata = params["df_metadata"]
+    manifest_location = params["manifest_location"]
+    missing_manifest_output_name = params["missing_manifest_output_name"]
+
     #check if all the bam files are present
     missing_files = check_for_missing_bams(df_metadata)
     #create a manifest file for the missing bams
