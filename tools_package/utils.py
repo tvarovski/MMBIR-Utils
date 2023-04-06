@@ -257,7 +257,7 @@ def heatMapperInit():
         deduplicated_positions = len(positions[chr])
         logging.info(f"Number of positions after removing duplicates for {chr}: {deduplicated_positions} (before: {all_positions}). Removed {all_positions - deduplicated_positions} duplicates.")
 
-    heatMapper(positions, bandwidth=250000, tickspace=10000000, cmap="YlOrRd", save_path="outputs/heatmap.png")
+    heatMapper(positions, bandwidth=100000, tickspace=10000000, cmap="YlOrRd", save_path="outputs/heatmap.png")
 
 
 if __name__ == "__main__":
