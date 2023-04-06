@@ -736,6 +736,8 @@ def heatMapper(positions, intervals={}, bandwidth=250000, tickspace=100000000, c
     import numpy as np
     import matplotlib as mpl
 
+    #bandwidth is the bin size of the heatmap
+
     #if no intervals are specified, use the default intervals
     if intervals == {}:
         logging.info("No intervals were specified, using default intervals for hg38.")
@@ -766,8 +768,6 @@ def heatMapper(positions, intervals={}, bandwidth=250000, tickspace=100000000, c
                         "chrM":[0, 16569],     #chr23 in MMBS
              }
 
-    #bandwidth is the bin size of the heatmap
-
     #for each interval, create 2 separate subplot, (1) a histogram of the positions and directly underneath (2) a heatmap of the positions
 
     interval_number = len(intervals)
@@ -782,8 +782,6 @@ def heatMapper(positions, intervals={}, bandwidth=250000, tickspace=100000000, c
 
     cmap = mpl.cm.get_cmap(cmap).copy()
     cmap.set_under(color='white')
-
-    
 
     fig, axs = plt.subplots(interval_number*2, 1, figsize=(20, (interval_number)*2))
     #set background color to light grey
