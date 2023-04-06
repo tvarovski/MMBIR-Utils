@@ -790,7 +790,7 @@ def heatMapper(positions, intervals={}, bandwidth=250000, tickspace=100000000, c
     for i, interval in enumerate(intervals):
             
             
-            print(f"Creating heatmap for {interval}")
+            logging.info(f"Creating heatmap for {interval}")
             
             #get the positions for the interval
             interval_positions = positions[interval]
@@ -831,7 +831,14 @@ def heatMapper(positions, intervals={}, bandwidth=250000, tickspace=100000000, c
 
             #move the axs[i*2 + 1] subplot up by 0.85 times the height of the axs[i*2] subplot
             axs[i*2 + 1].set_position([axs[i*2 + 1].get_position().x0, axs[i*2 + 1].get_position().y0 + axs[i*2].get_position().height*0.95, axs[i*2 + 1].get_position().width, axs[i*2 + 1].get_position().height])
-            
+
+            #find the top 3 hottest bins in the heatmap and label them with their boundaries and their heat value
+            top_3_bins = np.argsort(axs[i*2 + 1].get_children()[0].get_array().flatten())[-3:]
+
+            for bin in top_3_bins:
+                bin_heat = axs[i*2 + 1].get_children()[0].get_array().flatten()[bin]
+                axs[i*2 + 1].text(heatmap_bins[bin], 1, f"{heatmap_bins[bin]/1000000}-{heatmap_bins[bin+1]/1000000}Mb: {bin_heat}", color='black', fontsize=6, horizontalalignment='center', verticalalignment='center')
+
     #save the figure
     logging.info("Saving figure...")
     try:
