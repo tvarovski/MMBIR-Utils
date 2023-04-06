@@ -20,7 +20,7 @@ This is a script designed to be used from a command line which takes
 a command line argument and runs a corresponding functionality from the
 MMBIR-UTILS package
 
-usage (from the command line):
+Usage example(from the command line):
     
     python utils.py <KEYWORD>
 
