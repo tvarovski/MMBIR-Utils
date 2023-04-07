@@ -305,6 +305,7 @@ def createExpressionDataframe(expression_data_path):
     # find all the sample files in the specified directory
     expression_data = os.listdir(expression_data_path)
     logging.debug(f"loaded expression_data: {expression_data}")
+    logging.debug(f"number of sample directories: {len(expression_data)}")
 
     # loop through the sample files, extract the expression data, and append to the dataframe
     for sample in expression_data:
