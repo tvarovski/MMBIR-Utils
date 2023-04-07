@@ -304,7 +304,7 @@ def createExpressionDataframe(expression_data_path):
 
     # find all the sample files in the specified directory
     expression_data = os.listdir(expression_data_path)
-
+    logging.debug(f"loaded expression_data: {expression_data}")
 
     # loop through the sample files, extract the expression data, and append to the dataframe
     for sample in expression_data:
@@ -319,6 +319,9 @@ def createExpressionDataframe(expression_data_path):
 
                     #concatenate the dataframes
                     expression_df = pd.concat([expression_df, sample_df], ignore_index=True)
+
+    logging.debug(f"expression_df columns: {expression_df.columns.values.tolist()}")
+    logging.debug(f"expression_df: {expression_df}")
 
     return(expression_df)
 
