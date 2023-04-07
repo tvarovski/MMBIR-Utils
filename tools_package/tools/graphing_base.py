@@ -860,3 +860,42 @@ def heatMapper(positions, intervals={}, bandwidth=250000, tickspace=100000000, c
         logging.error(f"Could not save figure to {save_path}!")
         logging.error(e)
     logging.info(f"Figure saved to {save_path}!")
+
+
+def protein_coding_percentage(chr, start, end):
+
+    from Bio import SeqIO
+    
+    '''
+    Calculates the percentage of a given interval that contains protein coding sequences
+    in the human genome (GRCh38 reference).
+
+    Args:
+        chr (str): chromosome number, e.g. "1", "2", "X", "Y".
+        start (int): start position of the interval.
+        end (int): end position of the interval.
+
+    Returns:
+        float: the percentage of the interval that contains protein coding sequences.
+    '''
+
+    # Load the reference genome in FASTA format (here we use GRCh38):
+    genome = SeqIO.index('/path/to/hg38.fa', 'fasta')
+
+    # Extract the DNA sequence for the given interval:
+    seq = genome[f'chr{chr}'][start:end].seq
+
+    # Extract the gene features for the given interval (in GFF3 format):
+    features = SeqIO.read('/path/to/hg38.gff3', 'gff3')
+
+    # Calculate the total length of protein coding sequences in the interval:
+    coding_len = 0
+    for feature in features.features:
+        if feature.type == 'CDS' and feature.location.overlaps(seq):
+            coding_seq = feature.extract(seq)
+            coding_len += len(coding_seq)
+
+    # Calculate the percentage of the interval that contains protein coding sequences:
+    coding_percentage = coding_len / len(seq) * 100
+
+    return coding_percentage
