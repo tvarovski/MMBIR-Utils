@@ -33,6 +33,7 @@ Currently available KEYWORDs:
 
     - masked_snv_mv
         # moves snvs data from /nfsscratch into Case_ID dirs
+        # specify the path to the snvs data as a second argument (sys.argv[2])
 
     - createFullCancerTable
         # creates annotated master_mmbir_tables for raw and filtered
