@@ -361,6 +361,11 @@ def addCaseIDtoExpressionDataframe(expression_df, expression_metadata_location):
     # save the expression data
     logging.debug(expression_df)
     logging.info("Added case_id to expression dataframe")
+
+    #count the number of NaN values in the case_id column
+    logging.info(f"Number of NaN values in case_id column: {expression_df['case_id'].isna().sum()}")
+    #count the number of unique case_ids
+    logging.debug(f"No. of unique case_ids: {expression_df['case_id'].nunique()}")
     
     return expression_df
 
