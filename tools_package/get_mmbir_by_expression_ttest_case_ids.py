@@ -38,7 +38,6 @@ threshold_mmb_cases_high_df = getCasesAboveMMBThreshold(consolidated_results_pat
 threshold_mmb_cases_low_df = getCasesAboveMMBThreshold(consolidated_results_path, df_sample_metadata, MMBIR_THRESHOLD_LOW, below=True, min_concentration=0)
 
 
-
 # get the IDs of the cases that are high mmbir
 high_mmbir_cases=threshold_mmb_cases_high_df["Case_ID_"].values.tolist()
 low_mmbir_cases=threshold_mmb_cases_low_df["Case_ID_"].values.tolist()
