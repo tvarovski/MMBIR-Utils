@@ -356,9 +356,6 @@ if __name__ == "__main__":
 
     #sys.exit()
 
-    # plot the UMAP embedding
-    plot_UMAP_embedding_plotly(embedding, show=True, save_path=f"outputs/plots/umap/umap_{cancer}_by_case_id.html")
-
     # create a folder in the outputs folder to store the plots
     if not os.path.exists("outputs/plots/umap"):
         logging.info("Creating outputs/plots/umap folder")
@@ -430,3 +427,6 @@ if __name__ == "__main__":
             logging.error(f"Could not plot categorical_col {column_var}")
             logging.error(e)
             continue
+
+    # plot the UMAP embedding
+    plot_UMAP_embedding_plotly(embedding, show=True, save_path=f"outputs/plots/umap/umap_{cancer}_by_case_id.html")
