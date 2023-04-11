@@ -34,8 +34,8 @@ username = cfg.settings["username"]
 metadata_file = f"TCGA-{cancer}-WXS-BAM-metadata.tsv"
 metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
 
-#df_diff_expr_path = f"outputs/ttest_results_{cancer}_minconc0_bh_corrected.tsv"
-df_diff_expr_path = f"outputs/ttest_results_BRCA_minconc0_low0.6_high0.2_bh_corrected.tsv"
+df_diff_expr_path = f"outputs/ttest_results_{cancer}_minconc0_bh_corrected.tsv"
+#df_diff_expr_path = f"outputs/ttest_results_BRCA_minconc0_low0.6_high0.2_bh_corrected.tsv"
 
 sample_type = "Primary Tumor" #where to get MMBIR counts from
 n_neighbors = 30
