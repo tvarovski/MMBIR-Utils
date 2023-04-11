@@ -21,6 +21,7 @@ import seaborn as sns
 from sklearn.preprocessing import StandardScaler
 import cancer_config as cfg
 from tools import time_elapsed, fancy_status
+import sys
 
 
 #parameters#################
@@ -37,7 +38,7 @@ metadata_location = f"/Users/{username}/MMBIR_Databases/TCGA/{metadata_file}"
 df_diff_expr_path = f"outputs/ttest_results_BRCA_minconc0_low0.6_high0.2_bh_corrected.tsv"
 
 sample_type = "Primary Tumor" #where to get MMBIR counts from
-n_neighbors = 50
+n_neighbors = 30
 min_dist = 0.1
 n_components = 2
 metric = "canberra"
@@ -133,18 +134,18 @@ def perform_UMAP(rnaseq_data, n_neighbors, min_dist, n_components, metric):
             metric=metric,
             random_state=42)
 
-    logging.info("Scaling the data")
-    scaled_rnaseq_data = StandardScaler().fit_transform(rnaseq_data)
-    logging.info("Done scaling the data")
+    #logging.info("Scaling the data")
+    #rnaseq_data = StandardScaler().fit_transform(rnaseq_data)
+    #logging.info("Done scaling the data")
 
-    # then, fit the umap object to the data
+    # fit the umap object to the data
     logging.info("Fitting the umap object to the reducer")
-    reducer.fit(scaled_rnaseq_data)
+    reducer.fit(rnaseq_data)
     logging.info("Done fitting the umap object to the reducer")
 
     # then, transform the data using the umap object
     logging.info("Performing UMAP...")
-    embedding = reducer.transform(scaled_rnaseq_data)
+    embedding = reducer.transform(rnaseq_data)
 
     logging.debug(f"The shape of the embedding is {embedding.shape}")
     logging.info("Done performing UMAP, returning the embedding")
@@ -281,7 +282,7 @@ if __name__ == "__main__":
         # check if the duplicates were removed
         if df["case_id"].duplicated().any():
             logging.critical("Duplicate case_id values still found, exiting...")
-            exit()
+            sys.exit()
         else:
             logging.info("Duplicate case_id values removed successfully")
 
@@ -353,7 +354,7 @@ if __name__ == "__main__":
     df_UMAP_1_UMAP_2 = df_UMAP_1_UMAP_2[(df_UMAP_1_UMAP_2["UMAP_1"] < 5) & (df_UMAP_1_UMAP_2["UMAP_2"] < 12)]
     df_UMAP_1_UMAP_2.to_csv(f"outputs/umap_1_2_{cancer}.csv", index=False)
 
-    #exit()
+    #sys.exit()
 
     # plot the UMAP embedding
     plot_UMAP_embedding_plotly(embedding, show=True, save_path=f"outputs/plots/umap/umap_{cancer}_by_case_id.html")
@@ -383,6 +384,10 @@ if __name__ == "__main__":
                                 scale_lower=scale_lower_pass, 
                                 save_path=f"outputs/plots/umap/umap_{cancer}_by_{column_var}.png", 
                                 show_plot=show_plot)
+            
+            # for debugging
+            #sys.exit()
+            
         except Exception as e:
             logging.error(f"Could not plot numerical_col {column_var}")
             logging.error(e)
