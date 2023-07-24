@@ -15,7 +15,18 @@ logger = logging.getLogger(__name__)
 #plot_blood_tumor_count_correlation
 #plot_age_vs_count_correlation
 
-def graphing(params, save=False, show=True):
+def graphing(params, save: bool = False, show: bool = True) -> None:
+    """
+    This function is used to generate all the plots for the MMBIR project. It takes in a dictionary of parameters
+    and generates the plots based on the parameters. The parameters are as follows:
+    params: a dictionary of parameters:
+        cancer: the cancer type to be analyzed
+        metadata_location: the location of the metadata file
+        min_concentration: the minimum concentration of the sample to be included in the plots
+        staging: the staging system to be used for the staging plots
+    save: whether or not to save the plots
+    show: whether or not to show the plots
+    """
 
     cancer = params["cancer"]
     metadata_location = params["metadata_location"]
