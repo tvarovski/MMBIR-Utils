@@ -7,11 +7,10 @@ import pandas as pd
 from math import ceil
 import os
 import logging
+#import argparse
 
 logging.basicConfig(level=logging.INFO, format='%(levelname)s:.%(funcName)s: %(message)s')
 logger = logging.getLogger(__name__)
-
-#import argparse
 
 #PARAMS
 project: str = "TCGA-LIHC"
