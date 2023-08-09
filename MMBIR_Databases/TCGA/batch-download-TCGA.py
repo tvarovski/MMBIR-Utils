@@ -6,13 +6,18 @@ import sys
 import pandas as pd
 from math import ceil
 import os
+import logging
+
+logging.basicConfig(level=logging.INFO, format='%(levelname)s:.%(funcName)s: %(message)s')
+logger = logging.getLogger(__name__)
+
 #import argparse
 
 #PARAMS
-project = "TCGA-LIHC"
-strategy = "WXS"
-format = "BAM"
-slice_size = 200
+project: str = "TCGA-LIHC"
+strategy: str = "WXS"
+format: str = "BAM"
+slice_size: int = 200
 #END PARAMS
 
 
@@ -36,7 +41,6 @@ def retreiveProjectData(project: str, strategy: str, format: str, output_name: s
 
         "cases.project.project_id",
         "cases.project.project_name",
-
 
         "cases.demographic.vital_status",
         "cases.demographic.days_to_birth",
@@ -160,7 +164,7 @@ def retreiveProjectData(project: str, strategy: str, format: str, output_name: s
         }
 
     else:
-        print("ERROR: format not recognized")
+        logging.error("ERROR: format not recognized")
         return
 
     # A POST is used, so the filter parameters can be passed directly as a Dict object.
@@ -180,46 +184,82 @@ def retreiveProjectData(project: str, strategy: str, format: str, output_name: s
         "return_type":"manifest"
         }
 
-
     # The parameters are passed to 'json' rather than 'params' in this case
     response = requests.post(files_endpt, headers = {"Content-Type": "application/json"}, json = params)
     original_stdout = sys.stdout
 
     with open(output_name, 'w') as f:
         sys.stdout = f # Change the standard output to the file we created.
-        print(response.content.decode("utf-8"))
+        logging.info(response.content.decode("utf-8"))
         sys.stdout = original_stdout # Reset the standard output to its original value
 
 def createManifestSlices(samples_file_metadata: str, samples_file_manifest: str, slice_size: int, output_name_root: str) -> None:
+    """
+    Slices a TCGA manifest file into smaller manifest files containing a specified number of file IDs.
 
-  #open the file with IDs load to pandas df
-  df_metadata = pd.read_csv(samples_file_metadata, sep="\t")
-  df_metadata = df_metadata.sort_values(by=["cases.0.case_id"])
-  id_list = df_metadata["id"].tolist()
+    Args:
+        samples_file_metadata (str): The path to the TCGA metadata file.
+        samples_file_manifest (str): The path to the TCGA manifest file.
+        slice_size (int): The number of file IDs to include in each sliced manifest file.
+        output_name_root (str): The root name for the output sliced manifest files.
 
-  id_list_length = len(id_list)
-  slices = ceil(id_list_length/slice_size)
+    Returns:
+        None: This function does not return anything, it simply creates the sliced manifest files.
 
-  print(f"Found {id_list_length} file IDs. Creating {slices} manifest files with {slice_size} IDs each")
-  
-  df_manifest = pd.read_csv(samples_file_manifest, sep="\t")
+    Raises:
+        None: This function does not raise any exceptions.
 
-  slices_dir="manifest_slices"
-  
-  if not os.path.exists(slices_dir):
-    os.makedirs(slices_dir)
+    Example:
+        createManifestSlices("metadata.txt", "manifest.txt", 100, "sliced_manifest")
+    """
+    #open the file with IDs load to pandas df
+    df_metadata = pd.read_csv(samples_file_metadata, sep="\t")
+    df_metadata = df_metadata.sort_values(by=["cases.0.case_id"])
+    id_list = df_metadata["id"].tolist()
 
-  for i in range(slices):
-    #slice the table
-    file_uuid_list = id_list[(i*slice_size):((i+1)*slice_size)]
+    id_list_length = len(id_list)
+    slices = ceil(id_list_length/slice_size)
 
-    df_manifest_sliced = df_manifest[df_manifest["id"].isin(file_uuid_list)]
+    logging.info(f"Found {id_list_length} file IDs. Creating {slices} manifest files with {slice_size} IDs each")
 
-    df_manifest_sliced.to_csv(f"{slices_dir}/{output_name_root}-slice-{i}.txt", index=False, sep="\t")
+    df_manifest = pd.read_csv(samples_file_manifest, sep="\t")
 
-  print("Finished!")
+    slices_dir="manifest_slices"
 
-def main(project, strategy, format, slice_size):
+    if not os.path.exists(slices_dir):
+        os.makedirs(slices_dir)
+
+    for i in range(slices):
+        #slice the table
+        file_uuid_list = id_list[(i*slice_size):((i+1)*slice_size)]
+
+        df_manifest_sliced = df_manifest[df_manifest["id"].isin(file_uuid_list)]
+
+        df_manifest_sliced.to_csv(f"{slices_dir}/{output_name_root}-slice-{i}.txt", index=False, sep="\t")
+
+    logging.info("Finished!")
+
+def main(project: str, strategy: str, format: str, slice_size: int):
+    """
+    Downloads TCGA data for a specified project, strategy, and data format, and slices the manifest file into smaller files.
+
+    Args:
+        project (str): The TCGA project ID to download data for.
+        strategy (str): The sequencing strategy to download data for (e.g. "RNASeq", "WGS", "WXS").
+        format (str): The data format to download (e.g. "BAM", "VCF", "expression").
+        slice_size (int): The number of file IDs to include in each sliced manifest file.
+
+    Returns:
+        None: This function does not return anything, it simply downloads and slices the TCGA data.
+
+    Raises:
+        None: This function does not raise any exceptions.
+
+    Example:
+        main("TCGA-BRCA", "RNASeq", "expression", 2000)
+        or
+        main("TCGA-BRCA", "WXS", "BAM", 200)
+    """
     # retreive project metadata
     output_name_meta = f'{project}-{strategy}-{format}-metadata.tsv'
     retreiveProjectData(project, strategy, format, output_name_meta, manifest=False)
