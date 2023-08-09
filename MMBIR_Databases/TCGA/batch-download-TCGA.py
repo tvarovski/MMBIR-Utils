@@ -246,7 +246,7 @@ def main(project: str, strategy: str, format: str, slice_size: int):
     Args:
         project (str): The TCGA project ID to download data for.
         strategy (str): The sequencing strategy to download data for (e.g. "RNASeq", "WGS", "WXS").
-        format (str): The data format to download (e.g. "BAM", "VCF", "expression").
+        format (str): The data format to download (e.g. "BAM", "MAF", "expression").
         slice_size (int): The number of file IDs to include in each sliced manifest file.
 
     Returns:
