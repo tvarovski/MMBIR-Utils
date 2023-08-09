@@ -9,14 +9,17 @@ import os
 #import argparse
 
 #PARAMS
-project = "TCGA-UCEC"
+project = "TCGA-LIHC"
 strategy = "WXS"
 format = "BAM"
 slice_size = 200
 #END PARAMS
 
 
-def retreiveProjectData(project, strategy, format, output_name, manifest=False):
+def retreiveProjectData(project: str, strategy: str, format: str, output_name: str, manifest: bool = False) -> None:
+    #Format: BAM, MAF, expression
+    #project: Any TCGA project ID e.g. TCGA-LIHC
+    #strategy: WXS, WGS, RNA-Seq, miRNA-Seq, etc.
 
     fields = [
         "file_name",
@@ -178,8 +181,6 @@ def retreiveProjectData(project, strategy, format, output_name, manifest=False):
         }
 
 
-
-
     # The parameters are passed to 'json' rather than 'params' in this case
     response = requests.post(files_endpt, headers = {"Content-Type": "application/json"}, json = params)
     original_stdout = sys.stdout
@@ -189,7 +190,7 @@ def retreiveProjectData(project, strategy, format, output_name, manifest=False):
         print(response.content.decode("utf-8"))
         sys.stdout = original_stdout # Reset the standard output to its original value
 
-def createManifestSlices(samples_file_metadata, samples_file_manifest, slice_size, output_name_root):
+def createManifestSlices(samples_file_metadata: str, samples_file_manifest: str, slice_size: int, output_name_root: str) -> None:
 
   #open the file with IDs load to pandas df
   df_metadata = pd.read_csv(samples_file_metadata, sep="\t")

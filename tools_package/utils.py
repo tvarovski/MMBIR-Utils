@@ -3,11 +3,11 @@
 # This code was developed and authored by Jerzy Twarowski in Malkova Lab at the University of Iowa 
 # Contact: jerzymateusz-twarowski@uiowa.edu, tvarovski1@gmail.com
 
-import pandas as pd
 import sys
-import cancer_config as cfg
+import argparse
 import logging
-
+import pandas as pd
+import cancer_config as cfg
 
 #set logging level
 logging.basicConfig(level=logging.INFO, format='%(levelname)s:.%(funcName)s: %(message)s')
@@ -260,8 +260,37 @@ def heatMapperInit():
 
     heatMapper(positions, bandwidth=100000, tickspace=10000000, cmap="YlOrRd", save_path="outputs/heatmap.png")
 
+def main():
+    '''Main function to handle command line arguments and call the appropriate function.
+    
+    Returns:
+    - None
+    '''
+
+    options_dict = {
+        "help": help,
+        "groupCases": groupCasesInit,
+        "parseOutputs": parseOutputsInit,
+        "createFullCancerTable": createFullCancerTableInit,
+        "findCosmicGenes": findCosmicGenesInit,
+        "performDiffExprAnalysis": performDiffExprAnalysisInit,
+        "getMissingBams": getMissingBamsInit,
+        "expressionParser": expressionParserInit,
+        "performSNVanalysis": performSNVanalysisInit,
+        "masked_snv_mv": masked_snv_mvInit,
+        "heatMapper": heatMapperInit
+    }
+
+    parser = argparse.ArgumentParser(description='This is a script designed to be used from a command line which takes a command line argument and runs a corresponding functionality from the MMBIR-UTILS package')
+    parser.add_argument('option', choices=options_dict.keys(), help='The option to execute.')
+    args = parser.parse_args()
+
+    options_dict[args.option]()
 
 if __name__ == "__main__":
+    main()
+
+'''if __name__ == "__main__":
 
     options_dict = {
         "help": help,
@@ -288,3 +317,4 @@ if __name__ == "__main__":
 
     else:
         logging.error(f"{option} is not a recognized option. Use 'help' to see the list of available options.")
+'''
