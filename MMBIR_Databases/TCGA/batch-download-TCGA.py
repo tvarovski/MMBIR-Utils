@@ -189,7 +189,7 @@ def retreiveProjectData(project: str, strategy: str, format: str, output_name: s
 
     with open(output_name, 'w') as f:
         sys.stdout = f # Change the standard output to the file we created.
-        logging.info(response.content.decode("utf-8"))
+        print(response.content.decode("utf-8"))
         sys.stdout = original_stdout # Reset the standard output to its original value
 
 def createManifestSlices(samples_file_metadata: str, samples_file_manifest: str, slice_size: int, output_name_root: str) -> None:
