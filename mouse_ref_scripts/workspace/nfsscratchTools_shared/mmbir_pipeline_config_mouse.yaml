@@ -1,0 +1,24 @@
+username: temagbetere
+user_home: /Users/temagbetere
+outputs_home: /Users/temagbetere/MMBSearch/exp_environment/trial2
+MMBSearch_home: /Users/temagbetere/MMBSearch/exp_environment
+threads: 56
+paths:
+  trimmomatic_home: ~/bin/trimmomatic-0.39.jar
+  adapters_fasta: /Users/temagbetere/workspace/nfsscratchTools_shared/TruSeq3-PE-2.fa
+  scripts:
+    markdups: /Users/temagbetere/workspace/nfsscratchTools_shared/markdups.sh
+    getUnaligned: /Users/temagbetere/workspace/nfsscratchTools_shared/getUnaligned.sh
+    getInDels: /Users/temagbetere/workspace/nfsscratchTools_shared/getInDels.sh
+    realign_UM: /Users/temagbetere/workspace/nfsscratchTools_shared/realign_UM_mouse.sh
+    changeFastqHeader: /Users/temagbetere/workspace/nfsscratchTools_shared/changeFastqHeader.sh
+    MMBSearch_Aln: /Users/temagbetere/MMBSearch/exp_environment/run_mmbir_aln.sh
+    run_config-split: /Users/temagbetere/MMBSearch/exp_environment/run_config-split.sh
+  base_scripts:
+    config2: /Users/temagbetere/MMBSearch/exp_environment/config2_base_mouse.txt
+    config_split: /Users/temagbetere/MMBSearch/exp_environment/config-split_base_mouse.txt
+    cluster_arr: /Users/temagbetere/MMBSearch/exp_environment/clusterArrayT_base_mouse.sh
+
+
+
+
