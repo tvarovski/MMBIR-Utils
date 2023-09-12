@@ -707,7 +707,7 @@ def plot_differential_expression(cancer, save=False, show=True):
     #also, add a line at -log10(p-value) = 1.3, which is the threshold for significance
     df["significant"] = df["p-value"] < 0.05
 
-    sns.scatterplot(x="log2(fold change)", y="-log10(p-value)", data=df, hue="significant")
+    sns.scatterplot(x="log2(fold change)", y="-log10(p-value)", data=df, hue="significant", alpha=0.8, s=10, linewidth=1, edgecolor="black")
     plt.axhline(y=1.3, color="red", linestyle="--")
     plt.axvline(x=0, color="black", linestyle="--")
 

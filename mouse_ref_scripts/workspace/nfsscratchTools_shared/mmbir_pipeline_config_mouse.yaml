@@ -6,6 +6,7 @@ threads: 56
 paths:
   trimmomatic_home: ~/bin/trimmomatic-0.39.jar
   adapters_fasta: /Users/temagbetere/workspace/nfsscratchTools_shared/TruSeq3-PE-2.fa
+  ref_genome: /Users/temagbetere/MMBSearch/exp_environment/Mus_musculus.GRCm39.dna.primary_assembly/Mus_musculus.GRCm39.dna.primary_assembly.fa
   scripts:
     markdups: /Users/temagbetere/workspace/nfsscratchTools_shared/markdups.sh
     getUnaligned: /Users/temagbetere/workspace/nfsscratchTools_shared/getUnaligned.sh

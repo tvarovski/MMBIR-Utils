@@ -6,12 +6,43 @@ rule all:
         "{bamin}.counts.txt",
         submit_arr=expand("{base_path}/clusterArrayT.{{bamin}}.sh", base_path=config["outputs_home"])
 
+rule extractFQ:
+    input:
+        "{bamin}.bam"
+    output:
+        "{bamin}_R1.fq",
+        "{bamin}_R2.fq"
+    shell:
+        "module load samtools\nsamtools fastq --threads 4 {bamin}.bam -1 {bamin}_R1.fastq.gz -2 {bamin}_R2.fastq.gz -0 /dev/null -s /dev/null -n"
+
+rule alignToGenome:
+    params:
+        ref=config["paths"]["ref_genome"]
+    input:
+        "{bamin}_R1.fq",
+        "{bamin}_R2.fq"
+    output:
+        "{bamin}_aligned.bam"
+    shell:
+        "bwa mem -t 56 {params.ref} {bamin}_R1.fq {bamin}_R2.fq | samtools sort -@56 -m 2G -O bam -T temp.sort -o {bamin}_aligned.bam"
+
+# rule addRG:
+#     params:
+#         script="java -jar ~/bin/picard.jar AddOrReplaceReadGroups I={input} O={output} RGID=1 RGLB=lib1 RGPL=illumina RGPU=unit1 RGSM=20"
+#     threads: config["threads"]
+#     input:
+#         "{bamin}.bam"
+#     output:
+#         "{bamin}.RG.bam"
+#     shell:
+#         "{params.script} {input} {output}"
+
 rule removeDups:
     params:
         script=config["paths"]["scripts"]["markdups"]
     threads: config["threads"]
     input:
-        "{bamin}.bam"
+        "{bamin}._aligned.bam"
     output:
         "{bamin}.deduped.bam",
         "{bamin}.dedup_metrics.txt"

@@ -251,6 +251,83 @@ def extractSeqFromFileToFileHG(file_path_in: str, file_path_out: str) -> None:
             with open(file_path_out, "a") as file_out:
                 file_out.write(line)
 
+@time_elapsed
+def extractSeqFromFileToFileMM_buffer2(file_path_in: str, file_path_out: str) -> None:
+    """
+    Extracts the DNA sequence from a reference genome file and saves it to a new file in a format that can be used by the MMBIR pipeline.
+    Good for Mouse Genome Reference.
+
+    Args:
+        file_path_in (str): The path to the input reference genome file.
+        file_path_out (str): The path to the output file where the DNA sequence will be saved.
+
+    Returns:
+        None: This function does not return anything, it only saves the DNA sequence to a file.
+
+    Example:
+        extractSeqFromFileToFileMM("reference_genome.fasta", "chromosome1.fasta")
+    """
+    #good for mouse genome
+    file_in = open(file_path_in, "r")
+
+    save=False
+    readlines=True
+    linecounter=0
+    buffer=""
+    while readlines:
+        linecounter+=1
+        try:
+            line = file_in.readline()
+            #if the line is empty, we have also reached an EOF
+            if not line:
+                readlines=False
+                logging.error(f"line {linecounter}. EOF? Exiting")
+                break
+        except:
+            logging.error(f"Failed to read line {linecounter}. EOF? Exiting")
+            readlines=False
+            break
+        
+        try:
+            if line[0] == ">":
+                if re.search(r"^>\d+|MT|[XY] dna:chromosome chromosome:GRCm39:[1-9XYM]+:\d+:\d+:\d+ REF$", line) != None:
+                    logging.info(f"Extracting at line {linecounter}: {line.strip()}")
+                    linewords = line.split()
+                    chromosome=linewords[0].strip(">").strip()
+                    if (chromosome=="1") | (chromosome=="2"):
+                        chromosome=f">chr0{chromosome}\n"
+                    elif chromosome=="X":
+                        chromosome=f">chrX\n"
+                    elif chromosome=="Y":
+                        chromosome=f">chrY\n"
+                    elif chromosome=="MT":
+                        chromosome=f">chrM\n"
+                    else:
+                        chromosome=f">chr{chromosome}\n"
+                    line=chromosome
+                    logging.info(f"Found {line}")
+                    save=True
+
+                else:
+                    save=False
+        except:
+            logging.error(f"Failed to parse line {linecounter}: {line}")
+            raise Exception(f"Failed to parse line")
+            
+
+        if save:
+            buffer += (line+"\n")
+            #save buffere every 100000 lines
+            if linecounter % 10000 == 0:
+                with open(file_path_out, "a") as file_out:
+                    file_out.write(buffer)
+                #reset buffer
+                buffer=""
+        
+    #save the rest of the buffer
+    with open(file_path_out, "a") as file_out:
+        file_out.write(buffer)
+
 if __name__ == "__main__":
 
-    extractSeqFromFileToFileMM_buffer(PATH, OUTPUT_FILE_NAME)
+    extractSeqFromFileToFileMM_buffer2(PATH, OUTPUT_FILE_NAME)
