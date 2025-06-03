@@ -298,7 +298,7 @@ def plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Fil
    
     #staging='ajcc'/'figo'/'tumor_grade', adjust='early_late'/'early_middle_late'
 
-    df_consolidated = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
+    df_consolidated = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)].copy()
 
     if min_concentration > 0:
         df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
@@ -345,9 +345,10 @@ def plot_stage_vs_count(df_consolidated, filterset, staging='ajcc', x_count="Fil
     
     #show mean, median and standard deviation for each stage
     print("Mean, median and standard deviation for each stage")
-    print(df_consolidated.groupby("stage_adjusted").mean()[x_count])
-    print(df_consolidated.groupby("stage_adjusted").median()[x_count])
-    print(df_consolidated.groupby("stage_adjusted").std()[x_count])
+    numeric_cols = df_consolidated.select_dtypes(include='number').columns
+    print(df_consolidated.groupby("stage_adjusted")[numeric_cols].mean()[x_count])
+    print(df_consolidated.groupby("stage_adjusted")[numeric_cols].median()[x_count])
+    print(df_consolidated.groupby("stage_adjusted")[numeric_cols].std()[x_count])
 
     #compare the mean of the early stage to the mean of the late stage statistically using a mann-whitney test
     statistic, pvalue = stats.mannwhitneyu(df_consolidated[df_consolidated["stage_adjusted"]=="Early"][x_count], df_consolidated[df_consolidated["stage_adjusted"]=="Late"][x_count])
@@ -432,10 +433,16 @@ def plot_stage_vs_concentration(df_consolidated, filterset, staging='ajcc', x_co
     logging.info(df_consolidated["stage_adjusted"].value_counts())
     
     #show mean, median and standard deviation for each stage
+    # print("Mean, median and standard deviation for each stage")
+    # print(df_consolidated.groupby("stage_adjusted").mean()[x_count])
+    # print(df_consolidated.groupby("stage_adjusted").median()[x_count])
+    # print(df_consolidated.groupby("stage_adjusted").std()[x_count])
+
     print("Mean, median and standard deviation for each stage")
-    print(df_consolidated.groupby("stage_adjusted").mean()[x_count])
-    print(df_consolidated.groupby("stage_adjusted").median()[x_count])
-    print(df_consolidated.groupby("stage_adjusted").std()[x_count])
+    numeric_cols = df_consolidated.select_dtypes(include='number').columns
+    print(df_consolidated.groupby("stage_adjusted")[numeric_cols].mean()[x_count])
+    print(df_consolidated.groupby("stage_adjusted")[numeric_cols].median()[x_count])
+    print(df_consolidated.groupby("stage_adjusted")[numeric_cols].std()[x_count])
 
     #show stage vs concentration
     sns.set_context("talk")
@@ -457,7 +464,7 @@ def plot_stage_vs_concentration(df_consolidated, filterset, staging='ajcc', x_co
 def plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=0.5, save=False, show=True):
     '''function plot_ajcc_pathologic_n_vs_count() plots the ajcc pathologic n vs the MMBIR count.'''
 
-    df_consolidated = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
+    df_consolidated = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)].copy()
 
     if min_concentration > 0:
         df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
@@ -475,10 +482,16 @@ def plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtere
     df_consolidated["stageN_adjusted"] = df_consolidated["StageN"].apply(lambda x: "N0" if x in ["N0", "N0 (i-)"] else ("N1" if x in ["N1","N1b","N1mi"] else ("N0 (i+)" if x in ["N0 (i+)"] else "N2+N3")))
 
     #show mean median and standard deviation for each stage
-    print("Mean, median, standard deviation for each stage")
-    print(df_consolidated.groupby("stageN_adjusted").mean()[x_count])
-    print(df_consolidated.groupby("stageN_adjusted").median()[x_count])
-    print(df_consolidated.groupby("stageN_adjusted").std()[x_count])
+    # print("Mean, median, standard deviation for each stage")
+    # print(df_consolidated.groupby("stageN_adjusted").mean()[x_count])
+    # print(df_consolidated.groupby("stageN_adjusted").median()[x_count])
+    # print(df_consolidated.groupby("stageN_adjusted").std()[x_count])
+
+    print("Mean, median and standard deviation for each stage")
+    numeric_cols = df_consolidated.select_dtypes(include='number').columns
+    print(df_consolidated.groupby("stageN_adjusted")[numeric_cols].mean()[x_count])
+    print(df_consolidated.groupby("stageN_adjusted")[numeric_cols].median()[x_count])
+    print(df_consolidated.groupby("stageN_adjusted")[numeric_cols].std()[x_count])
 
     #compare the mean of the early stage to the mean of the late stage statistically using a mann-whitney test
     print(stats.mannwhitneyu(df_consolidated[df_consolidated["stageN_adjusted"]=="N0"][x_count], df_consolidated[df_consolidated["stageN_adjusted"]=="N2+N3"]["Raw_Count"]))
@@ -504,7 +517,7 @@ def plot_ajcc_pathologic_n_vs_count(df_consolidated, filterset, x_count="Filtere
 def plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtered_Count", min_concentration=0.5, save=False, show=True):
     '''function plot_ajcc_pathologic_t_vs_count() plots the ajcc pathologic t vs the MMBIR count.'''
 
-    df_consolidated = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)]
+    df_consolidated = df_consolidated[df_consolidated["Sample_Type"].isin(filterset)].copy()
 
     if min_concentration > 0:
         df_consolidated = df_consolidated[df_consolidated["Concentration"] >= min_concentration]
@@ -525,10 +538,16 @@ def plot_ajcc_pathologic_t_vs_count(df_consolidated, filterset, x_count="Filtere
     print(df_consolidated["stageT_adjusted"].value_counts())
 
     #show mean median and standard deviation for each stage
-    print("Mean, median and standard deviation for each stage:")
-    print(df_consolidated.groupby("stageT_adjusted").mean()[x_count])
-    print(df_consolidated.groupby("stageT_adjusted").median()[x_count])
-    print(df_consolidated.groupby("stageT_adjusted").std()[x_count])
+    # print("Mean, median and standard deviation for each stage:")
+    # print(df_consolidated.groupby("stageT_adjusted").mean()[x_count])
+    # print(df_consolidated.groupby("stageT_adjusted").median()[x_count])
+    # print(df_consolidated.groupby("stageT_adjusted").std()[x_count])
+
+    print("Mean, median and standard deviation for each stage")
+    numeric_cols = df_consolidated.select_dtypes(include='number').columns
+    print(df_consolidated.groupby("stageT_adjusted")[numeric_cols].mean()[x_count])
+    print(df_consolidated.groupby("stageT_adjusted")[numeric_cols].median()[x_count])
+    print(df_consolidated.groupby("stageT_adjusted")[numeric_cols].std()[x_count])
 
     #compare the mean of the early stage to the mean of the late stage statistically using a mann-whitney test
     print(stats.mannwhitneyu(df_consolidated[df_consolidated["stageT_adjusted"]=="T1"][x_count], df_consolidated[df_consolidated["stageT_adjusted"]=="T3&4"]["Raw_Count"]))
@@ -622,11 +641,17 @@ def plot_age_vs_count_binned(df_consolidated, count="Filtered_Count", min_concen
     print(df_consolidated["age_bin"].value_counts())
 
     #show mean median and standard deviation for each age bin
-    print("Mean, median and standard deviation for each age bin:")
-    print(df_consolidated.groupby("age_bin").mean()[count])
-    print(df_consolidated.groupby("age_bin").median()[count])
-    print(df_consolidated.groupby("age_bin").std()[count])
+    # print("Mean, median and standard deviation for each age bin:")
+    # print(df_consolidated.groupby("age_bin").mean()[count])
+    # print(df_consolidated.groupby("age_bin").median()[count])
+    # print(df_consolidated.groupby("age_bin").std()[count])
 
+    print("Mean, median and standard deviation for each age bin")
+    numeric_cols = df_consolidated.select_dtypes(include='number').columns
+    print(df_consolidated.groupby("age_bin")[numeric_cols].mean()[count])
+    print(df_consolidated.groupby("age_bin")[numeric_cols].median()[count])
+    print(df_consolidated.groupby("age_bin")[numeric_cols].std()[count])
+    
     #compare the mean of the early age bin to the mean of the late age bin statistically using a mann-whitney test
     print(stats.mannwhitneyu(df_consolidated[df_consolidated["age_bin"]=="40-50"][count], df_consolidated[df_consolidated["age_bin"]=="80+"][count]))
     print(stats.ttest_ind(df_consolidated[df_consolidated["age_bin"]=="40-50"][count], df_consolidated[df_consolidated["age_bin"]=="80+"][count]))

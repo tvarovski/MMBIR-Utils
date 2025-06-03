@@ -1,0 +1,2170 @@
+Project	Case_ID	Sample_Type	Raw_Count	Filtered_Count
+TCGA-BRCA	00a2d166-78c9-4687-a195-3d6315c27574	Blood Derived Normal	72	7
+TCGA-BRCA	00a2d166-78c9-4687-a195-3d6315c27574	Primary Tumor	122	24
+TCGA-BRCA	01263518-5f7c-49dc-8d7e-84b0c03a6a63	Blood Derived Normal	350	19
+TCGA-BRCA	01263518-5f7c-49dc-8d7e-84b0c03a6a63	Primary Tumor	655	73
+TCGA-BRCA	02bf5203-f9cd-4c5a-97b4-e5584dc22325	Blood Derived Normal	373	62
+TCGA-BRCA	02f5ae33-a563-4ecb-9e33-dfa500a44931	Blood Derived Normal	421	18
+TCGA-BRCA	02f5ae33-a563-4ecb-9e33-dfa500a44931	Primary Tumor	628	60
+TCGA-BRCA	03565036-b6d3-432f-8d9a-7099818e0788	Blood Derived Normal	276	14
+TCGA-BRCA	03565036-b6d3-432f-8d9a-7099818e0788	Primary Tumor	341	34
+TCGA-BRCA	045c13ef-3db7-4adf-b0a3-23338f0479f3	Blood Derived Normal	232	19
+TCGA-BRCA	045c13ef-3db7-4adf-b0a3-23338f0479f3	Primary Tumor	251	14
+TCGA-BRCA	0491063c-14a7-4104-8002-1459126332f3	Blood Derived Normal	439	31
+TCGA-BRCA	0491063c-14a7-4104-8002-1459126332f3	Primary Tumor	781	84
+TCGA-BRCA	05506f4c-e701-4a9d-ae06-97f066aade43	Blood Derived Normal	97	12
+TCGA-BRCA	0807435a-e75e-4e04-8e45-ed0cd49a841a	Blood Derived Normal	221	12
+TCGA-BRCA	0807435a-e75e-4e04-8e45-ed0cd49a841a	Primary Tumor	646	78
+TCGA-BRCA	084c6aec-94f7-4090-8f3f-59fa9e89721a	Blood Derived Normal	267	31
+TCGA-BRCA	084c6aec-94f7-4090-8f3f-59fa9e89721a	Primary Tumor	493	46
+TCGA-BRCA	08da7c4c-3067-4bcf-9d7a-78566df72e69	Blood Derived Normal	646	100
+TCGA-BRCA	08da7c4c-3067-4bcf-9d7a-78566df72e69	Primary Tumor	213	11
+TCGA-BRCA	08de63a2-7b76-43c3-80dc-df748b1d81bc	Blood Derived Normal	24	3
+TCGA-BRCA	09765b0a-94f6-47d2-af56-93368084ac3a	Blood Derived Normal	355	24
+TCGA-BRCA	09765b0a-94f6-47d2-af56-93368084ac3a	Primary Tumor	521	54
+TCGA-BRCA	09c2bc35-c21f-4aa4-ac30-0d8db02ad811	Blood Derived Normal	518	36
+TCGA-BRCA	09c2bc35-c21f-4aa4-ac30-0d8db02ad811	Primary Tumor	546	55
+TCGA-BRCA	0a017f15-1c6b-45e7-8d55-e0a71df1b2e8	Blood Derived Normal	350	24
+TCGA-BRCA	0a017f15-1c6b-45e7-8d55-e0a71df1b2e8	Primary Tumor	415	38
+TCGA-BRCA	0a229f95-0ea1-4d63-953e-74f5ec2f3028	Blood Derived Normal	203	8
+TCGA-BRCA	0a229f95-0ea1-4d63-953e-74f5ec2f3028	Primary Tumor	414	59
+TCGA-BRCA	0adf59c6-581a-475d-a2f4-40aa40060b5b	Blood Derived Normal	219	18
+TCGA-BRCA	0adf59c6-581a-475d-a2f4-40aa40060b5b	Primary Tumor	700	86
+TCGA-BRCA	0c1023c0-d2ce-4940-8047-7642f1dc3965	Blood Derived Normal	500	63
+TCGA-BRCA	0c1023c0-d2ce-4940-8047-7642f1dc3965	Primary Tumor	390	27
+TCGA-BRCA	0f64edec-0f1f-4025-8a53-75f9534f7828	Blood Derived Normal	408	28
+TCGA-BRCA	0f64edec-0f1f-4025-8a53-75f9534f7828	Primary Tumor	268	13
+TCGA-BRCA	0f64edec-0f1f-4025-8a53-75f9534f7828	Solid Tissue Normal	409	34
+TCGA-BRCA	10c9be1e-2cc0-45e4-8d2c-c013ea63ef05	Blood Derived Normal	117	19
+TCGA-BRCA	10c9be1e-2cc0-45e4-8d2c-c013ea63ef05	Primary Tumor	208	40
+TCGA-BRCA	1111fb30-46ce-4722-98da-ec9ba2323d90	Blood Derived Normal	414	32
+TCGA-BRCA	1111fb30-46ce-4722-98da-ec9ba2323d90	Primary Tumor	458	55
+TCGA-BRCA	1174f6e4-ffbe-4e59-a000-8d861c968369	Blood Derived Normal	251	20
+TCGA-BRCA	1174f6e4-ffbe-4e59-a000-8d861c968369	Primary Tumor	230	24
+TCGA-BRCA	128d198e-9b22-427c-90db-3714455f3a17	Primary Tumor	365	72
+TCGA-BRCA	13b860c3-8048-4dc9-9eb0-7480bc660837	Blood Derived Normal	101	11
+TCGA-BRCA	13b860c3-8048-4dc9-9eb0-7480bc660837	Primary Tumor	196	27
+TCGA-BRCA	14267783-5624-4fe5-ba81-9d67f1017474	Blood Derived Normal	368	27
+TCGA-BRCA	14267783-5624-4fe5-ba81-9d67f1017474	Primary Tumor	436	35
+TCGA-BRCA	14267783-5624-4fe5-ba81-9d67f1017474	Solid Tissue Normal	363	30
+TCGA-BRCA	1502c7d7-1535-4e56-9f34-30623acd50d5	Blood Derived Normal	102	21
+TCGA-BRCA	1557183c-aedd-4df6-b98a-3654667f7b69	Primary Tumor	85	14
+TCGA-BRCA	157ec9e0-ca6e-4da1-9233-f976cf0db433	Blood Derived Normal	215	18
+TCGA-BRCA	157ec9e0-ca6e-4da1-9233-f976cf0db433	Primary Tumor	373	47
+TCGA-BRCA	17ca61a2-607a-45ff-88fa-ef72e80bf891	Blood Derived Normal	877	73
+TCGA-BRCA	17ca61a2-607a-45ff-88fa-ef72e80bf891	Primary Tumor	574	50
+TCGA-BRCA	18eb4dfc-556f-4bf3-a411-4780209ed1e0	Blood Derived Normal	471	45
+TCGA-BRCA	18eb4dfc-556f-4bf3-a411-4780209ed1e0	Primary Tumor	235	11
+TCGA-BRCA	18eb4dfc-556f-4bf3-a411-4780209ed1e0	Solid Tissue Normal	524	46
+TCGA-BRCA	1a18974d-967c-4727-b42e-12ae7be66589	Blood Derived Normal	344	66
+TCGA-BRCA	1dafdd64-527d-4d46-bbdf-7a97774f881b	Blood Derived Normal	63	12
+TCGA-BRCA	2021ed1f-dc75-4701-b8b8-1386466e4802	Blood Derived Normal	478	48
+TCGA-BRCA	2021ed1f-dc75-4701-b8b8-1386466e4802	Primary Tumor	409	25
+TCGA-BRCA	2021ed1f-dc75-4701-b8b8-1386466e4802	Solid Tissue Normal	362	29
+TCGA-BRCA	20e8106b-1290-4735-abe4-7621e08e3dc8	Blood Derived Normal	180	12
+TCGA-BRCA	20e8106b-1290-4735-abe4-7621e08e3dc8	Primary Tumor	271	17
+TCGA-BRCA	20e8106b-1290-4735-abe4-7621e08e3dc8	Solid Tissue Normal	359	56
+TCGA-BRCA	2192c1db-4718-4254-ba42-3ae7f30ad5a8	Blood Derived Normal	261	21
+TCGA-BRCA	2192c1db-4718-4254-ba42-3ae7f30ad5a8	Primary Tumor	323	31
+TCGA-BRCA	22eaba28-be67-4730-9846-860bc1fca29a	Blood Derived Normal	157	7
+TCGA-BRCA	22eaba28-be67-4730-9846-860bc1fca29a	Primary Tumor	155	21
+TCGA-BRCA	2399caeb-ead2-4003-af38-809db4ac2e2b	Blood Derived Normal	374	32
+TCGA-BRCA	2399caeb-ead2-4003-af38-809db4ac2e2b	Primary Tumor	529	52
+TCGA-BRCA	23dabeef-8e3c-44bc-9a12-a9522d17be5c	Blood Derived Normal	240	22
+TCGA-BRCA	23dabeef-8e3c-44bc-9a12-a9522d17be5c	Primary Tumor	373	35
+TCGA-BRCA	24334ac1-28a3-4b61-b590-3f51e375b247	Blood Derived Normal	408	28
+TCGA-BRCA	24334ac1-28a3-4b61-b590-3f51e375b247	Primary Tumor	353	23
+TCGA-BRCA	24334ac1-28a3-4b61-b590-3f51e375b247	Solid Tissue Normal	314	21
+TCGA-BRCA	2779fa01-ac93-4e80-a997-3385f72172c3	Blood Derived Normal	143	12
+TCGA-BRCA	2779fa01-ac93-4e80-a997-3385f72172c3	Primary Tumor	159	22
+TCGA-BRCA	27b05b15-a44b-45ed-a6e3-e7d1ca488ea9	Blood Derived Normal	636	57
+TCGA-BRCA	27b05b15-a44b-45ed-a6e3-e7d1ca488ea9	Primary Tumor	474	26
+TCGA-BRCA	27dfb9d4-3a2c-44bc-9acf-8f638d3f3004	Blood Derived Normal	300	33
+TCGA-BRCA	27dfb9d4-3a2c-44bc-9acf-8f638d3f3004	Primary Tumor	262	26
+TCGA-BRCA	281f70c5-876f-44b3-84fb-f2302f85e74c	Blood Derived Normal	76	4
+TCGA-BRCA	281f70c5-876f-44b3-84fb-f2302f85e74c	Primary Tumor	111	19
+TCGA-BRCA	29df128d-ace2-40cf-88ee-3f6f2170f159	Blood Derived Normal	401	14
+TCGA-BRCA	29df128d-ace2-40cf-88ee-3f6f2170f159	Primary Tumor	1133	128
+TCGA-BRCA	29fdc464-f216-4828-b456-829f71436e27	Blood Derived Normal	109	12
+TCGA-BRCA	29fdc464-f216-4828-b456-829f71436e27	Primary Tumor	231	32
+TCGA-BRCA	2c04a2f5-321e-4dea-8e00-268325da65cb	Blood Derived Normal	534	34
+TCGA-BRCA	2c04a2f5-321e-4dea-8e00-268325da65cb	Primary Tumor	458	43
+TCGA-BRCA	2c86c3ea-d926-4d39-a5ae-39ece4774287	Blood Derived Normal	131	15
+TCGA-BRCA	2c86c3ea-d926-4d39-a5ae-39ece4774287	Primary Tumor	282	33
+TCGA-BRCA	2cb8c866-9296-4c70-a3ea-f9a9b707895c	Blood Derived Normal	382	27
+TCGA-BRCA	2cb8c866-9296-4c70-a3ea-f9a9b707895c	Primary Tumor	448	45
+TCGA-BRCA	2d4c778c-7f77-4f0a-8261-2086accf15fd	Blood Derived Normal	973	70
+TCGA-BRCA	2d4c778c-7f77-4f0a-8261-2086accf15fd	Primary Tumor	941	56
+TCGA-BRCA	2e1e3bf0-1708-4b65-936c-48b89eb8966a	Blood Derived Normal	345	28
+TCGA-BRCA	2e1e3bf0-1708-4b65-936c-48b89eb8966a	Primary Tumor	606	62
+TCGA-BRCA	2e82e576-3095-4aee-9853-65f676647c34	Blood Derived Normal	254	28
+TCGA-BRCA	2e82e576-3095-4aee-9853-65f676647c34	Primary Tumor	314	37
+TCGA-BRCA	2e8e70f2-c781-44c2-8f12-1f8c2f536aa3	Blood Derived Normal	371	25
+TCGA-BRCA	2e8e70f2-c781-44c2-8f12-1f8c2f536aa3	Primary Tumor	798	88
+TCGA-BRCA	2f4cbedf-ed7e-45a2-bf34-f1d1e696bdde	Blood Derived Normal	124	15
+TCGA-BRCA	2f4cbedf-ed7e-45a2-bf34-f1d1e696bdde	Primary Tumor	185	36
+TCGA-BRCA	2fdfd287-d13c-4910-9788-73987d45908a	Blood Derived Normal	161	5
+TCGA-BRCA	2fdfd287-d13c-4910-9788-73987d45908a	Primary Tumor	538	71
+TCGA-BRCA	316625b8-a217-4829-90d1-dfd9cb7e4bc3	Blood Derived Normal	284	27
+TCGA-BRCA	316625b8-a217-4829-90d1-dfd9cb7e4bc3	Primary Tumor	583	77
+TCGA-BRCA	316e021c-5175-4ab3-bdb6-2bf9683f657a	Blood Derived Normal	179	15
+TCGA-BRCA	316e021c-5175-4ab3-bdb6-2bf9683f657a	Primary Tumor	484	63
+TCGA-BRCA	31c31cce-1b4d-4f12-922f-84f389403170	Blood Derived Normal	353	26
+TCGA-BRCA	31c31cce-1b4d-4f12-922f-84f389403170	Primary Tumor	742	98
+TCGA-BRCA	324bcba2-f6a4-45a6-807c-215bdffcca21	Blood Derived Normal	241	24
+TCGA-BRCA	324bcba2-f6a4-45a6-807c-215bdffcca21	Primary Tumor	246	34
+TCGA-BRCA	328dfcb0-b5ae-43f2-bc87-dad0ab3df9e7	Blood Derived Normal	423	61
+TCGA-BRCA	328dfcb0-b5ae-43f2-bc87-dad0ab3df9e7	Primary Tumor	296	37
+TCGA-BRCA	32bc7cc4-d185-4594-bbee-4b96410be512	Blood Derived Normal	519	19
+TCGA-BRCA	32bc7cc4-d185-4594-bbee-4b96410be512	Primary Tumor	1067	92
+TCGA-BRCA	332423a7-8866-4ee3-b08f-3c8d7c16af80	Blood Derived Normal	90	7
+TCGA-BRCA	332423a7-8866-4ee3-b08f-3c8d7c16af80	Primary Tumor	145	22
+TCGA-BRCA	33919e92-4ea9-47e5-a6f4-36e51845d50f	Blood Derived Normal	377	19
+TCGA-BRCA	33919e92-4ea9-47e5-a6f4-36e51845d50f	Primary Tumor	693	55
+TCGA-BRCA	34ab0cb8-bf19-4cbb-b4eb-3c45ee5aa60b	Primary Tumor	309	76
+TCGA-BRCA	34d5a193-85e5-4399-8a9b-e92858eafdfe	Blood Derived Normal	87	10
+TCGA-BRCA	34d5a193-85e5-4399-8a9b-e92858eafdfe	Primary Tumor	167	22
+TCGA-BRCA	36449392-de76-4ee9-bc09-627a07e18727	Blood Derived Normal	559	38
+TCGA-BRCA	36449392-de76-4ee9-bc09-627a07e18727	Primary Tumor	588	33
+TCGA-BRCA	36fe6152-f61e-4948-9ccc-23ac01a9d77d	Blood Derived Normal	446	66
+TCGA-BRCA	36fe6152-f61e-4948-9ccc-23ac01a9d77d	Primary Tumor	155	13
+TCGA-BRCA	378778d2-b331-4867-a93b-c64028c8b4c7	Blood Derived Normal	194	15
+TCGA-BRCA	378778d2-b331-4867-a93b-c64028c8b4c7	Primary Tumor	396	54
+TCGA-BRCA	3828b534-908e-4953-a3fb-07d01cf49c7d	Blood Derived Normal	313	24
+TCGA-BRCA	3828b534-908e-4953-a3fb-07d01cf49c7d	Primary Tumor	366	43
+TCGA-BRCA	38a8b734-9acc-42f9-b5b7-e51b0dfc6504	Blood Derived Normal	484	41
+TCGA-BRCA	38a8b734-9acc-42f9-b5b7-e51b0dfc6504	Primary Tumor	483	38
+TCGA-BRCA	3927f736-3b5c-48c8-9d9e-83669ec44770	Blood Derived Normal	485	31
+TCGA-BRCA	3927f736-3b5c-48c8-9d9e-83669ec44770	Primary Tumor	700	62
+TCGA-BRCA	39cde586-df95-435f-b9a6-73b0c0ee5e92	Blood Derived Normal	192	21
+TCGA-BRCA	39cde586-df95-435f-b9a6-73b0c0ee5e92	Primary Tumor	194	21
+TCGA-BRCA	3a711140-1b89-4611-9992-3861e3d0e01a	Primary Tumor	423	67
+TCGA-BRCA	3aaabc62-f5a4-4025-9b29-5adf82c86c84	Blood Derived Normal	29	7
+TCGA-BRCA	3b01d064-8c00-4972-9f07-407eac8e7534	Blood Derived Normal	260	28
+TCGA-BRCA	3b01d064-8c00-4972-9f07-407eac8e7534	Primary Tumor	339	43
+TCGA-BRCA	3c08aabd-d5b5-4bbe-857c-38a7527b2163	Blood Derived Normal	410	13
+TCGA-BRCA	3c08aabd-d5b5-4bbe-857c-38a7527b2163	Primary Tumor	1117	121
+TCGA-BRCA	3c612e12-6de8-44fa-a095-805c45474821	Blood Derived Normal	75	22
+TCGA-BRCA	3c8b5af9-c34d-43c2-b8c9-39ea11e44fa6	Primary Tumor	59	9
+TCGA-BRCA	3dbe99d1-e3b8-4ee2-b6a8-2e2e12c6fbe9	Primary Tumor	744	116
+TCGA-BRCA	3e9f93c0-aa79-4b4c-bd6c-b3325912362a	Blood Derived Normal	150	12
+TCGA-BRCA	3e9f93c0-aa79-4b4c-bd6c-b3325912362a	Primary Tumor	469	62
+TCGA-BRCA	3ea9412b-429e-4dcf-90cd-c53be06885a1	Blood Derived Normal	247	20
+TCGA-BRCA	3ea9412b-429e-4dcf-90cd-c53be06885a1	Primary Tumor	352	36
+TCGA-BRCA	3ecb0147-276d-486c-9af0-ce437c24ba83	Primary Tumor	377	72
+TCGA-BRCA	3efa245d-177d-4ef9-94f7-f554c54e345e	Blood Derived Normal	269	15
+TCGA-BRCA	3efa245d-177d-4ef9-94f7-f554c54e345e	Primary Tumor	435	52
+TCGA-BRCA	3f834fa7-6d7b-4b85-98c0-5c55d55b6c95	Blood Derived Normal	325	72
+TCGA-BRCA	44954053-0b93-4577-a436-42777e442300	Blood Derived Normal	221	27
+TCGA-BRCA	44954053-0b93-4577-a436-42777e442300	Primary Tumor	221	21
+TCGA-BRCA	44bec761-b603-49c0-8634-f6bfe0319bb1	Blood Derived Normal	357	33
+TCGA-BRCA	44bec761-b603-49c0-8634-f6bfe0319bb1	Primary Tumor	285	36
+TCGA-BRCA	452672e8-b6d9-45b5-bb02-e88e03e2dd66	Primary Tumor	722	139
+TCGA-BRCA	478eb8aa-50b8-4ce5-98e4-d518ede4b174	Solid Tissue Normal	648	129
+TCGA-BRCA	49717f75-0f2d-4e1c-9a12-f1cd7877b80a	Primary Tumor	174	40
+TCGA-BRCA	49dc3e68-6206-4f16-969f-a758cc7be8ed	Primary Tumor	602	56
+TCGA-BRCA	49dc3e68-6206-4f16-969f-a758cc7be8ed	Solid Tissue Normal	534	48
+TCGA-BRCA	4b0d295c-e185-4b52-9752-178e5bc1d47d	Blood Derived Normal	178	22
+TCGA-BRCA	4b0d295c-e185-4b52-9752-178e5bc1d47d	Primary Tumor	178	28
+TCGA-BRCA	515b1400-e896-4f2a-81bd-70895441a0bd	Blood Derived Normal	550	52
+TCGA-BRCA	515b1400-e896-4f2a-81bd-70895441a0bd	Primary Tumor	493	32
+TCGA-BRCA	53ff5893-7d5e-4bcb-be9c-665fa34b7824	Blood Derived Normal	22	2
+TCGA-BRCA	546248b0-22a0-4b70-a437-76fb0a238a0d	Blood Derived Normal	248	22
+TCGA-BRCA	546248b0-22a0-4b70-a437-76fb0a238a0d	Primary Tumor	299	25
+TCGA-BRCA	566792ae-f853-4a47-856d-f02cdcfcb18a	Blood Derived Normal	299	19
+TCGA-BRCA	566792ae-f853-4a47-856d-f02cdcfcb18a	Primary Tumor	352	32
+TCGA-BRCA	59bf0ce4-715a-4017-bccb-c59916e78324	Blood Derived Normal	122	15
+TCGA-BRCA	59bf0ce4-715a-4017-bccb-c59916e78324	Primary Tumor	247	27
+TCGA-BRCA	5a4b7098-1f6a-49e9-b364-29d6d34f5bd5	Blood Derived Normal	371	57
+TCGA-BRCA	5a4b7098-1f6a-49e9-b364-29d6d34f5bd5	Primary Tumor	231	16
+TCGA-BRCA	5a57dc25-d252-4b22-b192-4de630d7002f	Blood Derived Normal	433	47
+TCGA-BRCA	5a57dc25-d252-4b22-b192-4de630d7002f	Primary Tumor	228	20
+TCGA-BRCA	5d688049-f271-40ef-813a-d37240ffe21c	Blood Derived Normal	153	11
+TCGA-BRCA	5d688049-f271-40ef-813a-d37240ffe21c	Primary Tumor	500	60
+TCGA-BRCA	5e4187c9-98f8-4bdb-a8da-6a914e96f47a	Blood Derived Normal	684	51
+TCGA-BRCA	5e4187c9-98f8-4bdb-a8da-6a914e96f47a	Primary Tumor	518	28
+TCGA-BRCA	5f5964a8-8e07-4620-98f0-93d162dbc31e	Blood Derived Normal	129	14
+TCGA-BRCA	5f5964a8-8e07-4620-98f0-93d162dbc31e	Primary Tumor	127	14
+TCGA-BRCA	5f90d955-bbb0-4b44-a5ac-ba6fda9ca0fb	Blood Derived Normal	465	50
+TCGA-BRCA	5f90d955-bbb0-4b44-a5ac-ba6fda9ca0fb	Primary Tumor	462	30
+TCGA-BRCA	602083f0-18d9-48b6-a529-31e165c54b37	Blood Derived Normal	241	20
+TCGA-BRCA	602083f0-18d9-48b6-a529-31e165c54b37	Primary Tumor	301	23
+TCGA-BRCA	606fbc6a-b41b-441d-9401-51e54912bf5e	Blood Derived Normal	102	4
+TCGA-BRCA	606fbc6a-b41b-441d-9401-51e54912bf5e	Primary Tumor	354	20
+TCGA-BRCA	606fbc6a-b41b-441d-9401-51e54912bf5e	Solid Tissue Normal	504	78
+TCGA-BRCA	626b4ff0-2188-4a14-aac8-6703c624917f	Blood Derived Normal	262	19
+TCGA-BRCA	626b4ff0-2188-4a14-aac8-6703c624917f	Primary Tumor	666	78
+TCGA-BRCA	6412854a-f874-469e-9d1f-8bd3ae5bd41d	Blood Derived Normal	172	19
+TCGA-BRCA	6412854a-f874-469e-9d1f-8bd3ae5bd41d	Primary Tumor	130	18
+TCGA-BRCA	64f67506-f2df-4f0a-b7be-29b4949e986a	Blood Derived Normal	121	13
+TCGA-BRCA	64f67506-f2df-4f0a-b7be-29b4949e986a	Primary Tumor	84	13
+TCGA-BRCA	66072c06-f251-4f0b-b6ae-12b407c52cc6	Primary Tumor	486	105
+TCGA-BRCA	67eef990-5ff4-45d1-843d-d22d7848f130	Blood Derived Normal	173	2
+TCGA-BRCA	67eef990-5ff4-45d1-843d-d22d7848f130	Primary Tumor	780	101
+TCGA-BRCA	68177e92-4784-45d9-af14-4ce0c00eae74	Blood Derived Normal	301	33
+TCGA-BRCA	68177e92-4784-45d9-af14-4ce0c00eae74	Primary Tumor	329	36
+TCGA-BRCA	69054195-9e93-49e5-b820-69b0091cc2d4	Blood Derived Normal	704	49
+TCGA-BRCA	69054195-9e93-49e5-b820-69b0091cc2d4	Primary Tumor	525	40
+TCGA-BRCA	6bc4c56d-aac5-49a2-9913-9538d06d898f	Blood Derived Normal	284	29
+TCGA-BRCA	6bc4c56d-aac5-49a2-9913-9538d06d898f	Primary Tumor	433	46
+TCGA-BRCA	6c0066e3-96df-4870-bcd3-98cda64082e9	Blood Derived Normal	72	8
+TCGA-BRCA	6e6408d6-6c48-4dfc-9f1c-28b7386e87b4	Blood Derived Normal	243	24
+TCGA-BRCA	6e6408d6-6c48-4dfc-9f1c-28b7386e87b4	Primary Tumor	330	38
+TCGA-BRCA	6f959c92-b79f-4f84-9ee5-d07d3212d52d	Blood Derived Normal	356	14
+TCGA-BRCA	6f959c92-b79f-4f84-9ee5-d07d3212d52d	Primary Tumor	733	81
+TCGA-BRCA	7032ec9c-e96b-4642-a7b6-d0aee7a3add2	Blood Derived Normal	98	8
+TCGA-BRCA	7032ec9c-e96b-4642-a7b6-d0aee7a3add2	Primary Tumor	218	37
+TCGA-BRCA	70931617-b3df-4a12-8e3f-2b2307602f48	Blood Derived Normal	415	31
+TCGA-BRCA	70931617-b3df-4a12-8e3f-2b2307602f48	Primary Tumor	680	85
+TCGA-BRCA	719082cc-1ebe-4a51-a659-85a59db1d77d	Blood Derived Normal	486	25
+TCGA-BRCA	719082cc-1ebe-4a51-a659-85a59db1d77d	Primary Tumor	640	46
+TCGA-BRCA	72e486b8-a866-4916-b2e4-8b4bb5dcd92d	Blood Derived Normal	131	12
+TCGA-BRCA	72e486b8-a866-4916-b2e4-8b4bb5dcd92d	Primary Tumor	453	77
+TCGA-BRCA	733a2a0f-b37a-4b81-b49e-3c0f30d1eb37	Blood Derived Normal	72	7
+TCGA-BRCA	733a2a0f-b37a-4b81-b49e-3c0f30d1eb37	Primary Tumor	85	10
+TCGA-BRCA	7455d832-ad66-40df-85d7-3a7051c4498d	Blood Derived Normal	133	10
+TCGA-BRCA	7455d832-ad66-40df-85d7-3a7051c4498d	Primary Tumor	419	59
+TCGA-BRCA	75113445-d2d6-44a0-866c-c9175e6d214b	Blood Derived Normal	237	20
+TCGA-BRCA	75113445-d2d6-44a0-866c-c9175e6d214b	Primary Tumor	372	37
+TCGA-BRCA	7875018b-91dc-4ab1-83b0-ee3883e2816e	Blood Derived Normal	134	8
+TCGA-BRCA	7875018b-91dc-4ab1-83b0-ee3883e2816e	Primary Tumor	162	11
+TCGA-BRCA	7875018b-91dc-4ab1-83b0-ee3883e2816e	Solid Tissue Normal	471	63
+TCGA-BRCA	78e1da41-127c-4e9c-aaaa-77a0d94c31d0	Blood Derived Normal	264	14
+TCGA-BRCA	78e1da41-127c-4e9c-aaaa-77a0d94c31d0	Primary Tumor	421	33
+TCGA-BRCA	7acf33e7-c386-45fd-8c9a-469600378687	Blood Derived Normal	971	148
+TCGA-BRCA	7b605fb6-d077-401e-b870-b87ddf505f82	Blood Derived Normal	509	42
+TCGA-BRCA	7b605fb6-d077-401e-b870-b87ddf505f82	Primary Tumor	380	27
+TCGA-BRCA	7c2a8440-0206-4039-8474-8d62f6c7de0c	Blood Derived Normal	188	20
+TCGA-BRCA	7c2a8440-0206-4039-8474-8d62f6c7de0c	Primary Tumor	320	39
+TCGA-BRCA	7d9d3522-ec3b-4efe-8c8e-c0e675276ef5	Blood Derived Normal	305	11
+TCGA-BRCA	7d9d3522-ec3b-4efe-8c8e-c0e675276ef5	Primary Tumor	749	87
+TCGA-BRCA	80f3f48a-cc21-415c-b181-c77e7ba1c563	Blood Derived Normal	410	17
+TCGA-BRCA	80f3f48a-cc21-415c-b181-c77e7ba1c563	Primary Tumor	766	83
+TCGA-BRCA	81e7a3d3-be70-4834-8018-4d2cc077a4e6	Blood Derived Normal	359	17
+TCGA-BRCA	81e7a3d3-be70-4834-8018-4d2cc077a4e6	Primary Tumor	516	44
+TCGA-BRCA	8240c4ae-f878-4882-aa07-7857c7ac52cf	Blood Derived Normal	426	42
+TCGA-BRCA	8240c4ae-f878-4882-aa07-7857c7ac52cf	Primary Tumor	362	47
+TCGA-BRCA	8332806e-f547-4aae-89af-6d5bec831fd2	Blood Derived Normal	270	19
+TCGA-BRCA	8332806e-f547-4aae-89af-6d5bec831fd2	Primary Tumor	264	32
+TCGA-BRCA	844ad251-3ee4-42f6-ad00-59a7a1670eea	Blood Derived Normal	438	43
+TCGA-BRCA	844ad251-3ee4-42f6-ad00-59a7a1670eea	Primary Tumor	434	40
+TCGA-BRCA	853456d8-2367-404e-abc9-020fe8bbd209	Blood Derived Normal	120	22
+TCGA-BRCA	858652b8-c4c2-41d8-be32-fdc88e1a7bb0	Solid Tissue Normal	153	29
+TCGA-BRCA	8624354c-af25-423c-9c71-48a5dd821097	Blood Derived Normal	38	8
+TCGA-BRCA	86b7b206-8e69-432d-acc9-bccce710955e	Blood Derived Normal	228	21
+TCGA-BRCA	86b7b206-8e69-432d-acc9-bccce710955e	Primary Tumor	254	21
+TCGA-BRCA	87f03d04-e651-4a6e-aea6-1c946aa46202	Blood Derived Normal	395	18
+TCGA-BRCA	87f03d04-e651-4a6e-aea6-1c946aa46202	Primary Tumor	509	30
+TCGA-BRCA	87f03d04-e651-4a6e-aea6-1c946aa46202	Solid Tissue Normal	518	42
+TCGA-BRCA	88cd6ccc-70f7-436e-a99c-039b9d31e335	Blood Derived Normal	383	24
+TCGA-BRCA	88cd6ccc-70f7-436e-a99c-039b9d31e335	Primary Tumor	696	71
+TCGA-BRCA	8ace3b8c-f23e-48a9-a137-9e046bd9549b	Blood Derived Normal	317	25
+TCGA-BRCA	8ace3b8c-f23e-48a9-a137-9e046bd9549b	Primary Tumor	254	25
+TCGA-BRCA	8bd68696-5eeb-46d7-9dc6-c39c849029a4	Blood Derived Normal	181	15
+TCGA-BRCA	8bd68696-5eeb-46d7-9dc6-c39c849029a4	Primary Tumor	453	53
+TCGA-BRCA	8cccf160-93e9-48a5-9b8b-54aa50153142	Blood Derived Normal	1349	151
+TCGA-BRCA	8cccf160-93e9-48a5-9b8b-54aa50153142	Primary Tumor	306	5
+TCGA-BRCA	8cf8b620-7ab6-4b6e-84bc-ff5a83f381fa	Blood Derived Normal	159	15
+TCGA-BRCA	8cf8b620-7ab6-4b6e-84bc-ff5a83f381fa	Primary Tumor	295	45
+TCGA-BRCA	91a2f2af-e4b1-4a0b-ab20-6a36ce63c533	Solid Tissue Normal	1107	141
+TCGA-BRCA	93ed6066-b567-4e1c-ab81-23370f9d3452	Blood Derived Normal	276	14
+TCGA-BRCA	93ed6066-b567-4e1c-ab81-23370f9d3452	Primary Tumor	569	37
+TCGA-BRCA	93ed6066-b567-4e1c-ab81-23370f9d3452	Solid Tissue Normal	506	52
+TCGA-BRCA	9416ff9b-6f29-4554-b04d-b537a3ae3969	Blood Derived Normal	65	14
+TCGA-BRCA	9536bec0-dae0-4d63-a1b3-956741835243	Blood Derived Normal	116	9
+TCGA-BRCA	9536bec0-dae0-4d63-a1b3-956741835243	Primary Tumor	140	16
+TCGA-BRCA	96312510-c126-485d-8109-ed81844a1dc3	Blood Derived Normal	38	3
+TCGA-BRCA	96312510-c126-485d-8109-ed81844a1dc3	Primary Tumor	159	25
+TCGA-BRCA	96457ebf-ae88-41f4-97e5-cdc3163418aa	Blood Derived Normal	304	21
+TCGA-BRCA	96457ebf-ae88-41f4-97e5-cdc3163418aa	Primary Tumor	396	36
+TCGA-BRCA	9646160a-f1f9-437b-8c7d-efb0b57bfb97	Blood Derived Normal	273	19
+TCGA-BRCA	9646160a-f1f9-437b-8c7d-efb0b57bfb97	Primary Tumor	434	56
+TCGA-BRCA	96f23d8a-be0f-4925-ba00-805dc293414c	Blood Derived Normal	317	50
+TCGA-BRCA	991e1427-3c01-423d-abfd-4584302ca72c	Blood Derived Normal	154	31
+TCGA-BRCA	993103b1-e5a1-4c33-8629-be53ebc41d64	Blood Derived Normal	1172	129
+TCGA-BRCA	993103b1-e5a1-4c33-8629-be53ebc41d64	Primary Tumor	369	8
+TCGA-BRCA	9938ce5c-e74e-446e-a932-f096f85cc3b1	Blood Derived Normal	199	36
+TCGA-BRCA	9938ce5c-e74e-446e-a932-f096f85cc3b1	Primary Tumor	102	11
+TCGA-BRCA	995fdab7-7284-4d33-befa-ec22aa7c6479	Blood Derived Normal	1001	61
+TCGA-BRCA	995fdab7-7284-4d33-befa-ec22aa7c6479	Primary Tumor	966	57
+TCGA-BRCA	99e32c59-aa73-43fa-88c9-399ddadb2c72	Blood Derived Normal	256	37
+TCGA-BRCA	99e32c59-aa73-43fa-88c9-399ddadb2c72	Primary Tumor	222	25
+TCGA-BRCA	9b13927c-7357-44fd-8385-92ae6a656b7d	Blood Derived Normal	366	38
+TCGA-BRCA	9b13927c-7357-44fd-8385-92ae6a656b7d	Primary Tumor	382	42
+TCGA-BRCA	9ce7ce09-4409-4fa3-9f78-b2b24716f860	Blood Derived Normal	189	21
+TCGA-BRCA	9ce7ce09-4409-4fa3-9f78-b2b24716f860	Primary Tumor	242	39
+TCGA-BRCA	9ced0c70-c46c-4f98-8f48-840defe4b8b1	Blood Derived Normal	35	9
+TCGA-BRCA	9d8702e1-1a36-4bca-85ab-5f11d58d7953	Blood Derived Normal	98	14
+TCGA-BRCA	9d8702e1-1a36-4bca-85ab-5f11d58d7953	Primary Tumor	132	23
+TCGA-BRCA	9d876f05-5080-4c4e-9bf5-45f631d381e5	Blood Derived Normal	107	8
+TCGA-BRCA	9d876f05-5080-4c4e-9bf5-45f631d381e5	Primary Tumor	423	61
+TCGA-BRCA	9d95a65b-e41d-4f93-92d4-99dce29ff40d	Blood Derived Normal	321	9
+TCGA-BRCA	9d95a65b-e41d-4f93-92d4-99dce29ff40d	Primary Tumor	686	42
+TCGA-BRCA	9d95a65b-e41d-4f93-92d4-99dce29ff40d	Solid Tissue Normal	592	51
+TCGA-BRCA	9da462b0-93c2-4305-89f6-7199a30399a7	Solid Tissue Normal	553	143
+TCGA-BRCA	9de678e5-67ed-4453-a98b-7ac351d5d0f1	Primary Tumor	355	36
+TCGA-BRCA	9de678e5-67ed-4453-a98b-7ac351d5d0f1	Solid Tissue Normal	488	67
+TCGA-BRCA	9e894662-b718-40f8-8899-b5e036cfbd76	Blood Derived Normal	217	23
+TCGA-BRCA	9e894662-b718-40f8-8899-b5e036cfbd76	Primary Tumor	307	32
+TCGA-BRCA	9f93ea0a-1687-44e0-9e8a-eeb4097d471c	Blood Derived Normal	442	80
+TCGA-BRCA	a272171b-44f5-47a5-89be-7520413c01ad	Blood Derived Normal	342	18
+TCGA-BRCA	a272171b-44f5-47a5-89be-7520413c01ad	Primary Tumor	709	69
+TCGA-BRCA	a381275f-8858-4793-a8a2-0ca9db7274c8	Blood Derived Normal	34	2
+TCGA-BRCA	a4903de8-6cf5-4541-8ec7-065beace8b44	Blood Derived Normal	427	49
+TCGA-BRCA	a4903de8-6cf5-4541-8ec7-065beace8b44	Primary Tumor	300	38
+TCGA-BRCA	a991644b-3ee6-4cda-acf0-e37de48a49fc	Blood Derived Normal	182	7
+TCGA-BRCA	a991644b-3ee6-4cda-acf0-e37de48a49fc	Primary Tumor	593	75
+TCGA-BRCA	a9b7d7fe-be31-4f71-afee-c1bfdf511888	Blood Derived Normal	256	34
+TCGA-BRCA	a9b7d7fe-be31-4f71-afee-c1bfdf511888	Primary Tumor	226	21
+TCGA-BRCA	ab34a9a2-d72d-4106-94fb-118844b1b60b	Blood Derived Normal	117	7
+TCGA-BRCA	ab34a9a2-d72d-4106-94fb-118844b1b60b	Primary Tumor	329	62
+TCGA-BRCA	ad01259b-d858-40bc-a6ba-0bb06e996afb	Blood Derived Normal	85	22
+TCGA-BRCA	aeb6a3a6-b57a-4c53-90e6-e833777dd2a1	Blood Derived Normal	297	31
+TCGA-BRCA	aeb6a3a6-b57a-4c53-90e6-e833777dd2a1	Primary Tumor	293	24
+TCGA-BRCA	af5453a9-cf1f-40de-aec4-0e0710908fb7	Blood Derived Normal	172	20
+TCGA-BRCA	af5453a9-cf1f-40de-aec4-0e0710908fb7	Primary Tumor	203	34
+TCGA-BRCA	afb9418e-91eb-4db1-aacf-12bd946c9ba0	Blood Derived Normal	372	35
+TCGA-BRCA	afb9418e-91eb-4db1-aacf-12bd946c9ba0	Primary Tumor	422	47
+TCGA-BRCA	b205bba0-1870-4458-9088-8817e20389fe	Blood Derived Normal	283	23
+TCGA-BRCA	b205bba0-1870-4458-9088-8817e20389fe	Primary Tumor	309	33
+TCGA-BRCA	b379bfb8-284e-4300-8325-85cfd6809cb8	Blood Derived Normal	107	5
+TCGA-BRCA	b379bfb8-284e-4300-8325-85cfd6809cb8	Primary Tumor	250	42
+TCGA-BRCA	b43e41af-1d82-4b5f-b8f1-add0510e6b86	Blood Derived Normal	487	32
+TCGA-BRCA	b43e41af-1d82-4b5f-b8f1-add0510e6b86	Primary Tumor	689	72
+TCGA-BRCA	b4e4fea2-b802-4a86-923e-3fcbd3c708fe	Blood Derived Normal	132	10
+TCGA-BRCA	b4e4fea2-b802-4a86-923e-3fcbd3c708fe	Primary Tumor	477	84
+TCGA-BRCA	b58ad350-5140-4fa8-bc2c-24bca8395f3a	Blood Derived Normal	312	32
+TCGA-BRCA	b58ad350-5140-4fa8-bc2c-24bca8395f3a	Primary Tumor	283	31
+TCGA-BRCA	b5fba77b-1f50-4e71-95b2-566afba4bdd7	Blood Derived Normal	133	7
+TCGA-BRCA	b5fba77b-1f50-4e71-95b2-566afba4bdd7	Primary Tumor	401	57
+TCGA-BRCA	b804f7ae-da8f-4414-be11-f880f1859160	Blood Derived Normal	225	24
+TCGA-BRCA	b804f7ae-da8f-4414-be11-f880f1859160	Primary Tumor	280	42
+TCGA-BRCA	baf1207d-7d1a-4cad-ba58-62c26be2415e	Blood Derived Normal	146	18
+TCGA-BRCA	baf1207d-7d1a-4cad-ba58-62c26be2415e	Primary Tumor	145	19
+TCGA-BRCA	baf5e81f-2322-41ec-9053-b9559a7993bc	Blood Derived Normal	99	13
+TCGA-BRCA	baf5e81f-2322-41ec-9053-b9559a7993bc	Primary Tumor	157	23
+TCGA-BRCA	bb8d42d3-ad65-4d88-ae1d-f9aadfc7962d	Blood Derived Normal	46	7
+TCGA-BRCA	bef7b135-a727-45e8-850a-cc4cd56c49aa	Blood Derived Normal	358	35
+TCGA-BRCA	bef7b135-a727-45e8-850a-cc4cd56c49aa	Primary Tumor	345	30
+TCGA-BRCA	bf88ddf5-a6d4-498c-bf7f-db9bfabff72d	Blood Derived Normal	135	5
+TCGA-BRCA	bf88ddf5-a6d4-498c-bf7f-db9bfabff72d	Primary Tumor	598	77
+TCGA-BRCA	bfd55808-dddd-44c3-97d7-41600497b992	Blood Derived Normal	420	36
+TCGA-BRCA	bfd55808-dddd-44c3-97d7-41600497b992	Primary Tumor	498	51
+TCGA-BRCA	c0427237-b476-4af4-b664-7bd479922ea5	Blood Derived Normal	211	25
+TCGA-BRCA	c0427237-b476-4af4-b664-7bd479922ea5	Primary Tumor	140	17
+TCGA-BRCA	c1442467-d618-435f-8792-b1a18f696f1a	Blood Derived Normal	304	44
+TCGA-BRCA	c1442467-d618-435f-8792-b1a18f696f1a	Primary Tumor	273	33
+TCGA-BRCA	c2a742fe-3e8b-4210-85a6-7191a1123609	Blood Derived Normal	124	17
+TCGA-BRCA	c2a742fe-3e8b-4210-85a6-7191a1123609	Primary Tumor	210	23
+TCGA-BRCA	c2aeee6c-ba10-4cf9-b560-c739580f7bf3	Blood Derived Normal	238	16
+TCGA-BRCA	c2aeee6c-ba10-4cf9-b560-c739580f7bf3	Primary Tumor	357	23
+TCGA-BRCA	c2aeee6c-ba10-4cf9-b560-c739580f7bf3	Solid Tissue Normal	567	56
+TCGA-BRCA	c5891c7a-fd24-4891-8f51-373967e4a6dd	Blood Derived Normal	169	12
+TCGA-BRCA	c5891c7a-fd24-4891-8f51-373967e4a6dd	Primary Tumor	284	42
+TCGA-BRCA	c6086936-7544-4da0-8c0c-114166848483	Blood Derived Normal	97	15
+TCGA-BRCA	c6086936-7544-4da0-8c0c-114166848483	Primary Tumor	109	19
+TCGA-BRCA	c65b835a-2d38-4250-a173-0780d2c2cf58	Primary Tumor	113	18
+TCGA-BRCA	c710f4ab-fbd9-42ed-95d4-4e6d51207f38	Blood Derived Normal	308	30
+TCGA-BRCA	c710f4ab-fbd9-42ed-95d4-4e6d51207f38	Primary Tumor	477	46
+TCGA-BRCA	c744fc13-3aca-4245-9e24-abd368cc8bef	Blood Derived Normal	327	19
+TCGA-BRCA	c744fc13-3aca-4245-9e24-abd368cc8bef	Primary Tumor	508	54
+TCGA-BRCA	ca76c6fc-ff30-4833-884d-3a94fe53ff17	Blood Derived Normal	114	8
+TCGA-BRCA	ca76c6fc-ff30-4833-884d-3a94fe53ff17	Primary Tumor	231	26
+TCGA-BRCA	cb0a2055-2168-4454-8755-47dd613db36f	Primary Tumor	645	98
+TCGA-BRCA	cc348a26-ee11-47a4-8b51-de922967e175	Blood Derived Normal	82	11
+TCGA-BRCA	cc510968-fe52-4109-a79f-74f216b48c78	Blood Derived Normal	71	12
+TCGA-BRCA	ccd4a24b-d8cc-4686-9dee-c98b0c5a8d21	Blood Derived Normal	103	20
+TCGA-BRCA	cf9db1af-17f0-490e-8139-142bd704763a	Blood Derived Normal	286	20
+TCGA-BRCA	cf9db1af-17f0-490e-8139-142bd704763a	Primary Tumor	381	44
+TCGA-BRCA	d2f2560c-ec80-4fea-9474-c47a2e85ea95	Blood Derived Normal	96	4
+TCGA-BRCA	d2f2560c-ec80-4fea-9474-c47a2e85ea95	Primary Tumor	378	53
+TCGA-BRCA	d3a75976-67d3-40fa-9f6f-cf2a3d7b773c	Blood Derived Normal	393	21
+TCGA-BRCA	d3a75976-67d3-40fa-9f6f-cf2a3d7b773c	Primary Tumor	652	47
+TCGA-BRCA	d3a75976-67d3-40fa-9f6f-cf2a3d7b773c	Solid Tissue Normal	379	31
+TCGA-BRCA	d3b9d925-ae04-4721-8bfc-50b41225bc74	Blood Derived Normal	82	10
+TCGA-BRCA	d3b9d925-ae04-4721-8bfc-50b41225bc74	Primary Tumor	156	22
+TCGA-BRCA	d5cab7f5-e4f1-40ee-a0c8-4c8004c1c9a0	Blood Derived Normal	107	13
+TCGA-BRCA	d5cab7f5-e4f1-40ee-a0c8-4c8004c1c9a0	Primary Tumor	186	29
+TCGA-BRCA	d5d8e76e-2f2a-49bc-ba0a-d51283611b16	Blood Derived Normal	204	41
+TCGA-BRCA	d67cd793-2931-429a-9084-2f3c4c8be7ad	Blood Derived Normal	94	8
+TCGA-BRCA	d67cd793-2931-429a-9084-2f3c4c8be7ad	Primary Tumor	245	25
+TCGA-BRCA	d69e59a8-b10b-46f5-b859-b6c178d90506	Blood Derived Normal	344	22
+TCGA-BRCA	d69e59a8-b10b-46f5-b859-b6c178d90506	Primary Tumor	476	48
+TCGA-BRCA	d6f911b5-e895-43f8-8f86-0ac2f1bc6fae	Blood Derived Normal	272	33
+TCGA-BRCA	d6f911b5-e895-43f8-8f86-0ac2f1bc6fae	Primary Tumor	333	36
+TCGA-BRCA	d6f911b5-e895-43f8-8f86-0ac2f1bc6fae	Solid Tissue Normal	280	29
+TCGA-BRCA	d7808cbc-4b8c-467b-b2c3-f48d05b9ecab	Blood Derived Normal	1112	118
+TCGA-BRCA	d7808cbc-4b8c-467b-b2c3-f48d05b9ecab	Primary Tumor	524	20
+TCGA-BRCA	d7cac141-9269-4733-83ce-e1bc0b503254	Blood Derived Normal	261	10
+TCGA-BRCA	d7cac141-9269-4733-83ce-e1bc0b503254	Primary Tumor	1036	118
+TCGA-BRCA	d8d7a6c2-6427-4f47-968c-6c3affba4617	Blood Derived Normal	646	91
+TCGA-BRCA	da1c58a7-c6bd-47d9-95c2-8d2ac70e20e4	Primary Tumor	842	189
+TCGA-BRCA	db8d38ab-cc61-49ee-863d-40060112f2af	Blood Derived Normal	184	19
+TCGA-BRCA	db8d38ab-cc61-49ee-863d-40060112f2af	Primary Tumor	326	34
+TCGA-BRCA	dc657ca8-98e8-4ec4-a513-1b848be0e85d	Blood Derived Normal	243	20
+TCGA-BRCA	dc657ca8-98e8-4ec4-a513-1b848be0e85d	Primary Tumor	212	20
+TCGA-BRCA	dcd5860c-7e3a-44f3-a732-fe92fe3fe300	Blood Derived Normal	343	30
+TCGA-BRCA	dcd5860c-7e3a-44f3-a732-fe92fe3fe300	Primary Tumor	300	39
+TCGA-BRCA	dcfd0b1d-5707-44a6-b225-5e8f7cea5ca1	Primary Tumor	165	27
+TCGA-BRCA	dd6b64a8-d546-4fd1-bbbd-ac9703791cae	Blood Derived Normal	135	25
+TCGA-BRCA	dd6b64a8-d546-4fd1-bbbd-ac9703791cae	Primary Tumor	199	26
+TCGA-BRCA	de75d0b9-0f47-4732-8df5-05c350cfcd32	Primary Tumor	370	57
+TCGA-BRCA	dfefb76a-ec6b-4cd2-9d45-2e1e4befc7ea	Blood Derived Normal	241	17
+TCGA-BRCA	dfefb76a-ec6b-4cd2-9d45-2e1e4befc7ea	Primary Tumor	370	43
+TCGA-BRCA	e112b452-8850-4353-bfed-0dbdc243290b	Blood Derived Normal	105	12
+TCGA-BRCA	e112b452-8850-4353-bfed-0dbdc243290b	Primary Tumor	186	31
+TCGA-BRCA	e17c565c-9857-4df3-a352-903b53093c85	Blood Derived Normal	116	9
+TCGA-BRCA	e17c565c-9857-4df3-a352-903b53093c85	Primary Tumor	137	19
+TCGA-BRCA	e3b555aa-7f0a-49c6-9b13-182c61a144c1	Blood Derived Normal	98	19
+TCGA-BRCA	e5aae05a-478e-4a55-a27c-12b2b4be302a	Blood Derived Normal	223	24
+TCGA-BRCA	e5aae05a-478e-4a55-a27c-12b2b4be302a	Primary Tumor	375	42
+TCGA-BRCA	e74aea7c-ca14-49df-b5cf-dacb839ac27a	Primary Tumor	141	30
+TCGA-BRCA	e89a9deb-6321-4e61-b412-b4993d4277dd	Blood Derived Normal	388	31
+TCGA-BRCA	e89a9deb-6321-4e61-b412-b4993d4277dd	Primary Tumor	782	72
+TCGA-BRCA	e98b69bc-766a-485f-b5e8-9166b8d457b3	Blood Derived Normal	432	45
+TCGA-BRCA	e98b69bc-766a-485f-b5e8-9166b8d457b3	Primary Tumor	211	24
+TCGA-BRCA	e9f4f373-37a5-48ad-a1a0-b0d47820111a	Blood Derived Normal	110	7
+TCGA-BRCA	e9f4f373-37a5-48ad-a1a0-b0d47820111a	Primary Tumor	133	23
+TCGA-BRCA	eb2dbb4f-66b6-4525-8323-431970f7a64e	Blood Derived Normal	164	20
+TCGA-BRCA	eb2dbb4f-66b6-4525-8323-431970f7a64e	Primary Tumor	105	15
+TCGA-BRCA	ebc460c2-df88-4dc0-a2c0-aca8072b75ad	Blood Derived Normal	224	24
+TCGA-BRCA	ebc460c2-df88-4dc0-a2c0-aca8072b75ad	Primary Tumor	392	34
+TCGA-BRCA	ec6930e5-2d83-435a-9a57-a2c5c22caf02	Blood Derived Normal	78	6
+TCGA-BRCA	ec6930e5-2d83-435a-9a57-a2c5c22caf02	Primary Tumor	216	42
+TCGA-BRCA	f06f09f3-8133-4a92-ac86-fbe64295e0d8	Blood Derived Normal	26	7
+TCGA-BRCA	f130f376-5801-40f9-975d-a7e2f7b5670d	Blood Derived Normal	274	8
+TCGA-BRCA	f130f376-5801-40f9-975d-a7e2f7b5670d	Primary Tumor	744	43
+TCGA-BRCA	f130f376-5801-40f9-975d-a7e2f7b5670d	Solid Tissue Normal	811	52
+TCGA-BRCA	f2bbfa9d-9a9d-4f46-9fde-378e4c44e2ad	Blood Derived Normal	261	28
+TCGA-BRCA	f2bbfa9d-9a9d-4f46-9fde-378e4c44e2ad	Primary Tumor	200	16
+TCGA-BRCA	f2bbfa9d-9a9d-4f46-9fde-378e4c44e2ad	Solid Tissue Normal	226	20
+TCGA-BRCA	f30eb65f-fb44-4062-ac39-a38d072f655f	Blood Derived Normal	26	6
+TCGA-BRCA	f31c21b6-0f7f-435b-9e24-97c909755c36	Blood Derived Normal	198	25
+TCGA-BRCA	f31c21b6-0f7f-435b-9e24-97c909755c36	Primary Tumor	341	39
+TCGA-BRCA	f357fe19-5359-4662-8ce9-aa996132283b	Blood Derived Normal	205	18
+TCGA-BRCA	f357fe19-5359-4662-8ce9-aa996132283b	Primary Tumor	400	58
+TCGA-BRCA	f39edd06-1016-4e8e-a42e-12f7e699ddc5	Blood Derived Normal	256	22
+TCGA-BRCA	f39edd06-1016-4e8e-a42e-12f7e699ddc5	Primary Tumor	419	42
+TCGA-BRCA	f3ba71f9-25f3-4784-bf2d-3aa522a0cba8	Blood Derived Normal	153	21
+TCGA-BRCA	f4b69043-4a67-48e3-a4d1-72a21ae2d175	Blood Derived Normal	470	31
+TCGA-BRCA	f4b69043-4a67-48e3-a4d1-72a21ae2d175	Primary Tumor	587	58
+TCGA-BRCA	f5539207-6534-4edc-a5a5-7666b5d16ba4	Blood Derived Normal	200	19
+TCGA-BRCA	f5539207-6534-4edc-a5a5-7666b5d16ba4	Primary Tumor	196	29
+TCGA-BRCA	f947d67f-4aa2-4eb9-977e-21a5ae563613	Blood Derived Normal	488	51
+TCGA-BRCA	f947d67f-4aa2-4eb9-977e-21a5ae563613	Primary Tumor	256	24
+TCGA-BRCA	f9eb88f7-9293-46bf-ace4-a746e4ff80dc	Blood Derived Normal	254	46
+TCGA-BRCA	fb57c598-b45b-478a-9d34-ca1f050d5b7c	Blood Derived Normal	243	16
+TCGA-BRCA	fb57c598-b45b-478a-9d34-ca1f050d5b7c	Primary Tumor	336	44
+TCGA-BRCA	fe15c48b-116d-461e-9b40-68514730fd18	Blood Derived Normal	132	15
+TCGA-BRCA	fe15c48b-116d-461e-9b40-68514730fd18	Primary Tumor	379	49
+TCGA-COAD	01ad5016-f691-4bca-82a0-910429d8d25b	Blood Derived Normal	39	5
+TCGA-COAD	01f493d4-229d-47a6-baa8-32a342c65d01	Blood Derived Normal	716	63
+TCGA-COAD	01f493d4-229d-47a6-baa8-32a342c65d01	Primary Tumor	454	35
+TCGA-COAD	02f9668c-71e6-485f-88b1-b37dc8bdd2ab	Blood Derived Normal	492	43
+TCGA-COAD	02f9668c-71e6-485f-88b1-b37dc8bdd2ab	Primary Tumor	526	83
+TCGA-COAD	03efbc94-a43d-4db0-9377-e397348430a6	Blood Derived Normal	44	2
+TCGA-COAD	043a4745-566b-4106-b159-99cb8b394b81	Blood Derived Normal	394	55
+TCGA-COAD	043a4745-566b-4106-b159-99cb8b394b81	Primary Tumor	383	66
+TCGA-COAD	04d7a52f-a89b-4114-a608-a6254b4d604f	Blood Derived Normal	508	65
+TCGA-COAD	04d7a52f-a89b-4114-a608-a6254b4d604f	Primary Tumor	549	88
+TCGA-COAD	05ff79c5-1127-4cac-8f4c-84089a3f2cde	Blood Derived Normal	296	76
+TCGA-COAD	05ff79c5-1127-4cac-8f4c-84089a3f2cde	Primary Tumor	112	21
+TCGA-COAD	0712566e-3371-4715-95f1-5b792e72d758	Blood Derived Normal	677	23
+TCGA-COAD	0712566e-3371-4715-95f1-5b792e72d758	Primary Tumor	351	8
+TCGA-COAD	0a815133-0edd-4422-89f2-2f067b6f2156	Blood Derived Normal	284	23
+TCGA-COAD	0a815133-0edd-4422-89f2-2f067b6f2156	Primary Tumor	291	26
+TCGA-COAD	0b8de222-119a-40f3-8beb-12b9d933225b	Blood Derived Normal	177	15
+TCGA-COAD	0b8de222-119a-40f3-8beb-12b9d933225b	Primary Tumor	200	23
+TCGA-COAD	0cb0dac8-4ce2-444a-b1ae-1550e065b4d9	Primary Tumor	582	62
+TCGA-COAD	0cb0dac8-4ce2-444a-b1ae-1550e065b4d9	Solid Tissue Normal	426	36
+TCGA-COAD	0e87e5fd-d5bb-4c0d-952d-711a6abbf336	Blood Derived Normal	338	28
+TCGA-COAD	0e87e5fd-d5bb-4c0d-952d-711a6abbf336	Primary Tumor	721	137
+TCGA-COAD	0f940ec0-eb0b-422a-a764-a26c8e5c216d	Blood Derived Normal	332	17
+TCGA-COAD	0f940ec0-eb0b-422a-a764-a26c8e5c216d	Primary Tumor	489	46
+TCGA-COAD	10881458-55b2-41d1-8358-4ee6ccb8ec85	Blood Derived Normal	601	38
+TCGA-COAD	10881458-55b2-41d1-8358-4ee6ccb8ec85	Primary Tumor	881	86
+TCGA-COAD	10994156-7c2f-420e-aeb8-11d566b3d5e4	Blood Derived Normal	357	37
+TCGA-COAD	10994156-7c2f-420e-aeb8-11d566b3d5e4	Primary Tumor	708	95
+TCGA-COAD	13ae9d83-a22f-451f-88bb-686051725cf3	Primary Tumor	203	20
+TCGA-COAD	13ae9d83-a22f-451f-88bb-686051725cf3	Solid Tissue Normal	351	52
+TCGA-COAD	14efca0c-882d-4fba-b15c-64af6e213b80	Blood Derived Normal	303	38
+TCGA-COAD	14efca0c-882d-4fba-b15c-64af6e213b80	Primary Tumor	544	89
+TCGA-COAD	192da41f-f0a5-494e-8eb9-96bcdae56ff8	Blood Derived Normal	184	10
+TCGA-COAD	192da41f-f0a5-494e-8eb9-96bcdae56ff8	Primary Tumor	418	52
+TCGA-COAD	1a09207e-9184-4f32-bd07-a9f4dc6c825d	Blood Derived Normal	501	57
+TCGA-COAD	1a09207e-9184-4f32-bd07-a9f4dc6c825d	Primary Tumor	283	24
+TCGA-COAD	1ad0b9b9-7ded-4281-b114-9dcc6138c037	Blood Derived Normal	207	19
+TCGA-COAD	1ad0b9b9-7ded-4281-b114-9dcc6138c037	Primary Tumor	391	73
+TCGA-COAD	1add38c2-df6f-47c9-9373-0bec0e40baf8	Blood Derived Normal	545	92
+TCGA-COAD	1add38c2-df6f-47c9-9373-0bec0e40baf8	Primary Tumor	396	81
+TCGA-COAD	20ccd267-74e5-4574-a8e1-028bcd74aaeb	Blood Derived Normal	82	3
+TCGA-COAD	20ccd267-74e5-4574-a8e1-028bcd74aaeb	Primary Tumor	431	104
+TCGA-COAD	21bdad0d-c6a2-428c-b2b4-0de282b34abc	Blood Derived Normal	477	62
+TCGA-COAD	21bdad0d-c6a2-428c-b2b4-0de282b34abc	Primary Tumor	547	113
+TCGA-COAD	23d0681a-912a-408f-b19a-0bbcf5ffc2f3	Blood Derived Normal	155	15
+TCGA-COAD	23d0681a-912a-408f-b19a-0bbcf5ffc2f3	Primary Tumor	238	35
+TCGA-COAD	2a971e32-b0e7-4a3f-8c40-62d69c0307d8	Primary Tumor	745	54
+TCGA-COAD	2a971e32-b0e7-4a3f-8c40-62d69c0307d8	Solid Tissue Normal	881	75
+TCGA-COAD	2c9996bb-af6e-4424-881a-e81b9c9aeb78	Blood Derived Normal	183	13
+TCGA-COAD	2c9996bb-af6e-4424-881a-e81b9c9aeb78	Primary Tumor	198	22
+TCGA-COAD	2e386e48-b99b-4806-a3e3-081d72a606e7	Primary Tumor	626	64
+TCGA-COAD	2e386e48-b99b-4806-a3e3-081d72a606e7	Solid Tissue Normal	489	31
+TCGA-COAD	315ef7f6-ca21-4d87-8f19-40bd455885ec	Blood Derived Normal	436	31
+TCGA-COAD	315ef7f6-ca21-4d87-8f19-40bd455885ec	Primary Tumor	475	39
+TCGA-COAD	33522271-b2ca-4da4-a942-501ab9117c51	Blood Derived Normal	211	19
+TCGA-COAD	33522271-b2ca-4da4-a942-501ab9117c51	Primary Tumor	221	29
+TCGA-COAD	33e989b9-fac4-47d8-b429-269044ac772a	Blood Derived Normal	1071	156
+TCGA-COAD	33e989b9-fac4-47d8-b429-269044ac772a	Primary Tumor	223	16
+TCGA-COAD	35620be9-3ba5-4be7-9e00-83103e6a92e6	Blood Derived Normal	636	39
+TCGA-COAD	35620be9-3ba5-4be7-9e00-83103e6a92e6	Primary Tumor	912	71
+TCGA-COAD	384400c1-98d6-4cc3-8724-de6711f6208b	Blood Derived Normal	718	108
+TCGA-COAD	384400c1-98d6-4cc3-8724-de6711f6208b	Primary Tumor	776	89
+TCGA-COAD	39d3b5b3-d51e-4d77-a8aa-2977fa734fab	Blood Derived Normal	84	11
+TCGA-COAD	39d3b5b3-d51e-4d77-a8aa-2977fa734fab	Primary Tumor	114	31
+TCGA-COAD	41658cf8-0de1-4a97-bb60-0f0107c84e00	Blood Derived Normal	239	31
+TCGA-COAD	41658cf8-0de1-4a97-bb60-0f0107c84e00	Primary Tumor	225	28
+TCGA-COAD	44c2854e-3f8c-48e1-b4d5-1b5778d4fce4	Primary Tumor	188	37
+TCGA-COAD	4563e4e0-a661-46de-ad25-9c86a621e147	Blood Derived Normal	250	24
+TCGA-COAD	4563e4e0-a661-46de-ad25-9c86a621e147	Primary Tumor	192	18
+TCGA-COAD	4f786107-3cf5-4ab3-bba4-f399dee23f0e	Blood Derived Normal	383	18
+TCGA-COAD	4f786107-3cf5-4ab3-bba4-f399dee23f0e	Primary Tumor	841	159
+TCGA-COAD	4f9775f2-b663-4daf-aa9e-50915cae9407	Solid Tissue Normal	390	66
+TCGA-COAD	5116e3b4-2bac-40f5-8046-b9c1783faaa5	Primary Tumor	560	89
+TCGA-COAD	5116e3b4-2bac-40f5-8046-b9c1783faaa5	Solid Tissue Normal	316	25
+TCGA-COAD	5498d5ef-ad24-4034-9750-7c996c5355e1	Blood Derived Normal	155	11
+TCGA-COAD	5498d5ef-ad24-4034-9750-7c996c5355e1	Primary Tumor	219	26
+TCGA-COAD	5a195baa-2d05-4273-a7c4-64cc816b0406	Blood Derived Normal	401	44
+TCGA-COAD	5a195baa-2d05-4273-a7c4-64cc816b0406	Primary Tumor	611	91
+TCGA-COAD	5da56982-6de7-4994-aa9e-3b01200b2959	Blood Derived Normal	283	48
+TCGA-COAD	5da56982-6de7-4994-aa9e-3b01200b2959	Primary Tumor	298	65
+TCGA-COAD	628408ce-0691-4e0b-b4c7-aca9a0d73bb0	Blood Derived Normal	170	18
+TCGA-COAD	628408ce-0691-4e0b-b4c7-aca9a0d73bb0	Primary Tumor	151	12
+TCGA-COAD	654c6f5c-3e5c-49f0-b53f-87cd9797d7c9	Blood Derived Normal	1	0
+TCGA-COAD	69fb431f-0caf-4cdd-9085-eda5b18ed15d	Blood Derived Normal	614	52
+TCGA-COAD	69fb431f-0caf-4cdd-9085-eda5b18ed15d	Primary Tumor	297	14
+TCGA-COAD	6baf61b6-ae5b-42f0-adc9-0d26fda231f7	Blood Derived Normal	436	28
+TCGA-COAD	6baf61b6-ae5b-42f0-adc9-0d26fda231f7	Primary Tumor	446	51
+TCGA-COAD	6fa41234-9077-4d05-a295-6820f3bedf5b	Primary Tumor	636	55
+TCGA-COAD	6fa41234-9077-4d05-a295-6820f3bedf5b	Solid Tissue Normal	621	62
+TCGA-COAD	6fc5e56a-1f5e-4ff1-948e-5ef636ebb48d	Blood Derived Normal	218	16
+TCGA-COAD	6fc5e56a-1f5e-4ff1-948e-5ef636ebb48d	Primary Tumor	218	29
+TCGA-COAD	73448b56-a6c6-4c98-a153-ab704261e073	Blood Derived Normal	473	51
+TCGA-COAD	73448b56-a6c6-4c98-a153-ab704261e073	Primary Tumor	456	36
+TCGA-COAD	73a142e1-8ac2-4cfe-b8cf-7e9dea64f488	Blood Derived Normal	250	17
+TCGA-COAD	73a142e1-8ac2-4cfe-b8cf-7e9dea64f488	Primary Tumor	228	28
+TCGA-COAD	750770db-53cf-4021-a8c2-5e0ddb97fef5	Blood Derived Normal	275	32
+TCGA-COAD	750770db-53cf-4021-a8c2-5e0ddb97fef5	Primary Tumor	323	35
+TCGA-COAD	764c97c9-01d3-45cb-86bd-f8a52b5468da	Blood Derived Normal	657	58
+TCGA-COAD	764c97c9-01d3-45cb-86bd-f8a52b5468da	Primary Tumor	363	30
+TCGA-COAD	7a481097-14a3-4916-9632-d899c25fd284	Primary Tumor	838	39
+TCGA-COAD	7a481097-14a3-4916-9632-d899c25fd284	Solid Tissue Normal	1140	94
+TCGA-COAD	7a6c54f1-f4e4-426b-b306-2ca3c4de12ca	Blood Derived Normal	221	27
+TCGA-COAD	7a6c54f1-f4e4-426b-b306-2ca3c4de12ca	Primary Tumor	166	12
+TCGA-COAD	7b47489f-c3cc-4388-b5d7-c7c02790a5f6	Blood Derived Normal	373	53
+TCGA-COAD	7b47489f-c3cc-4388-b5d7-c7c02790a5f6	Primary Tumor	446	59
+TCGA-COAD	7dfbc0ed-e684-4966-8b59-fb6b9e80c129	Blood Derived Normal	83	16
+TCGA-COAD	7dfbc0ed-e684-4966-8b59-fb6b9e80c129	Primary Tumor	74	6
+TCGA-COAD	80311cf5-7e18-4545-92ad-c4b7dd5c9677	Blood Derived Normal	358	42
+TCGA-COAD	80311cf5-7e18-4545-92ad-c4b7dd5c9677	Primary Tumor	542	82
+TCGA-COAD	80809d79-92e1-4d6c-ba2e-0a9589997792	Blood Derived Normal	475	41
+TCGA-COAD	80809d79-92e1-4d6c-ba2e-0a9589997792	Primary Tumor	316	36
+TCGA-COAD	81555ac5-9cc2-49ae-9033-657f56243f20	Blood Derived Normal	73	5
+TCGA-COAD	81555ac5-9cc2-49ae-9033-657f56243f20	Primary Tumor	624	146
+TCGA-COAD	81f6b141-2195-4091-9cd3-dfb022663949	Blood Derived Normal	72	3
+TCGA-COAD	81f6b141-2195-4091-9cd3-dfb022663949	Primary Tumor	582	120
+TCGA-COAD	835c3e23-ac2b-4bc9-ac65-e3e81adecf77	Blood Derived Normal	60	5
+TCGA-COAD	835c3e23-ac2b-4bc9-ac65-e3e81adecf77	Primary Tumor	433	95
+TCGA-COAD	84e34cf2-b3bb-4a1a-8fb7-6c2c604c4008	Solid Tissue Normal	673	136
+TCGA-COAD	8632579e-d318-4dab-9994-d3945afc42ab	Solid Tissue Normal	1094	155
+TCGA-COAD	86a9e44f-728e-48e4-9e1b-682b023f7c0a	Blood Derived Normal	125	15
+TCGA-COAD	86a9e44f-728e-48e4-9e1b-682b023f7c0a	Primary Tumor	209	30
+TCGA-COAD	86d18004-9478-4e46-83b4-4fbe445ccb70	Blood Derived Normal	493	37
+TCGA-COAD	86d18004-9478-4e46-83b4-4fbe445ccb70	Primary Tumor	623	56
+TCGA-COAD	88e64f45-adc4-4223-9838-4d7d45b8f0c0	Blood Derived Normal	77	5
+TCGA-COAD	93ca8937-97c0-4f6e-bdec-66d32f2a7b3d	Blood Derived Normal	691	67
+TCGA-COAD	93ca8937-97c0-4f6e-bdec-66d32f2a7b3d	Primary Tumor	334	22
+TCGA-COAD	93cd5d07-e0d3-40f8-ae7f-beadb1efb7c1	Blood Derived Normal	414	101
+TCGA-COAD	93cd5d07-e0d3-40f8-ae7f-beadb1efb7c1	Primary Tumor	197	26
+TCGA-COAD	97f6c8d3-09a0-4128-8f10-41e736648a5f	Primary Tumor	676	36
+TCGA-COAD	97f6c8d3-09a0-4128-8f10-41e736648a5f	Solid Tissue Normal	600	45
+TCGA-COAD	a06c09a8-0951-49f4-a765-5147bbcae109	Blood Derived Normal	215	16
+TCGA-COAD	a06c09a8-0951-49f4-a765-5147bbcae109	Primary Tumor	285	33
+TCGA-COAD	a435fdf4-a89a-499e-9006-cbb5693eab26	Blood Derived Normal	449	37
+TCGA-COAD	a435fdf4-a89a-499e-9006-cbb5693eab26	Primary Tumor	429	39
+TCGA-COAD	a512701f-88bb-4b05-8c94-fd285b9dd13e	Blood Derived Normal	323	10
+TCGA-COAD	a512701f-88bb-4b05-8c94-fd285b9dd13e	Primary Tumor	846	87
+TCGA-COAD	a72dd578-3a6f-4807-a843-4a942500944e	Blood Derived Normal	671	52
+TCGA-COAD	a72dd578-3a6f-4807-a843-4a942500944e	Primary Tumor	520	54
+TCGA-COAD	a9cb21d1-4c4a-4f30-ad4d-c54bed26f187	Blood Derived Normal	256	78
+TCGA-COAD	aa85d9e8-caa6-422c-95ce-780e4ac2a5e4	Blood Derived Normal	25	2
+TCGA-COAD	aa909ffb-03e1-4e3f-8888-2212b23d90b7	Blood Derived Normal	296	29
+TCGA-COAD	aa909ffb-03e1-4e3f-8888-2212b23d90b7	Primary Tumor	187	23
+TCGA-COAD	abb0d53f-f74e-45dc-8fbb-40863016f3c6	Blood Derived Normal	287	30
+TCGA-COAD	abb0d53f-f74e-45dc-8fbb-40863016f3c6	Primary Tumor	276	26
+TCGA-COAD	ac6a3df9-41b1-4e5a-a15e-f44481384c23	Blood Derived Normal	169	13
+TCGA-COAD	ac6a3df9-41b1-4e5a-a15e-f44481384c23	Primary Tumor	225	29
+TCGA-COAD	af06cde0-c69a-4bb1-a234-8023b95e4835	Blood Derived Normal	497	61
+TCGA-COAD	af06cde0-c69a-4bb1-a234-8023b95e4835	Primary Tumor	287	25
+TCGA-COAD	af17788e-a562-43aa-bd36-fd3e031f483c	Blood Derived Normal	428	62
+TCGA-COAD	af17788e-a562-43aa-bd36-fd3e031f483c	Primary Tumor	516	69
+TCGA-COAD	af3a0634-4292-45bd-b948-6b6bd2d58090	Blood Derived Normal	96	21
+TCGA-COAD	b16bb717-d1cf-4237-a554-43f3995b82f2	Blood Derived Normal	437	46
+TCGA-COAD	b16bb717-d1cf-4237-a554-43f3995b82f2	Primary Tumor	951	204
+TCGA-COAD	b4c3cf95-a27c-4bcf-9321-38723473e83b	Blood Derived Normal	498	64
+TCGA-COAD	b4c3cf95-a27c-4bcf-9321-38723473e83b	Primary Tumor	372	65
+TCGA-COAD	b728e6e8-a0e4-496b-904c-6f07c12e901f	Solid Tissue Normal	471	100
+TCGA-COAD	bc02f801-081b-489b-87cb-d275c70299d5	Blood Derived Normal	273	20
+TCGA-COAD	bc02f801-081b-489b-87cb-d275c70299d5	Primary Tumor	429	47
+TCGA-COAD	bc42fe2d-1a33-428d-a601-b1871f4c8d9b	Blood Derived Normal	156	10
+TCGA-COAD	bc42fe2d-1a33-428d-a601-b1871f4c8d9b	Primary Tumor	260	22
+TCGA-COAD	bce3ce45-4fb3-4d8e-9ec7-d24427c2ba4d	Blood Derived Normal	109	12
+TCGA-COAD	bce3ce45-4fb3-4d8e-9ec7-d24427c2ba4d	Primary Tumor	185	20
+TCGA-COAD	bce5579c-08c6-48e9-853e-fac85ba8cbea	Blood Derived Normal	333	53
+TCGA-COAD	bce5579c-08c6-48e9-853e-fac85ba8cbea	Primary Tumor	212	15
+TCGA-COAD	beb63625-d9bf-4ccd-bc53-635b53d24240	Blood Derived Normal	38	2
+TCGA-COAD	beb63625-d9bf-4ccd-bc53-635b53d24240	Primary Tumor	456	108
+TCGA-COAD	bfb07784-693b-4c25-874e-4ad6e04a5d46	Blood Derived Normal	36	4
+TCGA-COAD	c1e141af-bdd1-4176-8c0e-cf1ab0c1d9d3	Blood Derived Normal	488	72
+TCGA-COAD	c1e141af-bdd1-4176-8c0e-cf1ab0c1d9d3	Primary Tumor	718	106
+TCGA-COAD	c46971a1-cbac-425d-bac2-f4142c92522e	Blood Derived Normal	247	22
+TCGA-COAD	c46971a1-cbac-425d-bac2-f4142c92522e	Primary Tumor	330	32
+TCGA-COAD	c616f95f-4ea1-4019-8c17-041878085c88	Blood Derived Normal	189	26
+TCGA-COAD	c616f95f-4ea1-4019-8c17-041878085c88	Primary Tumor	174	11
+TCGA-COAD	c82bbe23-0264-45a7-b1a6-82b4654108c8	Blood Derived Normal	315	62
+TCGA-COAD	c9e829d9-cd08-41a9-a5a4-34f2d7d619c7	Primary Tumor	271	15
+TCGA-COAD	c9e829d9-cd08-41a9-a5a4-34f2d7d619c7	Solid Tissue Normal	817	107
+TCGA-COAD	cab7bdbc-0a11-4901-97c3-26b884f79cb5	Blood Derived Normal	443	47
+TCGA-COAD	cab7bdbc-0a11-4901-97c3-26b884f79cb5	Primary Tumor	546	82
+TCGA-COAD	cbdabbcd-d8f1-4d7c-9e18-ebd83d888c51	Blood Derived Normal	705	71
+TCGA-COAD	cbdabbcd-d8f1-4d7c-9e18-ebd83d888c51	Primary Tumor	531	68
+TCGA-COAD	cc53bf9e-5e27-4305-a08b-552120c10aa5	Blood Derived Normal	612	57
+TCGA-COAD	cc53bf9e-5e27-4305-a08b-552120c10aa5	Primary Tumor	817	125
+TCGA-COAD	d17a2ab0-faef-40de-a87d-1291868b200d	Blood Derived Normal	185	10
+TCGA-COAD	d17a2ab0-faef-40de-a87d-1291868b200d	Primary Tumor	327	38
+TCGA-COAD	d2c99bed-3446-4d12-99e0-00611faa37dc	Blood Derived Normal	443	57
+TCGA-COAD	d2c99bed-3446-4d12-99e0-00611faa37dc	Primary Tumor	164	12
+TCGA-COAD	d4e1472a-7b5f-46f4-acb7-b961f634e28e	Blood Derived Normal	726	90
+TCGA-COAD	d4e1472a-7b5f-46f4-acb7-b961f634e28e	Primary Tumor	352	26
+TCGA-COAD	d5619045-060a-4b60-86e4-6a5774994fd4	Blood Derived Normal	474	70
+TCGA-COAD	d5619045-060a-4b60-86e4-6a5774994fd4	Primary Tumor	460	58
+TCGA-COAD	d651f9ba-8746-46c4-852c-6c2992c7d10e	Blood Derived Normal	143	9
+TCGA-COAD	d651f9ba-8746-46c4-852c-6c2992c7d10e	Primary Tumor	727	106
+TCGA-COAD	d655bbf6-c710-411d-aff5-ceb0fb6e6680	Blood Derived Normal	424	63
+TCGA-COAD	d655bbf6-c710-411d-aff5-ceb0fb6e6680	Primary Tumor	428	58
+TCGA-COAD	d761bc06-dee8-478a-be99-8af9c504e49c	Blood Derived Normal	218	11
+TCGA-COAD	d761bc06-dee8-478a-be99-8af9c504e49c	Primary Tumor	349	35
+TCGA-COAD	d7ba64d7-b4e5-488d-9f28-bcb7bf3c0f35	Primary Tumor	39	4
+TCGA-COAD	d7ebd11a-1339-4b28-be90-a788d2cfa706	Blood Derived Normal	375	29
+TCGA-COAD	d7ebd11a-1339-4b28-be90-a788d2cfa706	Primary Tumor	613	94
+TCGA-COAD	db246424-3979-4f23-b316-8d30c449ee15	Blood Derived Normal	362	32
+TCGA-COAD	db246424-3979-4f23-b316-8d30c449ee15	Primary Tumor	432	53
+TCGA-COAD	dca004bf-9c14-45a1-b186-ab3759f6c7fe	Blood Derived Normal	189	16
+TCGA-COAD	dca004bf-9c14-45a1-b186-ab3759f6c7fe	Primary Tumor	345	50
+TCGA-COAD	dd4be58e-da22-4bcd-bf4c-2b9e60ffda19	Blood Derived Normal	720	49
+TCGA-COAD	dd4be58e-da22-4bcd-bf4c-2b9e60ffda19	Primary Tumor	503	47
+TCGA-COAD	df228c56-89ac-4122-93b3-6c0740c4ec09	Blood Derived Normal	28	5
+TCGA-COAD	e2edbf3f-25d8-49aa-b656-2a59c3b99aeb	Blood Derived Normal	569	47
+TCGA-COAD	e2edbf3f-25d8-49aa-b656-2a59c3b99aeb	Primary Tumor	472	37
+TCGA-COAD	e394e9ec-7288-4ede-9ef8-41b631d100dd	Blood Derived Normal	115	9
+TCGA-COAD	e394e9ec-7288-4ede-9ef8-41b631d100dd	Primary Tumor	196	26
+TCGA-COAD	e457344d-76fb-46bf-b362-61a6e811d131	Blood Derived Normal	283	15
+TCGA-COAD	e457344d-76fb-46bf-b362-61a6e811d131	Primary Tumor	362	34
+TCGA-COAD	e6c8c5fc-158a-4de4-b3f6-3b645584bbc7	Primary Tumor	396	11
+TCGA-COAD	e6c8c5fc-158a-4de4-b3f6-3b645584bbc7	Solid Tissue Normal	878	101
+TCGA-COAD	e8841edf-e070-425b-b4d4-bbb2115f9dbd	Blood Derived Normal	79	3
+TCGA-COAD	e8841edf-e070-425b-b4d4-bbb2115f9dbd	Primary Tumor	708	163
+TCGA-COAD	ec3f3f11-75df-4fcc-ba03-f19aca907645	Blood Derived Normal	116	24
+TCGA-COAD	f2ef5afa-6191-43a1-a023-d53c0d985139	Blood Derived Normal	438	62
+TCGA-COAD	f2ef5afa-6191-43a1-a023-d53c0d985139	Primary Tumor	341	40
+TCGA-COAD	f38d49b7-6cad-4460-abd0-3685a3b2d941	Blood Derived Normal	86	4
+TCGA-COAD	f38d49b7-6cad-4460-abd0-3685a3b2d941	Primary Tumor	184	22
+TCGA-COAD	f3b9defb-88ed-4c95-9feb-7197d869676c	Blood Derived Normal	260	18
+TCGA-COAD	f3b9defb-88ed-4c95-9feb-7197d869676c	Primary Tumor	358	41
+TCGA-COAD	f5c3bc61-1018-4351-bb23-aacc1459365f	Blood Derived Normal	474	91
+TCGA-COAD	f87c6dcc-1a9e-4df5-962c-1f946e2611f8	Primary Tumor	471	46
+TCGA-COAD	f87c6dcc-1a9e-4df5-962c-1f946e2611f8	Solid Tissue Normal	550	55
+TCGA-COAD	fdffda5f-72b2-4153-b7f1-d7043b7ca898	Blood Derived Normal	223	25
+TCGA-COAD	fdffda5f-72b2-4153-b7f1-d7043b7ca898	Primary Tumor	219	17
+TCGA-GBM	025a7401-a65d-4ea0-8b4e-0ba775b0322a	Blood Derived Normal	159	6
+TCGA-GBM	025a7401-a65d-4ea0-8b4e-0ba775b0322a	Primary Tumor	355	60
+TCGA-GBM	035b09b7-add1-456d-ae80-20e8a03f6d7b	Blood Derived Normal	60	7
+TCGA-GBM	035b09b7-add1-456d-ae80-20e8a03f6d7b	Primary Tumor	374	47
+TCGA-GBM	04b4ebb4-6780-42d8-a980-711cd10cfe14	Blood Derived Normal	7	0
+TCGA-GBM	04b4ebb4-6780-42d8-a980-711cd10cfe14	Primary Tumor	81	9
+TCGA-GBM	05d5da50-52fe-4342-9c15-9ee4c1d6662e	Blood Derived Normal	21	3
+TCGA-GBM	05d5da50-52fe-4342-9c15-9ee4c1d6662e	Primary Tumor	393	47
+TCGA-GBM	06c427a1-8c2d-4003-b744-139114a04440	Blood Derived Normal	26	3
+TCGA-GBM	06c427a1-8c2d-4003-b744-139114a04440	Primary Tumor	54	7
+TCGA-GBM	0fe6684a-5ab2-4999-b69d-d99aa5679c97	Primary Tumor	416	61
+TCGA-GBM	1030a6b9-0df8-4d60-b69f-2a36e630a6ad	Blood Derived Normal	22	3
+TCGA-GBM	1030a6b9-0df8-4d60-b69f-2a36e630a6ad	Primary Tumor	47	8
+TCGA-GBM	12084e89-dbc2-43b3-a6d0-0e71e53d0eac	Blood Derived Normal	19	2
+TCGA-GBM	12084e89-dbc2-43b3-a6d0-0e71e53d0eac	Primary Tumor	107	17
+TCGA-GBM	12b67dc2-5e4c-48eb-92ba-8d91d2eadfe2	Blood Derived Normal	12	0
+TCGA-GBM	12b67dc2-5e4c-48eb-92ba-8d91d2eadfe2	Primary Tumor	34	6
+TCGA-GBM	13d12179-3182-4f41-85a2-90fd50e51480	Blood Derived Normal	8	2
+TCGA-GBM	13d12179-3182-4f41-85a2-90fd50e51480	Primary Tumor	331	44
+TCGA-GBM	151ca826-a4d7-42eb-8684-f9fe7b93543f	Blood Derived Normal	115	11
+TCGA-GBM	151ca826-a4d7-42eb-8684-f9fe7b93543f	Primary Tumor	562	109
+TCGA-GBM	159e0318-6173-440f-be07-8d956086e99d	Blood Derived Normal	19	1
+TCGA-GBM	159e0318-6173-440f-be07-8d956086e99d	Primary Tumor	57	13
+TCGA-GBM	165b8f99-f7ba-4553-96ed-235e3f77e19c	Blood Derived Normal	7	0
+TCGA-GBM	165b8f99-f7ba-4553-96ed-235e3f77e19c	Primary Tumor	20	2
+TCGA-GBM	166e76db-ccd8-4760-a517-d2bc8937ea29	Blood Derived Normal	10	0
+TCGA-GBM	166e76db-ccd8-4760-a517-d2bc8937ea29	Primary Tumor	263	45
+TCGA-GBM	1b25795e-69ad-47fd-bb2f-94ff0910fae1	Blood Derived Normal	23	2
+TCGA-GBM	1b25795e-69ad-47fd-bb2f-94ff0910fae1	Primary Tumor	34	6
+TCGA-GBM	1b6c184a-5868-4a51-8a82-aa16a7e65126	Blood Derived Normal	121	5
+TCGA-GBM	1b6c184a-5868-4a51-8a82-aa16a7e65126	Primary Tumor	584	78
+TCGA-GBM	1e2108e8-b620-4865-a8d8-77f9a0fe28a2	Blood Derived Normal	4	0
+TCGA-GBM	1e2108e8-b620-4865-a8d8-77f9a0fe28a2	Primary Tumor	86	15
+TCGA-GBM	2188c194-dfe4-4471-9b8b-050db1a1062c	Blood Derived Normal	112	11
+TCGA-GBM	2188c194-dfe4-4471-9b8b-050db1a1062c	Primary Tumor	309	59
+TCGA-GBM	24164e89-16ae-48c1-a464-9be94141deef	Blood Derived Normal	27	0
+TCGA-GBM	24164e89-16ae-48c1-a464-9be94141deef	Primary Tumor	437	65
+TCGA-GBM	28df4629-204f-4352-a19f-303a2e067633	Blood Derived Normal	16	0
+TCGA-GBM	28df4629-204f-4352-a19f-303a2e067633	Primary Tumor	231	28
+TCGA-GBM	2b82e941-1b16-444e-af41-24dbc0a7e8b5	Blood Derived Normal	18	2
+TCGA-GBM	2b82e941-1b16-444e-af41-24dbc0a7e8b5	Primary Tumor	98	17
+TCGA-GBM	2b90648c-c99e-4d4d-8d9b-67ff2c4e6115	Blood Derived Normal	9	2
+TCGA-GBM	2b90648c-c99e-4d4d-8d9b-67ff2c4e6115	Primary Tumor	51	8
+TCGA-GBM	2c922593-d94d-4e8f-b68b-b4b8cfcbf3e4	Blood Derived Normal	30	0
+TCGA-GBM	2c922593-d94d-4e8f-b68b-b4b8cfcbf3e4	Primary Tumor	184	34
+TCGA-GBM	2f4a127f-101a-4192-b3e8-f9be2c8648bc	Blood Derived Normal	23	0
+TCGA-GBM	2f4a127f-101a-4192-b3e8-f9be2c8648bc	Primary Tumor	351	86
+TCGA-GBM	2f61ea6b-a3f2-477f-ab98-47ed07b3b2cd	Blood Derived Normal	21	4
+TCGA-GBM	2f61ea6b-a3f2-477f-ab98-47ed07b3b2cd	Primary Tumor	44	10
+TCGA-GBM	2f8b698a-cbd0-4cab-a814-dc683e0e9305	Blood Derived Normal	17	4
+TCGA-GBM	2f8b698a-cbd0-4cab-a814-dc683e0e9305	Primary Tumor	145	27
+TCGA-GBM	30011f30-2926-47f2-a8f3-4f1b58ffa227	Blood Derived Normal	17	0
+TCGA-GBM	30256f61-7be9-4d47-8afd-afafa7a079c0	Blood Derived Normal	30	7
+TCGA-GBM	30256f61-7be9-4d47-8afd-afafa7a079c0	Primary Tumor	74	8
+TCGA-GBM	309005a2-93a8-4566-b8d3-6b9310144266	Blood Derived Normal	31	5
+TCGA-GBM	309005a2-93a8-4566-b8d3-6b9310144266	Primary Tumor	336	46
+TCGA-GBM	3258cb3b-f63b-463c-b2e4-d638149157c5	Blood Derived Normal	58	16
+TCGA-GBM	3258cb3b-f63b-463c-b2e4-d638149157c5	Primary Tumor	56	5
+TCGA-GBM	32afdc6c-e899-4795-9e90-c9a192bbc4c1	Blood Derived Normal	141	10
+TCGA-GBM	32afdc6c-e899-4795-9e90-c9a192bbc4c1	Primary Tumor	427	74
+TCGA-GBM	350232cb-b9ba-465b-be9a-81afbc6a92e9	Primary Tumor	172	40
+TCGA-GBM	352768f9-3ce1-419c-beef-6515c78f5d7a	Blood Derived Normal	14	1
+TCGA-GBM	352768f9-3ce1-419c-beef-6515c78f5d7a	Primary Tumor	220	43
+TCGA-GBM	35a7e49e-747b-45ce-9a07-3a5faba0ca94	Blood Derived Normal	45	5
+TCGA-GBM	35a7e49e-747b-45ce-9a07-3a5faba0ca94	Primary Tumor	126	28
+TCGA-GBM	3726b315-6cf8-49a3-a581-b7f3f4ca6e16	Blood Derived Normal	645	71
+TCGA-GBM	3726b315-6cf8-49a3-a581-b7f3f4ca6e16	Primary Tumor	622	68
+TCGA-GBM	386b629e-fab1-4033-b088-45d6eeb4a13e	Blood Derived Normal	115	13
+TCGA-GBM	386b629e-fab1-4033-b088-45d6eeb4a13e	Primary Tumor	218	40
+TCGA-GBM	389d5472-9e4a-47b3-bd6c-994eb0fafea2	Blood Derived Normal	120	17
+TCGA-GBM	389d5472-9e4a-47b3-bd6c-994eb0fafea2	Primary Tumor	276	43
+TCGA-GBM	38dd826d-06dc-4a73-b852-c3d78c9c3ff4	Blood Derived Normal	7	1
+TCGA-GBM	38dd826d-06dc-4a73-b852-c3d78c9c3ff4	Primary Tumor	32	7
+TCGA-GBM	397ddfb9-288b-48ce-be18-853409d8ae51	Blood Derived Normal	53	8
+TCGA-GBM	397ddfb9-288b-48ce-be18-853409d8ae51	Primary Tumor	144	27
+TCGA-GBM	3a56ef5c-9259-4cdc-905e-5fcf21dac09b	Blood Derived Normal	135	13
+TCGA-GBM	3a56ef5c-9259-4cdc-905e-5fcf21dac09b	Primary Tumor	284	37
+TCGA-GBM	3c5e7a3f-29b3-4af4-9023-dc7b151f0445	Blood Derived Normal	15	2
+TCGA-GBM	3c5e7a3f-29b3-4af4-9023-dc7b151f0445	Primary Tumor	139	14
+TCGA-GBM	407849a8-8447-4ede-a9d1-c1dfb535222e	Blood Derived Normal	20	1
+TCGA-GBM	407849a8-8447-4ede-a9d1-c1dfb535222e	Primary Tumor	22	2
+TCGA-GBM	44ef426e-b67d-4b49-80a3-86681b9abf1a	Blood Derived Normal	78	19
+TCGA-GBM	44ef426e-b67d-4b49-80a3-86681b9abf1a	Primary Tumor	169	32
+TCGA-GBM	456bcab3-165d-456f-94e3-f34f81a61d2e	Blood Derived Normal	28	4
+TCGA-GBM	456bcab3-165d-456f-94e3-f34f81a61d2e	Primary Tumor	76	8
+TCGA-GBM	4776b959-d5f5-41ad-ab39-dba6031f6884	Blood Derived Normal	925	145
+TCGA-GBM	4776b959-d5f5-41ad-ab39-dba6031f6884	Primary Tumor	98	3
+TCGA-GBM	47a4161c-9c61-48f5-b9bc-a6d1acad4e5a	Blood Derived Normal	9	1
+TCGA-GBM	47a4161c-9c61-48f5-b9bc-a6d1acad4e5a	Primary Tumor	189	34
+TCGA-GBM	4c070166-025e-49b7-b4d0-fe25c8a355b1	Blood Derived Normal	31	3
+TCGA-GBM	4c070166-025e-49b7-b4d0-fe25c8a355b1	Primary Tumor	57	9
+TCGA-GBM	4d18f820-6396-46ae-b5d6-4ba446279be8	Blood Derived Normal	124	27
+TCGA-GBM	4d18f820-6396-46ae-b5d6-4ba446279be8	Primary Tumor	287	46
+TCGA-GBM	4f50397e-c4bd-4408-b6e9-776b8a14c8a9	Blood Derived Normal	20	2
+TCGA-GBM	4f50397e-c4bd-4408-b6e9-776b8a14c8a9	Primary Tumor	381	60
+TCGA-GBM	50603cc6-42e6-412f-ab07-4805f728e6b6	Blood Derived Normal	45	4
+TCGA-GBM	50603cc6-42e6-412f-ab07-4805f728e6b6	Primary Tumor	36	6
+TCGA-GBM	521ea765-1bd1-423d-a75d-091243df37a9	Blood Derived Normal	27	4
+TCGA-GBM	521ea765-1bd1-423d-a75d-091243df37a9	Primary Tumor	66	11
+TCGA-GBM	52408d9f-2637-4952-9b90-cb607a860f23	Blood Derived Normal	14	2
+TCGA-GBM	52408d9f-2637-4952-9b90-cb607a860f23	Primary Tumor	58	12
+TCGA-GBM	5252c0b7-be05-4c0c-a8ac-afe9ad459489	Blood Derived Normal	32	2
+TCGA-GBM	5252c0b7-be05-4c0c-a8ac-afe9ad459489	Primary Tumor	460	53
+TCGA-GBM	535efef2-f2db-4888-9a8d-13caa8e1e6ef	Blood Derived Normal	154	21
+TCGA-GBM	535efef2-f2db-4888-9a8d-13caa8e1e6ef	Primary Tumor	378	55
+TCGA-GBM	543c0a7d-ccd7-4b8d-98fb-eabec806231d	Blood Derived Normal	88	11
+TCGA-GBM	543c0a7d-ccd7-4b8d-98fb-eabec806231d	Primary Tumor	198	31
+TCGA-GBM	55a063b0-98ad-4700-b3ce-61bfe364fec8	Blood Derived Normal	46	3
+TCGA-GBM	55a063b0-98ad-4700-b3ce-61bfe364fec8	Primary Tumor	224	30
+TCGA-GBM	5613f5f6-086d-470b-8f77-6dcb7f8625b7	Blood Derived Normal	86	2
+TCGA-GBM	5613f5f6-086d-470b-8f77-6dcb7f8625b7	Primary Tumor	1143	211
+TCGA-GBM	580cf1c8-1558-413c-a039-458de59a1709	Blood Derived Normal	13	0
+TCGA-GBM	580cf1c8-1558-413c-a039-458de59a1709	Primary Tumor	330	44
+TCGA-GBM	5a86d9f1-d38d-4b78-9a23-c7855a20ca2d	Blood Derived Normal	215	21
+TCGA-GBM	5a86d9f1-d38d-4b78-9a23-c7855a20ca2d	Primary Tumor	358	39
+TCGA-GBM	5aa15b7f-35c7-4022-b1b2-74a4f6d3ea85	Primary Tumor	116	19
+TCGA-GBM	5c890137-e03c-4897-8af4-02aafa2fdb70	Primary Tumor	413	88
+TCGA-GBM	5d2487b9-e0cd-40fc-a158-7b1803c8dc88	Blood Derived Normal	17	4
+TCGA-GBM	5d2487b9-e0cd-40fc-a158-7b1803c8dc88	Primary Tumor	347	47
+TCGA-GBM	5ef9486a-aeff-421d-b620-03ef119d85a5	Blood Derived Normal	28	7
+TCGA-GBM	60e47b7d-c664-46c0-ac13-db688d4b8a58	Primary Tumor	41	7
+TCGA-GBM	61ed8fbd-b753-451e-9683-edd4b266b0f3	Primary Tumor	136	30
+TCGA-GBM	620282f9-f932-4335-9c7d-ece53dcaf7a1	Blood Derived Normal	44	10
+TCGA-GBM	6573378a-ad14-4654-8810-9f3bd3597bc2	Blood Derived Normal	4	0
+TCGA-GBM	6573378a-ad14-4654-8810-9f3bd3597bc2	Primary Tumor	15	0
+TCGA-GBM	6633f338-34a9-44f6-8039-0b9408d6213d	Blood Derived Normal	8	0
+TCGA-GBM	6633f338-34a9-44f6-8039-0b9408d6213d	Primary Tumor	219	33
+TCGA-GBM	66f3c936-272e-4a1e-8567-f609af411329	Blood Derived Normal	75	21
+TCGA-GBM	66f3c936-272e-4a1e-8567-f609af411329	Primary Tumor	56	8
+TCGA-GBM	68f6976e-d3f2-432d-a121-274e228735b0	Blood Derived Normal	12	6
+TCGA-GBM	69d0a566-5fbf-45f6-a240-649b06868e27	Blood Derived Normal	38	7
+TCGA-GBM	69d0a566-5fbf-45f6-a240-649b06868e27	Primary Tumor	80	15
+TCGA-GBM	6a9d719d-249a-4756-adc8-e92fa60da229	Blood Derived Normal	36	3
+TCGA-GBM	6a9d719d-249a-4756-adc8-e92fa60da229	Primary Tumor	80	14
+TCGA-GBM	6c5154d2-af36-492f-b520-d925528824e4	Blood Derived Normal	63	5
+TCGA-GBM	6c5154d2-af36-492f-b520-d925528824e4	Primary Tumor	145	24
+TCGA-GBM	6e72d2e2-96fe-4fbb-9fe6-39ec28753eb6	Blood Derived Normal	42	2
+TCGA-GBM	6e72d2e2-96fe-4fbb-9fe6-39ec28753eb6	Primary Tumor	438	56
+TCGA-GBM	6fc6b9ca-84d8-4647-bbc8-c5ab472b1c02	Blood Derived Normal	72	20
+TCGA-GBM	6ff96a7e-1b96-4530-b8a8-7f2e9e541955	Primary Tumor	84	25
+TCGA-GBM	722f462d-f939-4bc1-aae4-8f78b1335a87	Blood Derived Normal	30	5
+TCGA-GBM	722f462d-f939-4bc1-aae4-8f78b1335a87	Primary Tumor	71	10
+TCGA-GBM	72f88d18-03be-4b51-9f4a-1151521b7292	Blood Derived Normal	192	15
+TCGA-GBM	72f88d18-03be-4b51-9f4a-1151521b7292	Primary Tumor	589	72
+TCGA-GBM	7340f325-579f-4b90-96aa-3a7b362129ca	Blood Derived Normal	19	3
+TCGA-GBM	7340f325-579f-4b90-96aa-3a7b362129ca	Primary Tumor	254	45
+TCGA-GBM	737b35e1-d668-4fce-9b6e-76946c7952b6	Blood Derived Normal	24	4
+TCGA-GBM	737b35e1-d668-4fce-9b6e-76946c7952b6	Primary Tumor	85	21
+TCGA-GBM	7751fc13-ec33-4057-965d-3b2ac6183344	Blood Derived Normal	80	23
+TCGA-GBM	77d4d3ef-3fe0-4f93-a863-b5840926576c	Blood Derived Normal	33	3
+TCGA-GBM	77d4d3ef-3fe0-4f93-a863-b5840926576c	Primary Tumor	204	29
+TCGA-GBM	79a68b32-29a3-47bf-9b2b-643ec7323d73	Blood Derived Normal	30	7
+TCGA-GBM	7cbabf1d-ec38-4048-ae1c-7d0f3001691b	Blood Derived Normal	112	16
+TCGA-GBM	7cbabf1d-ec38-4048-ae1c-7d0f3001691b	Primary Tumor	371	64
+TCGA-GBM	7d5c3699-ce28-4129-8391-736f670e8beb	Blood Derived Normal	81	17
+TCGA-GBM	7d5c3699-ce28-4129-8391-736f670e8beb	Primary Tumor	191	28
+TCGA-GBM	7db115ea-082b-45bb-97d2-4254270b8bb6	Blood Derived Normal	16	4
+TCGA-GBM	7db115ea-082b-45bb-97d2-4254270b8bb6	Primary Tumor	303	48
+TCGA-GBM	7fe37feb-e205-4524-8c98-1f9ac5fe0700	Blood Derived Normal	35	2
+TCGA-GBM	7fe37feb-e205-4524-8c98-1f9ac5fe0700	Primary Tumor	47	3
+TCGA-GBM	827453a9-7388-4336-9ac5-4defcb904607	Blood Derived Normal	40	3
+TCGA-GBM	827453a9-7388-4336-9ac5-4defcb904607	Primary Tumor	385	56
+TCGA-GBM	8a83ea25-d02e-4af8-9167-b29d3ef393cc	Blood Derived Normal	105	10
+TCGA-GBM	8a83ea25-d02e-4af8-9167-b29d3ef393cc	Primary Tumor	253	48
+TCGA-GBM	8ac5b22f-3925-47a9-8d09-d819c2e191e5	Blood Derived Normal	4	2
+TCGA-GBM	8ac5b22f-3925-47a9-8d09-d819c2e191e5	Primary Tumor	16	4
+TCGA-GBM	8db520cf-79b3-4a1b-872e-8f5f76117405	Blood Derived Normal	29	7
+TCGA-GBM	8db520cf-79b3-4a1b-872e-8f5f76117405	Primary Tumor	182	20
+TCGA-GBM	8f3acbbd-b2ca-4e66-8fe5-dbb49277f35b	Blood Derived Normal	5	0
+TCGA-GBM	93737759-b088-4d64-adfe-c2d5ec715341	Blood Derived Normal	22	5
+TCGA-GBM	93737759-b088-4d64-adfe-c2d5ec715341	Primary Tumor	75	9
+TCGA-GBM	97094aed-69f7-4f4e-a87e-533979e11514	Blood Derived Normal	183	12
+TCGA-GBM	97094aed-69f7-4f4e-a87e-533979e11514	Primary Tumor	980	124
+TCGA-GBM	97279d35-8db4-49a9-8b63-468443a9b959	Blood Derived Normal	185	31
+TCGA-GBM	97279d35-8db4-49a9-8b63-468443a9b959	Primary Tumor	171	33
+TCGA-GBM	98dd5ea6-8d40-4963-bbae-2d37001d71c8	Blood Derived Normal	20	4
+TCGA-GBM	98dd5ea6-8d40-4963-bbae-2d37001d71c8	Primary Tumor	215	36
+TCGA-GBM	98e0344d-71c6-477c-a990-0bd0277606af	Blood Derived Normal	116	14
+TCGA-GBM	98e0344d-71c6-477c-a990-0bd0277606af	Primary Tumor	213	49
+TCGA-GBM	98e2f2ec-bdcd-490a-bf45-600e3b6c7491	Blood Derived Normal	159	25
+TCGA-GBM	98e2f2ec-bdcd-490a-bf45-600e3b6c7491	Primary Tumor	243	35
+TCGA-GBM	9a41f05b-19b1-4269-9997-4b59e378280c	Blood Derived Normal	15	1
+TCGA-GBM	9a41f05b-19b1-4269-9997-4b59e378280c	Primary Tumor	330	41
+TCGA-GBM	9f004b8a-f202-419d-a4d8-01f9430eaca5	Blood Derived Normal	17	2
+TCGA-GBM	9f004b8a-f202-419d-a4d8-01f9430eaca5	Primary Tumor	387	53
+TCGA-GBM	a210407e-b7de-4e27-84b2-9dcc5f9e6e63	Blood Derived Normal	97	5
+TCGA-GBM	a210407e-b7de-4e27-84b2-9dcc5f9e6e63	Primary Tumor	406	85
+TCGA-GBM	a2338b30-f511-4163-af3b-1e4a40ff00e1	Blood Derived Normal	116	7
+TCGA-GBM	a2338b30-f511-4163-af3b-1e4a40ff00e1	Primary Tumor	706	124
+TCGA-GBM	a2ac9937-f351-4d78-9261-264bf6c21e0c	Blood Derived Normal	48	7
+TCGA-GBM	a3cc2845-8a44-4b50-8a3e-17a3c2c3e077	Blood Derived Normal	95	17
+TCGA-GBM	a3cc2845-8a44-4b50-8a3e-17a3c2c3e077	Primary Tumor	154	37
+TCGA-GBM	a515cf2d-e918-4958-9bf6-e611b425a97e	Blood Derived Normal	9	0
+TCGA-GBM	a515cf2d-e918-4958-9bf6-e611b425a97e	Primary Tumor	102	10
+TCGA-GBM	a589e2dc-7649-492c-9569-592698acaa6f	Blood Derived Normal	19	2
+TCGA-GBM	a589e2dc-7649-492c-9569-592698acaa6f	Primary Tumor	345	53
+TCGA-GBM	a597bfa8-8c4d-4f8e-9d85-8a9fdc2c56ff	Blood Derived Normal	27	4
+TCGA-GBM	a597bfa8-8c4d-4f8e-9d85-8a9fdc2c56ff	Primary Tumor	80	15
+TCGA-GBM	a79b97df-d7f7-4df4-861b-936f94a1ab30	Blood Derived Normal	10	1
+TCGA-GBM	a79b97df-d7f7-4df4-861b-936f94a1ab30	Primary Tumor	365	44
+TCGA-GBM	a9597785-a1d3-4788-a431-d25d69025690	Blood Derived Normal	22	3
+TCGA-GBM	a9597785-a1d3-4788-a431-d25d69025690	Primary Tumor	77	19
+TCGA-GBM	a9a0bad8-6074-4a7c-9f9e-7dbc1de01def	Blood Derived Normal	198	31
+TCGA-GBM	a9a0bad8-6074-4a7c-9f9e-7dbc1de01def	Primary Tumor	202	30
+TCGA-GBM	aa7ad106-eadc-489e-83b2-5698652434ea	Blood Derived Normal	23	2
+TCGA-GBM	aa7ad106-eadc-489e-83b2-5698652434ea	Primary Tumor	49	4
+TCGA-GBM	aad2c954-39a4-4ef3-9940-e754619007a4	Blood Derived Normal	35	3
+TCGA-GBM	aad2c954-39a4-4ef3-9940-e754619007a4	Primary Tumor	325	53
+TCGA-GBM	ac3582a9-46b1-4322-95fa-9e8b149b8044	Blood Derived Normal	28	3
+TCGA-GBM	ac3582a9-46b1-4322-95fa-9e8b149b8044	Primary Tumor	283	43
+TCGA-GBM	ac72738c-8b33-4f03-917c-86b114a2b9bd	Blood Derived Normal	22	3
+TCGA-GBM	ac72738c-8b33-4f03-917c-86b114a2b9bd	Primary Tumor	159	26
+TCGA-GBM	ae5b2e48-d186-4e77-a797-dcc3b3ca4847	Blood Derived Normal	50	8
+TCGA-GBM	ae5b2e48-d186-4e77-a797-dcc3b3ca4847	Primary Tumor	373	49
+TCGA-GBM	b1c4579c-72fa-4974-830c-b6a81ace45f4	Blood Derived Normal	35	0
+TCGA-GBM	b1c4579c-72fa-4974-830c-b6a81ace45f4	Primary Tumor	63	7
+TCGA-GBM	b1ce95bf-7441-4aac-8131-19a177d2b8ac	Blood Derived Normal	31	6
+TCGA-GBM	b1ce95bf-7441-4aac-8131-19a177d2b8ac	Primary Tumor	124	24
+TCGA-GBM	b37d944c-c65c-46d6-bb8b-3eb37cb85b68	Blood Derived Normal	93	27
+TCGA-GBM	b75845ed-a19a-4caa-b362-e62b1e538152	Blood Derived Normal	139	12
+TCGA-GBM	b75845ed-a19a-4caa-b362-e62b1e538152	Primary Tumor	552	87
+TCGA-GBM	b7b86c1f-9688-4129-891c-843e3a37b3e5	Blood Derived Normal	16	2
+TCGA-GBM	b7b86c1f-9688-4129-891c-843e3a37b3e5	Primary Tumor	335	43
+TCGA-GBM	b92047e1-8a76-46dd-baa7-6e629cfaebdb	Blood Derived Normal	37	5
+TCGA-GBM	b92047e1-8a76-46dd-baa7-6e629cfaebdb	Primary Tumor	65	12
+TCGA-GBM	b98184b9-6190-4e95-a1cf-8cffb44b9963	Blood Derived Normal	37	6
+TCGA-GBM	b98184b9-6190-4e95-a1cf-8cffb44b9963	Primary Tumor	443	57
+TCGA-GBM	ba383ea6-c885-49f0-bddc-e00be0230a6b	Blood Derived Normal	23	3
+TCGA-GBM	ba383ea6-c885-49f0-bddc-e00be0230a6b	Primary Tumor	227	36
+TCGA-GBM	bb0aca6b-55ab-4b24-8e64-29e0c96a9862	Blood Derived Normal	53	7
+TCGA-GBM	bb0aca6b-55ab-4b24-8e64-29e0c96a9862	Primary Tumor	188	35
+TCGA-GBM	bc7a0c8f-c1c1-447c-8019-389e52525081	Blood Derived Normal	67	9
+TCGA-GBM	bc7a0c8f-c1c1-447c-8019-389e52525081	Primary Tumor	204	28
+TCGA-GBM	bdc75722-1076-49f3-8dc7-f2b91e5a15eb	Blood Derived Normal	38	9
+TCGA-GBM	bdc75722-1076-49f3-8dc7-f2b91e5a15eb	Primary Tumor	287	21
+TCGA-GBM	be3a7ef3-34ed-40e1-9d9c-187940596b26	Blood Derived Normal	69	13
+TCGA-GBM	be3a7ef3-34ed-40e1-9d9c-187940596b26	Primary Tumor	130	18
+TCGA-GBM	c01ae0ee-fa58-45d2-ac33-d7f64d053bbb	Blood Derived Normal	36	3
+TCGA-GBM	c01ae0ee-fa58-45d2-ac33-d7f64d053bbb	Primary Tumor	514	50
+TCGA-GBM	c3432b21-d2e9-4caf-9c8e-c6a8d92b195d	Blood Derived Normal	24	1
+TCGA-GBM	c3432b21-d2e9-4caf-9c8e-c6a8d92b195d	Primary Tumor	607	67
+TCGA-GBM	c34760a2-f70e-48c4-a7c2-eb359f8aeb71	Blood Derived Normal	37	5
+TCGA-GBM	c34760a2-f70e-48c4-a7c2-eb359f8aeb71	Primary Tumor	212	27
+TCGA-GBM	c4171de5-8dac-44bd-a6eb-174f9451dbb7	Blood Derived Normal	25	3
+TCGA-GBM	c4171de5-8dac-44bd-a6eb-174f9451dbb7	Primary Tumor	84	19
+TCGA-GBM	c4ff28e5-9de7-43df-89a2-6832b8a0c00b	Blood Derived Normal	66	7
+TCGA-GBM	c4ff28e5-9de7-43df-89a2-6832b8a0c00b	Primary Tumor	149	31
+TCGA-GBM	c5718c27-cef6-4612-a7cc-42d0e0c51a1a	Blood Derived Normal	17	5
+TCGA-GBM	c5718c27-cef6-4612-a7cc-42d0e0c51a1a	Primary Tumor	77	8
+TCGA-GBM	c5e08764-822b-4214-9ce6-f3ec2756190e	Blood Derived Normal	134	11
+TCGA-GBM	c5e08764-822b-4214-9ce6-f3ec2756190e	Primary Tumor	317	44
+TCGA-GBM	c931f3bd-74c5-4ebd-bc0f-c7c6becd25ab	Blood Derived Normal	48	4
+TCGA-GBM	c931f3bd-74c5-4ebd-bc0f-c7c6becd25ab	Primary Tumor	247	46
+TCGA-GBM	ca261ec9-888b-47c8-8e71-5a22545d7161	Blood Derived Normal	161	14
+TCGA-GBM	ca261ec9-888b-47c8-8e71-5a22545d7161	Primary Tumor	530	67
+TCGA-GBM	ca893d12-3d6c-4e6f-b0e7-7f4eb8bb724b	Blood Derived Normal	45	9
+TCGA-GBM	ca893d12-3d6c-4e6f-b0e7-7f4eb8bb724b	Primary Tumor	86	14
+TCGA-GBM	cb58b5fe-ee0d-46f1-8502-1c8bcf729f3b	Blood Derived Normal	176	19
+TCGA-GBM	cb58b5fe-ee0d-46f1-8502-1c8bcf729f3b	Primary Tumor	609	75
+TCGA-GBM	cd73f38a-f6ff-4e7b-bd43-ec7b82dbe7df	Blood Derived Normal	24	3
+TCGA-GBM	cd73f38a-f6ff-4e7b-bd43-ec7b82dbe7df	Primary Tumor	248	45
+TCGA-GBM	cf286533-5c8a-40f3-9c69-f46264c7893b	Blood Derived Normal	44	7
+TCGA-GBM	cf286533-5c8a-40f3-9c69-f46264c7893b	Primary Tumor	159	22
+TCGA-GBM	d540d6d2-266c-48f9-8e73-304389b2060b	Blood Derived Normal	16	1
+TCGA-GBM	d540d6d2-266c-48f9-8e73-304389b2060b	Primary Tumor	183	33
+TCGA-GBM	d6830f6f-7bd5-4d43-81bd-42c64a73dd8b	Blood Derived Normal	10	1
+TCGA-GBM	d6830f6f-7bd5-4d43-81bd-42c64a73dd8b	Primary Tumor	73	14
+TCGA-GBM	d6a48eb1-7c20-4ae3-ae35-b6b641238ef1	Blood Derived Normal	42	9
+TCGA-GBM	d6a48eb1-7c20-4ae3-ae35-b6b641238ef1	Primary Tumor	225	37
+TCGA-GBM	dae7e5c3-0b17-419c-a5fc-3bb271222bce	Blood Derived Normal	177	7
+TCGA-GBM	dae7e5c3-0b17-419c-a5fc-3bb271222bce	Primary Tumor	691	100
+TCGA-GBM	db5ea0e6-4cac-4f18-8643-32afb1e0287d	Blood Derived Normal	62	9
+TCGA-GBM	db5ea0e6-4cac-4f18-8643-32afb1e0287d	Primary Tumor	624	81
+TCGA-GBM	dcc5e92a-8dd4-4909-8f37-98bed374d722	Blood Derived Normal	22	8
+TCGA-GBM	dcc5e92a-8dd4-4909-8f37-98bed374d722	Primary Tumor	51	16
+TCGA-GBM	dd76930a-1678-4b70-9864-730534174d41	Blood Derived Normal	3	0
+TCGA-GBM	dd76930a-1678-4b70-9864-730534174d41	Primary Tumor	75	15
+TCGA-GBM	df4168bd-9f94-4323-9c33-a446a9fae999	Blood Derived Normal	469	81
+TCGA-GBM	df4168bd-9f94-4323-9c33-a446a9fae999	Primary Tumor	258	27
+TCGA-GBM	e0e1b5b3-6e3c-4b79-aa2a-32b320c3e45a	Blood Derived Normal	9	1
+TCGA-GBM	e0e1b5b3-6e3c-4b79-aa2a-32b320c3e45a	Primary Tumor	275	43
+TCGA-GBM	e17a6048-7a72-42c0-ad3f-97cbff02bc9f	Blood Derived Normal	20	2
+TCGA-GBM	e17a6048-7a72-42c0-ad3f-97cbff02bc9f	Primary Tumor	42	10
+TCGA-GBM	e3251837-f6f3-4dad-856f-108e20d03dad	Blood Derived Normal	73	15
+TCGA-GBM	e3251837-f6f3-4dad-856f-108e20d03dad	Primary Tumor	286	44
+TCGA-GBM	e57b296a-80e9-4446-a3d1-3dbfeaf04f5e	Blood Derived Normal	133	8
+TCGA-GBM	e57b296a-80e9-4446-a3d1-3dbfeaf04f5e	Primary Tumor	742	119
+TCGA-GBM	e8e43a65-4ec8-4e07-a884-a6989eec28cc	Blood Derived Normal	26	1
+TCGA-GBM	e8e43a65-4ec8-4e07-a884-a6989eec28cc	Primary Tumor	79	12
+TCGA-GBM	e921772f-f81a-49bc-b35e-3354c94447c0	Blood Derived Normal	84	13
+TCGA-GBM	e921772f-f81a-49bc-b35e-3354c94447c0	Primary Tumor	338	53
+TCGA-GBM	e948d951-9299-4dec-9772-60b4ac3569cb	Blood Derived Normal	29	4
+TCGA-GBM	e948d951-9299-4dec-9772-60b4ac3569cb	Primary Tumor	155	29
+TCGA-GBM	eae44c1c-1628-4b58-8b90-d3372e3577d5	Blood Derived Normal	85	4
+TCGA-GBM	eae44c1c-1628-4b58-8b90-d3372e3577d5	Primary Tumor	466	75
+TCGA-GBM	eb9c8e66-6710-4141-ae28-1e5c88eaee47	Blood Derived Normal	133	10
+TCGA-GBM	eb9c8e66-6710-4141-ae28-1e5c88eaee47	Primary Tumor	356	49
+TCGA-GBM	ec1791b3-0192-45da-89c1-f942a6736704	Blood Derived Normal	21	3
+TCGA-GBM	ec1791b3-0192-45da-89c1-f942a6736704	Primary Tumor	252	33
+TCGA-GBM	ef6f6553-2575-457e-bc07-401215e54759	Blood Derived Normal	27	1
+TCGA-GBM	ef6f6553-2575-457e-bc07-401215e54759	Primary Tumor	146	17
+TCGA-GBM	eff7f13b-ed32-4e85-a8d0-831b655d773f	Blood Derived Normal	15	3
+TCGA-GBM	eff7f13b-ed32-4e85-a8d0-831b655d773f	Primary Tumor	111	23
+TCGA-GBM	f077df02-5056-402f-8522-7198c42bcc98	Blood Derived Normal	7	0
+TCGA-GBM	f077df02-5056-402f-8522-7198c42bcc98	Primary Tumor	151	21
+TCGA-GBM	f08280d6-2c80-4dd7-93d3-a0c55f7da5b3	Blood Derived Normal	59	7
+TCGA-GBM	f08280d6-2c80-4dd7-93d3-a0c55f7da5b3	Primary Tumor	282	48
+TCGA-GBM	f19850cb-50c4-4f3a-ba80-b1464958ffa8	Blood Derived Normal	29	4
+TCGA-GBM	f19850cb-50c4-4f3a-ba80-b1464958ffa8	Primary Tumor	221	50
+TCGA-GBM	f2de4316-026c-4c2d-b091-47bc0ec8612a	Blood Derived Normal	19	4
+TCGA-GBM	f2de4316-026c-4c2d-b091-47bc0ec8612a	Primary Tumor	34	9
+TCGA-GBM	f40e45c8-2042-4844-99b5-b629f20afd58	Blood Derived Normal	39	9
+TCGA-GBM	f40e45c8-2042-4844-99b5-b629f20afd58	Primary Tumor	27	5
+TCGA-GBM	f45f4a30-6b4c-4f15-9140-959d6a25a45f	Blood Derived Normal	37	5
+TCGA-GBM	f45f4a30-6b4c-4f15-9140-959d6a25a45f	Primary Tumor	252	37
+TCGA-GBM	f5bc5d97-e054-4e53-992d-71b896bd97d5	Blood Derived Normal	930	71
+TCGA-GBM	f5bc5d97-e054-4e53-992d-71b896bd97d5	Primary Tumor	158	4
+TCGA-GBM	f6b2f52b-284d-4bde-9a3d-a0f458d07f08	Blood Derived Normal	17	0
+TCGA-GBM	f6b2f52b-284d-4bde-9a3d-a0f458d07f08	Primary Tumor	228	31
+TCGA-GBM	f6c6e2c9-a3d6-4b81-a421-04ffef6b8744	Blood Derived Normal	29	4
+TCGA-GBM	f6c6e2c9-a3d6-4b81-a421-04ffef6b8744	Primary Tumor	251	37
+TCGA-GBM	f7dd387f-eca9-4028-b296-2ca6d56d3bde	Blood Derived Normal	91	13
+TCGA-GBM	f7dd387f-eca9-4028-b296-2ca6d56d3bde	Primary Tumor	118	14
+TCGA-GBM	f9ce2045-2821-4843-b5e9-cf7cc7e783d4	Blood Derived Normal	100	15
+TCGA-GBM	f9ce2045-2821-4843-b5e9-cf7cc7e783d4	Primary Tumor	222	30
+TCGA-GBM	fb86044c-161e-41d7-a49e-3d5ec18294ef	Blood Derived Normal	10	2
+TCGA-GBM	fb86044c-161e-41d7-a49e-3d5ec18294ef	Primary Tumor	340	48
+TCGA-GBM	fef02e2e-d4e6-4b56-b8ef-c367b0c920cd	Blood Derived Normal	175	16
+TCGA-GBM	fef02e2e-d4e6-4b56-b8ef-c367b0c920cd	Primary Tumor	415	62
+TCGA-GBM	ff61d536-b505-47e7-9d3c-a7252e9037a1	Blood Derived Normal	6	3
+TCGA-GBM	ff61d536-b505-47e7-9d3c-a7252e9037a1	Primary Tumor	104	21
+TCGA-KIRC	0a93c52e-7e96-406b-b40d-b2925ba4ebd1	Primary Tumor	137	27
+TCGA-KIRC	0b970feb-914f-4159-912f-6efec02b617f	Primary Tumor	303	37
+TCGA-KIRC	0b970feb-914f-4159-912f-6efec02b617f	Solid Tissue Normal	71	6
+TCGA-KIRC	0c139772-e303-45d1-b0c7-438fa1db105e	Primary Tumor	272	47
+TCGA-KIRC	10c03d66-a290-4e46-9018-2932a236eb09	Primary Tumor	201	24
+TCGA-KIRC	10c03d66-a290-4e46-9018-2932a236eb09	Solid Tissue Normal	95	12
+TCGA-KIRC	11ab53c8-6366-4bc9-b60d-23e6ed2d1cae	Primary Tumor	69	17
+TCGA-KIRC	12c4c4f1-5880-4bf9-9945-80bf45415de6	Primary Tumor	377	50
+TCGA-KIRC	136c95cd-febd-43f0-af35-125d3321a145	Primary Tumor	355	47
+TCGA-KIRC	136c95cd-febd-43f0-af35-125d3321a145	Solid Tissue Normal	75	8
+TCGA-KIRC	22b6724c-a59f-4796-8166-992253e8caf1	Primary Tumor	169	35
+TCGA-KIRC	2429c7d4-ae27-432d-9adf-1c6d192bf13c	Blood Derived Normal	44	7
+TCGA-KIRC	2429c7d4-ae27-432d-9adf-1c6d192bf13c	Primary Tumor	61	12
+TCGA-KIRC	2e81cfda-5080-49b8-95ca-ba3963dae30c	Primary Tumor	12	0
+TCGA-KIRC	2e81cfda-5080-49b8-95ca-ba3963dae30c	Solid Tissue Normal	39	9
+TCGA-KIRC	2ed3296a-5b10-40d8-8af4-90dc031657cd	Blood Derived Normal	21	5
+TCGA-KIRC	36ed3269-0a57-4c50-bbfa-cfd2a7b56d4f	Primary Tumor	297	37
+TCGA-KIRC	36ed3269-0a57-4c50-bbfa-cfd2a7b56d4f	Solid Tissue Normal	5	0
+TCGA-KIRC	3c5f27e9-db2f-4963-9240-94815808d32f	Blood Derived Normal	35	6
+TCGA-KIRC	3c5f27e9-db2f-4963-9240-94815808d32f	Primary Tumor	63	9
+TCGA-KIRC	3cbca837-f5a7-4a87-8f02-c59eac232d5a	Primary Tumor	144	21
+TCGA-KIRC	3cbca837-f5a7-4a87-8f02-c59eac232d5a	Solid Tissue Normal	126	14
+TCGA-KIRC	46c87ae0-c123-4bdc-8a79-d375d8a7e7a3	Primary Tumor	91	22
+TCGA-KIRC	46c87ae0-c123-4bdc-8a79-d375d8a7e7a3	Solid Tissue Normal	85	8
+TCGA-KIRC	4fca10bd-988a-47f9-8ed5-037c0d59d70c	Solid Tissue Normal	30	3
+TCGA-KIRC	50f29fc7-c111-4101-b970-b1e1dd3388cf	Primary Tumor	93	18
+TCGA-KIRC	50f29fc7-c111-4101-b970-b1e1dd3388cf	Solid Tissue Normal	20	3
+TCGA-KIRC	659294b9-ded9-498a-bc00-c1d4d456aa4a	Primary Tumor	424	65
+TCGA-KIRC	798d51ff-182e-406c-8885-8a198d9959d1	Primary Tumor	71	14
+TCGA-KIRC	798d51ff-182e-406c-8885-8a198d9959d1	Solid Tissue Normal	45	8
+TCGA-KIRC	7ac1d6c6-9ade-49af-8794-10b5b96b2b05	Primary Tumor	251	37
+TCGA-KIRC	8593764c-e468-4229-94de-6ba614b4f068	Blood Derived Normal	25	3
+TCGA-KIRC	8593764c-e468-4229-94de-6ba614b4f068	Primary Tumor	284	54
+TCGA-KIRC	897f85ec-7e14-426a-a532-eed01ccc90f1	Primary Tumor	175	21
+TCGA-KIRC	897f85ec-7e14-426a-a532-eed01ccc90f1	Solid Tissue Normal	78	12
+TCGA-KIRC	8ed08632-b5b3-4be3-bd71-999456fa2d23	Primary Tumor	240	29
+TCGA-KIRC	8ed08632-b5b3-4be3-bd71-999456fa2d23	Solid Tissue Normal	81	12
+TCGA-KIRC	8ee720b5-6f3a-4921-85ab-70e75c0835b0	Solid Tissue Normal	39	7
+TCGA-KIRC	97fee782-9aa3-41c7-8b7b-53c9c69bdabc	Blood Derived Normal	23	3
+TCGA-KIRC	97fee782-9aa3-41c7-8b7b-53c9c69bdabc	Primary Tumor	87	12
+TCGA-KIRC	a55e63a9-5046-4f0f-a1e1-197b783d5387	Primary Tumor	74	9
+TCGA-KIRC	a55e63a9-5046-4f0f-a1e1-197b783d5387	Solid Tissue Normal	4	0
+TCGA-KIRC	d7155ce6-e6b2-4c1f-8233-85f0d63e8e11	Blood Derived Normal	62	7
+TCGA-KIRC	d7155ce6-e6b2-4c1f-8233-85f0d63e8e11	Primary Tumor	43	7
+TCGA-KIRC	d7abeadd-ca92-4e18-ae06-70baf9ce42e0	Blood Derived Normal	47	8
+TCGA-KIRC	d7abeadd-ca92-4e18-ae06-70baf9ce42e0	Primary Tumor	123	13
+TCGA-KIRC	e1663694-17dd-4b01-b613-2516e022dfb7	Primary Tumor	305	38
+TCGA-KIRC	e1663694-17dd-4b01-b613-2516e022dfb7	Solid Tissue Normal	62	7
+TCGA-KIRC	e3aa5595-223b-42e9-aec0-e49f631e37d5	Blood Derived Normal	41	6
+TCGA-KIRC	e3aa5595-223b-42e9-aec0-e49f631e37d5	Primary Tumor	184	24
+TCGA-KIRC	fd5728e0-e495-45f5-aac8-c0856510c8aa	Blood Derived Normal	5	0
+TCGA-KIRC	fd5728e0-e495-45f5-aac8-c0856510c8aa	Primary Tumor	70	17
+TCGA-LUAD	009be09b-f9f6-43b7-8f45-4a648f8123ce	Blood Derived Normal	22	4
+TCGA-LUAD	07b5663f-9a54-4462-b6c1-6fc8116b8714	Blood Derived Normal	19	1
+TCGA-LUAD	07b5663f-9a54-4462-b6c1-6fc8116b8714	Primary Tumor	55	13
+TCGA-LUAD	0df573ee-28f0-4244-b434-09e6ca59fbf0	Blood Derived Normal	16	2
+TCGA-LUAD	0df573ee-28f0-4244-b434-09e6ca59fbf0	Primary Tumor	126	25
+TCGA-LUAD	199386c2-bb53-4fad-a1b6-59ab216a4a50	Primary Tumor	63	9
+TCGA-LUAD	199386c2-bb53-4fad-a1b6-59ab216a4a50	Solid Tissue Normal	147	19
+TCGA-LUAD	1ab7ad70-0f80-41d8-8efa-3baebc8223cc	Blood Derived Normal	19	6
+TCGA-LUAD	1ab7ad70-0f80-41d8-8efa-3baebc8223cc	Primary Tumor	18	2
+TCGA-LUAD	36ad7fc7-0cc1-4f01-aef1-f89b3cb4feac	Blood Derived Normal	8	2
+TCGA-LUAD	36ad7fc7-0cc1-4f01-aef1-f89b3cb4feac	Primary Tumor	60	11
+TCGA-LUAD	42ca54fc-c1ae-41cd-bca1-7fe9810db460	Blood Derived Normal	18	1
+TCGA-LUAD	42ca54fc-c1ae-41cd-bca1-7fe9810db460	Primary Tumor	90	12
+TCGA-LUAD	673493f6-975c-49e8-934c-001e9a0fff90	Blood Derived Normal	21	4
+TCGA-LUAD	673493f6-975c-49e8-934c-001e9a0fff90	Primary Tumor	50	12
+TCGA-LUAD	6d72de06-232a-4983-a06c-eba6d82cb3f1	Primary Tumor	75	21
+TCGA-LUAD	6d72de06-232a-4983-a06c-eba6d82cb3f1	Solid Tissue Normal	67	10
+TCGA-LUAD	8a16ddb3-4861-4128-bed9-0b1f94fe8cf7	Blood Derived Normal	18	5
+TCGA-LUAD	8a16ddb3-4861-4128-bed9-0b1f94fe8cf7	Primary Tumor	60	16
+TCGA-LUAD	a41c46da-7ed4-4192-bd16-b3cbb94a5133	Primary Tumor	126	18
+TCGA-LUAD	a41c46da-7ed4-4192-bd16-b3cbb94a5133	Solid Tissue Normal	115	12
+TCGA-LUAD	bab43415-d413-40be-a4c0-2c40a52afe6a	Blood Derived Normal	20	4
+TCGA-LUAD	bab43415-d413-40be-a4c0-2c40a52afe6a	Primary Tumor	27	2
+TCGA-LUAD	bf15f7ad-9d92-473b-91d1-f24aa373ab97	Blood Derived Normal	28	3
+TCGA-LUAD	bf15f7ad-9d92-473b-91d1-f24aa373ab97	Primary Tumor	107	20
+TCGA-LUAD	ccda26c1-a6d6-4317-8cf8-8a87e15ce12e	Blood Derived Normal	13	0
+TCGA-LUAD	ccda26c1-a6d6-4317-8cf8-8a87e15ce12e	Primary Tumor	35	3
+TCGA-LUAD	d31aeefc-b59b-42e9-9919-750b17a70a3d	Solid Tissue Normal	336	43
+TCGA-LUAD	e16ca88f-488b-40f0-9169-e5a62482a2ff	Blood Derived Normal	19	3
+TCGA-LUAD	e16ca88f-488b-40f0-9169-e5a62482a2ff	Primary Tumor	48	6
+TCGA-LUAD	e8b7a103-644f-4865-92f8-80b053bd5e17	Blood Derived Normal	15	2
+TCGA-LUAD	e8b7a103-644f-4865-92f8-80b053bd5e17	Primary Tumor	46	7
+TCGA-LUAD	eeab558b-8d1e-4843-861d-dbfb06061758	Blood Derived Normal	8	2
+TCGA-LUAD	eeab558b-8d1e-4843-861d-dbfb06061758	Primary Tumor	55	11
+TCGA-LUAD	f77cf4d3-9829-4fd3-95a1-b29aed9e94b8	Blood Derived Normal	51	12
+TCGA-LUAD	f77cf4d3-9829-4fd3-95a1-b29aed9e94b8	Primary Tumor	76	17
+TCGA-LUAD	fb6b289c-aaf9-4d8e-b6e0-5d35bce1b6e1	Blood Derived Normal	18	4
+TCGA-LUAD	fb6b289c-aaf9-4d8e-b6e0-5d35bce1b6e1	Primary Tumor	36	9
+TCGA-LUAD	fb79c491-7b01-42ae-8369-8364e442e31b	Blood Derived Normal	24	3
+TCGA-LUAD	fb79c491-7b01-42ae-8369-8364e442e31b	Primary Tumor	108	15
+TCGA-LUSC	037c57d1-b4a5-45dc-bda4-0550461d321b	Primary Tumor	322	35
+TCGA-LUSC	037c57d1-b4a5-45dc-bda4-0550461d321b	Solid Tissue Normal	216	31
+TCGA-LUSC	0398eae1-7216-4595-80a5-6b117d96e070	Primary Tumor	171	10
+TCGA-LUSC	0398eae1-7216-4595-80a5-6b117d96e070	Solid Tissue Normal	486	81
+TCGA-LUSC	0806923c-2dee-403d-a2e9-771722873b0d	Primary Tumor	144	13
+TCGA-LUSC	0806923c-2dee-403d-a2e9-771722873b0d	Solid Tissue Normal	161	27
+TCGA-LUSC	0ab8d063-62b4-4d47-82aa-e3351a60029d	Primary Tumor	81	15
+TCGA-LUSC	0ab8d063-62b4-4d47-82aa-e3351a60029d	Solid Tissue Normal	12	0
+TCGA-LUSC	0d6a7cdf-daf5-4181-864f-430952e6fdb3	Primary Tumor	105	13
+TCGA-LUSC	0d6a7cdf-daf5-4181-864f-430952e6fdb3	Solid Tissue Normal	90	12
+TCGA-LUSC	0e2ee54a-51c9-4868-842d-a2a1c1cfb016	Blood Derived Normal	456	102
+TCGA-LUSC	0e2ee54a-51c9-4868-842d-a2a1c1cfb016	Primary Tumor	230	26
+TCGA-LUSC	174cdc32-e94a-4829-b6b7-df560de55be2	Primary Tumor	16	1
+TCGA-LUSC	18058bfb-a008-410f-8e04-7c2b45a856b7	Primary Tumor	79	12
+TCGA-LUSC	18058bfb-a008-410f-8e04-7c2b45a856b7	Solid Tissue Normal	120	25
+TCGA-LUSC	1e3eb77c-d85b-437e-8b8c-12e5bd0e93dc	Primary Tumor	115	18
+TCGA-LUSC	1e3eb77c-d85b-437e-8b8c-12e5bd0e93dc	Solid Tissue Normal	109	14
+TCGA-LUSC	1f11de87-a5fe-49fd-80c1-e279b2bc69de	Primary Tumor	41	8
+TCGA-LUSC	1f11de87-a5fe-49fd-80c1-e279b2bc69de	Solid Tissue Normal	29	4
+TCGA-LUSC	220be009-8f1e-4a77-ab04-3220b5f87ea6	Primary Tumor	220	19
+TCGA-LUSC	220be009-8f1e-4a77-ab04-3220b5f87ea6	Solid Tissue Normal	440	85
+TCGA-LUSC	257650bd-2e2b-4680-b77b-f9268b3af4ee	Primary Tumor	191	30
+TCGA-LUSC	28f899c5-ea17-4df6-83e6-e744e04d0ea1	Primary Tumor	136	13
+TCGA-LUSC	28f899c5-ea17-4df6-83e6-e744e04d0ea1	Solid Tissue Normal	150	28
+TCGA-LUSC	2afa2fd8-e4d9-4e7b-b387-7e2451764d5d	Blood Derived Normal	359	76
+TCGA-LUSC	2afa2fd8-e4d9-4e7b-b387-7e2451764d5d	Primary Tumor	257	18
+TCGA-LUSC	2ca47049-bc12-4992-b9cf-1c01dda639be	Primary Tumor	32	6
+TCGA-LUSC	2ca47049-bc12-4992-b9cf-1c01dda639be	Solid Tissue Normal	33	5
+TCGA-LUSC	32c86f17-34c3-406b-85c5-4f5965619247	Primary Tumor	5	0
+TCGA-LUSC	32c86f17-34c3-406b-85c5-4f5965619247	Solid Tissue Normal	156	35
+TCGA-LUSC	337e77b3-7f58-4f92-96a4-c764b1ebfa56	Solid Tissue Normal	10	0
+TCGA-LUSC	37f5457e-21d9-4b79-95d5-ded6f2e43087	Primary Tumor	140	30
+TCGA-LUSC	37f5457e-21d9-4b79-95d5-ded6f2e43087	Solid Tissue Normal	50	2
+TCGA-LUSC	3c56a43a-91f1-4a66-9cfe-d2e26b86a936	Primary Tumor	135	25
+TCGA-LUSC	3c56a43a-91f1-4a66-9cfe-d2e26b86a936	Solid Tissue Normal	177	21
+TCGA-LUSC	3d1f4059-2220-45b4-a4d2-b14f76cec96a	Primary Tumor	100	20
+TCGA-LUSC	3d1f4059-2220-45b4-a4d2-b14f76cec96a	Solid Tissue Normal	165	19
+TCGA-LUSC	3edf933a-be1a-46e8-bfb0-acdff30e64a0	Primary Tumor	108	10
+TCGA-LUSC	3edf933a-be1a-46e8-bfb0-acdff30e64a0	Solid Tissue Normal	125	20
+TCGA-LUSC	43abe847-4ba7-466e-8283-5d7b80b999a7	Primary Tumor	76	6
+TCGA-LUSC	43abe847-4ba7-466e-8283-5d7b80b999a7	Solid Tissue Normal	180	27
+TCGA-LUSC	44c56277-37e5-47a9-b476-d8475ef477ca	Primary Tumor	126	26
+TCGA-LUSC	4d687740-96ca-4d78-8c78-1a2024ce6b6c	Primary Tumor	40	7
+TCGA-LUSC	4d687740-96ca-4d78-8c78-1a2024ce6b6c	Solid Tissue Normal	49	10
+TCGA-LUSC	585e6487-b0a3-4828-8a06-46bee01dff74	Primary Tumor	66	9
+TCGA-LUSC	6394fe4a-6034-4c79-b28f-aa43e3753730	Solid Tissue Normal	96	28
+TCGA-LUSC	69e43922-e028-4090-8724-1fb2f018c7f2	Primary Tumor	81	15
+TCGA-LUSC	69e43922-e028-4090-8724-1fb2f018c7f2	Solid Tissue Normal	104	10
+TCGA-LUSC	6ab57144-16ea-4844-b737-e726787d23b9	Primary Tumor	141	21
+TCGA-LUSC	6ab57144-16ea-4844-b737-e726787d23b9	Solid Tissue Normal	87	7
+TCGA-LUSC	6fd72426-f6c8-47ca-a500-d5d3600b9b15	Primary Tumor	85	13
+TCGA-LUSC	6fd72426-f6c8-47ca-a500-d5d3600b9b15	Solid Tissue Normal	134	25
+TCGA-LUSC	705a4688-f10f-4e6a-aed9-6efc3b3b9989	Primary Tumor	74	10
+TCGA-LUSC	705a4688-f10f-4e6a-aed9-6efc3b3b9989	Solid Tissue Normal	124	15
+TCGA-LUSC	7ccce724-d401-487d-b444-6edbbd032303	Primary Tumor	29	1
+TCGA-LUSC	7ccce724-d401-487d-b444-6edbbd032303	Solid Tissue Normal	93	15
+TCGA-LUSC	7d3e77cc-9603-4722-8e39-1912b678871b	Primary Tumor	75	13
+TCGA-LUSC	7d3e77cc-9603-4722-8e39-1912b678871b	Solid Tissue Normal	122	24
+TCGA-LUSC	7ddd36fd-9e6a-4a46-a799-82998786cb36	Primary Tumor	156	13
+TCGA-LUSC	7ddd36fd-9e6a-4a46-a799-82998786cb36	Solid Tissue Normal	352	39
+TCGA-LUSC	7e691df8-8ea6-472c-86bf-504c7ba6983d	Primary Tumor	87	9
+TCGA-LUSC	7e691df8-8ea6-472c-86bf-504c7ba6983d	Solid Tissue Normal	176	20
+TCGA-LUSC	90b02be3-5496-40a2-8c6e-460d2898aadb	Solid Tissue Normal	116	22
+TCGA-LUSC	9335e4df-9974-47ec-84c4-256cd33522f2	Solid Tissue Normal	73	15
+TCGA-LUSC	96006f5e-5922-4e55-afa5-5e43773d72f2	Primary Tumor	283	38
+TCGA-LUSC	96006f5e-5922-4e55-afa5-5e43773d72f2	Solid Tissue Normal	170	25
+TCGA-LUSC	972476b7-d7f3-4865-b978-0c13f29457cb	Primary Tumor	188	30
+TCGA-LUSC	972476b7-d7f3-4865-b978-0c13f29457cb	Solid Tissue Normal	114	11
+TCGA-LUSC	a02932f3-5606-42a5-aee4-e5b9f5aa1aaa	Primary Tumor	79	14
+TCGA-LUSC	a0b3fab8-7817-429b-aa34-7ef03e813313	Primary Tumor	98	12
+TCGA-LUSC	a0b3fab8-7817-429b-aa34-7ef03e813313	Solid Tissue Normal	263	60
+TCGA-LUSC	a3e1ac67-a1f2-44fb-8343-a7e8239fc24a	Primary Tumor	170	23
+TCGA-LUSC	a3e1ac67-a1f2-44fb-8343-a7e8239fc24a	Solid Tissue Normal	130	17
+TCGA-LUSC	a9d7adec-3849-40e2-a2a2-f43443ec43bb	Primary Tumor	52	5
+TCGA-LUSC	a9d7adec-3849-40e2-a2a2-f43443ec43bb	Solid Tissue Normal	80	7
+TCGA-LUSC	aabc43bb-485a-49bc-b48a-d4e4ecd46d33	Solid Tissue Normal	78	20
+TCGA-LUSC	acae4e48-57de-40c5-9ae5-4386144ebaea	Primary Tumor	69	5
+TCGA-LUSC	acae4e48-57de-40c5-9ae5-4386144ebaea	Solid Tissue Normal	157	24
+TCGA-LUSC	ad112acb-d241-48a0-8e48-d69cdc3feba8	Primary Tumor	59	9
+TCGA-LUSC	ad112acb-d241-48a0-8e48-d69cdc3feba8	Solid Tissue Normal	59	17
+TCGA-LUSC	b28e3be1-9843-4204-b999-b3e2a909c7bd	Primary Tumor	28	5
+TCGA-LUSC	b28e3be1-9843-4204-b999-b3e2a909c7bd	Solid Tissue Normal	134	28
+TCGA-LUSC	b913d254-8307-4b8a-8313-d978e32bb38f	Primary Tumor	75	12
+TCGA-LUSC	b913d254-8307-4b8a-8313-d978e32bb38f	Solid Tissue Normal	47	7
+TCGA-LUSC	b9a81947-0348-4fe6-a0ac-d674cd13aa99	Primary Tumor	136	17
+TCGA-LUSC	b9a81947-0348-4fe6-a0ac-d674cd13aa99	Solid Tissue Normal	190	38
+TCGA-LUSC	bcd78677-98d5-4403-8313-e1fbd76e8ef7	Primary Tumor	4	0
+TCGA-LUSC	bcd78677-98d5-4403-8313-e1fbd76e8ef7	Solid Tissue Normal	12	1
+TCGA-LUSC	bff77f70-973a-4b49-8fd9-4a767f5df2c0	Primary Tumor	89	16
+TCGA-LUSC	bff77f70-973a-4b49-8fd9-4a767f5df2c0	Solid Tissue Normal	115	17
+TCGA-LUSC	c1cac0d3-8074-4636-a0b9-47eeede6503b	Solid Tissue Normal	71	22
+TCGA-LUSC	ce94e544-8887-479f-83cd-27b1c740e4c2	Primary Tumor	84	16
+TCGA-LUSC	cee6e9f6-6d7e-4096-a9bc-2cce004fb218	Primary Tumor	400	75
+TCGA-LUSC	cee6e9f6-6d7e-4096-a9bc-2cce004fb218	Solid Tissue Normal	69	5
+TCGA-LUSC	d3f8c35d-5197-43fa-a243-2baf9c44cf74	Primary Tumor	53	12
+TCGA-LUSC	d49b0369-905c-4608-96a9-cc854980fc4c	Solid Tissue Normal	123	19
+TCGA-LUSC	d87e30a3-1b5a-41cf-bafe-27914a01c8d9	Primary Tumor	70	10
+TCGA-LUSC	d87e30a3-1b5a-41cf-bafe-27914a01c8d9	Solid Tissue Normal	156	32
+TCGA-LUSC	da61857a-b00e-4a19-ab02-8fbb2ee56bea	Primary Tumor	98	12
+TCGA-LUSC	da61857a-b00e-4a19-ab02-8fbb2ee56bea	Solid Tissue Normal	59	8
+TCGA-LUSC	dca4c540-897f-435b-9ee2-8f5b2e8734c6	Primary Tumor	38	7
+TCGA-LUSC	df7c9193-0bd2-4fd9-8ae1-1f9d341e92c5	Primary Tumor	181	16
+TCGA-LUSC	df7c9193-0bd2-4fd9-8ae1-1f9d341e92c5	Solid Tissue Normal	133	23
+TCGA-LUSC	df7cfd84-a36a-44a0-b39f-a9ea1e0fd500	Primary Tumor	52	10
+TCGA-LUSC	e58e8850-154f-4695-bee0-005c76410327	Primary Tumor	100	12
+TCGA-LUSC	e58e8850-154f-4695-bee0-005c76410327	Solid Tissue Normal	197	30
+TCGA-LUSC	e6b72c24-1607-43b9-8b8a-7bf83eea5895	Primary Tumor	86	12
+TCGA-LUSC	e6b72c24-1607-43b9-8b8a-7bf83eea5895	Solid Tissue Normal	32	4
+TCGA-LUSC	f355cd59-eaa9-46c7-ab07-b90a7afc875c	Primary Tumor	105	18
+TCGA-LUSC	f355cd59-eaa9-46c7-ab07-b90a7afc875c	Solid Tissue Normal	159	12
+TCGA-LUSC	f3e67161-1532-4b50-a9b5-0da80410c4d7	Primary Tumor	42	2
+TCGA-LUSC	f3e67161-1532-4b50-a9b5-0da80410c4d7	Solid Tissue Normal	126	18
+TCGA-LUSC	f516991c-5139-4b3e-b605-5a3d90688209	Primary Tumor	98	16
+TCGA-LUSC	f516991c-5139-4b3e-b605-5a3d90688209	Solid Tissue Normal	163	34
+TCGA-LUSC	fd9ee494-65fe-4de4-adff-7952a059b17f	Primary Tumor	57	7
+TCGA-LUSC	fd9ee494-65fe-4de4-adff-7952a059b17f	Solid Tissue Normal	133	13
+TCGA-LUSC	fde60f9f-5cff-405e-b0f6-e193195ebd53	Primary Tumor	178	23
+TCGA-LUSC	fde60f9f-5cff-405e-b0f6-e193195ebd53	Solid Tissue Normal	100	20
+TCGA-OV	005a6517-2e5a-4ea3-ab36-531522723607	Primary Tumor	415	42
+TCGA-OV	005a6517-2e5a-4ea3-ab36-531522723607	Solid Tissue Normal	291	24
+TCGA-OV	01ea6354-137b-47f3-9021-a01a382b1147	Blood Derived Normal	628	72
+TCGA-OV	01ea6354-137b-47f3-9021-a01a382b1147	Primary Tumor	509	38
+TCGA-OV	02594e5e-8751-47c1-9245-90c66984b665	Blood Derived Normal	54	5
+TCGA-OV	02594e5e-8751-47c1-9245-90c66984b665	Primary Tumor	366	54
+TCGA-OV	02d9aa2e-b16a-48ea-a420-5daed9fd51a6	Blood Derived Normal	276	24
+TCGA-OV	02d9aa2e-b16a-48ea-a420-5daed9fd51a6	Primary Tumor	649	83
+TCGA-OV	034825d0-e8b7-4ac0-be31-25f6038cb04a	Blood Derived Normal	27	3
+TCGA-OV	034825d0-e8b7-4ac0-be31-25f6038cb04a	Primary Tumor	111	25
+TCGA-OV	04ecaf38-0232-4dcd-9242-308a22cc1331	Primary Tumor	528	50
+TCGA-OV	04ecaf38-0232-4dcd-9242-308a22cc1331	Solid Tissue Normal	424	38
+TCGA-OV	05019013-7ea5-4905-ac79-901146ba2ee2	Blood Derived Normal	1033	116
+TCGA-OV	05019013-7ea5-4905-ac79-901146ba2ee2	Primary Tumor	456	26
+TCGA-OV	05263959-c4f5-4540-b6d2-d8c8a128861f	Primary Tumor	120	35
+TCGA-OV	05263959-c4f5-4540-b6d2-d8c8a128861f	Solid Tissue Normal	21	5
+TCGA-OV	05ba5839-e00a-4a9e-8ba3-ecb490781e62	Blood Derived Normal	111	10
+TCGA-OV	05ba5839-e00a-4a9e-8ba3-ecb490781e62	Primary Tumor	483	86
+TCGA-OV	05eb8bd5-d31b-4595-921a-366e53ea5a8b	Blood Derived Normal	36	2
+TCGA-OV	05eb8bd5-d31b-4595-921a-366e53ea5a8b	Primary Tumor	79	9
+TCGA-OV	062982f8-9f49-425a-99e9-008af5ed9040	Blood Derived Normal	18	3
+TCGA-OV	062982f8-9f49-425a-99e9-008af5ed9040	Primary Tumor	177	23
+TCGA-OV	067c5c61-d147-4b08-ab8a-32c30969d564	Blood Derived Normal	319	11
+TCGA-OV	067c5c61-d147-4b08-ab8a-32c30969d564	Primary Tumor	1256	72
+TCGA-OV	0740321b-f8a5-4e1d-b390-ca6187598fac	Blood Derived Normal	126	11
+TCGA-OV	0740321b-f8a5-4e1d-b390-ca6187598fac	Primary Tumor	430	78
+TCGA-OV	07a859fc-6f78-4905-9035-90e2403dbe8d	Blood Derived Normal	152	14
+TCGA-OV	07a859fc-6f78-4905-9035-90e2403dbe8d	Primary Tumor	530	74
+TCGA-OV	07fbdb3c-8337-4319-8255-f2363f8a031e	Primary Tumor	115	19
+TCGA-OV	07fbdb3c-8337-4319-8255-f2363f8a031e	Solid Tissue Normal	30	3
+TCGA-OV	09643c0d-efdb-46b4-94df-018bd6134a88	Blood Derived Normal	128	13
+TCGA-OV	09643c0d-efdb-46b4-94df-018bd6134a88	Primary Tumor	299	46
+TCGA-OV	09820a33-80b1-42d0-8366-a0ddaf94b122	Blood Derived Normal	268	23
+TCGA-OV	09820a33-80b1-42d0-8366-a0ddaf94b122	Primary Tumor	634	90
+TCGA-OV	098acb76-0bf5-44e5-bcae-f919cf5fa5e5	Blood Derived Normal	44	11
+TCGA-OV	098acb76-0bf5-44e5-bcae-f919cf5fa5e5	Primary Tumor	174	36
+TCGA-OV	09c77947-a333-4392-b18d-a6c1f08764a1	Blood Derived Normal	295	20
+TCGA-OV	09c77947-a333-4392-b18d-a6c1f08764a1	Primary Tumor	323	28
+TCGA-OV	0a2d29de-869a-4dc8-ad11-6ee0d0a3a895	Primary Tumor	218	40
+TCGA-OV	0a2d29de-869a-4dc8-ad11-6ee0d0a3a895	Solid Tissue Normal	40	7
+TCGA-OV	0a48873a-092a-4b25-822b-b0b3c18c08a8	Primary Tumor	101	19
+TCGA-OV	0a48873a-092a-4b25-822b-b0b3c18c08a8	Solid Tissue Normal	29	5
+TCGA-OV	0aa020cb-69d2-4235-a609-c279a133d8bb	Primary Tumor	603	33
+TCGA-OV	0aa020cb-69d2-4235-a609-c279a133d8bb	Solid Tissue Normal	762	51
+TCGA-OV	0adadf17-c4b6-48b0-a326-21450de3e144	Primary Tumor	482	63
+TCGA-OV	0adadf17-c4b6-48b0-a326-21450de3e144	Solid Tissue Normal	208	13
+TCGA-OV	0b2ea4b7-98bb-4190-b682-2c75b447c90a	Blood Derived Normal	336	41
+TCGA-OV	0b2ea4b7-98bb-4190-b682-2c75b447c90a	Primary Tumor	344	43
+TCGA-OV	0b519c08-9f23-4ceb-9a13-e16509ca55d7	Blood Derived Normal	86	14
+TCGA-OV	0b519c08-9f23-4ceb-9a13-e16509ca55d7	Primary Tumor	212	39
+TCGA-OV	0ba7b6cc-e5f5-47d7-859a-24e31aa336ab	Blood Derived Normal	251	32
+TCGA-OV	0ba7b6cc-e5f5-47d7-859a-24e31aa336ab	Primary Tumor	560	83
+TCGA-OV	0c1a2e7d-e7e4-481e-a012-ef214c444497	Blood Derived Normal	327	16
+TCGA-OV	0c1a2e7d-e7e4-481e-a012-ef214c444497	Primary Tumor	577	64
+TCGA-OV	0d5e232d-5aa2-4f6f-be58-ffd5f15ee0b8	Blood Derived Normal	301	18
+TCGA-OV	0d5e232d-5aa2-4f6f-be58-ffd5f15ee0b8	Primary Tumor	665	61
+TCGA-OV	0dd95368-0713-45f0-84f4-c91af9cbba74	Primary Tumor	370	32
+TCGA-OV	0dd95368-0713-45f0-84f4-c91af9cbba74	Solid Tissue Normal	293	26
+TCGA-OV	0de910b1-edaf-47e4-a265-727ee12ac1c3	Blood Derived Normal	58	9
+TCGA-OV	0de910b1-edaf-47e4-a265-727ee12ac1c3	Primary Tumor	58	10
+TCGA-OV	0e1598d8-cbe5-4113-95f1-4bcda061239b	Blood Derived Normal	827	78
+TCGA-OV	0e1598d8-cbe5-4113-95f1-4bcda061239b	Primary Tumor	547	50
+TCGA-OV	0fc8777c-8f12-472f-a0ea-085139b35d1f	Blood Derived Normal	370	23
+TCGA-OV	0fc8777c-8f12-472f-a0ea-085139b35d1f	Primary Tumor	465	44
+TCGA-OV	107bd8af-13e6-4c6a-9bdc-83c08eaaff90	Primary Tumor	441	55
+TCGA-OV	107bd8af-13e6-4c6a-9bdc-83c08eaaff90	Solid Tissue Normal	216	11
+TCGA-OV	1098441d-fb10-4590-a302-0a7cc2332798	Recurrent Tumor	537	86
+TCGA-OV	1098441d-fb10-4590-a302-0a7cc2332798	Solid Tissue Normal	262	29
+TCGA-OV	13d6c31a-6899-4119-a5c2-90adcb5bd20c	Primary Tumor	189	37
+TCGA-OV	13d6c31a-6899-4119-a5c2-90adcb5bd20c	Solid Tissue Normal	21	3
+TCGA-OV	13f5814c-1f99-4ffa-84a4-3bbd8979faae	Blood Derived Normal	44	9
+TCGA-OV	13f5814c-1f99-4ffa-84a4-3bbd8979faae	Primary Tumor	91	14
+TCGA-OV	14c58def-60ee-48e0-a74b-da4eb77ef344	Blood Derived Normal	348	27
+TCGA-OV	14c58def-60ee-48e0-a74b-da4eb77ef344	Primary Tumor	679	60
+TCGA-OV	15170c7f-5880-4fb6-82ce-68d3df0dfb68	Blood Derived Normal	337	32
+TCGA-OV	15170c7f-5880-4fb6-82ce-68d3df0dfb68	Primary Tumor	484	56
+TCGA-OV	1592af8e-8d11-4325-8a2b-e0c690b15b58	Blood Derived Normal	34	9
+TCGA-OV	1592af8e-8d11-4325-8a2b-e0c690b15b58	Primary Tumor	31	6
+TCGA-OV	15c84da3-16e5-4909-aea9-cb5894b0f8af	Primary Tumor	394	95
+TCGA-OV	15fc17cd-d073-4f81-a4a2-2db3cb9d7069	Primary Tumor	204	46
+TCGA-OV	15fc17cd-d073-4f81-a4a2-2db3cb9d7069	Solid Tissue Normal	40	4
+TCGA-OV	16829472-5666-4fba-9bf9-360ec1689aa0	Blood Derived Normal	59	11
+TCGA-OV	16829472-5666-4fba-9bf9-360ec1689aa0	Primary Tumor	132	21
+TCGA-OV	16ced1b8-64d5-4498-82df-4d37bfe5b310	Primary Tumor	171	25
+TCGA-OV	16ced1b8-64d5-4498-82df-4d37bfe5b310	Solid Tissue Normal	201	26
+TCGA-OV	17181157-c9e2-4bd6-8653-f5dce56f9053	Blood Derived Normal	33	5
+TCGA-OV	17181157-c9e2-4bd6-8653-f5dce56f9053	Primary Tumor	58	7
+TCGA-OV	171f7917-69eb-4a3f-9cc0-0e1dffd412c1	Blood Derived Normal	636	70
+TCGA-OV	171f7917-69eb-4a3f-9cc0-0e1dffd412c1	Primary Tumor	361	34
+TCGA-OV	1858b58f-fdf4-413c-9c29-96ae85b88a74	Blood Derived Normal	6	1
+TCGA-OV	1858b58f-fdf4-413c-9c29-96ae85b88a74	Primary Tumor	58	8
+TCGA-OV	186d40cd-624c-4016-a497-b30c892d393c	Blood Derived Normal	58	8
+TCGA-OV	186d40cd-624c-4016-a497-b30c892d393c	Primary Tumor	151	30
+TCGA-OV	18d21132-a795-4551-83ba-66483de423a2	Blood Derived Normal	651	40
+TCGA-OV	18d21132-a795-4551-83ba-66483de423a2	Primary Tumor	835	67
+TCGA-OV	18e0e996-8f23-4f53-94a5-dde38b550863	Blood Derived Normal	148	19
+TCGA-OV	18e0e996-8f23-4f53-94a5-dde38b550863	Primary Tumor	599	80
+TCGA-OV	19427350-619b-4b9c-a3ba-37f667bb2843	Blood Derived Normal	48	6
+TCGA-OV	19427350-619b-4b9c-a3ba-37f667bb2843	Primary Tumor	237	47
+TCGA-OV	195ecf43-06bd-4ffe-8d8b-a766f3f7179b	Blood Derived Normal	349	22
+TCGA-OV	195ecf43-06bd-4ffe-8d8b-a766f3f7179b	Primary Tumor	696	75
+TCGA-OV	196f4600-b6c9-4652-9f77-65c92883f8c1	Blood Derived Normal	49	9
+TCGA-OV	196f4600-b6c9-4652-9f77-65c92883f8c1	Primary Tumor	119	21
+TCGA-OV	1aea3c25-d2bc-4ff5-bc27-32e939944e9d	Blood Derived Normal	595	89
+TCGA-OV	1aea3c25-d2bc-4ff5-bc27-32e939944e9d	Primary Tumor	161	12
+TCGA-OV	1cc02c64-a34e-46ae-9bc7-5d50f2fefb31	Blood Derived Normal	368	42
+TCGA-OV	1cc02c64-a34e-46ae-9bc7-5d50f2fefb31	Primary Tumor	447	47
+TCGA-OV	1d0225b5-f515-4197-bba7-3dc17e502b88	Primary Tumor	151	23
+TCGA-OV	1d0225b5-f515-4197-bba7-3dc17e502b88	Solid Tissue Normal	76	8
+TCGA-OV	1d192835-524e-429d-bf74-3c4727acb446	Blood Derived Normal	509	29
+TCGA-OV	1d192835-524e-429d-bf74-3c4727acb446	Primary Tumor	697	53
+TCGA-OV	1d9893c8-0de3-4b07-b0ba-a53019b23eb4	Blood Derived Normal	700	27
+TCGA-OV	1d9893c8-0de3-4b07-b0ba-a53019b23eb4	Primary Tumor	1295	84
+TCGA-OV	1db60f09-7f5a-4f21-8003-06a6abc781db	Blood Derived Normal	225	26
+TCGA-OV	1db60f09-7f5a-4f21-8003-06a6abc781db	Primary Tumor	86	7
+TCGA-OV	1e14f098-17b2-4f54-8e4f-e38088008df7	Primary Tumor	7	1
+TCGA-OV	1ede8063-e0e9-466d-891c-ac8916f1b5fa	Blood Derived Normal	512	70
+TCGA-OV	1ede8063-e0e9-466d-891c-ac8916f1b5fa	Primary Tumor	219	33
+TCGA-OV	2038fd65-d8f1-4b16-af90-b1c8f9a379a7	Blood Derived Normal	221	35
+TCGA-OV	2038fd65-d8f1-4b16-af90-b1c8f9a379a7	Primary Tumor	270	57
+TCGA-OV	206ce0ed-36a4-47ab-ac8e-f6fca6ac5c18	Blood Derived Normal	653	31
+TCGA-OV	206ce0ed-36a4-47ab-ac8e-f6fca6ac5c18	Primary Tumor	1428	76
+TCGA-OV	20c6be4d-7baf-4ea0-93e2-a5212f2e9b9c	Primary Tumor	165	25
+TCGA-OV	20c6be4d-7baf-4ea0-93e2-a5212f2e9b9c	Solid Tissue Normal	30	4
+TCGA-OV	20cf00ea-d7da-42bb-bce7-f005f0b952eb	Primary Tumor	108	15
+TCGA-OV	20cf00ea-d7da-42bb-bce7-f005f0b952eb	Solid Tissue Normal	86	10
+TCGA-OV	21966708-4e66-4211-add0-f1515b09e362	Blood Derived Normal	256	15
+TCGA-OV	21966708-4e66-4211-add0-f1515b09e362	Primary Tumor	574	69
+TCGA-OV	22178c3c-6b04-46d8-8041-dc83fa195029	Blood Derived Normal	37	3
+TCGA-OV	22178c3c-6b04-46d8-8041-dc83fa195029	Primary Tumor	79	12
+TCGA-OV	2222b629-02ab-4ead-997f-09d91c6f7cf4	Primary Tumor	80	10
+TCGA-OV	2222b629-02ab-4ead-997f-09d91c6f7cf4	Solid Tissue Normal	44	6
+TCGA-OV	23771dab-2aab-4d2b-95e2-9af7092cee6b	Blood Derived Normal	518	17
+TCGA-OV	23771dab-2aab-4d2b-95e2-9af7092cee6b	Primary Tumor	982	110
+TCGA-OV	23d32627-9fd2-4312-bcda-ee7409e3983f	Blood Derived Normal	466	51
+TCGA-OV	23d32627-9fd2-4312-bcda-ee7409e3983f	Primary Tumor	200	17
+TCGA-OV	242943fe-1fa0-4a12-8f7e-9c6c4af1194d	Primary Tumor	87	17
+TCGA-OV	242943fe-1fa0-4a12-8f7e-9c6c4af1194d	Solid Tissue Normal	8	0
+TCGA-OV	242da7d0-8c6a-4395-9a0d-aa36e7c25ce6	Blood Derived Normal	604	22
+TCGA-OV	242da7d0-8c6a-4395-9a0d-aa36e7c25ce6	Primary Tumor	1047	83
+TCGA-OV	2517ca7a-6057-4c19-b7e1-f6d078e9881a	Primary Tumor	69	14
+TCGA-OV	25a0a9e6-4f5b-45d8-8f34-abfd31d5ff1b	Primary Tumor	529	23
+TCGA-OV	25a0a9e6-4f5b-45d8-8f34-abfd31d5ff1b	Solid Tissue Normal	860	58
+TCGA-OV	28ed2d42-5b4c-4bca-b2b2-6b2a6d3c42cf	Blood Derived Normal	42	1
+TCGA-OV	28ed2d42-5b4c-4bca-b2b2-6b2a6d3c42cf	Primary Tumor	188	27
+TCGA-OV	2956e414-f167-438f-8747-a46fe0723622	Blood Derived Normal	644	42
+TCGA-OV	2956e414-f167-438f-8747-a46fe0723622	Primary Tumor	1411	97
+TCGA-OV	29949b65-2913-4c86-bbd7-b85c5df6f15e	Primary Tumor	224	36
+TCGA-OV	29949b65-2913-4c86-bbd7-b85c5df6f15e	Solid Tissue Normal	20	2
+TCGA-OV	29d26e7e-f4ae-4476-9a3f-27d5ec2ccb8a	Primary Tumor	5	3
+TCGA-OV	29d26e7e-f4ae-4476-9a3f-27d5ec2ccb8a	Solid Tissue Normal	3	1
+TCGA-OV	29dccd25-4c4a-463b-a353-38a193337f38	Blood Derived Normal	401	37
+TCGA-OV	29dccd25-4c4a-463b-a353-38a193337f38	Primary Tumor	579	69
+TCGA-OV	2a3a6222-f477-4198-ab9e-cdf527c1a6cf	Blood Derived Normal	51	8
+TCGA-OV	2a3a6222-f477-4198-ab9e-cdf527c1a6cf	Primary Tumor	146	31
+TCGA-OV	2a924999-1fbf-470a-97bd-fd2276a9a366	Blood Derived Normal	576	30
+TCGA-OV	2a924999-1fbf-470a-97bd-fd2276a9a366	Primary Tumor	799	53
+TCGA-OV	2ae65a06-df0f-4de1-a536-537cae0cc260	Primary Tumor	105	14
+TCGA-OV	2b14123b-8fcd-402c-9399-4e7c47f20252	Blood Derived Normal	25	4
+TCGA-OV	2b14123b-8fcd-402c-9399-4e7c47f20252	Primary Tumor	64	12
+TCGA-OV	2c69f3a4-c26c-4fbb-a1c0-b1f57554c43a	Blood Derived Normal	18	1
+TCGA-OV	2c69f3a4-c26c-4fbb-a1c0-b1f57554c43a	Primary Tumor	270	60
+TCGA-OV	2cb82948-7cbe-4b6c-8414-c02f662de2d0	Blood Derived Normal	33	0
+TCGA-OV	2cb82948-7cbe-4b6c-8414-c02f662de2d0	Primary Tumor	166	26
+TCGA-OV	2cdd5154-ee5c-4d67-b2eb-947dfaa56be2	Primary Tumor	326	34
+TCGA-OV	2cdd5154-ee5c-4d67-b2eb-947dfaa56be2	Solid Tissue Normal	210	27
+TCGA-OV	2e05cd3a-a55f-43b8-b2a9-72fb742b89c9	Primary Tumor	237	35
+TCGA-OV	2e05cd3a-a55f-43b8-b2a9-72fb742b89c9	Solid Tissue Normal	154	14
+TCGA-OV	2ee36d9d-128b-4761-aa1a-a637da106f3d	Blood Derived Normal	434	48
+TCGA-OV	2ee36d9d-128b-4761-aa1a-a637da106f3d	Primary Tumor	484	43
+TCGA-OV	3018efe7-13a1-47ae-a726-8fc967c73841	Blood Derived Normal	146	33
+TCGA-OV	3018efe7-13a1-47ae-a726-8fc967c73841	Primary Tumor	165	30
+TCGA-OV	30b8f4cd-9245-4496-a8a8-c3e59093bc0a	Blood Derived Normal	170	13
+TCGA-OV	30b8f4cd-9245-4496-a8a8-c3e59093bc0a	Primary Tumor	458	71
+TCGA-OV	314e446d-3a57-4c91-ac2e-4fc211456ee6	Primary Tumor	995	69
+TCGA-OV	314e446d-3a57-4c91-ac2e-4fc211456ee6	Solid Tissue Normal	684	37
+TCGA-OV	31b997dd-aaea-4003-a64d-11d3e19b0bbc	Blood Derived Normal	22	0
+TCGA-OV	31b997dd-aaea-4003-a64d-11d3e19b0bbc	Primary Tumor	734	150
+TCGA-OV	32960bc7-839a-42c5-9460-3917fa578ffc	Blood Derived Normal	662	33
+TCGA-OV	32960bc7-839a-42c5-9460-3917fa578ffc	Primary Tumor	1156	87
+TCGA-OV	33d36b64-4688-40a7-9a4f-7cd3d4cc683d	Blood Derived Normal	576	71
+TCGA-OV	33d36b64-4688-40a7-9a4f-7cd3d4cc683d	Primary Tumor	377	23
+TCGA-OV	33dc48d8-2e01-482b-944c-ac10da727ec9	Blood Derived Normal	35	4
+TCGA-OV	33dc48d8-2e01-482b-944c-ac10da727ec9	Primary Tumor	314	51
+TCGA-OV	3438c018-9856-4628-ae59-7d365713647f	Primary Tumor	310	12
+TCGA-OV	3438c018-9856-4628-ae59-7d365713647f	Solid Tissue Normal	640	64
+TCGA-OV	34f285ab-6c31-4865-a0a7-a57af3567df0	Blood Derived Normal	89	12
+TCGA-OV	34f285ab-6c31-4865-a0a7-a57af3567df0	Primary Tumor	173	31
+TCGA-OV	34f545ab-d420-4dd2-8db4-3159896efd23	Blood Derived Normal	31	5
+TCGA-OV	34f545ab-d420-4dd2-8db4-3159896efd23	Primary Tumor	52	11
+TCGA-OV	35b1bb47-b32b-4acd-8e5e-fe6bd56c0289	Primary Tumor	558	42
+TCGA-OV	35b1bb47-b32b-4acd-8e5e-fe6bd56c0289	Solid Tissue Normal	296	21
+TCGA-OV	36595b52-2b5f-4e87-80eb-37c29109e92a	Blood Derived Normal	184	23
+TCGA-OV	36595b52-2b5f-4e87-80eb-37c29109e92a	Primary Tumor	315	37
+TCGA-OV	374ea8df-ecc4-44b0-b519-33efa5078018	Blood Derived Normal	388	26
+TCGA-OV	374ea8df-ecc4-44b0-b519-33efa5078018	Primary Tumor	545	53
+TCGA-OV	3768d34f-1527-40db-b116-cd80cee5ec3a	Primary Tumor	83	22
+TCGA-OV	3768d34f-1527-40db-b116-cd80cee5ec3a	Solid Tissue Normal	26	6
+TCGA-OV	378f7ea2-86b4-4072-80b8-e12d67193106	Blood Derived Normal	66	9
+TCGA-OV	378f7ea2-86b4-4072-80b8-e12d67193106	Primary Tumor	199	33
+TCGA-OV	384170fc-e8be-426a-a54e-bf1ca61f2986	Blood Derived Normal	33	10
+TCGA-OV	384170fc-e8be-426a-a54e-bf1ca61f2986	Primary Tumor	82	9
+TCGA-OV	3867e193-c82f-4693-9b32-bac76b5f4d06	Primary Tumor	1	0
+TCGA-OV	390eed6b-50af-48a9-9fd6-3a68a2bbb7f9	Blood Derived Normal	461	24
+TCGA-OV	390eed6b-50af-48a9-9fd6-3a68a2bbb7f9	Primary Tumor	960	75
+TCGA-OV	3ac45a71-c463-4f0f-b030-58c475a34418	Primary Tumor	117	30
+TCGA-OV	3ac45a71-c463-4f0f-b030-58c475a34418	Solid Tissue Normal	15	2
+TCGA-OV	3b81ec7c-0934-4649-9231-9919dd26dd15	Blood Derived Normal	167	14
+TCGA-OV	3b81ec7c-0934-4649-9231-9919dd26dd15	Primary Tumor	223	34
+TCGA-OV	3bc8a74f-49bd-46b6-a3a4-68ca838e83c6	Blood Derived Normal	36	4
+TCGA-OV	3bc8a74f-49bd-46b6-a3a4-68ca838e83c6	Primary Tumor	77	13
+TCGA-OV	3c037acf-f453-4513-a6dd-129163ddde2a	Blood Derived Normal	66	11
+TCGA-OV	3c037acf-f453-4513-a6dd-129163ddde2a	Primary Tumor	93	9
+TCGA-OV	3e8a51bf-7e1f-4eab-af83-3c60d04db1bf	Blood Derived Normal	128	14
+TCGA-OV	3e8a51bf-7e1f-4eab-af83-3c60d04db1bf	Primary Tumor	245	46
+TCGA-OV	3fc8f799-5bd3-4f48-baf0-c458ce86ab7e	Blood Derived Normal	386	42
+TCGA-OV	3fc8f799-5bd3-4f48-baf0-c458ce86ab7e	Primary Tumor	547	62
+TCGA-OV	41178cbc-db73-4007-b5d8-febebf7f578d	Blood Derived Normal	43	8
+TCGA-OV	41178cbc-db73-4007-b5d8-febebf7f578d	Primary Tumor	68	14
+TCGA-OV	4160e048-f0b0-40f5-805b-e277a5893a3b	Blood Derived Normal	388	18
+TCGA-OV	4160e048-f0b0-40f5-805b-e277a5893a3b	Primary Tumor	667	65
+TCGA-OV	419a486f-7fa5-4fbd-9e98-2f8f4c6d5081	Primary Tumor	477	58
+TCGA-OV	419a486f-7fa5-4fbd-9e98-2f8f4c6d5081	Solid Tissue Normal	31	2
+TCGA-OV	4261267c-7042-4c6e-83ed-12fb401003fc	Blood Derived Normal	480	34
+TCGA-OV	4261267c-7042-4c6e-83ed-12fb401003fc	Primary Tumor	669	51
+TCGA-OV	42ebd30b-175e-4ece-a806-e55cb7e40e96	Blood Derived Normal	534	57
+TCGA-OV	42ebd30b-175e-4ece-a806-e55cb7e40e96	Primary Tumor	408	40
+TCGA-OV	44493c23-82e9-4d9f-8e3c-7b3f9ae44970	Blood Derived Normal	336	22
+TCGA-OV	44493c23-82e9-4d9f-8e3c-7b3f9ae44970	Primary Tumor	748	66
+TCGA-OV	446ce2a3-d328-443c-a419-3344baad0e16	Blood Derived Normal	274	38
+TCGA-OV	446ce2a3-d328-443c-a419-3344baad0e16	Primary Tumor	569	102
+TCGA-OV	44e840c9-ea54-4dba-9b2a-264ef1f2c304	Blood Derived Normal	482	30
+TCGA-OV	44e840c9-ea54-4dba-9b2a-264ef1f2c304	Primary Tumor	779	71
+TCGA-OV	45957be6-e4df-4245-acf8-39dfc118ee19	Blood Derived Normal	13	0
+TCGA-OV	45baebac-32ae-4093-9eba-488b95c1a58d	Blood Derived Normal	270	34
+TCGA-OV	45baebac-32ae-4093-9eba-488b95c1a58d	Primary Tumor	279	32
+TCGA-OV	460616ec-f66f-483b-88c1-757edd86261d	Blood Derived Normal	349	29
+TCGA-OV	460616ec-f66f-483b-88c1-757edd86261d	Primary Tumor	291	33
+TCGA-OV	46395c3d-5e51-477f-946e-e58b87cc7baa	Blood Derived Normal	143	16
+TCGA-OV	46395c3d-5e51-477f-946e-e58b87cc7baa	Primary Tumor	475	79
+TCGA-OV	47681e4b-01e8-4779-b966-ce57aff4b712	Primary Tumor	89	14
+TCGA-OV	47681e4b-01e8-4779-b966-ce57aff4b712	Solid Tissue Normal	21	0
+TCGA-OV	47feba88-1ec9-4904-b0e2-3718f294badb	Solid Tissue Normal	412	60
+TCGA-OV	48e66676-dbed-48a4-9a7f-a6d247b15c17	Primary Tumor	275	31
+TCGA-OV	48e66676-dbed-48a4-9a7f-a6d247b15c17	Solid Tissue Normal	150	12
+TCGA-OV	48f831b0-5d91-44ae-bc4e-db57ca84fe46	Blood Derived Normal	695	48
+TCGA-OV	48f831b0-5d91-44ae-bc4e-db57ca84fe46	Primary Tumor	722	53
+TCGA-OV	48f8afa8-7712-4428-b0d0-d8c3340504b6	Primary Tumor	777	44
+TCGA-OV	48f8afa8-7712-4428-b0d0-d8c3340504b6	Solid Tissue Normal	619	54
+TCGA-OV	499645bd-e33e-4f89-8526-50460e8bb884	Recurrent Tumor	390	61
+TCGA-OV	499645bd-e33e-4f89-8526-50460e8bb884	Solid Tissue Normal	165	17
+TCGA-OV	499a9b57-ee1a-4012-bbab-c6ad955b5e0a	Blood Derived Normal	95	17
+TCGA-OV	499a9b57-ee1a-4012-bbab-c6ad955b5e0a	Primary Tumor	191	47
+TCGA-OV	49bfd0fe-48ce-49db-9f76-ce2310410950	Primary Tumor	16	3
+TCGA-OV	49d2c0cf-a3f3-4519-a755-0a5f769df2ea	Blood Derived Normal	649	61
+TCGA-OV	49d2c0cf-a3f3-4519-a755-0a5f769df2ea	Primary Tumor	601	51
+TCGA-OV	4a2ca7b8-729d-4fab-a6f3-a5d1e5d1f4f3	Blood Derived Normal	37	2
+TCGA-OV	4a2ca7b8-729d-4fab-a6f3-a5d1e5d1f4f3	Primary Tumor	40	9
+TCGA-OV	4b930a10-4b12-4428-84f9-3255b4a3bc4f	Primary Tumor	1052	60
+TCGA-OV	4b930a10-4b12-4428-84f9-3255b4a3bc4f	Solid Tissue Normal	967	48
+TCGA-OV	4c099644-047c-42a3-8187-bfcbfe6662e4	Blood Derived Normal	37	7
+TCGA-OV	4c099644-047c-42a3-8187-bfcbfe6662e4	Primary Tumor	79	5
+TCGA-OV	4c18d9cf-4af4-4a86-8b1c-f78795fbbd7e	Blood Derived Normal	718	35
+TCGA-OV	4c18d9cf-4af4-4a86-8b1c-f78795fbbd7e	Primary Tumor	651	50
+TCGA-OV	4ca9c0e8-75a7-4665-9d88-6dd2bb44b1e1	Blood Derived Normal	32	4
+TCGA-OV	4ca9c0e8-75a7-4665-9d88-6dd2bb44b1e1	Primary Tumor	174	33
+TCGA-OV	4d71dd15-cd01-4dae-ad70-6dc325140207	Blood Derived Normal	176	16
+TCGA-OV	4d71dd15-cd01-4dae-ad70-6dc325140207	Primary Tumor	192	29
+TCGA-OV	4e6f88de-7624-4719-8234-4c9e5b2e2988	Blood Derived Normal	385	39
+TCGA-OV	4e6f88de-7624-4719-8234-4c9e5b2e2988	Primary Tumor	423	41
+TCGA-OV	502e8d02-2953-4514-a2e1-6179dd94da73	Blood Derived Normal	478	58
+TCGA-OV	502e8d02-2953-4514-a2e1-6179dd94da73	Primary Tumor	424	42
+TCGA-OV	512de609-757b-42be-8b30-c414f71af422	Blood Derived Normal	39	2
+TCGA-OV	512de609-757b-42be-8b30-c414f71af422	Primary Tumor	76	22
+TCGA-OV	514aa64e-a58d-48c2-aff9-498604cc11d6	Blood Derived Normal	70	8
+TCGA-OV	514aa64e-a58d-48c2-aff9-498604cc11d6	Primary Tumor	272	37
+TCGA-OV	52386f66-2877-4c75-894e-5c1dc03e6ef4	Blood Derived Normal	378	21
+TCGA-OV	52386f66-2877-4c75-894e-5c1dc03e6ef4	Primary Tumor	411	44
+TCGA-OV	538acb2a-c4ca-4656-a91c-841a42dbf15f	Primary Tumor	426	35
+TCGA-OV	538acb2a-c4ca-4656-a91c-841a42dbf15f	Solid Tissue Normal	890	95
+TCGA-OV	5495b18a-10ec-427b-83b8-03ef4b587b13	Blood Derived Normal	301	20
+TCGA-OV	5495b18a-10ec-427b-83b8-03ef4b587b13	Primary Tumor	518	48
+TCGA-OV	54cf3bfe-51c0-4cca-9054-bf76b05a9371	Blood Derived Normal	34	3
+TCGA-OV	54cf3bfe-51c0-4cca-9054-bf76b05a9371	Primary Tumor	155	32
+TCGA-OV	5503b3a1-7d03-41b2-9ec8-e478c5414d67	Blood Derived Normal	76	4
+TCGA-OV	5503b3a1-7d03-41b2-9ec8-e478c5414d67	Primary Tumor	416	81
+TCGA-OV	55153632-1673-487a-85c0-f156377db1fc	Primary Tumor	878	49
+TCGA-OV	55153632-1673-487a-85c0-f156377db1fc	Solid Tissue Normal	1084	64
+TCGA-OV	561968ce-da9a-4d69-8bc2-bc87b9550f93	Blood Derived Normal	96	12
+TCGA-OV	561968ce-da9a-4d69-8bc2-bc87b9550f93	Primary Tumor	134	28
+TCGA-OV	565d06a1-3640-4274-8fb3-8cad7e578876	Blood Derived Normal	49	15
+TCGA-OV	565d06a1-3640-4274-8fb3-8cad7e578876	Primary Tumor	207	36
+TCGA-OV	56a30462-2819-4c18-95be-8e73880a4921	Blood Derived Normal	435	36
+TCGA-OV	56a30462-2819-4c18-95be-8e73880a4921	Primary Tumor	411	39
+TCGA-OV	58427bce-6b81-4083-aeda-25f59e292bbc	Blood Derived Normal	127	13
+TCGA-OV	58427bce-6b81-4083-aeda-25f59e292bbc	Primary Tumor	388	69
+TCGA-OV	58d34254-4f5b-40a4-9e9f-7160062fb2a4	Blood Derived Normal	461	47
+TCGA-OV	58d34254-4f5b-40a4-9e9f-7160062fb2a4	Primary Tumor	598	61
+TCGA-OV	58f5a54e-de50-4cca-afa1-cc331d8b3479	Blood Derived Normal	53	7
+TCGA-OV	58f5a54e-de50-4cca-afa1-cc331d8b3479	Primary Tumor	81	17
+TCGA-OV	59b3fbfe-0b7c-41e5-b756-ee7e23730df5	Blood Derived Normal	110	18
+TCGA-OV	59b3fbfe-0b7c-41e5-b756-ee7e23730df5	Primary Tumor	197	31
+TCGA-OV	5abb6d80-fc39-49a4-8db5-3db24543feb6	Blood Derived Normal	581	49
+TCGA-OV	5abb6d80-fc39-49a4-8db5-3db24543feb6	Primary Tumor	438	37
+TCGA-OV	5c127332-5ca0-45f1-a5ac-4876ad94e491	Blood Derived Normal	57	8
+TCGA-OV	5c127332-5ca0-45f1-a5ac-4876ad94e491	Primary Tumor	126	26
+TCGA-OV	5c159ab5-8475-4d93-89b8-b6befed4a5b3	Blood Derived Normal	45	8
+TCGA-OV	5c159ab5-8475-4d93-89b8-b6befed4a5b3	Primary Tumor	181	41
+TCGA-OV	5c6f3cd4-19c5-418d-b1be-d3fbf63e99db	Blood Derived Normal	116	7
+TCGA-OV	5c6f3cd4-19c5-418d-b1be-d3fbf63e99db	Primary Tumor	272	48
+TCGA-OV	5ced5b58-fab4-4bcd-b706-d6e49ce0cfc5	Blood Derived Normal	485	25
+TCGA-OV	5ced5b58-fab4-4bcd-b706-d6e49ce0cfc5	Primary Tumor	671	64
+TCGA-OV	5d1a54fe-e0df-4c17-b623-b649a136dc82	Primary Tumor	92	19
+TCGA-OV	5d1a54fe-e0df-4c17-b623-b649a136dc82	Solid Tissue Normal	39	5
+TCGA-OV	5d603bba-62e6-48fb-b8fc-401109abcaee	Blood Derived Normal	61	8
+TCGA-OV	5d603bba-62e6-48fb-b8fc-401109abcaee	Primary Tumor	109	23
+TCGA-OV	5d7027f5-60a0-47ab-a79d-667c9acc0e54	Blood Derived Normal	350	34
+TCGA-OV	5d7027f5-60a0-47ab-a79d-667c9acc0e54	Primary Tumor	295	31
+TCGA-OV	5e18b17d-4626-4b6d-8ac6-e560cee0376c	Blood Derived Normal	149	33
+TCGA-OV	5e18b17d-4626-4b6d-8ac6-e560cee0376c	Primary Tumor	177	31
+TCGA-OV	5f60bc2d-738f-43fc-a3fb-61ec6e80e3d4	Blood Derived Normal	341	52
+TCGA-OV	5f60bc2d-738f-43fc-a3fb-61ec6e80e3d4	Primary Tumor	339	50
+TCGA-OV	60014a6e-6a13-4f92-bbfd-eeeee9632f98	Blood Derived Normal	438	23
+TCGA-OV	60014a6e-6a13-4f92-bbfd-eeeee9632f98	Primary Tumor	711	68
+TCGA-OV	602e2934-223a-44db-8c33-06eb05d72f94	Primary Tumor	37	9
+TCGA-OV	602e2934-223a-44db-8c33-06eb05d72f94	Solid Tissue Normal	56	13
+TCGA-OV	60cce7ac-d27d-44a6-9873-ecf91da5e906	Blood Derived Normal	248	16
+TCGA-OV	60cce7ac-d27d-44a6-9873-ecf91da5e906	Primary Tumor	460	41
+TCGA-OV	611600a6-43ec-4029-9682-cd6d6a3312ec	Blood Derived Normal	247	14
+TCGA-OV	611600a6-43ec-4029-9682-cd6d6a3312ec	Primary Tumor	582	81
+TCGA-OV	61feee94-3ac9-42fe-aaa3-dc6a3efe563c	Blood Derived Normal	34	4
+TCGA-OV	61feee94-3ac9-42fe-aaa3-dc6a3efe563c	Primary Tumor	153	30
+TCGA-OV	6209e80d-a115-4f8e-bf0d-18461401a1c6	Blood Derived Normal	144	13
+TCGA-OV	6209e80d-a115-4f8e-bf0d-18461401a1c6	Primary Tumor	303	47
+TCGA-OV	62379be5-13f0-474b-94d3-6f944ec4ee96	Blood Derived Normal	101	16
+TCGA-OV	62379be5-13f0-474b-94d3-6f944ec4ee96	Primary Tumor	243	43
+TCGA-OV	6264e699-d40b-4ebc-b443-0a0edcb220dc	Blood Derived Normal	90	8
+TCGA-OV	6264e699-d40b-4ebc-b443-0a0edcb220dc	Primary Tumor	172	28
+TCGA-OV	62efb5ae-43dc-4a4c-a898-6cd9c6dba027	Primary Tumor	141	31
+TCGA-OV	635f5335-b008-428e-b005-615776a6643f	Blood Derived Normal	371	35
+TCGA-OV	635f5335-b008-428e-b005-615776a6643f	Primary Tumor	533	58
+TCGA-OV	63a75e0b-9241-4f0e-9236-01a2e2c05b7e	Blood Derived Normal	355	41
+TCGA-OV	63a75e0b-9241-4f0e-9236-01a2e2c05b7e	Primary Tumor	643	50
+TCGA-OV	63c6a89b-b28c-434a-a632-5de6545db731	Blood Derived Normal	158	30
+TCGA-OV	63c6a89b-b28c-434a-a632-5de6545db731	Primary Tumor	238	47
+TCGA-OV	65ddccd2-70a7-48b3-88e1-9d6fd1dcd11b	Primary Tumor	537	58
+TCGA-OV	65ddccd2-70a7-48b3-88e1-9d6fd1dcd11b	Solid Tissue Normal	290	23
+TCGA-OV	66a0df9b-096b-4e8e-9b9c-54bf8637720b	Blood Derived Normal	151	18
+TCGA-OV	66a0df9b-096b-4e8e-9b9c-54bf8637720b	Primary Tumor	155	12
+TCGA-OV	66dc6379-a98b-498f-8109-e3a811d043ea	Blood Derived Normal	266	25
+TCGA-OV	66dc6379-a98b-498f-8109-e3a811d043ea	Primary Tumor	368	43
+TCGA-OV	66face4a-f35c-4364-90e5-8f28e6372606	Blood Derived Normal	695	107
+TCGA-OV	66face4a-f35c-4364-90e5-8f28e6372606	Primary Tumor	30	0
+TCGA-OV	6746533a-8d0b-4ebc-87ec-49c8738121a8	Blood Derived Normal	5	1
+TCGA-OV	6746533a-8d0b-4ebc-87ec-49c8738121a8	Primary Tumor	1	0
+TCGA-OV	67f526f1-def5-43b4-bc89-154baae190fc	Blood Derived Normal	330	23
+TCGA-OV	67f526f1-def5-43b4-bc89-154baae190fc	Primary Tumor	554	57
+TCGA-OV	6a57948c-0dc5-4ea2-8043-380f26763752	Blood Derived Normal	184	15
+TCGA-OV	6a57948c-0dc5-4ea2-8043-380f26763752	Primary Tumor	573	97
+TCGA-OV	6ad8bc89-d8e9-48c2-bc25-c8e51f972b4d	Blood Derived Normal	121	14
+TCGA-OV	6ad8bc89-d8e9-48c2-bc25-c8e51f972b4d	Primary Tumor	347	64
+TCGA-OV	6b06281b-d3a9-440e-a86c-ee7db003352a	Blood Derived Normal	2442	197
+TCGA-OV	6b06281b-d3a9-440e-a86c-ee7db003352a	Primary Tumor	573	43
+TCGA-OV	6b2a9f9a-fe96-4311-a330-925c4ad36fe7	Blood Derived Normal	110	12
+TCGA-OV	6b2a9f9a-fe96-4311-a330-925c4ad36fe7	Primary Tumor	214	30
+TCGA-OV	6beaa1cb-a9f1-4127-898c-7aff2273788e	Primary Tumor	75	16
+TCGA-OV	6beaa1cb-a9f1-4127-898c-7aff2273788e	Solid Tissue Normal	32	3
+TCGA-OV	6cf9f872-2e59-45cf-bb5e-ebd7fa1b3caf	Primary Tumor	406	102
+TCGA-OV	6d10d4ee-6331-4bba-93bc-a7b64cc0b22a	Blood Derived Normal	96	9
+TCGA-OV	6d10d4ee-6331-4bba-93bc-a7b64cc0b22a	Primary Tumor	413	59
+TCGA-OV	6e84e89d-4f35-43b8-b47d-b1343b8c1ab9	Blood Derived Normal	797	38
+TCGA-OV	6e84e89d-4f35-43b8-b47d-b1343b8c1ab9	Primary Tumor	840	60
+TCGA-OV	6f25001a-f890-4fd0-a994-e62a9ea5c6f3	Blood Derived Normal	54	12
+TCGA-OV	6f25001a-f890-4fd0-a994-e62a9ea5c6f3	Primary Tumor	83	12
+TCGA-OV	6fb71a0c-bc50-48c8-acfa-db94be1e151a	Blood Derived Normal	662	71
+TCGA-OV	6fb71a0c-bc50-48c8-acfa-db94be1e151a	Primary Tumor	536	42
+TCGA-OV	700e91bb-d675-41b2-bbbd-935767c7b447	Blood Derived Normal	769	67
+TCGA-OV	700e91bb-d675-41b2-bbbd-935767c7b447	Primary Tumor	631	25
+TCGA-OV	7016714b-6af8-45dd-8341-1493927e5515	Solid Tissue Normal	3	0
+TCGA-OV	708eec28-2348-4e15-b98c-8c6f9d057b1e	Blood Derived Normal	46	8
+TCGA-OV	708eec28-2348-4e15-b98c-8c6f9d057b1e	Primary Tumor	68	15
+TCGA-OV	70fe08bd-a0b4-4a88-b82e-813b176f8e40	Blood Derived Normal	136	14
+TCGA-OV	70fe08bd-a0b4-4a88-b82e-813b176f8e40	Primary Tumor	629	100
+TCGA-OV	71faa2c1-0d5b-4dcc-bdf9-f2405f29907c	Primary Tumor	359	38
+TCGA-OV	71faa2c1-0d5b-4dcc-bdf9-f2405f29907c	Solid Tissue Normal	31	2
+TCGA-OV	7248cd60-be22-44bc-bc58-f644db0940a2	Blood Derived Normal	400	53
+TCGA-OV	7248cd60-be22-44bc-bc58-f644db0940a2	Primary Tumor	113	11
+TCGA-OV	72c40fba-f502-489b-ad87-843f52655894	Primary Tumor	383	48
+TCGA-OV	72c40fba-f502-489b-ad87-843f52655894	Solid Tissue Normal	190	10
+TCGA-OV	7413c891-f74e-456f-bc70-69c83fb53c70	Blood Derived Normal	42	6
+TCGA-OV	7413c891-f74e-456f-bc70-69c83fb53c70	Primary Tumor	95	18
+TCGA-OV	7472b3ba-9b15-4d97-8708-a2dd82ca0f45	Blood Derived Normal	845	54
+TCGA-OV	7472b3ba-9b15-4d97-8708-a2dd82ca0f45	Primary Tumor	692	36
+TCGA-OV	74dcdfb4-a637-4111-9a22-4b4bc7bbc8f7	Blood Derived Normal	55	11
+TCGA-OV	74dcdfb4-a637-4111-9a22-4b4bc7bbc8f7	Primary Tumor	174	29
+TCGA-OV	756f6768-e69a-4fe9-aa41-7c58aabe4577	Blood Derived Normal	22	2
+TCGA-OV	756f6768-e69a-4fe9-aa41-7c58aabe4577	Primary Tumor	53	7
+TCGA-OV	758e6b52-062e-4ca0-84d1-ea38477414ac	Blood Derived Normal	67	6
+TCGA-OV	758e6b52-062e-4ca0-84d1-ea38477414ac	Primary Tumor	68	16
+TCGA-OV	75f2d97a-b96c-403f-8055-5c5c8083e856	Primary Tumor	322	22
+TCGA-OV	75f2d97a-b96c-403f-8055-5c5c8083e856	Solid Tissue Normal	312	24
+TCGA-OV	7621ed77-98bc-4b4e-8011-e18fcd014071	Blood Derived Normal	593	34
+TCGA-OV	7621ed77-98bc-4b4e-8011-e18fcd014071	Primary Tumor	928	66
+TCGA-OV	774ce281-96b2-467a-9170-079797ee10f7	Blood Derived Normal	245	24
+TCGA-OV	774ce281-96b2-467a-9170-079797ee10f7	Primary Tumor	585	84
+TCGA-OV	778ce436-a825-4689-81c1-b7c965404163	Primary Tumor	465	56
+TCGA-OV	778ce436-a825-4689-81c1-b7c965404163	Solid Tissue Normal	21	2
+TCGA-OV	79e6e31c-22a1-481c-903b-ab5499cbd450	Blood Derived Normal	404	36
+TCGA-OV	79e6e31c-22a1-481c-903b-ab5499cbd450	Primary Tumor	619	50
+TCGA-OV	79fd602b-3e8e-4353-aa78-4f5f170b607d	Blood Derived Normal	142	21
+TCGA-OV	79fd602b-3e8e-4353-aa78-4f5f170b607d	Primary Tumor	384	78
+TCGA-OV	7a08efd0-f984-430e-a8eb-1881047214b6	Primary Tumor	52	5
+TCGA-OV	7a08efd0-f984-430e-a8eb-1881047214b6	Solid Tissue Normal	121	14
+TCGA-OV	7a75d318-b301-4f77-a97f-4d6784d27216	Primary Tumor	299	38
+TCGA-OV	7a75d318-b301-4f77-a97f-4d6784d27216	Solid Tissue Normal	160	15
+TCGA-OV	7ab3765f-910a-41c9-86cc-08534d2a4e4b	Primary Tumor	522	33
+TCGA-OV	7ab3765f-910a-41c9-86cc-08534d2a4e4b	Solid Tissue Normal	479	41
+TCGA-OV	7b042fb2-8f53-4fb1-8a44-40cd2128b279	Blood Derived Normal	923	95
+TCGA-OV	7b042fb2-8f53-4fb1-8a44-40cd2128b279	Primary Tumor	489	23
+TCGA-OV	7bd1851f-7e2e-4dbc-9f0e-7cb2863371e1	Blood Derived Normal	42	5
+TCGA-OV	7bd1851f-7e2e-4dbc-9f0e-7cb2863371e1	Primary Tumor	137	20
+TCGA-OV	7ca97692-0bf5-4bbd-81ce-10a051d04bd5	Primary Tumor	21	4
+TCGA-OV	7d03ddb6-f3fe-4b50-8bba-514aa65e7d0e	Blood Derived Normal	18	3
+TCGA-OV	7d03ddb6-f3fe-4b50-8bba-514aa65e7d0e	Primary Tumor	77	9
+TCGA-OV	7d1e9451-7a6a-4086-af7f-3ed57505daf0	Blood Derived Normal	427	72
+TCGA-OV	7d1e9451-7a6a-4086-af7f-3ed57505daf0	Primary Tumor	45	0
+TCGA-OV	7e34d3c1-1fab-4326-9a69-4260d2bac558	Blood Derived Normal	392	31
+TCGA-OV	7e34d3c1-1fab-4326-9a69-4260d2bac558	Primary Tumor	687	68
+TCGA-OV	7e4e7914-ec23-4c55-98d6-3c5eecffa8e4	Primary Tumor	214	42
+TCGA-OV	7e4e7914-ec23-4c55-98d6-3c5eecffa8e4	Solid Tissue Normal	46	4
+TCGA-OV	7fd6ab8a-201e-431d-a886-6ab553b6ca36	Blood Derived Normal	213	25
+TCGA-OV	7fd6ab8a-201e-431d-a886-6ab553b6ca36	Primary Tumor	334	40
+TCGA-OV	81005bae-686a-4598-8994-49d90ebac56f	Blood Derived Normal	151	15
+TCGA-OV	81005bae-686a-4598-8994-49d90ebac56f	Primary Tumor	526	72
+TCGA-OV	818dc159-aba4-46bc-a4ed-68ee0f8c4461	Blood Derived Normal	32	4
+TCGA-OV	818dc159-aba4-46bc-a4ed-68ee0f8c4461	Primary Tumor	309	43
+TCGA-OV	82093ed9-a3c8-4e34-931f-4ec7ae745711	Blood Derived Normal	87	11
+TCGA-OV	82093ed9-a3c8-4e34-931f-4ec7ae745711	Primary Tumor	270	53
+TCGA-OV	838693d5-1ae0-4d75-834b-e1b89b96b0ed	Blood Derived Normal	68	6
+TCGA-OV	838693d5-1ae0-4d75-834b-e1b89b96b0ed	Primary Tumor	145	24
+TCGA-OV	838778c3-0b33-4fc5-97fc-5da163475485	Blood Derived Normal	58	5
+TCGA-OV	838778c3-0b33-4fc5-97fc-5da163475485	Primary Tumor	150	27
+TCGA-OV	8516d4f2-0b98-4847-99c6-4d7269fa4af2	Primary Tumor	615	46
+TCGA-OV	8516d4f2-0b98-4847-99c6-4d7269fa4af2	Solid Tissue Normal	461	30
+TCGA-OV	85a85a11-7200-4e96-97af-6ba26d680d59	Blood Derived Normal	320	21
+TCGA-OV	85a85a11-7200-4e96-97af-6ba26d680d59	Primary Tumor	1087	87
+TCGA-OV	85bb4987-51e7-40fe-ad59-2aa56754eca9	Primary Tumor	52	5
+TCGA-OV	85bb4987-51e7-40fe-ad59-2aa56754eca9	Solid Tissue Normal	41	9
+TCGA-OV	8652ddee-98f4-4584-b450-e6f2f5c9d7ec	Primary Tumor	498	59
+TCGA-OV	8652ddee-98f4-4584-b450-e6f2f5c9d7ec	Solid Tissue Normal	431	41
+TCGA-OV	86b513ba-df09-485d-92d4-fb9e888f7350	Blood Derived Normal	246	17
+TCGA-OV	86b513ba-df09-485d-92d4-fb9e888f7350	Primary Tumor	517	87
+TCGA-OV	8727855e-120a-4216-a803-8cc6cd1159be	Primary Tumor	684	63
+TCGA-OV	8727855e-120a-4216-a803-8cc6cd1159be	Solid Tissue Normal	718	72
+TCGA-OV	872d2922-7292-4681-adb7-d3b267eccbe7	Blood Derived Normal	8	0
+TCGA-OV	872d2922-7292-4681-adb7-d3b267eccbe7	Primary Tumor	86	10
+TCGA-OV	8783e4b0-2b62-45d5-8cd9-f5a71cc0138e	Blood Derived Normal	523	26
+TCGA-OV	8783e4b0-2b62-45d5-8cd9-f5a71cc0138e	Primary Tumor	1265	60
+TCGA-OV	88180134-710f-46ea-9b06-5e5d860d6d9f	Primary Tumor	244	35
+TCGA-OV	88180134-710f-46ea-9b06-5e5d860d6d9f	Solid Tissue Normal	38	6
+TCGA-OV	8a6d2ce3-cc57-451b-9b07-8263782aa23f	Blood Derived Normal	252	11
+TCGA-OV	8a6d2ce3-cc57-451b-9b07-8263782aa23f	Primary Tumor	692	72
+TCGA-OV	8a98a6e6-b763-4824-858b-fd2738e6c9a3	Blood Derived Normal	362	30
+TCGA-OV	8a98a6e6-b763-4824-858b-fd2738e6c9a3	Primary Tumor	669	70
+TCGA-OV	8c47ae58-91c7-4247-b420-50f31f5eb00d	Blood Derived Normal	45	2
+TCGA-OV	8c47ae58-91c7-4247-b420-50f31f5eb00d	Primary Tumor	246	39
+TCGA-OV	8cad4217-5699-4735-9be3-fc0015a8d262	Blood Derived Normal	171	30
+TCGA-OV	8cad4217-5699-4735-9be3-fc0015a8d262	Primary Tumor	244	41
+TCGA-OV	8e107f4b-1912-4d3e-814a-b863e2d65ed7	Blood Derived Normal	470	42
+TCGA-OV	8e107f4b-1912-4d3e-814a-b863e2d65ed7	Primary Tumor	387	29
+TCGA-OV	8e1b8811-1eb2-4337-852c-c19eaa0ee418	Primary Tumor	491	86
+TCGA-OV	8e1b8811-1eb2-4337-852c-c19eaa0ee418	Solid Tissue Normal	173	9
+TCGA-OV	8fe44099-b313-4bfd-a94a-27e72f2a818c	Blood Derived Normal	27	9
+TCGA-OV	8fe44099-b313-4bfd-a94a-27e72f2a818c	Primary Tumor	4	1
+TCGA-OV	90118207-8f11-4784-ac1b-0deec2e7af3a	Blood Derived Normal	284	14
+TCGA-OV	90118207-8f11-4784-ac1b-0deec2e7af3a	Primary Tumor	793	92
+TCGA-OV	914d8613-3c25-4a10-be50-28b42f4d3a5d	Blood Derived Normal	333	24
+TCGA-OV	914d8613-3c25-4a10-be50-28b42f4d3a5d	Primary Tumor	700	103
+TCGA-OV	914f84bf-578b-4f4d-93cb-378228ea58f6	Blood Derived Normal	87	13
+TCGA-OV	914f84bf-578b-4f4d-93cb-378228ea58f6	Primary Tumor	127	32
+TCGA-OV	91a17d40-c8cb-4cce-b306-966382a8fe4a	Primary Tumor	193	32
+TCGA-OV	91a17d40-c8cb-4cce-b306-966382a8fe4a	Solid Tissue Normal	23	3
+TCGA-OV	91a6f311-c758-4e40-9abb-cc0f6584b9c9	Blood Derived Normal	909	91
+TCGA-OV	91a6f311-c758-4e40-9abb-cc0f6584b9c9	Primary Tumor	396	20
+TCGA-OV	91de8a74-a1e6-46b6-a06e-70aedf2c3eaf	Blood Derived Normal	141	11
+TCGA-OV	91de8a74-a1e6-46b6-a06e-70aedf2c3eaf	Primary Tumor	512	88
+TCGA-OV	92badeb5-a50e-4a62-a67e-6a8a59c948ab	Blood Derived Normal	59	6
+TCGA-OV	92badeb5-a50e-4a62-a67e-6a8a59c948ab	Primary Tumor	108	17
+TCGA-OV	93095c36-2263-438f-a619-a4a4d6ae13c7	Primary Tumor	204	4
+TCGA-OV	93095c36-2263-438f-a619-a4a4d6ae13c7	Solid Tissue Normal	638	66
+TCGA-OV	931738a7-4b5b-46dc-b69f-72600862d8af	Primary Tumor	106	24
+TCGA-OV	931738a7-4b5b-46dc-b69f-72600862d8af	Solid Tissue Normal	33	11
+TCGA-OV	933dbfbd-4697-403e-bd73-c17cb300c94b	Primary Tumor	54	11
+TCGA-OV	933dbfbd-4697-403e-bd73-c17cb300c94b	Solid Tissue Normal	18	8
+TCGA-OV	94030805-8beb-441a-af73-11a80768edb5	Blood Derived Normal	836	54
+TCGA-OV	94030805-8beb-441a-af73-11a80768edb5	Primary Tumor	868	64
+TCGA-OV	9446e349-71e6-455a-aa8f-53ec96597146	Primary Tumor	909	42
+TCGA-OV	9446e349-71e6-455a-aa8f-53ec96597146	Solid Tissue Normal	910	70
+TCGA-OV	94769f2c-b6fd-48ec-af34-b41165340b7c	Blood Derived Normal	224	27
+TCGA-OV	94769f2c-b6fd-48ec-af34-b41165340b7c	Primary Tumor	326	31
+TCGA-OV	94bd4c68-4bfc-4db3-9365-97c867747133	Blood Derived Normal	704	80
+TCGA-OV	94bd4c68-4bfc-4db3-9365-97c867747133	Primary Tumor	442	28
+TCGA-OV	94efd4f9-69b0-4efa-8a0c-61106e898fdd	Blood Derived Normal	220	20
+TCGA-OV	94efd4f9-69b0-4efa-8a0c-61106e898fdd	Primary Tumor	724	94
+TCGA-OV	955c80be-53df-4565-9303-a7abf96a2f81	Blood Derived Normal	115	12
+TCGA-OV	955c80be-53df-4565-9303-a7abf96a2f81	Primary Tumor	370	56
+TCGA-OV	95e58015-a7c0-4bdc-bf64-7617d24d0784	Blood Derived Normal	261	31
+TCGA-OV	95e58015-a7c0-4bdc-bf64-7617d24d0784	Primary Tumor	337	64
+TCGA-OV	97ad0360-3be4-401a-a94c-7f2800a1b519	Blood Derived Normal	146	18
+TCGA-OV	97ad0360-3be4-401a-a94c-7f2800a1b519	Primary Tumor	224	36
+TCGA-OV	99407c1d-40b5-4ded-ba29-1e40dfd65be4	Primary Tumor	621	101
+TCGA-OV	99407c1d-40b5-4ded-ba29-1e40dfd65be4	Solid Tissue Normal	106	6
+TCGA-OV	99a61986-7b23-46b5-99a4-efba6bad3766	Primary Tumor	89	9
+TCGA-OV	99a61986-7b23-46b5-99a4-efba6bad3766	Solid Tissue Normal	31	5
+TCGA-OV	99f1ae02-86ec-4d93-8cd4-650bf6f02c10	Primary Tumor	878	54
+TCGA-OV	99f1ae02-86ec-4d93-8cd4-650bf6f02c10	Solid Tissue Normal	851	43
+TCGA-OV	9a30dee8-962a-49db-a85a-c39515c91b68	Blood Derived Normal	178	20
+TCGA-OV	9a30dee8-962a-49db-a85a-c39515c91b68	Primary Tumor	317	37
+TCGA-OV	9af2248a-d86a-4277-93b4-8eba5a39bd3c	Blood Derived Normal	8	1
+TCGA-OV	9af2248a-d86a-4277-93b4-8eba5a39bd3c	Primary Tumor	81	16
+TCGA-OV	9bbc01b4-056c-4ddc-aca4-ff20718646d0	Blood Derived Normal	98	9
+TCGA-OV	9bbc01b4-056c-4ddc-aca4-ff20718646d0	Primary Tumor	269	55
+TCGA-OV	9bf16a89-2fc7-4c08-93bc-3105eec5c3cc	Blood Derived Normal	252	24
+TCGA-OV	9bf16a89-2fc7-4c08-93bc-3105eec5c3cc	Primary Tumor	436	44
+TCGA-OV	9c744ff8-1cde-4176-b6d7-0ab62bf42620	Blood Derived Normal	467	35
+TCGA-OV	9c744ff8-1cde-4176-b6d7-0ab62bf42620	Primary Tumor	538	54
+TCGA-OV	9ec86cbd-8c74-4697-90da-529ab91ab835	Blood Derived Normal	494	33
+TCGA-OV	9ec86cbd-8c74-4697-90da-529ab91ab835	Primary Tumor	531	41
+TCGA-OV	9fb1ba57-2007-4477-b000-2d36f163efd2	Blood Derived Normal	170	23
+TCGA-OV	9fb1ba57-2007-4477-b000-2d36f163efd2	Primary Tumor	275	43
+TCGA-OV	a285786d-120e-4c88-b48b-8111f4413988	Blood Derived Normal	86	16
+TCGA-OV	a36a4440-15ef-4837-904b-380a964d16f1	Blood Derived Normal	675	61
+TCGA-OV	a36a4440-15ef-4837-904b-380a964d16f1	Primary Tumor	482	35
+TCGA-OV	a3898640-0d85-441d-a000-b5b8ff857399	Blood Derived Normal	582	55
+TCGA-OV	a3898640-0d85-441d-a000-b5b8ff857399	Primary Tumor	453	30
+TCGA-OV	a3e26259-732b-49fb-bc95-2f0ec7a0494e	Solid Tissue Normal	36	11
+TCGA-OV	a4a3fca9-723a-47f5-a49d-b3acb71c04a7	Blood Derived Normal	247	21
+TCGA-OV	a4a3fca9-723a-47f5-a49d-b3acb71c04a7	Primary Tumor	544	56
+TCGA-OV	a5030259-cf9c-4a58-8710-b9da8ee59320	Primary Tumor	19	5
+TCGA-OV	a5030259-cf9c-4a58-8710-b9da8ee59320	Solid Tissue Normal	9	0
+TCGA-OV	a6aad7f9-8444-4c2f-8e4b-b19fd453544f	Primary Tumor	915	45
+TCGA-OV	a6aad7f9-8444-4c2f-8e4b-b19fd453544f	Solid Tissue Normal	1283	58
+TCGA-OV	a6eb0cd0-fe57-41b0-8593-776208684293	Primary Tumor	185	18
+TCGA-OV	a6eb0cd0-fe57-41b0-8593-776208684293	Solid Tissue Normal	396	47
+TCGA-OV	a782352e-c4bb-4c3e-ba82-456a47c3689a	Blood Derived Normal	670	41
+TCGA-OV	a782352e-c4bb-4c3e-ba82-456a47c3689a	Primary Tumor	737	57
+TCGA-OV	a85f6f9c-1e1d-44fc-85eb-3b2d96cfbc61	Blood Derived Normal	647	48
+TCGA-OV	a85f6f9c-1e1d-44fc-85eb-3b2d96cfbc61	Primary Tumor	477	36
+TCGA-OV	a88b7e66-5f12-4023-a7e2-fcfbd1f25977	Blood Derived Normal	448	26
+TCGA-OV	a88b7e66-5f12-4023-a7e2-fcfbd1f25977	Primary Tumor	994	75
+TCGA-OV	a8c4a333-6b67-44c8-9000-516f8ccea788	Blood Derived Normal	60	11
+TCGA-OV	a8c4a333-6b67-44c8-9000-516f8ccea788	Primary Tumor	188	36
+TCGA-OV	a9abe7a7-4126-414b-87d2-a6d25abcf1fa	Blood Derived Normal	433	30
+TCGA-OV	a9abe7a7-4126-414b-87d2-a6d25abcf1fa	Primary Tumor	770	52
+TCGA-OV	a9d3a7b0-faf8-4e56-8600-d9e6882a4f23	Blood Derived Normal	322	12
+TCGA-OV	a9d3a7b0-faf8-4e56-8600-d9e6882a4f23	Primary Tumor	815	83
+TCGA-OV	ab3dbbbe-eed6-4a35-a505-1815225e86c9	Primary Tumor	164	35
+TCGA-OV	ac2e88ff-8b1e-4691-9a96-5a581f98d827	Blood Derived Normal	257	20
+TCGA-OV	ac2e88ff-8b1e-4691-9a96-5a581f98d827	Primary Tumor	678	87
+TCGA-OV	ad2939e6-b8b8-475a-90e2-6a369c3d3167	Blood Derived Normal	449	34
+TCGA-OV	ad2939e6-b8b8-475a-90e2-6a369c3d3167	Primary Tumor	601	72
+TCGA-OV	ad2b1a0a-153f-483d-b228-5763eba3f6cc	Blood Derived Normal	31	9
+TCGA-OV	ad2b1a0a-153f-483d-b228-5763eba3f6cc	Primary Tumor	92	18
+TCGA-OV	ae914f23-87b9-4169-a7f7-a3483078c902	Blood Derived Normal	42	8
+TCGA-OV	ae914f23-87b9-4169-a7f7-a3483078c902	Primary Tumor	83	6
+TCGA-OV	b0585c7a-7205-4dac-9d54-6da89674accb	Primary Tumor	67	16
+TCGA-OV	b120b701-c194-43d7-a491-3206fac38ec1	Blood Derived Normal	260	9
+TCGA-OV	b120b701-c194-43d7-a491-3206fac38ec1	Primary Tumor	1010	133
+TCGA-OV	b1e11e94-646b-4c44-9d33-1ca67d8356fb	Blood Derived Normal	533	42
+TCGA-OV	b1e11e94-646b-4c44-9d33-1ca67d8356fb	Primary Tumor	818	57
+TCGA-OV	b25570ed-baca-4e3f-87c6-2ef18119ba49	Blood Derived Normal	437	40
+TCGA-OV	b25570ed-baca-4e3f-87c6-2ef18119ba49	Primary Tumor	396	37
+TCGA-OV	b31d85cc-d2e2-4bd1-9986-d6bbe30e657f	Primary Tumor	95	21
+TCGA-OV	b31d85cc-d2e2-4bd1-9986-d6bbe30e657f	Solid Tissue Normal	16	0
+TCGA-OV	b3511675-fd68-4745-8020-e290ca0fd115	Blood Derived Normal	523	37
+TCGA-OV	b3511675-fd68-4745-8020-e290ca0fd115	Primary Tumor	666	38
+TCGA-OV	b3df9c0a-420c-4cc2-a3e0-56df1ed7e997	Primary Tumor	233	18
+TCGA-OV	b3df9c0a-420c-4cc2-a3e0-56df1ed7e997	Solid Tissue Normal	434	38
+TCGA-OV	b4225c44-b9b6-46c5-aabf-7b0d9a9fe20b	Blood Derived Normal	436	42
+TCGA-OV	b4225c44-b9b6-46c5-aabf-7b0d9a9fe20b	Primary Tumor	326	36
+TCGA-OV	b46263ab-c3ca-4fda-a895-74c7e6e6fe22	Blood Derived Normal	315	26
+TCGA-OV	b46263ab-c3ca-4fda-a895-74c7e6e6fe22	Primary Tumor	634	76
+TCGA-OV	b4b49027-7815-4813-9769-a3fe3a26a37a	Blood Derived Normal	45	10
+TCGA-OV	b4b49027-7815-4813-9769-a3fe3a26a37a	Primary Tumor	157	32
+TCGA-OV	b520aae5-65a6-4b27-bc2a-10b02c7b1aeb	Blood Derived Normal	305	23
+TCGA-OV	b520aae5-65a6-4b27-bc2a-10b02c7b1aeb	Primary Tumor	697	82
+TCGA-OV	b5e64bdb-24f1-400d-aaf7-8fda8ab6fd3c	Primary Tumor	89	10
+TCGA-OV	b5e64bdb-24f1-400d-aaf7-8fda8ab6fd3c	Solid Tissue Normal	30	2
+TCGA-OV	b63cad1b-b4c7-4e50-8acb-5cee4e9ce4a9	Blood Derived Normal	10	1
+TCGA-OV	b63cad1b-b4c7-4e50-8acb-5cee4e9ce4a9	Primary Tumor	78	16
+TCGA-OV	b6b607cd-67b8-4c04-a212-a4e8c0743f05	Blood Derived Normal	166	16
+TCGA-OV	b6b607cd-67b8-4c04-a212-a4e8c0743f05	Primary Tumor	299	52
+TCGA-OV	b7715ff6-57a6-4513-9447-aa8bc93f16d4	Blood Derived Normal	407	20
+TCGA-OV	b7715ff6-57a6-4513-9447-aa8bc93f16d4	Primary Tumor	1007	68
+TCGA-OV	b783f33b-734a-4801-bf39-b559a2035c6f	Blood Derived Normal	492	31
+TCGA-OV	b783f33b-734a-4801-bf39-b559a2035c6f	Primary Tumor	934	79
+TCGA-OV	b867e933-e3e3-4491-9bb6-b18c48d6f173	Blood Derived Normal	31	5
+TCGA-OV	b867e933-e3e3-4491-9bb6-b18c48d6f173	Primary Tumor	150	26
+TCGA-OV	b923ac70-70ea-4a82-8466-46350c5803bf	Blood Derived Normal	1095	73
+TCGA-OV	b923ac70-70ea-4a82-8466-46350c5803bf	Primary Tumor	744	51
+TCGA-OV	b9418c6d-94f7-4db4-a1e4-f384b09d54cb	Primary Tumor	79	22
+TCGA-OV	bbad2efe-e9c7-4f8f-924b-ebbbe4c181d4	Blood Derived Normal	26	7
+TCGA-OV	bbad2efe-e9c7-4f8f-924b-ebbbe4c181d4	Primary Tumor	29	5
+TCGA-OV	bc3e0b74-ea09-46a5-9f61-16bd15ffd883	Blood Derived Normal	191	6
+TCGA-OV	bc3e0b74-ea09-46a5-9f61-16bd15ffd883	Primary Tumor	623	78
+TCGA-OV	bc4bc342-20bf-40c3-af26-2c6f942da93d	Blood Derived Normal	309	32
+TCGA-OV	bc4bc342-20bf-40c3-af26-2c6f942da93d	Primary Tumor	240	26
+TCGA-OV	bdd792e7-d75f-4aa3-b38e-f0708e112075	Blood Derived Normal	43	5
+TCGA-OV	bdd792e7-d75f-4aa3-b38e-f0708e112075	Primary Tumor	309	36
+TCGA-OV	be03bfec-5bb6-4cab-9dd2-bee590bd45f1	Primary Tumor	59	9
+TCGA-OV	be03bfec-5bb6-4cab-9dd2-bee590bd45f1	Solid Tissue Normal	11	1
+TCGA-OV	bff84539-7862-45b2-b5fc-e77291fcca8b	Primary Tumor	396	38
+TCGA-OV	bff84539-7862-45b2-b5fc-e77291fcca8b	Solid Tissue Normal	639	63
+TCGA-OV	c040df8a-9d6d-43bd-911a-17a7b4e1ec74	Primary Tumor	221	24
+TCGA-OV	c040df8a-9d6d-43bd-911a-17a7b4e1ec74	Solid Tissue Normal	206	23
+TCGA-OV	c0c3caab-9277-4a31-a96c-c607e38d5ccc	Blood Derived Normal	513	49
+TCGA-OV	c0c3caab-9277-4a31-a96c-c607e38d5ccc	Primary Tumor	503	42
+TCGA-OV	c183d3fb-2eee-44f8-890e-b9bf907141e6	Primary Tumor	146	25
+TCGA-OV	c183d3fb-2eee-44f8-890e-b9bf907141e6	Solid Tissue Normal	9	0
+TCGA-OV	c3e443b9-5dc5-4793-91e3-534f21485268	Blood Derived Normal	630	52
+TCGA-OV	c3e443b9-5dc5-4793-91e3-534f21485268	Primary Tumor	605	53
+TCGA-OV	c3f9ee36-d34f-472b-ac7f-801a0d400aa4	Blood Derived Normal	107	14
+TCGA-OV	c3f9ee36-d34f-472b-ac7f-801a0d400aa4	Primary Tumor	262	61
+TCGA-OV	c5355491-e1e8-46a4-a05e-bafcaf2e7459	Blood Derived Normal	169	21
+TCGA-OV	c5355491-e1e8-46a4-a05e-bafcaf2e7459	Primary Tumor	267	42
+TCGA-OV	c70228cc-79c0-4c00-8926-6671c1474701	Blood Derived Normal	579	52
+TCGA-OV	c70228cc-79c0-4c00-8926-6671c1474701	Primary Tumor	516	43
+TCGA-OV	c75c915f-ef4b-4c19-8ace-995e6c6015fd	Primary Tumor	609	25
+TCGA-OV	c75c915f-ef4b-4c19-8ace-995e6c6015fd	Solid Tissue Normal	1063	96
+TCGA-OV	c7c3fe4a-327a-4b7e-a259-989b72971209	Blood Derived Normal	246	33
+TCGA-OV	c7c3fe4a-327a-4b7e-a259-989b72971209	Primary Tumor	386	50
+TCGA-OV	c88502e9-0bc6-47c3-adc4-d98b63c7797b	Primary Tumor	339	38
+TCGA-OV	c88502e9-0bc6-47c3-adc4-d98b63c7797b	Solid Tissue Normal	346	40
+TCGA-OV	c8acee1b-6854-409b-86ab-bf69dbe22ab6	Blood Derived Normal	559	34
+TCGA-OV	c8acee1b-6854-409b-86ab-bf69dbe22ab6	Primary Tumor	967	97
+TCGA-OV	c8febeef-8e7e-459e-88cb-8086692dc559	Blood Derived Normal	316	37
+TCGA-OV	c8febeef-8e7e-459e-88cb-8086692dc559	Primary Tumor	289	28
+TCGA-OV	c9226204-cb61-40b8-8a94-a7e71c14ea3a	Blood Derived Normal	5	0
+TCGA-OV	c9226204-cb61-40b8-8a94-a7e71c14ea3a	Primary Tumor	69	17
+TCGA-OV	c9524775-6b50-4793-8858-24b6a6d3e4e6	Blood Derived Normal	191	47
+TCGA-OV	c9524775-6b50-4793-8858-24b6a6d3e4e6	Primary Tumor	123	20
+TCGA-OV	c9e28934-8379-4511-817c-d787f2c4ca3a	Blood Derived Normal	96	23
+TCGA-OV	c9e28934-8379-4511-817c-d787f2c4ca3a	Primary Tumor	138	31
+TCGA-OV	c9e58844-9d61-44a2-aee6-1760bc19711b	Blood Derived Normal	132	32
+TCGA-OV	c9e58844-9d61-44a2-aee6-1760bc19711b	Primary Tumor	173	44
+TCGA-OV	cbc5b936-ead5-4858-ab90-e639402789b0	Blood Derived Normal	312	23
+TCGA-OV	cbc5b936-ead5-4858-ab90-e639402789b0	Primary Tumor	550	58
+TCGA-OV	cbcf6922-a3c0-43a1-826e-642918b0a635	Blood Derived Normal	194	29
+TCGA-OV	cbcf6922-a3c0-43a1-826e-642918b0a635	Primary Tumor	194	28
+TCGA-OV	cbd87697-7708-4b69-9e50-9ee474feabe1	Solid Tissue Normal	20	3
+TCGA-OV	cd49126a-ec15-43fa-9e43-3f7460d43f2b	Blood Derived Normal	94	10
+TCGA-OV	cd49126a-ec15-43fa-9e43-3f7460d43f2b	Primary Tumor	190	41
+TCGA-OV	cd6e5d3d-1c86-40dd-9cb3-b2e2075dec56	Blood Derived Normal	624	48
+TCGA-OV	cd6e5d3d-1c86-40dd-9cb3-b2e2075dec56	Primary Tumor	505	32
+TCGA-OV	cddce77f-21e6-4124-9f03-96fb5ca7cefa	Primary Tumor	836	70
+TCGA-OV	cddce77f-21e6-4124-9f03-96fb5ca7cefa	Solid Tissue Normal	662	38
+TCGA-OV	ce871097-a6e9-4139-897e-642ee24ee123	Primary Tumor	194	39
+TCGA-OV	ce871097-a6e9-4139-897e-642ee24ee123	Solid Tissue Normal	8	0
+TCGA-OV	ceb19678-b453-4529-b6cb-d02f9cb101b4	Blood Derived Normal	80	11
+TCGA-OV	ceb19678-b453-4529-b6cb-d02f9cb101b4	Primary Tumor	340	78
+TCGA-OV	cf1e86ec-4bcb-403c-831b-d67bddef14eb	Blood Derived Normal	113	19
+TCGA-OV	cf1e86ec-4bcb-403c-831b-d67bddef14eb	Primary Tumor	180	35
+TCGA-OV	d0673efd-3315-4dd5-8ab6-912bfa07dceb	Blood Derived Normal	454	48
+TCGA-OV	d0673efd-3315-4dd5-8ab6-912bfa07dceb	Primary Tumor	325	24
+TCGA-OV	d1976840-35f7-4423-8458-12fb32a52b33	Blood Derived Normal	153	15
+TCGA-OV	d1976840-35f7-4423-8458-12fb32a52b33	Primary Tumor	347	54
+TCGA-OV	d1eeaca3-52c0-4a0c-916a-fd64cec911d9	Blood Derived Normal	422	33
+TCGA-OV	d1eeaca3-52c0-4a0c-916a-fd64cec911d9	Primary Tumor	735	53
+TCGA-OV	d2c0d320-d1c5-4eed-af4f-15540e60db0b	Blood Derived Normal	143	18
+TCGA-OV	d2c0d320-d1c5-4eed-af4f-15540e60db0b	Primary Tumor	366	68
+TCGA-OV	d2ccefea-c1d6-465f-97b1-e51e29c5f1f8	Blood Derived Normal	21	5
+TCGA-OV	d2ccefea-c1d6-465f-97b1-e51e29c5f1f8	Primary Tumor	68	7
+TCGA-OV	d38ca631-ed5c-4182-a647-625060726fa7	Primary Tumor	643	34
+TCGA-OV	d38ca631-ed5c-4182-a647-625060726fa7	Solid Tissue Normal	774	46
+TCGA-OV	d3dd5e69-9752-4b50-9b1f-814afbc2c3dd	Blood Derived Normal	184	12
+TCGA-OV	d3dd5e69-9752-4b50-9b1f-814afbc2c3dd	Primary Tumor	600	71
+TCGA-OV	d73a0a33-e4e8-44bd-9580-2038ab06583a	Blood Derived Normal	128	12
+TCGA-OV	d73a0a33-e4e8-44bd-9580-2038ab06583a	Primary Tumor	648	128
+TCGA-OV	d77ef9cf-f8e6-4ee9-8d4f-1106885f6b06	Blood Derived Normal	79	7
+TCGA-OV	d77ef9cf-f8e6-4ee9-8d4f-1106885f6b06	Primary Tumor	181	39
+TCGA-OV	d7925dfc-18ce-46ab-a47b-9d06eacc96d0	Primary Tumor	86	13
+TCGA-OV	d7925dfc-18ce-46ab-a47b-9d06eacc96d0	Solid Tissue Normal	54	16
+TCGA-OV	d7b3156d-672a-4a55-868d-9ca6a09fcb0f	Blood Derived Normal	133	15
+TCGA-OV	d7b3156d-672a-4a55-868d-9ca6a09fcb0f	Primary Tumor	269	45
+TCGA-OV	d7f82e34-5b34-4e8c-a0cf-d7561bcea43c	Blood Derived Normal	541	48
+TCGA-OV	d7f82e34-5b34-4e8c-a0cf-d7561bcea43c	Primary Tumor	444	28
+TCGA-OV	d86adfac-56be-4a69-9315-5a90b4113e65	Primary Tumor	579	46
+TCGA-OV	d86adfac-56be-4a69-9315-5a90b4113e65	Solid Tissue Normal	630	37
+TCGA-OV	d8d13aa4-45d5-4e1a-a6cf-895bdf05e7b2	Blood Derived Normal	669	47
+TCGA-OV	d8d13aa4-45d5-4e1a-a6cf-895bdf05e7b2	Primary Tumor	898	59
+TCGA-OV	dac8d825-dd47-47ed-a426-0ee75feb76f3	Blood Derived Normal	125	29
+TCGA-OV	dac96910-0cb2-44ea-b108-2d6d51b07112	Blood Derived Normal	151	41
+TCGA-OV	dac96910-0cb2-44ea-b108-2d6d51b07112	Primary Tumor	117	15
+TCGA-OV	dc5a6ce7-01e5-408d-812e-e3e0ddc1cde5	Primary Tumor	105	26
+TCGA-OV	dc5a6ce7-01e5-408d-812e-e3e0ddc1cde5	Solid Tissue Normal	11	0
+TCGA-OV	dce71741-ccbe-40b7-a0b8-2048d07187a4	Blood Derived Normal	33	5
+TCGA-OV	dce71741-ccbe-40b7-a0b8-2048d07187a4	Primary Tumor	62	11
+TCGA-OV	e0502c47-3234-4609-a8d5-730a9e6eb5b8	Primary Tumor	501	34
+TCGA-OV	e0502c47-3234-4609-a8d5-730a9e6eb5b8	Solid Tissue Normal	907	85
+TCGA-OV	e07a61e2-bcd2-4a96-80df-97e04aafbd32	Primary Tumor	284	40
+TCGA-OV	e07a61e2-bcd2-4a96-80df-97e04aafbd32	Solid Tissue Normal	191	26
+TCGA-OV	e3712e5a-4575-440f-89d1-8db9498baa88	Blood Derived Normal	7	1
+TCGA-OV	e3712e5a-4575-440f-89d1-8db9498baa88	Primary Tumor	2	0
+TCGA-OV	e3ea5137-76b8-4afc-9b80-ed74714e7172	Blood Derived Normal	5	0
+TCGA-OV	e3ea5137-76b8-4afc-9b80-ed74714e7172	Primary Tumor	48	14
+TCGA-OV	e43d3769-e25f-4fb7-9080-ea26defaf094	Blood Derived Normal	9	6
+TCGA-OV	e5a329ec-e50e-4786-901d-b58474f8ea65	Blood Derived Normal	153	22
+TCGA-OV	e5a329ec-e50e-4786-901d-b58474f8ea65	Primary Tumor	154	26
+TCGA-OV	e641aed9-1dd8-4c30-b231-f12b20a76df0	Primary Tumor	273	54
+TCGA-OV	e641aed9-1dd8-4c30-b231-f12b20a76df0	Solid Tissue Normal	44	6
+TCGA-OV	e732f81c-9b7d-44bd-a905-ff53fbed5009	Blood Derived Normal	21	1
+TCGA-OV	e732f81c-9b7d-44bd-a905-ff53fbed5009	Primary Tumor	196	37
+TCGA-OV	e8372916-7ac7-4535-ae97-0248208224f5	Blood Derived Normal	501	15
+TCGA-OV	e8372916-7ac7-4535-ae97-0248208224f5	Primary Tumor	1265	88
+TCGA-OV	e978a457-92ff-4eab-b759-ec6e74d973e8	Primary Tumor	117	20
+TCGA-OV	e978a457-92ff-4eab-b759-ec6e74d973e8	Solid Tissue Normal	70	12
+TCGA-OV	ea605be2-6578-4e01-8ec3-bbd84c0b7f1d	Blood Derived Normal	30	5
+TCGA-OV	ea605be2-6578-4e01-8ec3-bbd84c0b7f1d	Primary Tumor	242	42
+TCGA-OV	ea6405c4-0fe4-4f37-bef2-275072f91e39	Primary Tumor	62	11
+TCGA-OV	ea6405c4-0fe4-4f37-bef2-275072f91e39	Solid Tissue Normal	38	5
+TCGA-OV	ead71c90-cc5e-42ce-8754-c3cf15a41134	Blood Derived Normal	130	17
+TCGA-OV	ead71c90-cc5e-42ce-8754-c3cf15a41134	Primary Tumor	151	28
+TCGA-OV	eb7c3b35-7a5e-4621-b31f-9775c51f9a23	Primary Tumor	145	19
+TCGA-OV	ebe677e6-94b6-45be-a58d-eaae4cf63d12	Blood Derived Normal	29	5
+TCGA-OV	ebe677e6-94b6-45be-a58d-eaae4cf63d12	Primary Tumor	320	38
+TCGA-OV	ee0a4a13-613e-4c5d-96c3-8083a013702d	Blood Derived Normal	524	31
+TCGA-OV	ee0a4a13-613e-4c5d-96c3-8083a013702d	Primary Tumor	713	61
+TCGA-OV	eec69ea9-ceb8-456a-aff4-41fb8a261e36	Primary Tumor	92	12
+TCGA-OV	eec69ea9-ceb8-456a-aff4-41fb8a261e36	Solid Tissue Normal	39	6
+TCGA-OV	ef57bc45-858f-4d4e-8407-b7eadfa43be5	Blood Derived Normal	15	2
+TCGA-OV	ef57bc45-858f-4d4e-8407-b7eadfa43be5	Primary Tumor	133	24
+TCGA-OV	ef653772-e5d2-46ec-8610-f81d75d7353c	Primary Tumor	298	25
+TCGA-OV	ef653772-e5d2-46ec-8610-f81d75d7353c	Solid Tissue Normal	324	36
+TCGA-OV	f007fa7a-7da9-4cb0-8aea-623af1a122c5	Blood Derived Normal	496	57
+TCGA-OV	f007fa7a-7da9-4cb0-8aea-623af1a122c5	Primary Tumor	432	32
+TCGA-OV	f0c353fd-947c-41e2-b643-3ecc0d69796c	Primary Tumor	734	28
+TCGA-OV	f0c353fd-947c-41e2-b643-3ecc0d69796c	Solid Tissue Normal	1168	78
+TCGA-OV	f0ca8205-0754-4bd8-a6a8-31901040c5e7	Primary Tumor	286	35
+TCGA-OV	f2ce00e4-0d4f-4faa-bee1-ddf1b306e97b	Primary Tumor	79	15
+TCGA-OV	f2ce00e4-0d4f-4faa-bee1-ddf1b306e97b	Solid Tissue Normal	18	5
+TCGA-OV	f34aa3b6-e966-49c6-bc55-130545772c53	Blood Derived Normal	320	36
+TCGA-OV	f34aa3b6-e966-49c6-bc55-130545772c53	Primary Tumor	408	52
+TCGA-OV	f3af727e-b592-4828-94f5-22008666cf8c	Blood Derived Normal	812	70
+TCGA-OV	f3af727e-b592-4828-94f5-22008666cf8c	Primary Tumor	289	17
+TCGA-OV	f4d95c8e-fb84-46ca-acc0-827015cc9d0a	Blood Derived Normal	44	6
+TCGA-OV	f4d95c8e-fb84-46ca-acc0-827015cc9d0a	Primary Tumor	80	14
+TCGA-OV	f5033d52-ec36-4e67-88d8-b6d898b81b2f	Blood Derived Normal	42	9
+TCGA-OV	f5033d52-ec36-4e67-88d8-b6d898b81b2f	Primary Tumor	83	22
+TCGA-OV	f50ee039-1da9-43d9-ac01-657ec77a7f32	Blood Derived Normal	152	20
+TCGA-OV	f50ee039-1da9-43d9-ac01-657ec77a7f32	Primary Tumor	420	92
+TCGA-OV	f553e953-6464-421f-8933-26ca82cb79d3	Primary Tumor	186	17
+TCGA-OV	f553e953-6464-421f-8933-26ca82cb79d3	Solid Tissue Normal	602	74
+TCGA-OV	f58e49fc-9641-4b46-be4c-766445ec70a3	Blood Derived Normal	554	62
+TCGA-OV	f58e49fc-9641-4b46-be4c-766445ec70a3	Primary Tumor	464	46
+TCGA-OV	f64ebc7f-0e5a-42b4-af57-6cdb90d24f90	Blood Derived Normal	155	16
+TCGA-OV	f64ebc7f-0e5a-42b4-af57-6cdb90d24f90	Primary Tumor	377	75
+TCGA-OV	f6ebf3a7-31c6-4f4c-9a0b-74cf35bfedf6	Blood Derived Normal	123	10
+TCGA-OV	f6ebf3a7-31c6-4f4c-9a0b-74cf35bfedf6	Primary Tumor	248	34
+TCGA-OV	f7752d6e-f9cd-4dc9-ab01-3ab87acb21e4	Primary Tumor	704	39
+TCGA-OV	f7752d6e-f9cd-4dc9-ab01-3ab87acb21e4	Solid Tissue Normal	1298	62
+TCGA-OV	f8a5547f-f1bc-4c01-8b68-25b5ee0caeab	Blood Derived Normal	393	28
+TCGA-OV	f8a5547f-f1bc-4c01-8b68-25b5ee0caeab	Primary Tumor	565	77
+TCGA-OV	f9793a4b-c0e7-4475-bf80-69543b7ee2f6	Blood Derived Normal	169	16
+TCGA-OV	f9793a4b-c0e7-4475-bf80-69543b7ee2f6	Primary Tumor	542	92
+TCGA-OV	f9c835db-2ab6-4bf5-826f-48723493c0ec	Blood Derived Normal	626	77
+TCGA-OV	f9c835db-2ab6-4bf5-826f-48723493c0ec	Primary Tumor	247	13
+TCGA-OV	f9f44f86-10c7-4473-b156-5afbfa9a2ad0	Blood Derived Normal	653	58
+TCGA-OV	f9f44f86-10c7-4473-b156-5afbfa9a2ad0	Primary Tumor	507	49
+TCGA-OV	fbb45305-de8d-4baf-8bd0-047b29c2e9d9	Blood Derived Normal	317	34
+TCGA-OV	fbb45305-de8d-4baf-8bd0-047b29c2e9d9	Primary Tumor	437	43
+TCGA-OV	fd4740db-76a8-4362-be71-7b609479bb67	Blood Derived Normal	82	10
+TCGA-OV	fd4740db-76a8-4362-be71-7b609479bb67	Primary Tumor	111	15
+TCGA-OV	fdd4adb8-9295-480a-9352-305b5eb51187	Blood Derived Normal	48	8
+TCGA-OV	fdd4adb8-9295-480a-9352-305b5eb51187	Primary Tumor	127	21
+TCGA-OV	fe0e3851-d8cb-4533-9536-b4826cd25f87	Blood Derived Normal	489	40
+TCGA-OV	fe0e3851-d8cb-4533-9536-b4826cd25f87	Primary Tumor	826	85
+TCGA-OV	fe402983-70da-44db-b7b1-c32702ddde26	Blood Derived Normal	487	53
+TCGA-OV	fe402983-70da-44db-b7b1-c32702ddde26	Primary Tumor	480	44
+TCGA-OV	feda41d8-ca56-425d-b149-4d5485328107	Primary Tumor	477	55
+TCGA-OV	feda41d8-ca56-425d-b149-4d5485328107	Solid Tissue Normal	364	37
+TCGA-OV	fef1696c-a8f4-4db6-8615-e486522baaaa	Blood Derived Normal	735	85
+TCGA-OV	fef1696c-a8f4-4db6-8615-e486522baaaa	Primary Tumor	404	17
+TCGA-OV	ff530f28-0ec0-4494-bb54-44bb055bae1c	Blood Derived Normal	824	40
+TCGA-OV	ff530f28-0ec0-4494-bb54-44bb055bae1c	Primary Tumor	1101	71
+TCGA-UCEC	002724fa-7051-49fa-9c58-4bcb7eba4ac6	Blood Derived Normal	554	81
+TCGA-UCEC	0119eab6-00e7-4346-aa52-cbbeeba3621d	Blood Derived Normal	671	90
+TCGA-UCEC	0119eab6-00e7-4346-aa52-cbbeeba3621d	Primary Tumor	412	24
+TCGA-UCEC	0547cdfa-c488-4da0-9bb5-4cc63a637179	Blood Derived Normal	204	21
+TCGA-UCEC	0547cdfa-c488-4da0-9bb5-4cc63a637179	Primary Tumor	277	37
+TCGA-UCEC	082e32c5-7f82-466a-b52d-a3293a8f8e57	Blood Derived Normal	54	6
+TCGA-UCEC	08b11e0e-5b8e-45ea-9b6b-30e3185b03d7	Blood Derived Normal	217	17
+TCGA-UCEC	08b11e0e-5b8e-45ea-9b6b-30e3185b03d7	Primary Tumor	604	78
+TCGA-UCEC	1200c8b7-a058-4c01-bbe2-04ec09a65245	Blood Derived Normal	210	23
+TCGA-UCEC	1200c8b7-a058-4c01-bbe2-04ec09a65245	Primary Tumor	340	39
+TCGA-UCEC	1486a031-b74d-4976-8b0b-4569e6978f49	Blood Derived Normal	384	56
+TCGA-UCEC	1486a031-b74d-4976-8b0b-4569e6978f49	Primary Tumor	231	40
+TCGA-UCEC	1c7b41fc-daa7-4a6e-b553-aff73e8ebac6	Blood Derived Normal	133	21
+TCGA-UCEC	1d9c2113-ddcb-4440-89c3-cd21cee6d401	Blood Derived Normal	356	23
+TCGA-UCEC	1d9c2113-ddcb-4440-89c3-cd21cee6d401	Primary Tumor	349	36
+TCGA-UCEC	233e947a-d5e2-48e5-a8ce-5da1abb20681	Blood Derived Normal	499	95
+TCGA-UCEC	29c8f468-5ac1-4d6c-8376-e36e6d246926	Blood Derived Normal	370	32
+TCGA-UCEC	29c8f468-5ac1-4d6c-8376-e36e6d246926	Primary Tumor	390	41
+TCGA-UCEC	2b865f8c-539f-4cb2-8f08-41709e9511e5	Blood Derived Normal	481	20
+TCGA-UCEC	2b865f8c-539f-4cb2-8f08-41709e9511e5	Primary Tumor	679	40
+TCGA-UCEC	2f0640bc-598c-4714-9e9b-7e0f2ca4567f	Primary Tumor	215	37
+TCGA-UCEC	2f4458b6-3caf-4e33-890e-a04722badd1b	Blood Derived Normal	189	27
+TCGA-UCEC	2f4458b6-3caf-4e33-890e-a04722badd1b	Primary Tumor	269	33
+TCGA-UCEC	32e33897-29c8-48f2-b833-98f37204e0e7	Blood Derived Normal	220	29
+TCGA-UCEC	32e33897-29c8-48f2-b833-98f37204e0e7	Primary Tumor	174	14
+TCGA-UCEC	38f9fe64-de79-498c-b3ca-1c83af0ed72a	Blood Derived Normal	460	36
+TCGA-UCEC	38f9fe64-de79-498c-b3ca-1c83af0ed72a	Primary Tumor	402	27
+TCGA-UCEC	3a4a6aff-4720-41fc-a114-85f38610ebb1	Blood Derived Normal	346	23
+TCGA-UCEC	3a4a6aff-4720-41fc-a114-85f38610ebb1	Primary Tumor	379	35
+TCGA-UCEC	3abaa1b6-7513-40e0-b79c-b968e788e932	Blood Derived Normal	223	51
+TCGA-UCEC	3b21b47e-a15c-4b10-9702-62a14afdfb8c	Blood Derived Normal	1113	184
+TCGA-UCEC	3b21b47e-a15c-4b10-9702-62a14afdfb8c	Primary Tumor	364	17
+TCGA-UCEC	3cb83517-78a4-47b8-8b1e-57e765dbdd2e	Blood Derived Normal	227	13
+TCGA-UCEC	3cb83517-78a4-47b8-8b1e-57e765dbdd2e	Primary Tumor	402	46
+TCGA-UCEC	40a3ed98-3892-449c-b07e-7b7612bd997e	Blood Derived Normal	345	18
+TCGA-UCEC	40a3ed98-3892-449c-b07e-7b7612bd997e	Primary Tumor	390	23
+TCGA-UCEC	43714e9a-e9c4-4206-af92-1d00d2a8ae35	Blood Derived Normal	331	51
+TCGA-UCEC	43714e9a-e9c4-4206-af92-1d00d2a8ae35	Primary Tumor	122	12
+TCGA-UCEC	45d58088-d3f4-4eb0-b75c-bcb98c0981dc	Blood Derived Normal	195	19
+TCGA-UCEC	45d58088-d3f4-4eb0-b75c-bcb98c0981dc	Primary Tumor	138	7
+TCGA-UCEC	4806d9a6-e65d-4a82-b422-1b287980a0c6	Blood Derived Normal	269	11
+TCGA-UCEC	4806d9a6-e65d-4a82-b422-1b287980a0c6	Primary Tumor	492	70
+TCGA-UCEC	4abbd258-0f0c-4428-901d-625d47ad363a	Blood Derived Normal	194	20
+TCGA-UCEC	4abbd258-0f0c-4428-901d-625d47ad363a	Primary Tumor	284	38
+TCGA-UCEC	4af65655-a3bd-4252-9b2f-2b2c4394f95c	Blood Derived Normal	514	39
+TCGA-UCEC	4af65655-a3bd-4252-9b2f-2b2c4394f95c	Primary Tumor	736	62
+TCGA-UCEC	4fd1cb59-6c50-4355-9d37-a341e1f4fad9	Primary Tumor	429	58
+TCGA-UCEC	553f0ccd-4e6f-4ae2-9b39-97529eb3d826	Blood Derived Normal	162	17
+TCGA-UCEC	553f0ccd-4e6f-4ae2-9b39-97529eb3d826	Primary Tumor	166	23
+TCGA-UCEC	585a1f31-3804-43ca-81e9-4e571fe03642	Blood Derived Normal	701	79
+TCGA-UCEC	585a1f31-3804-43ca-81e9-4e571fe03642	Primary Tumor	494	34
+TCGA-UCEC	59e9029a-8ddd-4447-b35a-72bc39f82a30	Blood Derived Normal	161	2
+TCGA-UCEC	5b6b9d0f-787c-4ae9-afd4-de7ce6c57a42	Blood Derived Normal	219	25
+TCGA-UCEC	5b6b9d0f-787c-4ae9-afd4-de7ce6c57a42	Primary Tumor	244	29
+TCGA-UCEC	5cba9441-6812-49c0-a0f6-7928ed4e5b81	Blood Derived Normal	385	26
+TCGA-UCEC	5cba9441-6812-49c0-a0f6-7928ed4e5b81	Primary Tumor	436	51
+TCGA-UCEC	5dfdfcfc-72cc-4e33-aa3f-0d744eb94330	Blood Derived Normal	278	18
+TCGA-UCEC	5dfdfcfc-72cc-4e33-aa3f-0d744eb94330	Primary Tumor	355	27
+TCGA-UCEC	5e3b981e-73fe-4cc9-8c89-b420e8e2f426	Blood Derived Normal	276	35
+TCGA-UCEC	5e3b981e-73fe-4cc9-8c89-b420e8e2f426	Primary Tumor	180	17
+TCGA-UCEC	60fcf50a-8598-475d-8dd0-6b3044661233	Blood Derived Normal	153	10
+TCGA-UCEC	60fcf50a-8598-475d-8dd0-6b3044661233	Primary Tumor	335	46
+TCGA-UCEC	633e6994-3e8b-4c0b-9b79-06cf4ab6f9bc	Blood Derived Normal	400	34
+TCGA-UCEC	633e6994-3e8b-4c0b-9b79-06cf4ab6f9bc	Primary Tumor	445	28
+TCGA-UCEC	68181bc9-aa8b-44ec-8601-564b30ea0561	Blood Derived Normal	379	42
+TCGA-UCEC	68181bc9-aa8b-44ec-8601-564b30ea0561	Primary Tumor	394	40
+TCGA-UCEC	71fed998-8fac-4e6b-b38a-22c83e05e958	Blood Derived Normal	276	20
+TCGA-UCEC	71fed998-8fac-4e6b-b38a-22c83e05e958	Primary Tumor	679	64
+TCGA-UCEC	734ef97f-807c-480e-8df9-feaf041032d2	Blood Derived Normal	258	26
+TCGA-UCEC	734ef97f-807c-480e-8df9-feaf041032d2	Primary Tumor	291	36
+TCGA-UCEC	73e5310d-ba8c-4cbc-aa4f-e06206f898f4	Blood Derived Normal	92	4
+TCGA-UCEC	73e5310d-ba8c-4cbc-aa4f-e06206f898f4	Primary Tumor	357	81
+TCGA-UCEC	79ecc142-8f6e-4260-a7ce-c8e2a6212c35	Blood Derived Normal	174	15
+TCGA-UCEC	79ecc142-8f6e-4260-a7ce-c8e2a6212c35	Primary Tumor	214	28
+TCGA-UCEC	7b9947d5-e86b-4006-8890-ea5209584a88	Blood Derived Normal	259	33
+TCGA-UCEC	7b9947d5-e86b-4006-8890-ea5209584a88	Primary Tumor	169	15
+TCGA-UCEC	7dce4215-01f6-43e9-9378-9e22c26c23a2	Blood Derived Normal	374	43
+TCGA-UCEC	7dce4215-01f6-43e9-9378-9e22c26c23a2	Primary Tumor	302	23
+TCGA-UCEC	8432401d-799f-4f2f-b536-e79e1e8be064	Blood Derived Normal	478	54
+TCGA-UCEC	8432401d-799f-4f2f-b536-e79e1e8be064	Primary Tumor	249	21
+TCGA-UCEC	87e44856-eb9a-475f-96b1-047b7f77b0da	Blood Derived Normal	334	21
+TCGA-UCEC	87e44856-eb9a-475f-96b1-047b7f77b0da	Primary Tumor	582	62
+TCGA-UCEC	884fd57d-bd8e-40e7-82f6-0ba1c71101a9	Blood Derived Normal	358	37
+TCGA-UCEC	884fd57d-bd8e-40e7-82f6-0ba1c71101a9	Primary Tumor	275	30
+TCGA-UCEC	8bdd4e0e-5bec-43f2-b9fa-d6e94a72fe05	Primary Tumor	188	34
+TCGA-UCEC	8bf0b156-6eb4-45e8-9cbb-0979efbea898	Primary Tumor	185	49
+TCGA-UCEC	92a2cae3-b8ee-4ebb-ac5c-01e58749448f	Blood Derived Normal	523	42
+TCGA-UCEC	92a2cae3-b8ee-4ebb-ac5c-01e58749448f	Primary Tumor	390	31
+TCGA-UCEC	94817e78-78f5-4556-9394-610df65605e2	Blood Derived Normal	96	13
+TCGA-UCEC	94817e78-78f5-4556-9394-610df65605e2	Primary Tumor	96	14
+TCGA-UCEC	95e6d327-9ab7-45de-9527-f5634b3995c3	Blood Derived Normal	390	30
+TCGA-UCEC	95e6d327-9ab7-45de-9527-f5634b3995c3	Primary Tumor	629	54
+TCGA-UCEC	9731e0b3-c62d-43cb-8ae7-8f973d69ab19	Blood Derived Normal	347	67
+TCGA-UCEC	976bb47a-d999-4e24-ad08-452fea73c846	Blood Derived Normal	267	39
+TCGA-UCEC	976bb47a-d999-4e24-ad08-452fea73c846	Primary Tumor	218	17
+TCGA-UCEC	9aa8c2b4-db32-4899-bf0c-d578cb175e90	Blood Derived Normal	101	15
+TCGA-UCEC	9aa8c2b4-db32-4899-bf0c-d578cb175e90	Primary Tumor	250	38
+TCGA-UCEC	9cde90c8-2be0-4328-a032-ff1dc19e66fd	Blood Derived Normal	104	9
+TCGA-UCEC	a081da6f-51f3-4555-a6b8-736f8c6cda39	Blood Derived Normal	184	25
+TCGA-UCEC	a081da6f-51f3-4555-a6b8-736f8c6cda39	Primary Tumor	280	28
+TCGA-UCEC	a2a2dbda-d10c-49c4-86a8-61baf6160cda	Blood Derived Normal	406	33
+TCGA-UCEC	a2a2dbda-d10c-49c4-86a8-61baf6160cda	Primary Tumor	180	17
+TCGA-UCEC	a587e62e-430e-4f1b-82b7-6fbe856fdaf1	Blood Derived Normal	283	33
+TCGA-UCEC	a587e62e-430e-4f1b-82b7-6fbe856fdaf1	Primary Tumor	225	20
+TCGA-UCEC	a766d113-bc3f-4448-a4e5-f391fb0c0e22	Blood Derived Normal	86	9
+TCGA-UCEC	a766d113-bc3f-4448-a4e5-f391fb0c0e22	Primary Tumor	279	39
+TCGA-UCEC	a798a8cc-4e72-4a8c-9e20-74a14deafd12	Blood Derived Normal	138	3
+TCGA-UCEC	a7c565fc-c711-4b63-9549-4cd74d1f57c2	Primary Tumor	104	20
+TCGA-UCEC	a8079ea5-c37b-4f77-aca0-b043bf420675	Primary Tumor	245	42
+TCGA-UCEC	a8f38e37-978b-4435-b676-e8d4c34da909	Blood Derived Normal	370	29
+TCGA-UCEC	a8f38e37-978b-4435-b676-e8d4c34da909	Primary Tumor	337	32
+TCGA-UCEC	ac1d3946-fe6c-4bd8-b02c-638799cb0f67	Blood Derived Normal	286	30
+TCGA-UCEC	ac1d3946-fe6c-4bd8-b02c-638799cb0f67	Primary Tumor	236	30
+TCGA-UCEC	adc22472-e31d-419f-aeae-cb01b9423343	Blood Derived Normal	66	3
+TCGA-UCEC	adc22472-e31d-419f-aeae-cb01b9423343	Primary Tumor	78	7
+TCGA-UCEC	af37d8f0-fea0-47f6-be0a-2fb55a5da5c4	Blood Derived Normal	386	34
+TCGA-UCEC	af37d8f0-fea0-47f6-be0a-2fb55a5da5c4	Primary Tumor	466	36
+TCGA-UCEC	b045f24b-f822-4df9-9ffa-47308edcec8c	Blood Derived Normal	500	47
+TCGA-UCEC	b045f24b-f822-4df9-9ffa-47308edcec8c	Primary Tumor	386	25
+TCGA-UCEC	b4a520ae-f259-48c8-823e-c10b9b8a133a	Blood Derived Normal	266	24
+TCGA-UCEC	b4a520ae-f259-48c8-823e-c10b9b8a133a	Primary Tumor	201	25
+TCGA-UCEC	b6819b52-6f01-4011-9bd3-a1a00397e0c9	Blood Derived Normal	754	116
+TCGA-UCEC	b6819b52-6f01-4011-9bd3-a1a00397e0c9	Primary Tumor	302	27
+TCGA-UCEC	b8588e0f-aad6-4ded-845e-3cff67a48d8f	Blood Derived Normal	229	29
+TCGA-UCEC	b8588e0f-aad6-4ded-845e-3cff67a48d8f	Primary Tumor	192	12
+TCGA-UCEC	bd4284a7-260d-48b3-9b48-a1c578c30d27	Blood Derived Normal	307	42
+TCGA-UCEC	bd4284a7-260d-48b3-9b48-a1c578c30d27	Primary Tumor	204	17
+TCGA-UCEC	bf632368-8ce7-4b4b-8842-d1b1801e62ef	Blood Derived Normal	403	33
+TCGA-UCEC	bf632368-8ce7-4b4b-8842-d1b1801e62ef	Primary Tumor	470	33
+TCGA-UCEC	c350b53b-3c27-4b9e-8b57-d7b6a1205a1f	Blood Derived Normal	390	39
+TCGA-UCEC	c350b53b-3c27-4b9e-8b57-d7b6a1205a1f	Primary Tumor	309	36
+TCGA-UCEC	cbe0bd4a-02b7-43e7-b08e-2b0f13560eaf	Blood Derived Normal	646	68
+TCGA-UCEC	cbe0bd4a-02b7-43e7-b08e-2b0f13560eaf	Primary Tumor	378	27
+TCGA-UCEC	cc058b8c-df40-4f9e-88e3-3d1131b22b41	Blood Derived Normal	196	27
+TCGA-UCEC	cca5717d-226d-4390-a99b-c7aed6d9d70e	Blood Derived Normal	233	20
+TCGA-UCEC	cca5717d-226d-4390-a99b-c7aed6d9d70e	Primary Tumor	342	46
+TCGA-UCEC	d129ebb4-db21-4342-8d9b-318a67aefa56	Blood Derived Normal	409	38
+TCGA-UCEC	d129ebb4-db21-4342-8d9b-318a67aefa56	Primary Tumor	415	29
+TCGA-UCEC	d7258a64-3ea0-40fc-b3f4-b581a1725fff	Blood Derived Normal	74	13
+TCGA-UCEC	d77e4dbc-b239-4742-8cb7-efd427010d13	Blood Derived Normal	135	17
+TCGA-UCEC	d77e4dbc-b239-4742-8cb7-efd427010d13	Primary Tumor	194	26
+TCGA-UCEC	db21fccf-40cb-4235-a34d-336a03b8c8f4	Blood Derived Normal	193	11
+TCGA-UCEC	db21fccf-40cb-4235-a34d-336a03b8c8f4	Primary Tumor	293	34
+TCGA-UCEC	e1e8dc66-467c-48a5-be56-3db4f665b9f1	Blood Derived Normal	242	34
+TCGA-UCEC	e1e8dc66-467c-48a5-be56-3db4f665b9f1	Primary Tumor	184	14
+TCGA-UCEC	e56c6abc-b36c-4667-a347-0a541ce4791d	Blood Derived Normal	780	69
+TCGA-UCEC	e56c6abc-b36c-4667-a347-0a541ce4791d	Primary Tumor	429	33
+TCGA-UCEC	e8909bdf-460c-4291-8e9b-7be12f343eae	Blood Derived Normal	530	42
+TCGA-UCEC	e8909bdf-460c-4291-8e9b-7be12f343eae	Primary Tumor	414	42
+TCGA-UCEC	ec7a9d74-8b3f-4747-8926-1739a016ab2b	Blood Derived Normal	285	29
+TCGA-UCEC	ec7a9d74-8b3f-4747-8926-1739a016ab2b	Primary Tumor	451	38
+TCGA-UCEC	f17e446a-c145-45be-8335-a856acb0b9b8	Blood Derived Normal	768	76
+TCGA-UCEC	f17e446a-c145-45be-8335-a856acb0b9b8	Primary Tumor	435	29
+TCGA-UCEC	f47df5f9-7c60-4b1a-b574-7036245af341	Blood Derived Normal	167	9
+TCGA-UCEC	f7e06a10-74ca-4f52-a944-b3f22c016998	Blood Derived Normal	426	42
+TCGA-UCEC	f7e06a10-74ca-4f52-a944-b3f22c016998	Primary Tumor	369	37
+TCGA-UCEC	fe5f4822-37a3-4f9e-8d33-8b9f36bf6895	Blood Derived Normal	2317	355
+TCGA-UCEC	fe5f4822-37a3-4f9e-8d33-8b9f36bf6895	Primary Tumor	367	11
