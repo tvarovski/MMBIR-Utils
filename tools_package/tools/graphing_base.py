@@ -731,6 +731,130 @@ def plot_differential_expression(cancer, save=False, show=True):
         plt.close()
 
 @fancy_status
+def plot_differential_expression(
+    cancer, 
+    pval_threshold=0.05, 
+    log2fc_threshold=1.0, # Common threshold for biological significance
+    max_log2fc=6, # Cap for visualization
+    point_size=5, # Reduced point size
+    alpha_val=0.4, # Increased transparency
+    save=False, 
+    show=True
+    ):
+    """
+    Generates a volcano plot for differential expression analysis.
+
+    Args:
+        cancer (str): Identifier for the cancer type (used for file naming).
+        pval_threshold (float): Significance threshold for p-value.
+        log2fc_threshold (float): Threshold for absolute log2 fold change.
+        max_log2fc (float): Maximum absolute log2 fold change to display (caps outliers).
+        point_size (int): Size of the points in the scatter plot.
+        alpha_val (float): Alpha transparency for the points.
+        save (bool): Whether to save the plot to a file.
+        show (bool): Whether to display the plot.
+    """
+    import numpy as np
+    path = f"outputs/ttest_results_{cancer}_minconc0_bh_corrected.tsv" # Ensure this path is correct
+
+    try:
+        df = pd.read_csv(path, sep="\t")
+    except FileNotFoundError:
+        logging.error(f"Error: Data file not found at {path}")
+        return
+    except Exception as e:
+        logging.error(f"Error reading data file {path}: {e}")
+        return
+
+    # --- Data Preparation ---
+    # Basic validation
+    if "p-value" not in df.columns or "fold-change" not in df.columns:
+        logging.error("Error: Required columns 'p-value' and/or 'fold-change' not found in the dataframe.")
+        return
+        
+    # Remove rows with invalid p-values or fold changes before transformation
+    df = df.dropna(subset=['p-value', 'fold-change'])
+    df = df[df['p-value'] > 0] # p-values must be > 0 for log10
+    df = df[df['fold-change'] > 0] # fold-change must be > 0 for log2
+    
+    # Calculate -log10(p-value)
+    df["-log10(p-value)"] = -np.log10(df["p-value"])
+
+    # Calculate log2(fold change)
+    df["log2(fold change)"] = np.log2(df["fold-change"])
+
+    # Cap extreme fold changes for visualization purposes
+    df["log2(fold change)"] = df["log2(fold change)"].clip(lower=-max_log2fc, upper=max_log2fc)
+
+    # --- Categorize Genes ---
+    # Define categories: 'Upregulated', 'Downregulated', 'Non-significant'
+    conditions = [
+        (df['p-value'] < pval_threshold) & (df['log2(fold change)'] > log2fc_threshold),  # Upregulated
+        (df['p-value'] < pval_threshold) & (df['log2(fold change)'] < -log2fc_threshold), # Downregulated
+    ]
+    choices = ['Upregulated', 'Downregulated']
+    df['status'] = np.select(conditions, choices, default='Non-significant')
+
+    # --- Plotting ---
+    plt.figure(figsize=(10, 8)) # Adjust figure size for better readability
+
+    # Define a more appealing color palette
+    # Grey for non-significant, Red for upregulated, Blue for downregulated
+    palette = {
+        'Non-significant': 'grey',
+        'Upregulated': '#d62728', # A distinct red
+        'Downregulated': '#1f77b4' # A distinct blue
+    }
+
+    # Create the scatter plot
+    sns.scatterplot(
+        x="log2(fold change)",
+        y="-log10(p-value)",
+        data=df,
+        hue="status",           # Color by the new status column
+        palette=palette,        # Use the custom color palette
+        s=point_size,           # Use the smaller point size
+        alpha=alpha_val,        # Use the increased transparency
+        linewidth=0,            # Remove point borders
+        legend='full'           # Show all legend items
+    )
+
+    # --- Add Threshold Lines ---
+    neg_log10_pval_cutoff = -np.log10(pval_threshold)
+    plt.axhline(y=neg_log10_pval_cutoff, color="grey", linestyle="--", linewidth=1)
+    plt.axvline(x=log2fc_threshold, color="grey", linestyle="--", linewidth=1)
+    plt.axvline(x=-log2fc_threshold, color="grey", linestyle="--", linewidth=1)
+    # Keep the line at log2FC = 0 if desired, though less critical with FC thresholds
+    # plt.axvline(x=0, color="black", linestyle=":", linewidth=0.8) 
+
+    # --- Labels and Title ---
+    plt.xlabel("log2(Fold Change)", fontsize=14) # Slightly smaller font size
+    plt.ylabel("-log10(Adjusted p-value)", fontsize=14) # Specify if p-value is adjusted
+    plt.title(f"Volcano Plot: {cancer} Differential Expression", fontsize=16, fontweight="bold")
+
+    # Improve legend
+    plt.legend(title='Gene Status', loc='upper right', frameon=True) # Adjust legend position and add frame
+
+    # --- Final Touches ---
+    plt.grid(False) # Remove background grid if present from default style
+    sns.despine() # Remove top and right spines for a cleaner look
+    plt.tight_layout() # Adjust plot to prevent labels overlapping
+
+    # --- Save/Show ---
+    if save:
+        output_path = f"outputs/plots/{cancer}_volcano_plot.png"
+        try:
+            plt.savefig(output_path, dpi=300) # Use 300 dpi for good quality, 600 might be overkill
+            logging.info(f"Saved plot to {output_path}")
+        except Exception as e:
+            logging.error(f"Error saving plot to {output_path}: {e}")
+
+    if show:
+        plt.show()
+    else:
+        plt.close() # Close the plot figure if not showing
+
+@fancy_status
 def heatMapper(positions, intervals={}, bandwidth=250000, tickspace=100000000, cmap="YlOrRd", save_path="outputs/heatmap.png"):
 
     import numpy as np
